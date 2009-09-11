@@ -5,7 +5,7 @@ body {
 	color: #000;
 	line-height: 18px;
 	font-family: Arial, sans-serif;
-	font-size: 12px;
+	font-size: 14px;
 }
 
 a, a:active, a:visited {
@@ -30,6 +30,11 @@ h1 {
 	text-shadow: 2px 2px 2px #000;
 }
 
+h1 a, h1 a:visited, h1 a:active {
+	color: inherit;
+	text-decoration: none;
+}
+
 .copyright {
 	font-size: 11px;
 	margin-bottom: 18px;
@@ -49,4 +54,24 @@ h1 {
 	-webkit-border-bottom-left-radius: 5px;
 	-webkit-border-bottom-right-radius: 5px;
 	width: 780px;
+}
+
+/* add entry */
+
+.add {
+	background: #c8c8c8;
+	margin-bottom: 36px;
+	-moz-border-radius: 5px;
+	padding: 10px;
+	-webkit-border-radius: 5px;
+}
+
+/* entries */
+
+.entry {
+	margin-bottom: 36px;
+}
+
+.entry .links {
+	font-size: 12px;
 }

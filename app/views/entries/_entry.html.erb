@@ -1,0 +1,8 @@
+<div class="entry">
+	<p>More <%= entry.noun %> need to <%= entry.verb %>.</p>
+	
+	<div class="links">
+		anonymous crapped <%= link_to_unless_current 'this', entry %> out on <%= entry.created_at.strftime('%A, %B %d, %Y at %I:%M:%S %p') %>.<br />
+		<%= link_to pluralize(0, 'comment'), root_path %> - <%= link_to 'Add a comment', root_path %> - <%= link_to 'Vote up', root_path %>
+	</div>
+</div>

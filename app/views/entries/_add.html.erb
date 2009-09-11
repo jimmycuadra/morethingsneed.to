@@ -1,0 +1,13 @@
+<div class="add">
+<% form_for :entry, @new_entry do |f| %>
+	<%= f.error_messages %>
+	
+	<%= f.label :noun, 'More ' %>
+	<%= f.text_field :noun %>
+	
+	<%= f.label :verb, ' need to ' %>
+	<%= f.text_field :verb %>
+	
+	<%= f.submit 'Add' %>
+<% end %>
+</div>
