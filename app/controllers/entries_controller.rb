@@ -3,10 +3,11 @@ class EntriesController < ApplicationController
   before_filter :prepare_new_entry, :only => [:index, :show]
   
   def index
-    @entries = Entry.all
+    @entries = Entry.all(:order => 'created_at DESC')
   end
   
   def show
+    @comment = Comment.new
   end
   
   def edit

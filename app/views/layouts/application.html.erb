@@ -1,20 +1,29 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta charset=utf-8 />
 	<title>morethingsneed.to</title>
+	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js" type="text/javascript" charset="utf-8"></script><![endif]-->
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<link rel="stylesheet" href="/stylesheets/reset.css" type="text/css" media="screen, projection" />
 	<link rel="stylesheet" href="/stylesheets/screen.css" type="text/css" media="screen, projection" />
-	<!--[if IE]> <link rel="stylesheet" href="/stylesheets/ie.css" type="text/css" media="screen, projection" /> <![endif]-->
+	<!--[if IE]>
+		<link rel="stylesheet" href="/stylesheets/ie.css" type="text/css" media="screen" charset="utf-8" />
+	<![endif]-->
 </head>
 <body>
 	<div id="bucket">
-		<h1><a href="/">morethingsneed.to</a></h1>
-
-		<%= yield %>
+		<header>
+			<h1><a href="/">morethingsneed.to</a></h1>
+		</header>
+		
+		<section id="#content">
+			<%= yield %>
+		</section>
 	</div>
-	<div class="copyright">&copy; 2009 Jimmy Cuadra and Michael Chadwick.</div>
+	<footer>
+		Announcing the necessity for increased frequency of things occurring since 2009.<br />
+		&copy; 2009 Jimmy Cuadra and Michael Chadwick.
+	</footer>
 </body>
 </html>

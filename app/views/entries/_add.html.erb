@@ -1,13 +1,13 @@
-<div class="add">
-<% form_for :entry, @new_entry do |f| %>
-	<%= f.error_messages %>
+<section id="add">
+	<% form_for :entry, @new_entry do |f| %>
+		<%= f.error_messages %>
 	
-	<%= f.label :noun, 'More ' %>
-	<%= f.text_field :noun %>
+		<%= f.label :noun, 'More ' %>
+		<%= f.text_field :noun, :value => 'nouns' %>
 	
-	<%= f.label :verb, ' need to ' %>
-	<%= f.text_field :verb %>
+		<%= f.label :verb, ' need to ' %>
+		<%= f.text_field :verb, :value => 'verb' %> !
 	
-	<%= f.submit 'Add' %>
-<% end %>
-</div>
+		<%= f.submit 'This needs to happen' %>
+	<% end %>
+</section>

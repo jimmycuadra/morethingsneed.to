@@ -1,5 +1,17 @@
 <%= render :partial => 'add' %>
 
-<%= render :partial => @entry, :object => @entry %>
+<%= render :partial => @entry %>
 
-<%= link_to 'Return to main page', root_path %>
+<h2>The Internet says:</h2>
+
+<section id="comments">
+	<% if @comments -%>
+		<%= render :partial => @comments %>
+	<% else -%>
+		<p>Nothing. Can you believe it?</p>
+	<% end -%>
+</section>
+
+<section id="comment">
+	<%= render :partial => 'comments/comment' %>
+</section>

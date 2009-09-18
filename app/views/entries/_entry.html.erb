@@ -1,8 +1,12 @@
-<div class="entry">
-	<p>More <%= entry.noun %> need to <%= entry.verb %>.</p>
-	
-	<div class="links">
-		anonymous crapped <%= link_to_unless_current 'this', entry %> out on <%= entry.created_at.strftime('%A, %B %d, %Y at %I:%M:%S %p') %>.<br />
-		<%= link_to pluralize(0, 'comment'), root_path %> - <%= link_to 'Add a comment', root_path %> - <%= link_to 'Vote up', root_path %>
-	</div>
-</div>
+<article>
+	<header>Anonymous crapped this out on <time pubdate datetime="<%= entry.created_at.to_s(:datetime) %>"><%= entry.created_at.to_s(:written_out) %></time>.</header>
+
+	<section>
+		<p>More <%= entry.noun %> need to <%= entry.verb %>.</p>
+		
+		<section class="links">
+			<%= pluralize(@votes, 'Internet dudeperson') %> are on board with this fine proposition - <%= link_to 'Get on board', '#' %><br />
+			<%= link_to pluralize(0, 'thoughtful critiques'), entry %> - <%= link_to 'Add a non-impulsive, well-researched thought', entry_path(entry) + '#comment' %>
+		</section>
+	</section>
+</article>

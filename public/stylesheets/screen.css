@@ -1,7 +1,7 @@
 /* universal elements */
 
 body {
-	background: #dbe8f9;
+	background: #f5ede3;
 	color: #000;
 	line-height: 18px;
 	font-family: Arial, sans-serif;
@@ -9,12 +9,13 @@ body {
 }
 
 a, a:active, a:visited {
-	color: #466289;
+	color: #c13100;
+	text-decoration: none;
 }
 
 a:hover {
 	color: #627894;
-	text-decoration: none;
+	text-decoration: underline;
 }
 
 p {
@@ -22,12 +23,12 @@ p {
 }
 
 h1 {
-	color: #fa6121;
+	color: #c13100;
 	font-family: "Trebuchet MS", Trebuchet, sans-serif;
-	font-size: 22px;
+	font-size: 28px;
 	line-height: 28px;
 	margin-bottom: 26px;
-	text-shadow: 2px 2px 2px #000;
+	text-shadow: 2px 2px 2px #888;
 }
 
 h1 a, h1 a:visited, h1 a:active {
@@ -35,7 +36,12 @@ h1 a, h1 a:visited, h1 a:active {
 	text-decoration: none;
 }
 
-.copyright {
+h2 {
+	font-size: 16px;
+	margin-bottom: 18px;
+}
+
+footer {
 	font-size: 11px;
 	margin-bottom: 18px;
 	text-align: center;
@@ -44,7 +50,7 @@ h1 a, h1 a:visited, h1 a:active {
 /* structure */
 
 #bucket {
-	background: #a0aec1;
+	background: #e1d4c0;
 	border: 2px solid #666;
 	border-top: 0;
 	margin: 0 auto 18px;
@@ -58,20 +64,117 @@ h1 a, h1 a:visited, h1 a:active {
 
 /* add entry */
 
-.add {
-	background: #c8c8c8;
+#add {
+	background-color: #a97d5d;
+	border-bottom: 1px solid #000;
+	border-top: 1px solid #000;
+	color: #e3e3e3;
+	font-weight: bold;
+	left: -10px;
 	margin-bottom: 36px;
-	-moz-border-radius: 5px;
 	padding: 10px;
-	-webkit-border-radius: 5px;
+	position: relative;
+	width: 780px;
+}
+
+#add form input, #add form label {
+	margin: 0;
+	padding: 3px;
+	width: auto;
+}
+
+#add form input[type=submit] {
+	margin-left: 30px;
 }
 
 /* entries */
 
-.entry {
+article {
 	margin-bottom: 36px;
 }
 
-.entry .links {
+article header {
+	background-color: #f6a03d;
+	border: 1px solid black;
+	border-radius: 4px 0 0 4px;
 	font-size: 12px;
+	font-weight: normal;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright: 4px;
+	padding: 4px 9px;
+	-webkit-border-top-left-radius: 4px;
+	-webkit-border-top-right-radius: 4px;
 }
+
+article .datetime, article .links {
+	font-size: 12px;
+	font-weight: normal;
+}
+
+article section {
+	background-color: #cdbfac;
+	border: 1px solid #000;
+	border-top: 0;
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 18px;
+	padding: 9px;
+}
+
+article section.links {
+	background-color: none;
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+article p {
+	border-bottom: 1px dashed #666;
+	margin-bottom: 9px;
+	padding-bottom: 36px;
+}
+
+/* comments */
+
+#comments {
+	margin-bottom: 36px;
+}
+
+/* forms */
+
+form legend {
+	font-weight: bold;
+	padding-bottom: 18px;
+}
+
+form fieldset {
+	margin-bottom: 18px;
+}
+
+form label {
+	display: inline-block;
+	margin-bottom: 9px;
+	text-align: right;
+	vertical-align: top;
+	width: 90px;
+}
+
+form li {
+	list-style: none;
+}
+
+form input, form textarea {
+	border: 1px solid #666;
+	margin: 0 0 9px 9px;
+	width: 300px;
+}
+
+form textarea {
+	height: 180px;
+}
+
+form input[type=submit] {
+	margin-left: 102px;
+	width: auto;
+}
+
