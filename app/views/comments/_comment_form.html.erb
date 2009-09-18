@@ -1,0 +1,20 @@
+<% form_for [@entry, @comment || Comment.new] do |f| %>
+<fieldset>
+	<legend>Write something no one will read</legend>
+	<%= render_error_messages @comment %>
+	<ol>
+		<li>
+			<%= f.label :name, 'Moniker' %>
+			<%= f.text_field :name %>
+		</li>
+
+		<li>
+			<%= f.label :comment, 'Your Pointless Drivel' %>
+			<%= f.text_area :comment %>
+		</li>
+		<li>
+			<%= f.submit 'Force everyone to read to your worthless litany' %>
+		</li>
+	</ol>
+</fieldset>
+<% end %>

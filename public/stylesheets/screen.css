@@ -185,11 +185,47 @@ form input[type=submit] {
 
 /* flash and error messages */
 
-.validation-error {
+.validation-errors {
 	background-color: #cdbfac;
 	border: 1px solid #000;
 	color: #c13100;
 	padding: 9px;
 	margin: 9px;
-	text-align: center;
+}
+
+.validation-errors header {
+	font-weight: bold;
+}
+
+.validation-errors ul {
+	margin-left: 18px;
+}
+
+.validation-errors li {
+	list-style: disc;
+}
+
+/* comments */
+
+#comments article {
+	background-color: #cdbfac;
+	border: 1px solid #000;
+	margin-bottom: 18px;
+	padding: 9px;
+}
+
+#comments article section {
+	background-color: transparent;
+	border: 0;
+	border-bottom: 1px dashed #666;
+	font-size: 14px;
+	font-weight: normal;
+	margin-bottom: 9px;
+	padding: 0;
+	padding-bottom: 18px;
+}
+
+#comments article footer {
+	margin: 0;
+	text-align: left;
 }

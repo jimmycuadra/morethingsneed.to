@@ -10,6 +10,6 @@
 	
 		<%= f.submit 'This needs to happen' %>
 		
-		<%= show_validation_errors(@new_entry || @entry) %>
+		<%= render_error_messages(@new_entry || @entry) %>
 	<% end %>
 </section>

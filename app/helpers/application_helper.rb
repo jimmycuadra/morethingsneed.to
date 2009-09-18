@@ -1,13 +1,6 @@
 module ApplicationHelper
-  def show_validation_errors(model)
-    errors = []
-    model.errors.each do |e|
-      errors << e[1]
-    end
-    if errors.blank?
-      ''
-    else
-      content_tag(:div, errors.join('<br />'), :class => 'validation-error')
-    end
+  def render_error_messages(*objects)
+    messages = objects.compact.map { |o| o.errors.full_messages }.flatten
+    render :partial => 'partials/error_messages', :object => messages unless messages.empty?
   end
 end

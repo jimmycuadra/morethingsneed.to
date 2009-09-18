@@ -1,13 +1,17 @@
 class CommentsController < ApplicationController    
-  def new
-    if request.post?
-      @comment = Entry.comment.build(params[:comment])
-      if @comment.save
-        flash[:notice] = 'Your opinion has been duly noted.'
-      else
-        flash[:notice] = 'Your shit was invalid, homes.'
-      end
+  def create
+    @entry = Entry.find(params[:entry_id])
+    @comment = @entry.comments.build(params[:comment])
+    @comment.ip = request.remote_ip
+    if @comment.save
+      flash[:notice] = 'Your opinion has been duly noted.'
+      redirect_to @entry
+    else
+      flash[:notice] = 'Your shit was invalid, homes.'
+      return render :file => 'entries/show', :layout => 'application'
     end
-    redirect_to entry_path(params[:entry_id])
+  end
+  
+  def destroy
   end
 end

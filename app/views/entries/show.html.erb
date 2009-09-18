@@ -1,17 +1,17 @@
-<%= render :partial => 'add' %>
+<%= render :partial => 'entries/add' %>
 
 <%= render :partial => @entry %>
 
 <h2>The Internet says:</h2>
 
 <section id="comments">
-	<% if @comments -%>
-		<%= render :partial => @comments %>
-	<% else -%>
+	<% if @entry.comments.blank? -%>
 		<p>Nothing. Can you believe it?</p>
+	<% else -%>
+		<%= render :partial => 'comments/comment', :collection => @entry.comments.reject(&:new_record?) %>
 	<% end -%>
 </section>
 
 <section id="comment">
-	<%= render :partial => 'comments/comment' %>
+	<%= render :partial => 'comments/comment_form' %>
 </section>
