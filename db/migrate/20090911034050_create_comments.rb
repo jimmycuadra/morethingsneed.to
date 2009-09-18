@@ -8,7 +8,11 @@ class CreateComments < ActiveRecord::Migration
       t.string :ip, :null => false
 
       t.timestamps
-    end
+   end
+   
+   add_index :comments, :entry_id
+   add_index :comments, :user_id
+   add_index :comments, :ip
   end
 
   def self.down

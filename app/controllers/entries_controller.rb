@@ -22,6 +22,7 @@ class EntriesController < ApplicationController
         redirect_to @entry
       else
         flash[:error] = 'More submissions need to be filled out correctly.'
+        @entries = Entry.all(:order => 'created_at DESC')
         render :index
       end
     else

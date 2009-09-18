@@ -87,6 +87,10 @@ footer {
 	margin-left: 30px;
 }
 
+#add span {
+	vertical-align: middle;
+}
+
 /* entries */
 
 article {
@@ -131,7 +135,7 @@ article section.links {
 article p {
 	border-bottom: 1px dashed #666;
 	margin-bottom: 9px;
-	padding-bottom: 36px;
+	padding-bottom: 24px;
 }
 
 /* comments */
@@ -174,7 +178,18 @@ form textarea {
 }
 
 form input[type=submit] {
+	background-color: #c0c0c0;
 	margin-left: 102px;
 	width: auto;
 }
 
+/* flash and error messages */
+
+.validation-error {
+	background-color: #cdbfac;
+	border: 1px solid #000;
+	color: #c13100;
+	padding: 9px;
+	margin: 9px;
+	text-align: center;
+}

@@ -2,7 +2,7 @@
 	<header>Anonymous crapped this out on <time pubdate datetime="<%= entry.created_at.to_s(:datetime) %>"><%= entry.created_at.to_s(:written_out) %></time>.</header>
 
 	<section>
-		<p>More <%= entry.noun %> need to <%= entry.verb %>.</p>
+		<p>More <%= entry.noun %> <%= (entry.needs) ? 'needs' : 'need' %> to <%= entry.verb %>.</p>
 		
 		<section class="links">
 			<%= pluralize(@votes, 'Internet dudeperson') %> are on board with this fine proposition - <%= link_to 'Get on board', '#' %><br />

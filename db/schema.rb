@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(:version => 20090911034050) do
     t.datetime "updated_at"
   end
 
+  add_index "comments", ["entry_id"], :name => "index_comments_on_entry_id"
+  add_index "comments", ["ip"], :name => "index_comments_on_ip"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
   create_table "entries", :force => true do |t|
     t.string   "noun",                          :null => false
     t.string   "verb",                          :null => false
@@ -31,6 +35,10 @@ ActiveRecord::Schema.define(:version => 20090911034050) do
     t.datetime "updated_at"
   end
 
+  add_index "entries", ["ip"], :name => "index_entries_on_ip"
+  add_index "entries", ["noun", "verb"], :name => "index_entries_on_noun_and_verb", :unique => true
+  add_index "entries", ["user_id"], :name => "index_entries_on_user_id"
+
   create_table "votes", :force => true do |t|
     t.integer  "entry_id",   :null => false
     t.integer  "user_id"
@@ -38,5 +46,9 @@ ActiveRecord::Schema.define(:version => 20090911034050) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "votes", ["entry_id", "user_id"], :name => "index_votes_on_entry_id_and_user_id", :unique => true
+  add_index "votes", ["entry_id"], :name => "index_votes_on_entry_id"
+  add_index "votes", ["ip"], :name => "index_votes_on_ip"
 
 end

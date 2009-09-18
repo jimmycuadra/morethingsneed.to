@@ -9,8 +9,12 @@ class CreateEntries < ActiveRecord::Migration
 
       t.timestamps
     end
+    
+    add_index :entries, [:noun, :verb], :unique => true
+    add_index :entries, :ip
+    add_index :entries, :user_id
   end
-
+  
   def self.down
     drop_table :entries
   end

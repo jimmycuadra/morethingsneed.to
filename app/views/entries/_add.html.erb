@@ -1,13 +1,15 @@
 <section id="add">
-	<% form_for :entry, @new_entry do |f| %>
-		<%= f.error_messages %>
-	
+	<% form_for :entry, @new_entry, :method => :post do |f| %>	
 		<%= f.label :noun, 'More ' %>
 		<%= f.text_field :noun, :value => 'nouns' %>
 	
-		<%= f.label :verb, ' need to ' %>
-		<%= f.text_field :verb, :value => 'verb' %> !
+		<%= f.select :needs, { 'need' => 0, 'needs' => 1 } %>
+	
+		<%= f.label :verb, ' to ' %>
+		<%= f.text_field :verb, :value => 'verb' %> <span>!</span>
 	
 		<%= f.submit 'This needs to happen' %>
+		
+		<%= show_validation_errors(@new_entry || @entry) %>
 	<% end %>
 </section>

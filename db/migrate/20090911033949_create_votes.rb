@@ -7,6 +7,10 @@ class CreateVotes < ActiveRecord::Migration
 
       t.timestamps
     end
+    
+    add_index :votes, :entry_id
+    add_index :votes, [:entry_id, :user_id], :unique => true
+    add_index :votes, :ip
   end
 
   def self.down
