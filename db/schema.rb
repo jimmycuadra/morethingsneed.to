@@ -12,24 +12,28 @@
 ActiveRecord::Schema.define(:version => 20090911034050) do
 
   create_table "comments", :force => true do |t|
-    t.integer  "entry_id",   :null => false
-    t.string   "ip",         :null => false
     t.string   "name"
     t.text     "comment",    :null => false
+    t.integer  "entry_id",   :null => false
+    t.integer  "user_id"
+    t.string   "ip",         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "entries", :force => true do |t|
-    t.string   "noun",       :null => false
-    t.string   "verb",       :null => false
-    t.string   "ip",         :null => false
+    t.string   "noun",                          :null => false
+    t.string   "verb",                          :null => false
+    t.boolean  "needs",      :default => false
+    t.string   "ip",                            :null => false
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "votes", :force => true do |t|
     t.integer  "entry_id",   :null => false
+    t.integer  "user_id"
     t.string   "ip",         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
