@@ -57,9 +57,20 @@ footer {
 	-moz-border-radius-bottomleft: 5px;
 	-moz-border-radius-bottomright: 5px;
 	padding: 10px;
+	position: relative;
 	-webkit-border-bottom-left-radius: 5px;
 	-webkit-border-bottom-right-radius: 5px;
 	width: 780px;
+}
+
+/* user nav */
+
+nav.user {
+	position: absolute;
+	font-size: 12px;
+	margin: 20px 20px 0 0;
+	right: 0;
+	top: 0;
 }
 
 /* add entry */
@@ -185,12 +196,18 @@ form input[type=submit] {
 
 /* flash and error messages */
 
-.validation-errors {
+.validation-errors, .flash {
 	background-color: #cdbfac;
 	border: 1px solid #000;
 	color: #c13100;
 	padding: 9px;
 	margin: 9px;
+}
+
+.flash {
+	background-color: #f6a03d;
+	border-style: dashed;
+	color: #000;
 }
 
 .validation-errors header {

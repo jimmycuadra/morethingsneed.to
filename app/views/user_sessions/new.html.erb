@@ -1,0 +1,21 @@
+<% form_for @user_session || UserSession.new do |f| %>
+	<%= render_error_messages @user_session %>
+	<fieldset>
+		<legend>Log in</legend>
+		<ol>
+			<li>
+				<%= f.label :username %>
+				<%= f.text_field :username %>
+			</li>
+			
+			<li>
+				<%= f.label :password %>
+				<%= f.password_field :password %>
+			</li>
+			
+			<li>
+				<%= f.submit "Log in" %>
+			</li>
+		</ol>
+	</fieldset>
+<% end %>
