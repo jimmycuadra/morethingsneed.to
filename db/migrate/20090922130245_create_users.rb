@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :persistence_token, :null => false
       t.string :single_access_token, :null => false
       t.string :perishable_token, :null => false
+      t.boolean :active, :null => false, :default => :false
       
       t.datetime :last_request_at
       t.datetime :current_login_at

@@ -40,13 +40,14 @@ ActiveRecord::Schema.define(:version => 20090922130245) do
   add_index "entries", ["user_id"], :name => "index_entries_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "username",            :null => false
-    t.string   "email",               :null => false
-    t.string   "crypted_password",    :null => false
-    t.string   "password_salt",       :null => false
-    t.string   "persistence_token",   :null => false
-    t.string   "single_access_token", :null => false
-    t.string   "perishable_token",    :null => false
+    t.string   "username",                               :null => false
+    t.string   "email",                                  :null => false
+    t.string   "crypted_password",                       :null => false
+    t.string   "password_salt",                          :null => false
+    t.string   "persistence_token",                      :null => false
+    t.string   "single_access_token",                    :null => false
+    t.string   "perishable_token",                       :null => false
+    t.boolean  "active",              :default => false, :null => false
     t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"

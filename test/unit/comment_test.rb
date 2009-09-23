@@ -1,8 +1,25 @@
 require 'test_helper'
 
 class CommentTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  def setup
+    @c = Entry.last.comments.build(:comment => 'A comment.', :ip => '127.0.0.1')
+  end
+  
+  test "should accept valid comment" do
+    assert @c.valid?
+  end
+  
+  test "should reject empty comment" do
+    @c = Comment.new
+    assert !@c.valid?
+    assert @c.errors.invalid?(:comment)
+    assert @c.errors.invalid?(:ip)
+    assert @c.errors.invalid?(:entry_id)
+  end
+  
+  test "should reject invalid ip" do
+    @c.ip = 'internet protocol'
+    assert !@c.valid?
+    assert @c.errors.invalid?(:ip)
   end
 end

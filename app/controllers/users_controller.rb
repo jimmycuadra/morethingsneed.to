@@ -5,8 +5,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     @user.username = params[:user][:username]
-    if @user.save
-      flash[:notice] = 'Thanks for registering!'
+    if @user.save_without_session_maintenance
+      @user.reset_perishable_token!
+      ActionMailer::Base.default_url_options[:host] = request.host
+      Notifier.deliver_activation_instructions(@user)
+      flash[:notice] = 'Your account has been registered but is not yet active. Please check your e-mail for activation instructions.'
       redirect_to root_path
     else
       render :action => 'new'
