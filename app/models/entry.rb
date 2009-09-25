@@ -16,4 +16,8 @@ class Entry < ActiveRecord::Base
       errors.add(:verb, '^Just "' + self.noun + '?" Remember, all things need to do something.' )
     end
   end
+  
+  def self.per_page
+    10
+  end
 end

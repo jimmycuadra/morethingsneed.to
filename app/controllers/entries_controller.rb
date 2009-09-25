@@ -3,7 +3,7 @@ class EntriesController < ApplicationController
   before_filter :prepare_new_entry, :only => [:index, :show]
   
   def index
-    @entries = Entry.all(:order => 'created_at DESC')
+    @entries = Entry.paginate :page => params[:page], :order => 'created_at DESC'
   end
   
   def show
@@ -14,14 +14,14 @@ class EntriesController < ApplicationController
   
   def create
     if request.post?
-      @entry = Entry.new(params[:entry])
-      @entry.ip = request.remote_ip
-      if @entry.save
+      @new_entry = Entry.new(params[:entry])
+      @new_entry.ip = request.remote_ip
+      if @new_entry.save
         flash[:success] = 'More submissions need to be successful.'
-        redirect_to @entry
+        redirect_to @new_entry
       else
         flash[:error] = 'More submissions need to be filled out correctly.'
-        @entries = Entry.all(:order => 'created_at DESC')
+        @entries = Entry.paginate :page => params[:page], :order => 'created_at DESC'
         render :index
       end
     else

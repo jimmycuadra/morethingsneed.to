@@ -1,5 +1,5 @@
 <section id="add">
-	<% form_for :entry, @new_entry, :method => :post do |f| %>	
+	<% form_for @new_entry do |f| %>	
 		<%= f.label :noun, 'More ' %>
 		<%= f.text_field :noun, :value => 'nouns' %>
 	
@@ -10,6 +10,6 @@
 	
 		<%= f.submit 'This needs to happen' %>
 		
-		<%= render_error_messages(@new_entry || @entry) %>
+		<%= render_error_messages @new_entry %>
 	<% end %>
 </section>
