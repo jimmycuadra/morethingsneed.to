@@ -1,12 +1,12 @@
 <article>
-	<header><%= entry.user ? entry.user.username : 'Someone' %> crapped this out on <time pubdate datetime="<%= entry.created_at.to_s(:datetime) %>"><%= entry.created_at.to_s(:written_out) %></time>.</header>
+	<header><%= entry.user ? link_to(entry.user.username, user_entries_path(entry.user)) : 'Someone' %> crapped this out on <time pubdate datetime="<%= entry.created_at.to_s(:datetime) %>"><%= entry.created_at.to_s(:written_out) %></time>.</header>
 
 	<section>
 		<p>More <%= entry.noun %> <%= (entry.needs) ? 'needs' : 'need' %> to <%= entry.verb %>.</p>
 		
 		<section class="links">
 			<%= pluralize(@votes, 'Internet dudeperson') %> are on board with this fine proposition - <%= link_to 'Get on board', '#' %><br />
-			<%= link_to pluralize(entry.comments.count, 'thoughtful critiques'), entry %> - <%= link_to 'Add a non-impulsive, well-researched thought', entry_path(entry) + '#comment' %>
+			<%= link_to pluralize(entry.comments.count, 'thoughtful critique'), entry %> - <%= link_to 'Add a non-impulsive, well-researched thought', entry_path(entry) + '#comment' %>
 		</section>
 	</section>
 </article>

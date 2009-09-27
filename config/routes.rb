@@ -11,7 +11,9 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'user_sessions', :action => 'new'
   map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
 
-  map.resources :users, :only => [:new, :create, :edit, :update]
+  map.resources :users, :only => [:new, :create, :edit, :update] do |user|
+    user.resources :entries, :only => [:index]
+  end
   map.resources :user_sessions, :only => [:new, :create, :destroy]
 
   map.root :entries

@@ -14,7 +14,7 @@ a, a:active, a:visited {
 }
 
 a:hover {
-	color: #627894;
+	color: #666;
 	text-decoration: underline;
 }
 
@@ -119,6 +119,16 @@ article header {
 	padding: 4px 9px;
 	-webkit-border-top-left-radius: 4px;
 	-webkit-border-top-right-radius: 4px;
+}
+
+article header a, article header a:active, article header a:visited {
+	color: #000;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+article header a:hover {
+	text-decoration: none;
 }
 
 article .datetime, article .links {

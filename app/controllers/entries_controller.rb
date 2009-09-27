@@ -3,7 +3,8 @@ class EntriesController < ApplicationController
   before_filter :prepare_new_entry, :only => [:index, :show]
   
   def index
-    @entries = Entry.paginate :page => params[:page], :order => 'created_at DESC'
+    conditions = params[:user_id] ? ["user_id = ?", params[:user_id]] : nil
+    @entries = Entry.paginate :page => params[:page], :order => 'created_at DESC', :conditions => conditions
   end
   
   def show
