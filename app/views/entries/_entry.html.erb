@@ -1,5 +1,5 @@
 <article>
-	<header>Someone crapped this out on <time pubdate datetime="<%= entry.created_at.to_s(:datetime) %>"><%= entry.created_at.to_s(:written_out) %></time>.</header>
+	<header><%= entry.user ? entry.user.username : 'Someone' %> crapped this out on <time pubdate datetime="<%= entry.created_at.to_s(:datetime) %>"><%= entry.created_at.to_s(:written_out) %></time>.</header>
 
 	<section>
 		<p>More <%= entry.noun %> <%= (entry.needs) ? 'needs' : 'need' %> to <%= entry.verb %>.</p>

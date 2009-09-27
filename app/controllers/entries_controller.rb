@@ -16,6 +16,7 @@ class EntriesController < ApplicationController
     if request.post?
       @new_entry = Entry.new(params[:entry])
       @new_entry.ip = request.remote_ip
+      @new_entry.user_id = current_user.id if current_user
       if @new_entry.save
         flash[:success] = 'More submissions need to be successful.'
         redirect_to @new_entry
