@@ -3,10 +3,12 @@
 	<legend>Write something no one will read</legend>
 	<%= render_error_messages @comment %>
 	<ol>
+		<% unless current_user -%>
 		<li>
 			<%= f.label :name, 'Moniker' %>
 			<%= f.text_field :name %>
 		</li>
+		<% end -%>
 
 		<li>
 			<%= f.label :comment, 'Your Pointless Drivel' %>

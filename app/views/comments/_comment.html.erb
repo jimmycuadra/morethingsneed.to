@@ -4,6 +4,15 @@
 	</section>
 	
 	<footer>
-		<%= comment.name.blank? ? 'Someone' : comment.name %> was quite thoughtful, don't you think?
+		<% if comment.user -%>
+			<%= comment.user.username %>
+		<% elsif comment.name.blank? -%>
+			Someone
+		<% else -%>
+			<%= comment.name %>
+		<% end -%>
+		was quite thoughtful, don't you think?
+		
+		<time pubdate datetime="<%= comment.created_at.to_s(:datetime) %>"><%= comment.created_at.to_s(:simple) %></time>
 	</footer>
 </article>

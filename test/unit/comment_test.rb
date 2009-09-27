@@ -22,4 +22,10 @@ class CommentTest < ActiveSupport::TestCase
     assert !@c.valid?
     assert @c.errors.invalid?(:ip)
   end
+  
+  test "should reject names longer than 30 characters" do
+    @c.name = '0123456789012345678901234567890'
+    assert !@c.valid?
+    assert @c.errors.invalid?(:name)
+  end
 end

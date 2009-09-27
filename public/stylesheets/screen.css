@@ -246,3 +246,7 @@ form input[type=submit] {
 	margin: 0;
 	text-align: left;
 }
+
+#comments article footer time {
+	float: right;
+}
