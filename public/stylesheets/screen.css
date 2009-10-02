@@ -163,6 +163,14 @@ article p {
 	padding-bottom: 24px;
 }
 
+article form, article form input {
+	display: inline;
+}
+
+article form input[type=submit] {
+	margin: 3px 0;
+}
+
 /* comments */
 
 #comments {
@@ -204,6 +212,7 @@ form textarea {
 
 form input[type=submit] {
 	background-color: #c0c0c0;
+	cursor: pointer;
 	margin-left: 102px;
 	width: auto;
 }

@@ -5,7 +5,15 @@
 		<p>More <%= entry.noun %> <%= (entry.needs) ? 'needs' : 'need' %> to <%= entry.verb %>.</p>
 		
 		<section class="links">
-			<%= pluralize(@votes, 'Internet dudeperson') %> are on board with this fine proposition - <%= link_to 'Get on board', '#' %><br />
+			<%= pluralize(entry.votes.find_all_by_up_vote(true).count, 'thinks', 'think') %> this needs to happen - <%= pluralize(entry.votes.find_all_by_up_vote(false).count, 'thinks', 'think') %> this doesn't need to happen<br />
+			<% form_for [entry, Vote.new] do |f| -%>
+				<%= f.hidden_field :up_vote, :value => 1 %>
+				<%= f.submit 'This needs to happen' %>
+			<% end -%>
+			<% form_for [entry, Vote.new] do |f| -%>
+				<%= f.hidden_field :up_vote, :value => 0 %>
+				<%= f.submit 'This doesn\'t need to happen' %>
+			<% end -%><br />
 			<%= link_to pluralize(entry.comments.count, 'thoughtful critique'), entry %> - <%= link_to 'Add a non-impulsive, well-researched thought', entry_path(entry) + '#comment' %>
 		</section>
 	</section>
