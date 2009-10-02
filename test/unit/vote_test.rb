@@ -2,7 +2,7 @@ require 'test_helper'
 
 class VoteTest < ActiveSupport::TestCase
   def setup
-    @v = Entry.last.votes.build(:ip => '127.0.0.1')
+    @v = Entry.last.votes.build(:ip => '127.0.0.1', :up_vote => 1)
   end
   
   test "should accept valid vote" do
@@ -20,5 +20,11 @@ class VoteTest < ActiveSupport::TestCase
     @v.ip = 'internet protocol'
     assert !@v.valid?
     assert @v.errors.invalid?(:ip)
+  end
+
+  test "should reject missing up_vote" do
+    @v.up_vote = nil
+    assert !@v.valid?
+    assert @v.errors.invalid?(:up_vote)
   end
 end

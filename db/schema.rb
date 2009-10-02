@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090922130245) do
+ActiveRecord::Schema.define(:version => 20091002053953) do
 
   create_table "comments", :force => true do |t|
     t.string   "name"
@@ -63,10 +63,12 @@ ActiveRecord::Schema.define(:version => 20090922130245) do
     t.string   "ip",         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "up_vote"
   end
 
   add_index "votes", ["entry_id", "user_id"], :name => "index_votes_on_entry_id_and_user_id", :unique => true
   add_index "votes", ["entry_id"], :name => "index_votes_on_entry_id"
   add_index "votes", ["ip"], :name => "index_votes_on_ip"
+  add_index "votes", ["up_vote"], :name => "index_votes_on_up_vote"
 
 end

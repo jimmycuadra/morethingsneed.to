@@ -49,4 +49,24 @@ class EntryTest < ActiveSupport::TestCase
     assert !@e.valid?
     assert @e.errors.invalid?(:noun)
   end
+  
+  test "should reject filled in honeypot" do
+    @e.email = 'honey is tasty'
+    assert !@e.valid?
+    assert @e.errors.invalid?(:base)
+  end
+  
+  test "should add up vote for entry" do
+    assert_difference('@e.votes.find_all_by_up_vote(true).count') do
+      @e.save
+      @e.votes.create!(:ip => '127.0.0.1', :up_vote => 1)
+    end
+  end
+  
+  test "should add down vote for entry" do
+    assert_difference('@e.votes.find_all_by_up_vote(false).count') do
+      @e.save
+      @e.votes.create!(:ip => '127.0.0.1', :up_vote => 0)
+    end
+  end
 end

@@ -47,6 +47,10 @@ footer {
 	text-align: center;
 }
 
+.pot {
+	display: none;
+}
+
 /* structure */
 
 #bucket {

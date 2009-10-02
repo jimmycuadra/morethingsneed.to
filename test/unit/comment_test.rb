@@ -28,4 +28,10 @@ class CommentTest < ActiveSupport::TestCase
     assert !@c.valid?
     assert @c.errors.invalid?(:name)
   end
+  
+  test "should reject comment with filled in honeypot" do
+    @c.email = 'honey is tasty'
+    assert !@c.valid?
+    assert @c.errors.invalid?(:base)
+  end
 end
