@@ -1,4 +1,18 @@
 pigs:
+    id: 1
     noun: pigs
     verb: squeak
     ip: 127.0.0.1
+
+dogs:
+    id: 2
+    noun: dogs
+    verb: bark
+    ip: 127.0.0.1
+
+cats:
+    id: 3
+    noun: cats
+    verb: meow
+    ip: 127.0.0.1
+    user_id: 1
