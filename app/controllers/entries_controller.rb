@@ -1,6 +1,5 @@
 class EntriesController < ApplicationController
   before_filter :retrieve_record, :only => [:show, :destroy]
-  before_filter :prepare_new_entry, :only => [:index, :show]
   
   def index
     conditions = params[:user_id] ? ["user_id = ?", params[:user_id]] : nil
@@ -32,9 +31,5 @@ class EntriesController < ApplicationController
   
   def retrieve_record
     @entry = Entry.find(params[:id])
-  end
-  
-  def prepare_new_entry
-    @new_entry = Entry.new
-  end
+  end  
 end

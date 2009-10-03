@@ -1,5 +1,6 @@
 TO DO
 
-- add IP-based spam prevention for entries and comments
+- add IP-based spam prevention for entries, comments, and votes
 - add vote count fields to entry model that update when new votes are made
 - add ajax to voting and commenting
+- add entry filtering to entries index

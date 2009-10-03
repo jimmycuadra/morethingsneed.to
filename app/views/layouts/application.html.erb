@@ -18,23 +18,32 @@
 			<h1><a href="/">morethingsneed.to</a></h1>
 		</header>
 		
-		<nav class="user">
-			<% if current_user %>
-				Logged in as <strong><%= current_user.username %></strong> - 
-				<%= link_to 'Account', profile_path %> -
-				<%= link_to 'Log out', logout_path %>
-			<% else %>
-				<%= link_to 'Register', register_path %> -
-				<%= link_to 'Log in', login_path %>
-			<% end %>
-		</nav>
-		
 		<% if flash[:notice] -%>
 		<div class="flash">
 			<%= flash[:notice] %>
 		</div>
 		<% end -%>
 		<section id="content">
+			<%= render :partial => 'entries/add' %>
+			<nav>
+				<%= link_to 'All', root_path %> -
+				<%= link_to 'Best', root_path(:best => 1) %> -
+				<%= link_to 'Worst', root_path(:worst => 1) %> -
+				<%= link_to 'Random', root_path(:random => 1) %> -
+				What's New -
+				Contact
+				<span class="user">
+					<% if current_user %>
+						Logged in as <strong><%= current_user.username %></strong> - 
+						<%= link_to 'Account', profile_path %> -
+						<%= link_to 'Log out', logout_path %>
+					<% else %>
+						<%= link_to 'Register', register_path %> -
+						<%= link_to 'Log in', login_path %>
+					<% end %>					
+				</span>
+			</nav>
+			
 			<%= yield %>
 		</section>
 	</div>
