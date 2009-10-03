@@ -57,16 +57,18 @@ class EntryTest < ActiveSupport::TestCase
   end
   
   test "should add up vote for entry" do
-    assert_difference('@e.votes.find_all_by_up_vote(true).count') do
+    assert_difference('@e.up_vote_count', 1) do
       @e.save
-      @e.votes.create!(:ip => '127.0.0.1', :up_vote => 1)
+      @e.votes.create(:ip => '127.0.0.1', :up_vote => 1)
+      @e.reload
     end
   end
   
   test "should add down vote for entry" do
-    assert_difference('@e.votes.find_all_by_up_vote(false).count') do
+    assert_difference('@e.down_vote_count', 1) do
       @e.save
-      @e.votes.create!(:ip => '127.0.0.1', :up_vote => 0)
+      @e.votes.create(:ip => '127.0.0.1', :up_vote => 0)
+      @e.reload
     end
   end
 end

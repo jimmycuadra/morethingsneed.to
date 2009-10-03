@@ -27,4 +27,21 @@ class VoteTest < ActiveSupport::TestCase
     assert !@v.valid?
     assert @v.errors.invalid?(:up_vote)
   end
+  
+  test "should increase entry's up_vote_count only" do
+    assert_difference('Entry.last.up_vote_count') do
+      assert_no_difference('Entry.last.down_vote_count') do
+        @v.save
+      end
+    end
+  end
+  
+  test "should increase entry's down_vote_count only" do
+    assert_difference('Entry.last.down_vote_count') do
+      assert_no_difference('Entry.last.up_vote_count') do
+        @v.up_vote = 0
+        @v.save
+      end
+    end
+  end
 end

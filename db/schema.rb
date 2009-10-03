@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091002053953) do
+ActiveRecord::Schema.define(:version => 20091003065610) do
 
   create_table "comments", :force => true do |t|
     t.string   "name"
@@ -26,13 +26,15 @@ ActiveRecord::Schema.define(:version => 20091002053953) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "entries", :force => true do |t|
-    t.string   "noun",                          :null => false
-    t.string   "verb",                          :null => false
-    t.boolean  "needs",      :default => false
-    t.string   "ip",                            :null => false
+    t.string   "noun",                               :null => false
+    t.string   "verb",                               :null => false
+    t.boolean  "needs",           :default => false
+    t.string   "ip",                                 :null => false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "up_vote_count",   :default => 0
+    t.integer  "down_vote_count", :default => 0
   end
 
   add_index "entries", ["ip"], :name => "index_entries_on_ip"
