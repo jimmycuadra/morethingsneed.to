@@ -45,4 +45,12 @@ class VoteTest < ActiveSupport::TestCase
       end
     end
   end
+
+  test "should reject second vote from same IP" do
+    ip = @v.ip
+    assert @v.save
+    @v2 = Entry.last.votes.build(:ip => ip, :up_vote => 1)
+    assert !@v2.valid?
+    assert @v2.errors.invalid?(:base)
+  end
 end

@@ -3,9 +3,9 @@ class VotesController < ApplicationController
     @entry = Entry.find(params[:entry_id])
     @v = @entry.votes.build((params[:vote] || {}).merge({ :ip => request.remote_ip }))
     if @v.save
-      flash[:success] = 'Voted and noted.'
+      flash[:notice] = 'Voted and noted.'
     else
-      flash[:error] = 'You did not properly rock the vote.'
+      flash[:notice] = 'You already rocked the vote.'
     end
     redirect_to @entry
   end

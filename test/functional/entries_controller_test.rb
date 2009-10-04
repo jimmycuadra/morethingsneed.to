@@ -30,19 +30,19 @@ class EntriesControllerTest < ActionController::TestCase
       post :create, :entry => { :noun => 'tests', :verb => 'to be written' }
     end
     assert_redirected_to entry_path(assigns(:new_entry))
-    assert_not_nil flash[:success]
+    assert_not_nil flash[:notice]
   end
   
   test "should reject invaild entry and render index" do
     post :create
     assert_template :index
-    assert_not_nil flash[:error]
+    assert_not_nil flash[:notice]
     assert assigns(:entries)
   end
   
   test "should destroy entry and redirect to index with message" do
     post :destroy, { :id => 1 }
     assert_redirected_to entries_path
-    assert_not_nil flash[:success]
+    assert_not_nil flash[:notice]
   end
 end

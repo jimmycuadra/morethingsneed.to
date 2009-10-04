@@ -35,4 +35,12 @@ class CommentTest < ActiveSupport::TestCase
     assert !@c.valid?
     assert @c.errors.invalid?(:base)
   end
+
+  test "should reject 2nd comment from IP within 1 minute" do
+    ip = @c.ip
+    assert @c.save
+    @c2 = Entry.last.comments.build(:comment => 'A comment.', :ip => ip)
+    assert !@c2.valid?, 'Second comment from IP was accepted'
+    assert @c2.errors.invalid?(:base)
+  end
 end
