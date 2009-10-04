@@ -6,13 +6,12 @@
 	<fieldset>
 		<legend>Babble at us, we might listen</legend>
 		<%= render_error_messages @contact %>
-		<ol>
-			<li>			
-				<%= f.label :email, nil, :class => 'pot' %>
-				<%= f.text_field :email, :class => 'pot' %>
-			</li>
-			
+		<ol>			
 			<% unless current_user -%>
+				<li>			
+					<%= f.label :email, nil, :class => 'pot' %>
+					<%= f.text_field :email, :class => 'pot' %>
+				</li>
 				<li>			
 					<%= f.label :name %>
 					<%= f.text_field :name %>

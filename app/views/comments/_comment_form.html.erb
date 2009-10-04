@@ -4,6 +4,11 @@
 	<%= render_error_messages @comment %>
 	<ol>
 		<% unless current_user -%>
+		<li>			
+			<%= f.label :email, nil, :class => 'pot' %>
+			<%= f.text_field :email, :class => 'pot' %>
+		</li>
+
 		<li>
 			<%= f.label :name, 'Moniker' %>
 			<%= f.text_field :name %>

@@ -8,8 +8,11 @@
 		<%= f.label :verb, ' to ' %>
 		<%= f.text_field :verb, :value => 'verb' %> <span>!</span>
 		
-		<%= f.text_field :email, :class => 'pot' %>
-	
+		<% unless current_user -%>
+			<%= f.label :email, nil, :class => 'pot' %>
+			<%= f.text_field :email, :class => 'pot' %>
+		<% end -%>
+
 		<%= f.submit 'This needs to happen' %>
 		
 		<%= render_error_messages @new_entry %>
