@@ -2,8 +2,18 @@ class EntriesController < ApplicationController
   before_filter :retrieve_record, :only => [:show, :destroy]
   
   def index
+    order = case
+    when params.key?(:best)
+      'up_vote_count DESC'
+    when params.key?(:worst)
+      'down_vote_count DESC'
+    when params.key?(:oldest)
+      'created_at ASC'
+    else
+      'created_at DESC'
+    end
     conditions = params[:user_id] ? ["user_id = ?", params[:user_id]] : nil
-    @entries = Entry.paginate :page => params[:page], :order => 'created_at DESC', :conditions => conditions
+    @entries = Entry.paginate :page => params[:page], :order => order, :conditions => conditions
   end
   
   def show

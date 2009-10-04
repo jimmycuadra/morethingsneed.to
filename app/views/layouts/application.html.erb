@@ -26,10 +26,10 @@
 		<section id="content">
 			<%= render :partial => 'entries/add' %>
 			<nav>
-				<%= link_to 'All', root_path %> -
-				<%= link_to 'Best', root_path(:best => 1) %> -
-				<%= link_to 'Worst', root_path(:worst => 1) %> -
-				<%= link_to 'Random', root_path(:random => 1) %> -
+				<%= link_to 'Newest', root_path %> -
+				<%= link_to 'Oldest', root_path + '?oldest' %> -
+				<%= link_to 'Best', root_path + '?best' %> -
+				<%= link_to 'Worst', root_path + '?worst' %> -
 				What's New -
 				Contact
 				<span class="user">
