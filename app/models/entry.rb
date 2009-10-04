@@ -7,6 +7,7 @@ class Entry < ActiveRecord::Base
   validates_uniqueness_of :noun, :scope => :verb, :message => "^I know you think you're clever, but someone already submitted that one."
   validate :not_default_or_missing_phrase
   validate :honeypot_must_be_blank
+  validate :no_recent_entry_from_ip
   attr_accessor :email
   
   def not_default_or_missing_phrase
@@ -21,6 +22,10 @@ class Entry < ActiveRecord::Base
   
   def honeypot_must_be_blank
     errors.add_to_base('FUCK BOTS.') unless self.email.blank?
+  end
+  
+  def no_recent_entry_from_ip
+    errors.add_to_base('Gotta wait at least a minute before adding another one.') if Entry.all(:conditions => ['created_at > ? AND ip = ?', Time.new.ago(60).in_time_zone, self.ip]).count > 0
   end
   
   def self.per_page

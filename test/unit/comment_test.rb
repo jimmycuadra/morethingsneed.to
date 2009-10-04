@@ -2,7 +2,8 @@ require 'test_helper'
 
 class CommentTest < ActiveSupport::TestCase
   def setup
-    @c = Entry.last.comments.build(:comment => 'A comment.', :ip => '127.0.0.1')
+    Entry.create(:noun => 'tests', :verb => 'run', :ip => generate_ip)
+    @c = Entry.last.comments.build(:comment => 'A comment.', :ip => generate_ip)
   end
   
   test "should accept valid comment" do

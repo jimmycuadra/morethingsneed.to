@@ -2,7 +2,8 @@ require 'test_helper'
 
 class VoteTest < ActiveSupport::TestCase
   def setup
-    @v = Entry.last.votes.build(:ip => '127.0.0.1', :up_vote => 1)
+    Entry.create(:noun => 'tests', :verb => 'run', :ip => generate_ip)
+    @v = Entry.last.votes.build(:ip => generate_ip, :up_vote => 1)
   end
   
   test "should accept valid vote" do

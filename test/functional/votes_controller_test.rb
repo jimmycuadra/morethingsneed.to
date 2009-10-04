@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class VotesControllerTest < ActionController::TestCase
+  def setup
+    Entry.create(:noun => 'tests', :verb => 'run', :ip => generate_ip)
+  end
+
   test "should create vote and redirect to entry with success message" do
     post :create, :entry_id => 1, :vote => { :up_vote => 1 }
     assert_redirected_to entry_path(assigns(:entry))
