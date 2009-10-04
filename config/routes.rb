@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
     entry.resources :votes, :only => [:create, :destroy] 
   end
   
+  map.about '/about', :controller => 'about', :action => 'index'
   map.resources :contact, :only => [:index, :new, :create]
 
   map.register '/register', :controller => :users, :action => 'new'

@@ -2,15 +2,19 @@ class EntriesController < ApplicationController
   before_filter :retrieve_record, :only => [:show, :destroy]
   
   def index
-    order = case
+    case
     when params.key?(:best)
-      'up_vote_count DESC'
+      order = 'up_vote_count DESC'
+      @sort_type = 'Best'
     when params.key?(:worst)
-      'down_vote_count DESC'
+      order = 'down_vote_count DESC'
+        @sort_type = 'Worst'
     when params.key?(:oldest)
-      'created_at ASC'
+      order = 'created_at ASC'
+        @sort_type = 'Oldest'
     else
-      'created_at DESC'
+      order = 'created_at DESC'
+        @sort_type = 'Newest'
     end
     conditions = params[:user_id] ? ["user_id = ?", params[:user_id]] : nil
     @entries = Entry.paginate :page => params[:page], :order => order, :conditions => conditions
@@ -26,7 +30,7 @@ class EntriesController < ApplicationController
       flash[:notice] = 'More submissions need to be successful.'
       redirect_to @new_entry
     else
-      flash[:notice] = 'More submissions need to be filled out correctly.'
+      flash.now[:notice] = 'More submissions need to be filled out correctly.'
       @entries = Entry.paginate :page => params[:page], :order => 'created_at DESC'
       render :index
     end

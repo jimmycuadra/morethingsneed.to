@@ -1,10 +1,10 @@
-<p>Got a comment? A question? Love the site? Hate it? Found a bug?</p>
+<h1>Contact us</h1>
 
-<p>Send us a message with the form below so that we can ignore you.</p>
+<p>Got a comment? A question? Love the site? Hate it? Found a bug?</p>
 
 <% form_for @contact, :url => { :controller => 'contact', :action => 'create' } do |f| -%>
 	<fieldset>
-		<legend>Write something we won't read</legend>
+		<legend>Babble at us, we might listen</legend>
 		<%= render_error_messages @contact %>
 		<ol>
 			<li>			

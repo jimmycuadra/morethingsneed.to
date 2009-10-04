@@ -1,4 +1,4 @@
-h1 {
+header h1 {
 	filter:DropShadow(Color=#000000, OffX=2, OffY=2);
 	height: 100%;
 	width: 100%;

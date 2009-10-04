@@ -22,13 +22,20 @@ p {
 	margin-bottom: 18px;
 }
 
-h1 {
+header h1 {
 	color: #c13100;
 	font-family: "Trebuchet MS", Trebuchet, sans-serif;
 	font-size: 28px;
 	line-height: 28px;
 	margin-bottom: 26px;
 	text-shadow: 2px 2px 2px #888;
+}
+
+h1 {
+	font-family: "Trebuchet MS", Trebuchet, sans-serif;
+	font-size: 18px;
+	line-height: 24px;
+	margin-bottom: 18px;
 }
 
 h1 a, h1 a:visited, h1 a:active {
@@ -49,6 +56,26 @@ footer {
 
 .pot {
 	display: none;
+}
+
+dialog {
+	background: #cdbfac;
+	display: inline-block;
+	border: 1px solid #000;
+	margin-bottom: 18px;
+	padding: 9px;
+}
+
+dialog dt {
+	font-weight: bold;
+}
+
+dialog dd {
+	margin-left: 18px;
+}
+
+small {
+	font-size: 12px;
 }
 
 /* structure */
