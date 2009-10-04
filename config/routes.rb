@@ -3,6 +3,8 @@ ActionController::Routing::Routes.draw do |map|
     entry.resources :comments, :only => [:create, :destroy]
     entry.resources :votes, :only => [:create, :destroy] 
   end
+  
+  map.resources :contact, :only => [:index, :new, :create]
 
   map.register '/register', :controller => :users, :action => 'new'
   map.profile '/profile', :controller => :users, :action => 'edit'
