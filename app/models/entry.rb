@@ -7,7 +7,7 @@ class Entry < ActiveRecord::Base
   validates_uniqueness_of :noun, :scope => :verb, :message => "^I know you think you're clever, but someone already submitted that one."
   validate :not_default_or_missing_phrase
   validate :honeypot_must_be_blank
-  validate :no_recent_entry_from_ip
+  validate_on_create :no_recent_entry_from_ip
   attr_accessor :email
   
   def not_default_or_missing_phrase
