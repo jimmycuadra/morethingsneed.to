@@ -1,6 +1,6 @@
 class Entry < ActiveRecord::Base
-  has_many :comments
-  has_many :votes
+  has_many :comments, :dependent => :destroy
+  has_many :votes, :dependent => :destroy
   belongs_to :user
   validates_presence_of :ip
   validates_format_of :ip, :with => /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/, :message => 'must be a valid IP'

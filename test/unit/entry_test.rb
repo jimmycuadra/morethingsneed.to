@@ -62,4 +62,14 @@ class EntryTest < ActiveSupport::TestCase
     assert !@e2.valid?, 'Second entry from IP was accepted'
     assert @e2.errors.invalid?(:base)
   end
+  
+  test "should destroy child comments and votes along with entry" do
+    @e.save
+    @e.comments.create(:comment => 'Comment', :ip => generate_ip)
+    @e.votes.create(:up_vote => 1, :ip => generate_ip)
+    id = @e.id
+    @e.destroy
+    assert_equal(Comment.all(:conditions => { :entry_id => id }).size, 0)
+    assert_equal(Vote.all(:conditions => { :entry_id => id }).size, 0)
+  end
 end
