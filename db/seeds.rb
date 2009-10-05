@@ -5,15 +5,19 @@
 #   
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
+def generate_ip
+  rand(255).to_s + '.' + rand(255).to_s + '.' + rand(255).to_s + '.' + rand(255).to_s
+end
+
 30.times do |i|
-  e = Entry.create(:noun => i, :verb => i, :ip => '127.0.0.1')
+  e = Entry.create(:noun => i, :verb => i, :ip => generate_ip)
+  rand(10).times do
+    e.comments.create(:comment => 'Comment', :ip => generate_ip)
+  end
   rand(20).times do
-    e.comments.create(:comment => 'Comment', :ip => '127.0.0.1')
+    e.votes.create(:up_vote => true, :ip => generate_ip)
   end
-  rand(100).times do
-    e.votes.create(:up_vote => true, :ip => '127.0.0.1')
-  end
-  rand(100).times do
-    e.votes.create(:up_vote => false, :ip => '127.0.0.1')
+  rand(20).times do
+    e.votes.create(:up_vote => false, :ip => generate_ip)
   end
 end

@@ -1,0 +1,9 @@
+<% unless @v.new_record? -%>
+{
+	"success": true,
+	"flash": "Voted and noted.",
+	"counts": "<%= print_vote_counts(@entry) %>"
+}
+<% else -%>
+{ "success": "false" }
+<% end -%>

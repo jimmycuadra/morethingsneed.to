@@ -1,0 +1,18 @@
+pigs:
+    id: 1
+    noun: 'pigs'
+    verb: 'squeak'
+    ip: '1.2.3.4'
+
+cats:
+    id: 2
+    noun: 'cats'
+    verb: 'meow'
+    ip: '2.3.4.5'
+
+dogs:
+    id: 3
+    noun: 'dogs'
+    verb: 'bark'
+    ip: '3.4.5.6'
+    user_id: 1

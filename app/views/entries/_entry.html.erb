@@ -5,14 +5,14 @@
 		<p>More <%= entry.noun %> <%= (entry.needs) ? 'needs' : 'need' %> to <%= entry.verb %>.</p>
 		
 		<section class="links">
-			<%= pluralize(entry.up_vote_count, 'thinks', 'think') %> this needs to happen - <%= pluralize(entry.down_vote_count, 'thinks', 'think') %> this doesn't need to happen<br />
-			<% form_for [entry, Vote.new] do |f| -%>
-				<%= f.hidden_field :up_vote, :value => 1 %>
-				<%= f.submit 'This needs to happen' %>
+			<span><%= print_vote_counts(entry) %></span><br />
+			<% form_for [entry, Vote.new], :html => { :id => 'new_up_vote_' + entry.id.to_s } do |f| -%>
+				<%= f.hidden_field :up_vote, :value => 1, :id => 'vote_up_vote_' + entry.id.to_s %>
+				<%= f.submit 'This needs to happen', :id => 'vote_up_vote_submit' + entry.id.to_s %>
 			<% end -%>
-			<% form_for [entry, Vote.new] do |f| -%>
-				<%= f.hidden_field :up_vote, :value => 0 %>
-				<%= f.submit 'This doesn\'t need to happen' %>
+			<% form_for [entry, Vote.new], :html => { :id => 'new_down_vote_' + entry.id.to_s } do |f| -%>
+				<%= f.hidden_field :up_vote, :value => 0, :id => 'vote_down_vote' + entry.id.to_s %>
+				<%= f.submit 'This doesn\'t need to happen', :id => 'vote_down_vote_submit' + entry.id.to_s %>
 			<% end -%><br />
 			<%= link_to pluralize(entry.comments.count, 'thoughtful critique'), entry %> - <%= link_to 'Add a non-impulsive, well-researched thought', entry_path(entry) + '#comment' %>
 		</section>
