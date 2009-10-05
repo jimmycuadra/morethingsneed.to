@@ -2,7 +2,7 @@
 	<header><%= entry.user ? link_to(entry.user.username, user_entries_path(entry.user)) : 'Someone' %> crapped this out on <time pubdate datetime="<%= entry.created_at.to_s(:datetime) %>"><%= entry.created_at.to_s(:written_out) %></time>.</header>
 
 	<section>
-		<p>More <%= entry.noun %> <%= (entry.needs) ? 'needs' : 'need' %> to <%= entry.verb %>.</p>
+		<p>More <%= h entry.noun %> <%= (entry.needs) ? 'needs' : 'need' %> to <%= h entry.verb %>.</p>
 		
 		<section class="links">
 			<span><%= print_vote_counts(entry) %></span><br />

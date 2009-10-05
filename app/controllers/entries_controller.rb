@@ -27,12 +27,22 @@ class EntriesController < ApplicationController
     @new_entry = Entry.new((params[:entry] || {}).merge({ :ip => request.remote_ip }))
     @new_entry.user_id = current_user.id if current_user
     if @new_entry.save
-      flash[:notice] = 'More submissions need to be successful.'
-      redirect_to @new_entry
+      respond_to do |format|
+        format.html do
+          flash[:notice] = 'More submissions need to be successful.'
+          redirect_to @new_entry          
+        end
+        format.json
+      end
     else
-      flash.now[:notice] = 'More submissions need to be filled out correctly.'
-      @entries = Entry.paginate :page => params[:page], :order => 'created_at DESC'
-      render :index
+      respond_to do |format|
+        format.html do
+          flash.now[:notice] = 'More submissions need to be filled out correctly.'
+          @entries = Entry.paginate :page => params[:page], :order => 'created_at DESC'
+          render :index          
+        end
+        format.json
+      end
     end
   end
   

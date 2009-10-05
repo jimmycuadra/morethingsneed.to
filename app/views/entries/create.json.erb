@@ -1,0 +1,18 @@
+<% unless @new_entry.new_record? -%>
+{
+	"success": true,
+	"flash": "More submissions need to be successful.",
+	"entry": {
+		"id": "<%= @new_entry.id %>",
+		"noun": "<%= h escape_javascript(@new_entry.noun) %>",
+		"verb": "<%= h escape_javascript(@new_entry.verb) %>",
+		"needs": <%= @new_entry.needs %>
+	}
+}
+<% else -%>
+{
+	"success": false,
+	"flash": "More submissions need to be filled out correctly.",
+	"errors": ["<%= @new_entry.errors.full_messages.join('", "') %>"]
+}
+<% end -%>

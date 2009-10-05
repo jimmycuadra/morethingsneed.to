@@ -1,6 +1,6 @@
 <article>
 	<section>
-		<%= comment.comment %>		
+		<%= h comment.comment %>		
 	</section>
 	
 	<footer>
@@ -9,7 +9,7 @@
 		<% elsif comment.name.blank? -%>
 			Someone
 		<% else -%>
-			<%= comment.name %>
+			<%= h comment.name %>
 		<% end -%>
 		was quite thoughtful, don't you think?
 		

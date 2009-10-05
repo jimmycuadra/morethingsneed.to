@@ -1,5 +1,7 @@
 <h1><%= @sort_type %></h1>
 
-<%= render :partial => @entries %>
+<section id="entries">
+	<%= render :partial => @entries %>
+</section>
 
 <%= will_paginate @entries %>
