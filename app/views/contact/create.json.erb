@@ -1,0 +1,12 @@
+<% if @contact.valid? -%>
+{
+	"success": true,
+	"flash": "Congratulations, your message has been sent to to the administrators, where it will sit in their inboxes until they feel like reading them."
+}
+<% else -%>
+{
+	"success": false,
+	"flash": "You done made some errors.",
+	"errors": ["<%= @contact.errors.full_messages.join('", "') %>"]
+}
+<% end -%>

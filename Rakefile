@@ -9,7 +9,7 @@ require 'rake/rdoctask'
 
 require 'tasks/rails'
 
-if ENV['USER'] == 'jimmy'
+if ENV['USER'] == 'jimmy' || ENV['USER'] == 'mike'
   require 'metric_fu'
   MetricFu::Configuration.run do |config|
     config.rcov[:rcov_opts] << "-Itest"

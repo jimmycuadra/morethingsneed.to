@@ -3,3 +3,4 @@ TO DO
 - add ajax to all forms
 - remove trailing punctuation from verbs
 - browser testing
+- add attr_accessible to all models

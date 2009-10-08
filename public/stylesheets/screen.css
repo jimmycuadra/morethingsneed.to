@@ -54,7 +54,7 @@ footer {
 	text-align: center;
 }
 
-.pot {
+.pot, .hidden {
 	display: none;
 }
 
@@ -276,6 +276,14 @@ form input[type=submit] {
 	background-color: #f6a03d;
 	border-style: dashed;
 	color: #000;
+}
+
+.flash .close {
+	background: url(/images/close.gif) no-repeat;
+	cursor: pointer;
+	float: right;
+	height: 17px;
+	width: 17px;
 }
 
 .validation-errors header {

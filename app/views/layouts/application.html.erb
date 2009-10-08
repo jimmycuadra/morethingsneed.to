@@ -21,9 +21,10 @@
 		<% if flash[:notice] -%>
 		<div class="flash">
 			<%= flash[:notice] %>
+			<div class="close"></div>
 		</div>
 		<% end -%>
-		<section id="content">
+		<section id="content"<%= ' class="main"' if params[:controller] == 'entries' && params[:action] == 'index' %>>
 			<%= render :partial => 'entries/add' %>
 			<nav>
 				<%= link_to 'Newest', root_path %> -
