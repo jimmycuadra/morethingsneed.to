@@ -1,0 +1,13 @@
+<% unless @comment.new_record? -%>
+{
+	"success": true,
+	"flash": "Your opinion has been duly noted.",
+	"comment": "<%= h escape_javascript(@comment.comment) %>"
+}
+<% else -%>
+{
+	"success": false,
+	"flash": "Your shit was invalid, homes.",
+	"errors": ["<%= @comment.errors.full_messages.join('", "') %>"]
+}
+<% end -%>
