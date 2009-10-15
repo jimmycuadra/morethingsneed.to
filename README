@@ -1,9 +1,7 @@
 TO DO
 
-- remove trailing punctuation from verbs
 - flash messages should float above content at the top of the viewport
 - add social networking links
-- add visual distinction to currently selected page in nav
 - ajax login
 - twitter integration
 - browser testing

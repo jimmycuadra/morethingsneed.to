@@ -72,4 +72,10 @@ class EntryTest < ActiveSupport::TestCase
     assert_equal(Comment.all(:conditions => { :entry_id => id }).size, 0)
     assert_equal(Vote.all(:conditions => { :entry_id => id }).size, 0)
   end
+  
+  test "should remove trailing punctuation" do
+    @e.verb = 'run!?.'
+    @e.save
+    assert_equal @e.verb, 'run'
+  end
 end

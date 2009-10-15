@@ -8,6 +8,7 @@ class Entry < ActiveRecord::Base
   validate :not_default_or_missing_phrase
   validate :honeypot_must_be_blank
   validate_on_create :no_recent_entry_from_ip
+  before_save :strip_trailing_punctuation
   attr_accessor :email
   
   def not_default_or_missing_phrase
@@ -26,6 +27,10 @@ class Entry < ActiveRecord::Base
   
   def no_recent_entry_from_ip
     errors.add_to_base('Gotta wait at least a minute before adding another one.') if Entry.all(:conditions => ['created_at > ? AND ip = ?', Time.new.ago(60).in_time_zone, self.ip]).count > 0
+  end
+  
+  def strip_trailing_punctuation
+    self.verb.gsub!(/[\.!?]*/, '')
   end
   
   def self.per_page

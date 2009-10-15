@@ -27,20 +27,20 @@
 		<section id="content"<%= ' class="main"' if params[:controller] == 'entries' && params[:action] == 'index' %>>
 			<%= render :partial => 'entries/add' %>
 			<nav>
-				<%= link_to 'Newest', root_path %> -
-				<%= link_to 'Oldest', root_path + '?oldest' %> -
-				<%= link_to 'Best', root_path + '?best' %> -
-				<%= link_to 'Worst', root_path + '?worst' %> -
-				<%= link_to 'About', about_path %> -
-				<%= link_to 'Contact', contact_index_path %>
+				<%= link_to_unless ((params[:controller] == 'entries' && params[:action] && !(params.key?(:best) || params.key?(:worst) || params.key?(:oldest))), 'Newest', root_path) %> -
+				<%= link_to_unless params.key?(:oldest), 'Oldest', root_path + '?oldest' %> -
+				<%= link_to_unless params.key?(:best), 'Best', root_path + '?best' %> -
+				<%= link_to_unless params.key?(:worst), 'Worst', root_path + '?worst' %> -
+				<%= link_to_unless ((params[:controller] == 'about'), 'About', about_path) %> -
+				<%= link_to_unless ((params[:controller] == 'contact'), 'Contact', contact_index_path) %>
 				<span class="user">
 					<% if current_user %>
 						Logged in as <strong><%= current_user.username %></strong> - 
-						<%= link_to 'Account', profile_path %> -
+						<%= link_to_unless ((params[:controller] == 'users' && params[:action] == 'edit'), 'Account', profile_path) %> -
 						<%= link_to 'Log out', logout_path %>
 					<% else %>
-						<%= link_to 'Register', register_path %> -
-						<%= link_to 'Log in', login_path %>
+						<%= link_to_unless ((params[:controller] == 'users' && params[:action] == 'new'), 'Register', register_path) %> -
+						<%= link_to_unless ((params[:controller] == 'user_sessions' && params[:action] == 'new'), 'Log in', login_path) %>
 					<% end %>					
 				</span>
 			</nav>
