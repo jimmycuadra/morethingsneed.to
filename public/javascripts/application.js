@@ -1,3 +1,8 @@
+// keeps the desktop/mobile style stuck
+if($.cookie("css")) {
+    $("link#main_style").attr("href", $.cookie("css"));
+}
+
 $(function() {
 	var defaultFormValues = new Array();
 	var $inputs = $('#add form input[type=text]').css('color', '#666');
@@ -62,11 +67,28 @@ $(function() {
 		e.preventDefault();
 	});
 	
-	$('#style_switcher input#desktop').css('background-color', '#00ff00');
+	
+	var $cur_style = $('link#main_style').attr('href');
+	// fix for nav bar
+	if ($cur_style == "/stylesheets/screen-mobile.css") {
+		$('#mobile').css('background-color', '#00ff00');
+		if ($('#spacer')) $('nav span').before("<br id='spacer' />");
+	} else {
+		$('#desktop').css('background-color', '#00ff00');
+	}
 	$('#style_switcher input').click(function() {
-		var $this = $(this); // button clicked
+		var $this = $(this);
 		
+		// set the css file to the rel attribute in the button
 		$('link#main_style').attr('href', $this.attr('rel'));
+		// save the preference in a cookie
+		$.cookie("css", $this.attr('rel'), {expires: 365, path: '/'});
+		// fix for nav bar
+		if ($cur_style == "/stylesheets/screen-mobile.css") {
+			if($('#spacer')) $('nav span').before("<br id='spacer' />");
+		} else {
+			$('#spacer').remove();
+		}
 		
 		// color all inputs gray
 		$('#style_switcher input').each(function() {

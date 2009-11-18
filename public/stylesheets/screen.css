@@ -247,6 +247,11 @@ form input, form textarea {
 	width: 300px;
 }
 
+form input[type=text], form textarea {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+}
+
 form input[type=hidden] {
 	border-width: 0;
 }
@@ -329,17 +334,11 @@ form input[type=submit], input[type=button] {
 
 /* style switcher */
 
-#transition {
-	background: #fff;
-	height: 100%;
-	width: 100%;
-}
-
 #style_switcher {
 	margin: 0;
-	padding: 0 8px 8px;
-	text-align: center;
+	padding: 0 4px 8px 0;
+	text-align: left;
 }
 #style_switcher input {
-	margin: 0 12px;
+	margin: 0 4px 0 0;
 }

@@ -19,7 +19,6 @@ a:hover {
 }
 
 p {
-	margin-bottom: 9px;
 	padding: 8px;
 }
 
@@ -34,6 +33,7 @@ header h1 {
 }
 
 h1 {
+	clear: left;
 	font-family: "Trebuchet MS", Trebuchet, sans-serif;
 	font-size: 18px;
 	margin-bottom: 4px;
@@ -46,6 +46,7 @@ h1 a, h1 a:visited, h1 a:active {
 }
 
 h2 {
+	clear: left;
 	font-size: 16px;
 	margin-top: 9px;
 	padding: 8px;
@@ -67,8 +68,7 @@ dialog {
 	background: #cdbfac;
 	display: inline-block;
 	border: 1px solid #000;
-	margin-bottom: 18px;
-	margin-left: 8px;
+	margin: 18px 8px;
 	padding: 9px;
 }
 
@@ -91,6 +91,7 @@ small {
 /* structure */
 
 #bucket {
+	background: #e1d4c0;
 	margin: 0;
 	padding: 0;
 	position: relative;
@@ -100,20 +101,38 @@ small {
 
 nav {
 	border: 1px solid #000;
-	border-bottom-left-radius: 4px;
-	border-bottom-right-radius: 4px;
+	border-left: 1px solid #444;
+	border-right: 1px solid #444;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
 	border-top-width: 0;
 	background-color: #cdbfac;
-	margin: 0 8px 18px;
-	-moz-border-radius-bottomleft: 4px;
-	-moz-border-radius-bottomright: 4px;
-	padding: 4px 8px;
-	-webkit-border-bottom-left-radius: 4px;
-	-webkit-border-bottom-right-radius: 4px;
+	font-size: 14px;
+	margin: 0 0 18px;
+	-moz-border-radius-bottomleft: 8px;
+	-moz-border-radius-bottomright: 8px;
+	padding: 2px 8px;
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
 }
 	
 nav span {
-	float: right;
+	border-bottom: 1px solid #000;
+	border-left: 1px solid #444;
+	border-right: 1px solid #444;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	border-top-width: 0;
+	background-color: #e4cba9;
+	clear: left;
+	float: left;
+	font-size: 14px;
+	margin: 3px auto 10px auto;
+	-moz-border-radius-bottomleft: 8px;
+	-moz-border-radius-bottomright: 8px;
+	padding: 2px 8px;
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;	
 }
 
 /* add entry */
@@ -125,7 +144,7 @@ nav span {
 	color: #e3e3e3;
 	font-weight: bold;
 	margin: 0 auto;
-	padding: 4px;
+	padding: 2px 4px;
 	position: relative;
 	text-align: center;
 }
@@ -136,8 +155,19 @@ nav span {
 	width: auto;
 }
 
+#add form label {
+	clear: none;
+	float: none;
+	padding: 2px;
+}
+
 #add form input[type=submit] {
-	margin-left: 15px;
+	margin-left: 5px;
+	padding: 1px;
+}
+
+#add form input[type=text] {
+	width: 75px;
 }
 
 #add span {
@@ -147,6 +177,7 @@ nav span {
 /* entries */
 
 article {
+	clear: left;
 	margin-top: 0;
 }
 
@@ -213,21 +244,25 @@ article form input[type=submit] {
 
 form legend {
 	font-weight: bold;
-	padding-bottom: 18px;
+	padding: 9px 0;
 }
 
 form fieldset {
-	margin-bottom: 9px;
+	clear: left;
+	margin-bottom: 0;
 	padding: 8px;
 }
 
 form label {
+	clear: left;
 	display: inline-block;
+	float: left;
 	font-size: 12px;
-	margin-bottom: 9px;
+	margin: 0 5px 0 0;
+	padding: 0;
 	text-align: right;
 	vertical-align: top;
-	width: 60px;
+	width: 50px;
 }
 
 form li {
@@ -237,25 +272,22 @@ form li {
 form input, form textarea {
 	border: 1px solid #666;
 	margin: 0 0 9px 9px;
-	width: 300px;
 }
 
 form textarea {
 	font-family: Arial, sans-serif;
+	font-size: 14px;
+	height: 180px;
+	width: 215px;
 }
 
 form input[type=hidden] {
 	border-width: 0;
 }
 
-form textarea {
-	height: 180px;
-}
-
 form input[type=submit], form input[type=button] {
 	background-color: #c0c0c0;
 	cursor: pointer;
-	margin-left: 72px;
 	width: auto;
 }
 
@@ -333,17 +365,11 @@ form input[type=submit], form input[type=button] {
 
 /* style switcher */
 
-#transition {
-	background: #fff;
-	height: 100%;
-	width: 100%;
-}
-
 #style_switcher {
 	margin: 0;
-	padding: 0 8px 8px;
-	text-align: center;
+	padding: 0 4px 8px 8px;
+	text-align: left;
 }
 #style_switcher input {
-	margin: 0 12px;
+	margin: 0 4px 0 0;
 }
