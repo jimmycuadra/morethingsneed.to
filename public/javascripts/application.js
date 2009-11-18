@@ -61,6 +61,23 @@ $(function() {
 		}, 'json');
 		e.preventDefault();
 	});
+	
+	$('#style_switcher input#desktop').css('background-color', '#00ff00');
+	$('#style_switcher input').click(function() {
+		var $this = $(this); // button clicked
+		
+		$('link#main_style').attr('href', $this.attr('rel'));
+		
+		// color all inputs gray
+		$('#style_switcher input').each(function() {
+			$(this).css('background-color', '#c0c0c0');
+		});
+		
+		// highlight button clicked
+		$this.css('background-color', '#00ff00');
+		
+		return false;
+	});
 });
 
 function handleVote(section, data) {

@@ -6,7 +6,7 @@
 	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js" type="text/javascript" charset="utf-8"></script><![endif]-->
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<link rel="stylesheet" href="/stylesheets/reset.css" type="text/css" media="screen, projection" />
-	<link rel="stylesheet" href="/stylesheets/screen.css" type="text/css" media="screen, projection" />
+	<link rel="stylesheet" id="main_style" href="/stylesheets/screen.css" type="text/css" media="screen, projection" />
 	<!--[if IE]>
 		<link rel="stylesheet" href="/stylesheets/ie.css" type="text/css" media="screen" charset="utf-8" />
 	<![endif]-->
@@ -17,6 +17,11 @@
 		<header>
 			<h1><a href="/">morethingsneed.to</a></h1>
 		</header>
+		
+		<form id="style_switcher" method="post">
+			<input type="submit" rel="/stylesheets/screen.css" id="desktop" value="Desktop" />
+			<input type="submit" rel="/stylesheets/screen-mobile.css" id="mobile" value="Mobile" />
+		</form>
 		
 		<% if flash[:notice] -%>
 		<div class="flash">
