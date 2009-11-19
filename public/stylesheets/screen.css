@@ -1,7 +1,7 @@
 /* universal elements */
 
 body {
-	background: #f5ede3;
+	background: #f5ede3 url(/images/bgPaisleyRed2.jpg);
 	color: #000;
 	line-height: 18px;
 	font-family: Arial, sans-serif;
@@ -27,7 +27,7 @@ header h1 {
 	font-family: "Trebuchet MS", Trebuchet, sans-serif;
 	font-size: 28px;
 	line-height: 28px;
-	margin-bottom: 26px;
+	margin: 0 0 26px 0;
 	text-shadow: 2px 2px 2px #888;
 }
 
@@ -35,7 +35,7 @@ h1 {
 	font-family: "Trebuchet MS", Trebuchet, sans-serif;
 	font-size: 18px;
 	line-height: 24px;
-	margin-bottom: 18px;
+	margin: 18px auto;
 }
 
 h1 a, h1 a:visited, h1 a:active {
@@ -50,13 +50,20 @@ h1 a:hover {
 
 h2 {
 	font-size: 16px;
-	margin-bottom: 18px;
+	margin: 18px auto;
 }
 
 footer {
+	background: #e1d4c0;
+	border: 2px solid #000;
+	border-bottom-radius: 5px;
 	font-size: 11px;
-	margin-bottom: 18px;
+	margin: 0 auto 18px auto;
+	-moz-border-radius: 5px;
+	padding: 4px;
 	text-align: center;
+	-webkit-border-radius: 5px;
+	width: 680px;
 }
 
 .pot, .hidden {
@@ -91,8 +98,11 @@ small {
 
 #bucket {
 	background: #e1d4c0;
-	border: 2px solid #666;
+	background-position: 66px 0;
+	border: 2px solid #b13100;
 	border-top: 0;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
 	margin: 0 auto 18px;
 	-moz-border-radius-bottomleft: 5px;
 	-moz-border-radius-bottomright: 5px;
@@ -106,12 +116,12 @@ small {
 /* nav */
 
 nav {
+	background-color: #cdbfac;
 	border: 1px solid #000;
 	border-bottom-left-radius: 4px;
 	border-bottom-right-radius: 4px;
 	border-top-width: 0;
-	background-color: #cdbfac;
-	margin-bottom: 36px;
+	margin-bottom: 0;
 	-moz-border-radius-bottomleft: 4px;
 	-moz-border-radius-bottomright: 4px;
 	padding: 3px 10px;
@@ -121,6 +131,65 @@ nav {
 
 nav span {
 	float: right;
+}
+
+#logbox {
+	background: #fff;
+	border-bottom: 1px solid #000;
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	display: none;
+	float: right;
+	margin: 0 4px 0 0;
+	-moz-border-radius-bottomleft: 4px;
+	-moz-border-radius-bottomright: 4px;
+	padding: 0;
+	position: relative;
+	width: 170px;
+	-webkit-border-bottom-left-radius: 4px;
+	-webkit-border-bottom-right-radius: 4px;
+	z-index: 5;
+}
+
+#logbox legend, #logbox label, #logbox input {
+	margin: 2px 0;
+	padding: 0;
+}
+
+#logbox fieldset {
+	margin: 0 0 8px 0;
+	padding: 0 8px;
+}
+
+#logbox legend {
+	border-bottom: 1px dashed #000;
+	margin: 0 0 4px 0;
+	padding: 2px 0 0 0;
+	width: 100%;
+}
+
+#logbox label, #logbox input {
+	clear: left;
+	float: left;
+	margin: 0;
+	text-align: left;
+	width: 150px;
+}
+
+#logbox label {
+	margin: 4px 0 0 0;
+	padding: 0;
+}
+	
+#logbox input {
+	width: 150px;
+}
+
+#logbox input[type=submit] {
+	margin-top: 8px;
+	width: 150px;
 }
 
 /* add entry */
@@ -134,6 +203,7 @@ nav span {
 	left: -10px;
 	padding: 10px;
 	position: relative;
+	text-align: center;
 	width: 780px;
 }
 
@@ -143,8 +213,12 @@ nav span {
 	width: auto;
 }
 
+#add form input[type=text] {
+	width: 200px;
+}
+
 #add form input[type=submit] {
-	margin-left: 30px;
+	margin-left: 2px;
 }
 
 #add span {
@@ -154,7 +228,7 @@ nav span {
 /* entries */
 
 article {
-	margin-bottom: 36px;
+	margin: 9px auto;
 }
 
 article header {
@@ -186,7 +260,7 @@ article .datetime, article .links {
 }
 
 article section {
-	background-color: #cdbfac;
+	background-color: #eee;
 	border: 1px solid #000;
 	border-top: 0;
 	font-size: 16px;
@@ -236,7 +310,7 @@ form legend {
 }
 
 form fieldset {
-	margin-bottom: 18px;
+	margin: 18px auto;
 }
 
 form label {
@@ -262,23 +336,23 @@ form input[type=text], form textarea {
 	font-size: 14px;
 }
 
-form input[type=hidden] {
-	border-width: 0;
-}
-
-form textarea {
-	height: 180px;
-}
-
-form input[type=submit], input[type=button] {
+form input[type=submit], form input[type=button] {
 	background-color: #c0c0c0;
 	cursor: pointer;
 	margin-left: 102px;
 	width: auto;
 }
 
-form input[type=submit]:hover, input[type=button]:hover {
+form input[type=hidden] {
+	border-width: 0;
+}
+
+form input:hover, form textarea:hover {
 	border: 1px solid #000;
+}
+
+form textarea {
+	height: 180px;
 }
 
 /* flash and error messages */
@@ -299,10 +373,15 @@ form input[type=submit]:hover, input[type=button]:hover {
 
 .flash .close {
 	background: url(/images/close.gif) no-repeat;
+	border: 2px solid #000;
 	cursor: pointer;
 	float: right;
-	height: 17px;
-	width: 17px;
+	height: 15px;
+	width: 15px;
+}
+
+.flash .close:hover {
+	border: 2px solid #c13100;
 }
 
 .validation-errors header {

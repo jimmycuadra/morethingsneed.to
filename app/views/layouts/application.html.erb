@@ -6,7 +6,7 @@
 	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js" type="text/javascript" charset="utf-8"></script><![endif]-->
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<link rel="stylesheet" href="/stylesheets/reset.css" type="text/css" media="screen, projection" />
-	<link rel="stylesheet" id="main_style" href="/stylesheets/screen.css" type="text/css" media="screen, projection" />
+	<link rel="stylesheet" href="/stylesheets/screen.css" type="text/css" media="screen, projection" id="main_style" />
 	<!--[if IE]>
 		<link rel="stylesheet" href="/stylesheets/ie.css" type="text/css" media="screen" charset="utf-8" />
 	<![endif]-->
@@ -16,6 +16,12 @@
 	<div id="bucket">
 		<header>
 			<h1><a href="/">morethingsneed.to</a></h1>
+			<% if flash[:notice] -%>
+			<div class="flash">
+				<%= flash[:notice] %>
+				<div class="close"></div>
+			</div>
+			<% end -%>
 		</header>
 		
 		<form id="style_switcher" method="post">
@@ -23,12 +29,6 @@
 			<input type="submit" rel="/stylesheets/screen-mobile.css" id="mobile" value="Mobile" />
 		</form>
 		
-		<% if flash[:notice] -%>
-		<div class="flash">
-			<%= flash[:notice] %>
-			<div class="close"></div>
-		</div>
-		<% end -%>
 		<section id="content"<%= ' class="main"' if params[:controller] == 'entries' && params[:action] == 'index' %>>
 			<%= render :partial => 'entries/add' %>
 			<nav>
@@ -49,6 +49,9 @@
 					<% end %>					
 				</span>
 			</nav>
+			<div id="logbox">
+				<%= render :partial => 'user_sessions/new' %>
+			</div>
 			
 			<%= yield %>
 		</section>

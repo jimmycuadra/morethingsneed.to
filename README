@@ -1,11 +1,5 @@
 TO DO
 
-1. flash messages should float above content at the top of the viewport
--- use colorbox
-2. add social networking links
--- rip off jc.com (links w/ appropriate querystrings)
-3. ajax login
--- rip off disc golf app login box
-4. twitter integration
-5. browser testing
-6. add attr_accessible to all models
+1. twitter integration
+2. browser testing
+3. add attr_accessible to all models
