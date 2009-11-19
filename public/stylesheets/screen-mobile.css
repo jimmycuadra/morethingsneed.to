@@ -213,6 +213,11 @@ article section {
 	padding: 9px;
 }
 
+article section img {
+	margin-right: 4px;
+	margin-top: 8px;
+}
+
 article section.links {
 	background-color: none;
 	border: none;

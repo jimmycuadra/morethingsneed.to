@@ -69,10 +69,14 @@ $(function() {
 	
 	
 	var $cur_style = $('link#main_style').attr('href');
-	// fix for nav bar
+
 	if ($cur_style == "/stylesheets/screen-mobile.css") {
 		$('#mobile').css('background-color', '#00ff00');
-		if ($('#spacer')) $('nav span').before("<br id='spacer' />");
+		if ($('#spacer').length) {
+			return false;
+		} else {
+			$('nav span').before("<br id='spacer' />");
+		}
 	} else {
 		$('#desktop').css('background-color', '#00ff00');
 	}
@@ -83,11 +87,17 @@ $(function() {
 		$('link#main_style').attr('href', $this.attr('rel'));
 		// save the preference in a cookie
 		$.cookie("css", $this.attr('rel'), {expires: 365, path: '/'});
-		// fix for nav bar
-		if ($cur_style == "/stylesheets/screen-mobile.css") {
-			if($('#spacer')) $('nav span').before("<br id='spacer' />");
+		// are we now on the mobile stylesheet?
+		if ($('link#main_style').attr('href') == "/stylesheets/screen-mobile.css") {
+			// if spacer exists, move on
+			if($('#spacer').length) {
+				return false;
+			// if not, add it
+			} else {
+				$('nav span').before("<br id='spacer' />");
+			}
 		} else {
-			$('#spacer').remove();
+			if($('#spacer').length) { $('#spacer').remove(); }
 		}
 		
 		// color all inputs gray

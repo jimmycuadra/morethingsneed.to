@@ -43,6 +43,11 @@ h1 a, h1 a:visited, h1 a:active {
 	text-decoration: none;
 }
 
+h1 a:hover {
+	color: #f6a03d;
+	text-decoration: none;
+}
+
 h2 {
 	font-size: 16px;
 	margin-bottom: 18px;
@@ -190,6 +195,11 @@ article section {
 	padding: 9px;
 }
 
+article section img {
+	margin-right: 4px;
+	margin-top: 8px;
+}
+
 article section.links {
 	background-color: none;
 	border: none;
@@ -242,7 +252,7 @@ form li {
 }
 
 form input, form textarea {
-	border: 1px solid #666;
+	border: 1px solid #999;
 	margin: 0 0 9px 9px;
 	width: 300px;
 }
@@ -265,6 +275,10 @@ form input[type=submit], input[type=button] {
 	cursor: pointer;
 	margin-left: 102px;
 	width: auto;
+}
+
+form input[type=submit]:hover, input[type=button]:hover {
+	border: 1px solid #000;
 }
 
 /* flash and error messages */

@@ -14,7 +14,8 @@
 				<%= f.hidden_field :up_vote, :value => 0, :id => 'vote_down_vote' + entry.id.to_s %>
 				<%= f.submit 'This doesn\'t need to happen', :id => 'vote_down_vote_submit' + entry.id.to_s %>
 			<% end -%><br />
-			<%= link_to pluralize(entry.comments.count, 'thoughtful critique'), entry %> - <%= link_to 'Add a non-impulsive, well-researched thought', entry_path(entry) + '#comment' %>
+			<strong><%= link_to pluralize(entry.comments.count, 'thoughtful critique'), entry %></strong> - <%= link_to 'Add a non-impulsive, well-researched thought', entry_path(entry) + '#comment' %><br />
+			<a href="http://facebook.com/sharer.php?u=http://morethingsneed.to/entries/<%= entry.id %>"><img src="/images/facebook_icon.gif" alt="Post this on Facebook" title="Post this on Facebook" /></a><a href="http://twitter.com/home?status=More <%= h entry.noun %> <%= (entry.needs) ? 'needs' : 'need' %> to <%= h entry.verb %> http://morethingsneed.to/entries/<%= entry.id %>"><img src="/images/twitter_icon.gif" alt="Tweet this" title="Tweet this" /></a>
 		</section>
 	</section>
 </article>
