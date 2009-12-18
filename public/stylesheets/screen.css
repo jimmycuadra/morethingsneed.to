@@ -1,11 +1,13 @@
 /* universal elements */
 
 body {
-	background: #f5ede3 url(/images/bgPaisleyRed2.jpg);
+	/*background: #f5ede3;*/
+	background: #c06a48;
 	color: #000;
 	line-height: 18px;
 	font-family: Arial, sans-serif;
 	font-size: 14px;
+	margin: 0;
 }
 
 a, a:active, a:visited {
@@ -98,19 +100,10 @@ small {
 
 #bucket {
 	background: #e1d4c0;
-	background-position: 66px 0;
-	border: 2px solid #b13100;
-	border-top: 0;
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
+	border-bottom: 1px solid #000;
 	margin: 0 auto 18px;
-	-moz-border-radius-bottomleft: 5px;
-	-moz-border-radius-bottomright: 5px;
 	padding: 10px;
 	position: relative;
-	-webkit-border-bottom-left-radius: 5px;
-	-webkit-border-bottom-right-radius: 5px;
-	width: 780px;
 }
 
 /* nav */
@@ -138,8 +131,6 @@ nav span {
 	border-bottom: 1px solid #000;
 	border-left: 1px solid #000;
 	border-right: 1px solid #000;
-	border-bottom-left-radius: 4px;
-	border-bottom-right-radius: 4px;
 	display: none;
 	float: right;
 	margin: 0 4px 0 0;
@@ -201,10 +192,11 @@ nav span {
 	color: #e3e3e3;
 	font-weight: bold;
 	left: -10px;
+	margin: 0 auto;
 	padding: 10px;
 	position: relative;
 	text-align: center;
-	width: 780px;
+	width: 100%;
 }
 
 #add form input, #add form label {
