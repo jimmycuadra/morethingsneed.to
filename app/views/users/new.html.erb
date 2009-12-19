@@ -1,7 +1,7 @@
 <% form_for @user || User.new do |f| %>
 	<%= render_error_messages @user %>
 <fieldset>
-	<legend>Create a new account</legend>
+	<legend>Register new account</legend>
 	<ol>
 		<li>
 			<%= f.label :username %>
@@ -24,7 +24,7 @@
 		</li>
 		
 		<li>
-			<%= f.submit 'Create account' %>
+			<%= f.submit 'Register' %>
 		</li>
 	</ol>
 </fieldset>

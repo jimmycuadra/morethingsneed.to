@@ -114,39 +114,33 @@ $(function() {
 	});
 
 	// toggle register/login box
-	$('nav span a[href="/register"], nav span a[href="/login"]').toggle(
-		function() {
-			var $op = $(this).attr('href');
-
-			$(this).css('font-weight: bold');
-			
-			if ($op == "/register") {
-				$('#logbox').html('<form action="/users" class="new_user" id="new_user" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="Oi6puygZD9wFig4z5fB74W+ZkAc0zRjJSpjv2IrzUVQ=" /></div><fieldset><legend>Create a new account</legend><label for="user_username">Username</label><input id="user_username" name="user[username]" size="30" type="text" /><label for="user_email">E-mail</label><input id="user_email" name="user[email]" size="30" type="text" /><label for="user_password">Password</label><input id="user_password" name="user[password]" size="30" type="password" /><label for="user_password_confirmation">Confirm password</label><input id="user_password_confirmation" name="user[password_confirmation]" size="30" type="password" /><input id="user_submit" name="commit" type="submit" value="Create account" /></fieldset></form>');
-				$('#logbox').slideDown(500);
-				$('#user_username').focus();
-				return false;
-			} else if ($op == "/login") {
-				$('#logbox').html('<form action="/user_sessions" class="new_user_session" id="new_user_session" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="Oi6puygZD9wFig4z5fB74W+ZkAc0zRjJSpjv2IrzUVQ=" /></div><fieldset><legend>Log in</legend><label for="user_session_username">Username</label><input id="user_session_username" name="user_session[username]" size="30" type="text" /><label for="user_session_password">Password</label><input id="user_session_password" name="user_session[password]" size="30" type="password" /><input id="user_session_submit" name="commit" type="submit" value="Log in" /></fieldset></form>');
-				$('#logbox').slideDown(500);
-				$('#user_session_username').focus();
-				return false;
-			}
-		},
-		function() {
-			var $op = $(this).attr('href');
-
-			$('#logbox').slideUp(500);
-			$('#logbox').html('').fadeOut(1000);
-			return false;
+	$('#register').click(function(e) {
+		e.preventDefault();
+		
+		var $loginBox = $('#login-box');
+				
+		if ($loginBox.css('display') == 'block') {
+			$loginBox.slideUp(100, function() {
+				$('#register-box').slideToggle(250);
+			});
+		} else {
+			$('#register-box').slideToggle(250);
 		}
-	);
-	$('#logbox').blur(function() {
-		console.log("logbox blurred");
-		$(this).hide();
 	});
-	$('#logbox').focus(function() {
-		console.log("logbox focused");
-	});
+	
+	$('#login').click(function(e) {
+		e.preventDefault();
+		
+		var $registerBox = $('#register-box');
+		
+		if ($registerBox.css('display') == 'block') {
+			$registerBox.slideUp(100, function() {
+				$('#login-box').slideToggle(250);
+			});			
+		} else {
+			$('#login-box').slideToggle(250);	
+		}
+	});	
 });
 
 function handleVote(section, data) {

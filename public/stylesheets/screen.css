@@ -124,45 +124,41 @@ small {
 	float: right;
 }
 
-#logbox {
+.userbox {
 	background: #fff;
 	border-bottom: 1px solid #000;
 	border-left: 1px solid #000;
 	border-right: 1px solid #000;
 	display: none;
-	float: right;
-	margin: 0 4px 0 0;
 	-moz-border-radius-bottomleft: 4px;
 	-moz-border-radius-bottomright: 4px;
 	padding: 0;
-	position: relative;
+	position: absolute;
+	right: 14px;
 	width: 170px;
 	-webkit-border-bottom-left-radius: 4px;
 	-webkit-border-bottom-right-radius: 4px;
 	z-index: 5;
 }
 
-#logbox legend, 
-#logbox label, 
-#logbox input {
+.userbox legend, .userbox label, .userbox input {
 	margin: 2px 0;
 	padding: 0;
 }
 
-#logbox fieldset {
+.userbox fieldset {
 	margin: 0 0 8px 0;
 	padding: 0 8px;
 }
 
-#logbox legend {
+.userbox legend {
 	border-bottom: 1px dashed #000;
 	margin: 0 0 4px 0;
 	padding: 2px 0 0 0;
 	width: 100%;
 }
 
-#logbox label, 
-#logbox input {
+.userbox label, .userbox input {
 	clear: left;
 	float: left;
 	margin: 0;
@@ -170,18 +166,19 @@ small {
 	width: 150px;
 }
 
-#logbox label {
+.userbox label {
 	margin: 4px 0 0 0;
 	padding: 0;
 }
 	
-#logbox input {
+.userbox input {
 	width: 150px;
 }
 
-#logbox input[type=submit] {
-	margin-top: 8px;
-	width: 150px;
+.userbox input[type=submit] {
+	margin: 8px 0 0 0;
+	padding: 3px;
+	width: auto;
 }
 
 /* add entry */
