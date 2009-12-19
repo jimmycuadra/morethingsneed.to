@@ -8,7 +8,9 @@ body {
 	font-size: 14px;
 }
 
-a, a:active, a:visited {
+a, 
+a:active, 
+a:visited {
 	color: #c13100;
 	text-decoration: none;
 }
@@ -22,14 +24,8 @@ p {
 	padding: 8px;
 }
 
-header h1 {
-	color: #c13100;
-	font-family: "Trebuchet MS", Trebuchet, sans-serif;
-	font-size: 28px;
-	line-height: 28px;
-	margin-bottom: 10px;
-	padding: 4px;
-	text-shadow: 2px 2px 2px #888;
+#header {
+	padding: 10px;
 }
 
 h1 {
@@ -40,7 +36,9 @@ h1 {
 	padding: 8px;
 }
 
-h1 a, h1 a:visited, h1 a:active {
+h1 a, 
+h1 a:visited, 
+h1 a:active {
 	color: inherit;
 	text-decoration: none;
 }
@@ -52,7 +50,7 @@ h2 {
 	padding: 8px;
 }
 
-footer {
+#footer {
 	border-top: 1px solid #000;
 	font-size: 11px;
 	margin-bottom: 4px;
@@ -60,7 +58,8 @@ footer {
 	text-align: center;
 }
 
-.pot, .hidden {
+.pot, 
+.hidden {
 	display: none;
 }
 
@@ -72,11 +71,11 @@ dialog {
 	padding: 9px;
 }
 
-dialog dt {
+dl dt {
 	font-weight: bold;
 }
 
-dialog dd {
+dl dd {
 	margin-left: 18px;
 }
 
@@ -99,14 +98,14 @@ small {
 
 /* nav */
 
-nav {
+#nav {
+	background-color: #cdbfac;
 	border: 1px solid #000;
 	border-left: 1px solid #444;
 	border-right: 1px solid #444;
 	border-bottom-left-radius: 8px;
 	border-bottom-right-radius: 8px;
 	border-top-width: 0;
-	background-color: #cdbfac;
 	font-size: 14px;
 	margin: 0 0 18px;
 	-moz-border-radius-bottomleft: 8px;
@@ -116,14 +115,14 @@ nav {
 	-webkit-border-bottom-right-radius: 8px;
 }
 	
-nav span {
+#nav span {
+	background-color: #e4cba9;
 	border-bottom: 1px solid #000;
 	border-left: 1px solid #444;
 	border-right: 1px solid #444;
 	border-bottom-left-radius: 8px;
 	border-bottom-right-radius: 8px;
 	border-top-width: 0;
-	background-color: #e4cba9;
 	clear: left;
 	float: left;
 	font-size: 14px;
@@ -157,7 +156,9 @@ nav span {
 	z-index: 5;
 }
 
-#logbox legend, #logbox label, #logbox input {
+#logbox legend, 
+#logbox label, 
+#logbox input {
 	margin: 2px 0;
 	padding: 0;
 }
@@ -174,7 +175,8 @@ nav span {
 	width: 100%;
 }
 
-#logbox label, #logbox input {
+#logbox label, 
+#logbox input {
 	clear: left;
 	float: left;
 	margin: 0;
@@ -210,7 +212,8 @@ nav span {
 	text-align: center;
 }
 
-#add form input, #add form label {
+#add form input, 
+#add form label {
 	margin: 0;
 	padding: 3px;
 	width: auto;
@@ -237,12 +240,12 @@ nav span {
 
 /* entries */
 
-article {
+.article {
 	clear: left;
 	margin-top: 0;
 }
 
-article header {
+.article .header {
 	background-color: #f6a03d;
 	border-top: 1px solid #000;
 	font-size: 12px;
@@ -250,22 +253,25 @@ article header {
 	padding: 4px 9px;
 }
 
-article header a, article header a:active, article header a:visited {
+.article .header a, 
+.article .header a:active, 
+.article .header a:visited {
 	color: #000;
 	font-weight: bold;
 	text-decoration: underline;
 }
 
-article header a:hover {
+.article .header a:hover {
 	text-decoration: none;
 }
 
-article .datetime, article .links {
+.article .datetime, 
+.article .links {
 	font-size: 12px;
 	font-weight: normal;
 }
 
-article section {
+.article .section {
 	background-color: #cdbfac;
 	border-top: 1px solid #000;
 	font-size: 16px;
@@ -274,29 +280,30 @@ article section {
 	padding: 9px;
 }
 
-article section img {
+.article .section img {
 	margin-right: 4px;
 	margin-top: 8px;
 }
 
-article section.links {
+.article .section.links {
 	background-color: none;
 	border: none;
 	margin: 0;
 	padding: 0;
 }
 
-article p {
+.article p {
 	border-bottom: 1px dashed #666;
 	padding: 8px 8px 24px 0;
 }
 
-article form, article form input {
+.article form, 
+.article form input {
 	display: inline;
 	margin: 0;
 }
 
-article form input[type=submit] {
+.article form input[type=submit] {
 	margin: 3px 0;
 }
 
@@ -335,7 +342,8 @@ form li {
 	list-style: none;
 }
 
-form input, form textarea {
+form input, 
+form textarea {
 	border: 1px solid #666;
 	margin: 0 0 9px 9px;
 }
@@ -351,7 +359,8 @@ form input[type=hidden] {
 	border-width: 0;
 }
 
-form input[type=submit], form input[type=button] {
+form input[type=submit], 
+form input[type=button] {
 	background-color: #c0c0c0;
 	cursor: pointer;
 	width: auto;
@@ -359,7 +368,8 @@ form input[type=submit], form input[type=button] {
 
 /* flash and error messages */
 
-.validation-errors, .flash {
+.validation-errors, 
+.flash {
 	background-color: #cdbfac;
 	border: 1px solid #000;
 	clear: left;
@@ -387,7 +397,7 @@ form input[type=submit], form input[type=button] {
 	border: 2px solid #c13100;
 }
 
-.validation-errors header {
+.validation-errors #header {
 	font-weight: bold;
 }
 
@@ -406,14 +416,14 @@ form input[type=submit], form input[type=button] {
 	padding: 0;
 }
 
-#comments article {
+#comments .article {
 	background-color: #ddd2c2;
 	border-top: 1px solid #000;
 	margin-bottom: 0;
 	padding: 9px;
 }
 
-#comments article section {
+#comments .article .section {
 	background-color: transparent;
 	border: 0;
 	border-bottom: 1px dashed #666;
@@ -424,14 +434,14 @@ form input[type=submit], form input[type=button] {
 	padding-bottom: 18px;
 }
 
-#comments article footer {
+#comments .article .footer {
 	border: 0;
 	margin: 0;
 	padding: 0;
 	text-align: left;
 }
 
-#comments article footer time {
+#comments .article .footer .time {
 	float: right;
 }
 
@@ -439,7 +449,7 @@ form input[type=submit], form input[type=button] {
 
 #style_switcher {
 	margin: 0;
-	padding: 0 4px 8px 8px;
+	padding: 0 4px 8px 0;
 	text-align: left;
 }
 #style_switcher input {

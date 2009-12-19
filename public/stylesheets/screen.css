@@ -1,16 +1,16 @@
 /* universal elements */
 
 body {
-	/*background: #f5ede3;*/
 	background: #c06a48;
 	color: #000;
 	line-height: 18px;
 	font-family: Arial, sans-serif;
 	font-size: 14px;
-	margin: 0;
 }
 
-a, a:active, a:visited {
+a, 
+a:active, 
+a:visited {
 	color: #c13100;
 	text-decoration: none;
 }
@@ -24,13 +24,8 @@ p {
 	margin-bottom: 18px;
 }
 
-#header h1 {
-	color: #c13100;
-	font-family: "Trebuchet MS", Trebuchet, sans-serif;
-	font-size: 28px;
-	line-height: 28px;
-	margin: 0 0 26px 0;
-	text-shadow: 2px 2px 2px #888;
+#header {
+	padding: 0;
 }
 
 h1 {
@@ -40,7 +35,9 @@ h1 {
 	margin: 18px auto;
 }
 
-h1 a, h1 a:visited, h1 a:active {
+h1 a, 
+h1 a:visited, 
+h1 a:active {
 	color: inherit;
 	text-decoration: none;
 }
@@ -68,7 +65,8 @@ h2 {
 	width: 680px;
 }
 
-.pot, .hidden {
+.pot, 
+.hidden {
 	display: none;
 }
 
@@ -144,7 +142,9 @@ small {
 	z-index: 5;
 }
 
-#logbox legend, #logbox label, #logbox input {
+#logbox legend, 
+#logbox label, 
+#logbox input {
 	margin: 2px 0;
 	padding: 0;
 }
@@ -161,7 +161,8 @@ small {
 	width: 100%;
 }
 
-#logbox label, #logbox input {
+#logbox label, 
+#logbox input {
 	clear: left;
 	float: left;
 	margin: 0;
@@ -236,7 +237,9 @@ small {
 	-webkit-border-top-right-radius: 4px;
 }
 
-.article .header a, .article .header a:active, .article .header a:visited {
+.article .header a, 
+.article .header a:active, 
+.article .header a:visited {
 	color: #000;
 	font-weight: bold;
 	text-decoration: underline;
@@ -246,7 +249,8 @@ small {
 	text-decoration: none;
 }
 
-.article .datetime, .article .links {
+.article .datetime, 
+.article .links {
 	font-size: 12px;
 	font-weight: normal;
 }
@@ -323,12 +327,14 @@ form input, form textarea {
 	width: 300px;
 }
 
-form input[type=text], form textarea {
+form input[type=text], 
+form textarea {
 	font-family: Arial, sans-serif;
 	font-size: 14px;
 }
 
-form input[type=submit], form input[type=button] {
+form input[type=submit], 
+form input[type=button] {
 	background-color: #c0c0c0;
 	cursor: pointer;
 	margin-left: 102px;
@@ -339,7 +345,8 @@ form input[type=hidden] {
 	border-width: 0;
 }
 
-form input:hover, form textarea:hover {
+form input:hover, 
+form textarea:hover {
 	border: 1px solid #000;
 }
 
@@ -349,7 +356,8 @@ form textarea {
 
 /* flash and error messages */
 
-.validation-errors, .flash {
+.validation-errors, 
+.flash {
 	background-color: #cdbfac;
 	border: 1px solid #000;
 	color: #c13100;
