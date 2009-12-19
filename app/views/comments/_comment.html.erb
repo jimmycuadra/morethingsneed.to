@@ -1,9 +1,9 @@
-<article>
-	<section>
+<div class="article">
+	<div class="section">
 		<%= h comment.comment %>		
-	</section>
+	</div>
 	
-	<footer>
+	<div class="footer">
 		<% if comment.user -%>
 			<%= comment.user.username %>
 		<% elsif comment.name.blank? -%>
@@ -13,6 +13,6 @@
 		<% end -%>
 		was quite thoughtful, don't you think?
 		
-		<time pubdate datetime="<%= comment.created_at.to_s(:datetime) %>"><%= comment.created_at.to_s(:simple) %></time>
-	</footer>
-</article>
+		<span class="time"><%= comment.created_at.to_s(:simple) %></span>
+	</div> <!-- footer -->
+</div> <!-- /article -->

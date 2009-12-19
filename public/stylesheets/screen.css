@@ -24,7 +24,7 @@ p {
 	margin-bottom: 18px;
 }
 
-header h1 {
+#header h1 {
 	color: #c13100;
 	font-family: "Trebuchet MS", Trebuchet, sans-serif;
 	font-size: 28px;
@@ -55,7 +55,7 @@ h2 {
 	margin: 18px auto;
 }
 
-footer {
+#footer {
 	background: #e1d4c0;
 	border: 2px solid #000;
 	border-bottom-radius: 5px;
@@ -72,7 +72,7 @@ footer {
 	display: none;
 }
 
-dialog {
+dl {
 	background: #cdbfac;
 	display: inline-block;
 	border: 1px solid #000;
@@ -80,11 +80,11 @@ dialog {
 	padding: 9px;
 }
 
-dialog dt {
+dl dt {
 	font-weight: bold;
 }
 
-dialog dd {
+dl dd {
 	margin-left: 18px;
 }
 
@@ -108,7 +108,7 @@ small {
 
 /* nav */
 
-nav {
+#nav {
 	background-color: #cdbfac;
 	border: 1px solid #000;
 	border-bottom-left-radius: 4px;
@@ -122,7 +122,7 @@ nav {
 	-webkit-border-bottom-right-radius: 4px;
 }
 
-nav span {
+#nav span {
 	float: right;
 }
 
@@ -219,11 +219,11 @@ nav span {
 
 /* entries */
 
-article {
+.article {
 	margin: 9px auto;
 }
 
-article header {
+.article .header {
 	background-color: #f6a03d;
 	border: 1px solid black;
 	border-radius: 4px 0 0 4px;
@@ -236,22 +236,22 @@ article header {
 	-webkit-border-top-right-radius: 4px;
 }
 
-article header a, article header a:active, article header a:visited {
+.article .header a, .article .header a:active, .article .header a:visited {
 	color: #000;
 	font-weight: bold;
 	text-decoration: underline;
 }
 
-article header a:hover {
+.article .header a:hover {
 	text-decoration: none;
 }
 
-article .datetime, article .links {
+.article .datetime, .article .links {
 	font-size: 12px;
 	font-weight: normal;
 }
 
-article section {
+.article .section {
 	background-color: #eee;
 	border: 1px solid #000;
 	border-top: 0;
@@ -261,30 +261,30 @@ article section {
 	padding: 9px;
 }
 
-article section img {
+.article .section img {
 	margin-right: 4px;
 	margin-top: 8px;
 }
 
-article section.links {
+.article .section.links {
 	background-color: none;
 	border: none;
 	margin: 0;
 	padding: 0;
 }
 
-article p {
+.article p {
 	border-bottom: 1px dashed #666;
 	margin-bottom: 9px;
 	padding-bottom: 24px;
 }
 
-article form, article form input {
+.article form, .article form input {
 	display: inline;
 	margin: 0;
 }
 
-article form input[type=submit] {
+.article form input[type=submit] {
 	margin: 3px 0;
 }
 
@@ -390,14 +390,14 @@ form textarea {
 
 /* comments */
 
-#comments article {
+#comments .article {
 	background-color: #cdbfac;
 	border: 1px solid #000;
 	margin-bottom: 18px;
 	padding: 9px;
 }
 
-#comments article section {
+#comments .article .section {
 	background-color: transparent;
 	border: 0;
 	border-bottom: 1px dashed #666;
@@ -408,12 +408,12 @@ form textarea {
 	padding-bottom: 18px;
 }
 
-#comments article footer {
+#comments .article .footer {
 	margin: 0;
 	text-align: left;
 }
 
-#comments article footer time {
+#comments .article .footer .time {
 	float: right;
 }
 

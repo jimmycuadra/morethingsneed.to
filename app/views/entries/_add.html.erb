@@ -1,4 +1,4 @@
-<section id="add">
+<div id="add" class="section">
 	<% form_for @new_entry do |f| %>	
 		<%= f.label :noun, 'More ' %>
 		<%= f.text_field :noun, :value => 'nouns' %>
@@ -17,4 +17,4 @@
 		
 		<%= render_error_messages @new_entry %>
 	<% end %>
-</section>
+</div>

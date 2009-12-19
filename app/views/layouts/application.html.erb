@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-	<meta charset=utf-8 />
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 	<title>morethingsneed.to</title>
-	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js" type="text/javascript" charset="utf-8"></script><![endif]-->
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<link rel="stylesheet" href="/stylesheets/reset.css" type="text/css" media="screen, projection" />
 	<link rel="stylesheet" href="/stylesheets/screen.css" type="text/css" media="screen, projection" id="main_style" />
@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div id="bucket">
-		<header>
+		<div id="header">
 			<h1><a href="/"><img src="/images/mtnt_logo.gif" alt="Morethingsneed.to" title="Morethingsneed.to" /></a></h1>
 			<% if flash[:notice] -%>
 			<div class="flash">
@@ -22,16 +22,17 @@
 				<div class="close"></div>
 			</div>
 			<% end -%>
-		</header>
+		</div> <!-- /header -->
 		
-		<form id="style_switcher" method="post">
+		<form id="style_switcher">
 			<input type="submit" rel="/stylesheets/screen.css" id="desktop" value="Desktop" />
 			<input type="submit" rel="/stylesheets/screen-mobile.css" id="mobile" value="Mobile" />
 		</form>
 		
-		<section id="content"<%= ' class="main"' if params[:controller] == 'entries' && params[:action] == 'index' %>>
+		<div id="content"<%= ' class="main"' if params[:controller] == 'entries' && params[:action] == 'index' %>>
 			<%= render :partial => 'entries/add' %>
-			<nav>
+			
+			<div id="nav">
 				<%= link_to_unless ((params[:controller] == 'entries' && params[:action] && !(params.key?(:best) || params.key?(:worst) || params.key?(:oldest))), 'Newest', root_path) %> -
 				<%= link_to_unless params.key?(:oldest), 'Oldest', root_path + '?oldest' %> -
 				<%= link_to_unless params.key?(:best), 'Best', root_path + '?best' %> -
@@ -48,16 +49,15 @@
 						<%= link_to_unless ((params[:controller] == 'user_sessions' && params[:action] == 'new'), 'Log in', login_path) %>
 					<% end %>					
 				</span>
-			</nav>
-			<div id="logbox"></div>
-			
+				<div id="logbox"></div>
+			</div>	<!-- /nav -->		
 			<%= yield %>
-		</section>
-	</div>
-	<footer>
+		</div> <!-- /content -->
+	</div> <!-- /bucket -->
+	<div id="footer">
 		Announcing the necessity for increased frequency of things occurring since 2009.<br />
 		&copy; 2009 Jimmy Cuadra and Michael Chadwick.
-	</footer>
+	</div> <!-- /footer -->
 	<script type="text/javascript">
 	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
