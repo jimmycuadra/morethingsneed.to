@@ -107,7 +107,7 @@ small {
 /* structure */
 
 #bucket {
-	background: #e1d4c0;
+	background: transparent;
 	margin: 0 auto 18px;
 	padding: 10px;
 	width: 960px;
@@ -116,7 +116,7 @@ small {
 /* add entry */
 
 #add {
-	background-color: #a97d5d;
+	background: #a97d5d url('/images/add_gradient.png') repeat-x;
 	border: 1px solid #000;
 	border-left: 0;
 	border-right: 0;
@@ -293,7 +293,6 @@ small {
 .article .section-links {
 	background-color: none;
 	border: none;
-	border-left: 1px dashed #000;
 	float: right;
 	font-size: 12px;
 	margin: 0;
