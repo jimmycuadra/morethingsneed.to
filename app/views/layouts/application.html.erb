@@ -15,25 +15,15 @@
 <body>
 	<div id="bucket">
 		<div id="header">
-			<!-- <a href="/"><img src="/images/mtnt_logo.gif" alt="Morethingsneed.to" title="Morethingsneed.to" /></a> -->
+			<a href="/" id="title-link">More Things Need To</a>
 			<% if flash[:notice] -%>
 			<div class="flash">
 				<%= flash[:notice] %>
 				<div class="close"></div>
 			</div>
 			<% end -%>
-		</div> <!-- /header -->
-		
-		<!-- <form id="style_switcher">
-			<fieldset>
-			<input type="submit" rel="/stylesheets/screen.css" id="desktop" value="Desktop" />
-			<input type="submit" rel="/stylesheets/screen-mobile.css" id="mobile" value="Mobile" />
-			</fieldset>
-		</form> -->
-		
-		<div id="content"<%= ' class="main"' if params[:controller] == 'entries' && params[:action] == 'index' %>>
 			<%= render :partial => 'entries/add' %>
-			
+
 			<div id="nav">
 				<%= link_to_unless ((params[:controller] == 'entries' && params[:action] && !(params.key?(:best) || params.key?(:worst) || params.key?(:oldest))), 'Newest', root_path) %> -
 				<%= link_to_unless params.key?(:oldest), 'Oldest', root_path + '?oldest' %> -
@@ -50,17 +40,29 @@
 						<%= link_to_unless ((params[:controller] == 'users' && params[:action] == 'new'), 'Register', register_path, :id => 'register') %> -
 						<%= link_to_unless ((params[:controller] == 'user_sessions' && params[:action] == 'new'), 'Log in', login_path, :id => 'login') %>
 					<% end %>					
-				</span>
+				</span>				
 			</div>	<!-- /nav -->
 			
-			<div id="register-box" class="userbox">
-				<%= render :file => 'users/new' %>
+			<div id="userbox-wrapper">
+				<div id="register-box" class="userbox">
+					<%= render :file => 'users/new' %>
+				</div>
+
+				<div id="login-box" class="userbox">
+					<%= render :file => 'user_sessions/new' %>
+				</div>
 			</div>
-			
-			<div id="login-box" class="userbox">
-				<%= render :file => 'user_sessions/new' %>
-			</div>
-			
+		</div> <!-- /header -->
+		
+		<!-- <form id="style_switcher">
+			<fieldset>
+			<input type="submit" rel="/stylesheets/screen.css" id="desktop" value="Desktop" />
+			<input type="submit" rel="/stylesheets/screen-mobile.css" id="mobile" value="Mobile" />
+			</fieldset>
+		</form> -->
+		
+		
+		<div id="content"<%= ' class="main"' if params[:controller] == 'entries' && params[:action] == 'index' %>>									
 			<%= yield %>
 		</div> <!-- /content -->
 	</div> <!-- /bucket -->

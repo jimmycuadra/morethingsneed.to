@@ -22,7 +22,6 @@ a:visited {
 }
 
 a:hover {
-	color: #666;
 	text-decoration: underline;
 }
 
@@ -38,9 +37,18 @@ p {
 	padding: 0;
 }
 
+#header #title-link {
+	display: block;
+	height: 50px;
+	margin: 0 auto;
+	text-indent: -9999px;
+	width: 446px;
+}
+
 h1 {
 	font-family: 'Bebas Regular', 'Bebas', Arial, sans-serif;
 	font-size: 18px;
+	font-weight: normal;
 	line-height: 24px;
 	margin: 18px auto;
 }
@@ -184,16 +192,23 @@ small {
 	border-bottom-left-radius: 4px;
 	border-bottom-right-radius: 4px;
 	border-top-width: 0;
-	margin-top: 106px;
+	margin-top: 56px;
 	-moz-border-radius-bottomleft: 4px;
 	-moz-border-radius-bottomright: 4px;
 	padding: 3px 10px;
+	position: relative;
 	-webkit-border-bottom-left-radius: 4px;
 	-webkit-border-bottom-right-radius: 4px;
 }
 
 #nav span {
 	float: right;
+}
+
+#userbox-wrapper {
+	margin: 0 auto;
+	position: relative;
+	width: 960px;
 }
 
 .userbox {
@@ -204,7 +219,6 @@ small {
 	display: none;
 	-moz-border-radius-bottomleft: 4px;
 	-moz-border-radius-bottomright: 4px;
-	padding: 0;
 	position: absolute;
 	right: 14px;
 	width: 170px;
@@ -215,7 +229,6 @@ small {
 
 .userbox legend, .userbox label, .userbox input {
 	margin: 2px 0;
-	padding: 0;
 }
 
 .userbox fieldset {
