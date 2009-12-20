@@ -475,6 +475,16 @@ form input[type=submit] {
 	list-style: disc;
 }
 
+.error {
+	color: #f00;
+	font-style: italic;
+}
+
+.success {
+	color: #090;
+	font-style: italic;
+}
+
 /* comments */
 
 #comments .article {

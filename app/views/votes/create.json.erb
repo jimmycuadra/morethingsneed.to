@@ -2,7 +2,8 @@
 {
 	"success": true,
 	"flash": "Voted and noted.",
-	"counts": "<%= print_vote_counts(@entry) %>"
+	"up_count": "<%= print_vote_counts(@entry, 'up') %>",
+	"down_count": "<%= print_vote_counts(@entry, 'down') %>"
 }
 <% else -%>
 { "success": false }

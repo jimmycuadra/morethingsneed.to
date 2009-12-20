@@ -9,17 +9,15 @@
 	</div> <!-- /header -->
 
 	<div class="section">
-		<div class="section-links">
-			<p class="hidden"><%= print_vote_counts(entry) %></p>
-			
+		<div class="section-links">			
 			<% form_for [entry, Vote.new], :html => { :id => 'new_up_vote_' + entry.id.to_s } do |f| -%>
 				<%= f.hidden_field :up_vote, :value => 1, :id => 'vote_up_vote_' + entry.id.to_s %>
 				<%= f.submit '√', :id => 'vote_up_vote_submit' + entry.id.to_s, :class => 'vote-button vote-up-button' %>
-			<% end -%> This needs to happen (123 votes)<br />
+			<% end -%> This needs to happen <span class="up_vote_count"><%= print_vote_counts(entry, 'up') %></span><br />
 			<% form_for [entry, Vote.new], :html => { :id => 'new_down_vote_' + entry.id.to_s } do |f| -%>
 				<%= f.hidden_field :up_vote, :value => 0, :id => 'vote_down_vote' + entry.id.to_s %>
 				<%= f.submit 'X', :id => 'vote_down_vote_submit' + entry.id.to_s, :class => 'vote-button vote-down-button' %>
-			<% end -%> This doesn't need to happen (45 votes)
+			<% end -%> This doesn't need to happen <span class="down_vote_count"><%= print_vote_counts(entry, 'down') %></span>
 		</div> <!-- /section-links -->
 
 		<div class="section-content">

@@ -32,7 +32,7 @@ $(function() {
 	$('form.new_vote').submit(function(e) {
 		var $this = $(this);
 		$.post($this.attr('action'), $this.serialize(), function(data) {
-			handleVote($this.parent('section.links'), data);
+			handleVote($this.parent('.section-links'), data);
 		}, 'json');
 		e.preventDefault();
 	});
@@ -144,12 +144,14 @@ $(function() {
 });
 
 function handleVote(section, data) {
-	section.find('form:first').remove();
+	section.find('form').remove();
+	
 	if (data.success) {
-		section.find('form').replaceWith('<em>Voted and noted.</em>')
-		section.find('span').html(data.counts);
+		section.prepend('<span class="success">Voted and noted.</span><br />');
+		section.find('span.up_vote_count').html(data.up_count);
+		section.find('span.down_vote_count').html(data.down_count);
 	} else {
-		section.find('form').replaceWith('<em>You already rocked the vote.</em>')
+		section.prepend('<span class="error">You already rocked the vote.</span><br />')
 	}
 }
 

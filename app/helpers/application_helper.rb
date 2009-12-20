@@ -4,7 +4,11 @@ module ApplicationHelper
     render :partial => 'partials/error_messages', :object => messages unless messages.empty?
   end
   
-  def print_vote_counts(entry)
-    pluralize(entry.up_vote_count, 'thinks', 'think') + ' this needs to happen - ' + pluralize(entry.down_vote_count, 'thinks', 'think') + ' this doesn\'t need to happen'
+  def print_vote_counts(entry, type)
+    if (type == 'up')
+      '(' + pluralize(entry.up_vote_count, 'vote') + ')'
+    else
+      '(' + pluralize(entry.down_vote_count, 'vote') + ')'
+    end
   end
 end
