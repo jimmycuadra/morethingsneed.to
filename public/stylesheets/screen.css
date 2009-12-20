@@ -1,7 +1,13 @@
 /* universal elements */
 
+@font-face {
+	font-family: 'BebasRegular';
+	src: url('/fonts/BEBAS___.eot');
+	src: local('Bebas Regular'), local('Bebas'), url('/fonts/BEBAS___.woff') format('woff'), url('/fonts/BEBAS___.TTF') format('truetype'), url('/fonts/BEBAS___.svg#Bebas') format('svg');
+}
+
 body {
-	background: #e1d4c0;
+	background: #6d513c url(/images/background.jpg) no-repeat center top;
 	color: #000;
 	line-height: 18px;
 	font-family: Arial, sans-serif;
@@ -33,7 +39,7 @@ p {
 }
 
 h1 {
-	font-family: "Trebuchet MS", Trebuchet, sans-serif;
+	font-family: 'Bebas Regular', 'Bebas', Arial, sans-serif;
 	font-size: 18px;
 	line-height: 24px;
 	margin: 18px auto;
@@ -96,12 +102,22 @@ small {
 }
 
 .pagination {
+	color: #fff;
 	text-align: right;
 }
 
 #page-header .pagination {
+	color: #000;
 	float: right;
 	margin-top: 4px;
+}
+
+.pagination a {
+	color: #f6a03d;
+}
+
+#page-header .pagination a {
+	color: #a92b00;
 }
 
 /* structure */
@@ -126,7 +142,7 @@ small {
 	padding: 10px 0;
 	position: absolute;
 	text-align: center;
-	top: 50px;
+	top: 70px;
 	width: 100%;
 }
 
@@ -168,7 +184,7 @@ small {
 	border-bottom-left-radius: 4px;
 	border-bottom-right-radius: 4px;
 	border-top-width: 0;
-	margin-top: 52px;
+	margin-top: 106px;
 	-moz-border-radius-bottomleft: 4px;
 	-moz-border-radius-bottomright: 4px;
 	padding: 3px 10px;
@@ -298,8 +314,6 @@ small {
 }
 
 .article .section-content {
-	min-height: 75px;
-	position: relative;
 }
 
 .article .section-links {
@@ -327,13 +341,11 @@ small {
 }
 
 .article p {
-	margin-bottom: 9px;
+	margin: 0;
 }
 
-.article p.comment-links {
-	bottom: 0;
-	margin: 0;
-	position: absolute;
+.article p:first-child {
+	margin-bottom: 9px;
 }
 
 .article form, .article form input {
@@ -375,8 +387,10 @@ form li {
 }
 
 form input, form textarea {
-	border: 1px solid #999;
+	background: #fff4e8 url(/images/input_background.png) repeat-x top left;
+	border: 0;
 	margin: 0 0 9px 9px;
+	resize: none;
 	width: 300px;
 }
 
@@ -398,13 +412,12 @@ form input[type=hidden] {
 	border-width: 0;
 }
 
-form input:hover, 
-form textarea:hover {
-	border: 1px solid #000;
-}
-
 form textarea {
 	height: 180px;
+}
+
+form input[type=submit] {
+	background-image: none;
 }
 
 /* flash and error messages */
