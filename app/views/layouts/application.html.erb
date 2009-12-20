@@ -13,59 +13,57 @@
 	<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js', 'jquery.cookie', 'application' %>
 </head>
 <body>
-	<div id="bucket">
-		<div id="header">
-			<a href="/" id="title-link">More Things Need To</a>
-			<% if flash[:notice] -%>
-			<div class="flash">
-				<%= flash[:notice] %>
-				<div class="close"></div>
-			</div>
-			<% end -%>
-			<%= render :partial => 'entries/add' %>
+	<div id="header">
+		<a href="/" id="title-link">More Things Need To</a>
+		<%= render :partial => 'entries/add' %>
 
-			<div id="nav">
-				<%= link_to_unless ((params[:controller] == 'entries' && params[:action] && !(params.key?(:best) || params.key?(:worst) || params.key?(:oldest))), 'Newest', root_path) %> -
-				<%= link_to_unless params.key?(:oldest), 'Oldest', root_path + '?oldest' %> -
-				<%= link_to_unless params.key?(:best), 'Best', root_path + '?best' %> -
-				<%= link_to_unless params.key?(:worst), 'Worst', root_path + '?worst' %> -
-				<%= link_to_unless ((params[:controller] == 'about'), 'About', about_path) %> -
-				<%= link_to_unless ((params[:controller] == 'contact'), 'Contact', contact_index_path) %>
-				<span class="user">
-					<% if current_user %>
-						Logged in as <strong><%= current_user.username %></strong> - 
-						<%= link_to_unless ((params[:controller] == 'users' && params[:action] == 'edit'), 'Account', profile_path) %> -
-						<%= link_to 'Log out', logout_path %>
-					<% else %>
-						<%= link_to_unless ((params[:controller] == 'users' && params[:action] == 'new'), 'Register', register_path, :id => 'register') %> -
-						<%= link_to_unless ((params[:controller] == 'user_sessions' && params[:action] == 'new'), 'Log in', login_path, :id => 'login') %>
-					<% end %>					
-				</span>				
-			</div>	<!-- /nav -->
-			
-			<div id="userbox-wrapper">
-				<div id="register-box" class="userbox">
-					<%= render :file => 'users/new' %>
-				</div>
-
-				<div id="login-box" class="userbox">
-					<%= render :file => 'user_sessions/new' %>
-				</div>
-			</div>
-		</div> <!-- /header -->
+		<div id="nav">
+			<%= link_to_unless ((params[:controller] == 'entries' && params[:action] && !(params.key?(:best) || params.key?(:worst) || params.key?(:oldest))), 'Newest', root_path) %> -
+			<%= link_to_unless params.key?(:oldest), 'Oldest', root_path + '?oldest' %> -
+			<%= link_to_unless params.key?(:best), 'Best', root_path + '?best' %> -
+			<%= link_to_unless params.key?(:worst), 'Worst', root_path + '?worst' %> -
+			<%= link_to_unless ((params[:controller] == 'about'), 'About', about_path) %> -
+			<%= link_to_unless ((params[:controller] == 'contact'), 'Contact', contact_index_path) %>
+			<span class="user">
+				<% if current_user %>
+					Logged in as <strong><%= current_user.username %></strong> - 
+					<%= link_to_unless ((params[:controller] == 'users' && params[:action] == 'edit'), 'Account', profile_path) %> -
+					<%= link_to 'Log out', logout_path %>
+				<% else %>
+					<%= link_to_unless ((params[:controller] == 'users' && params[:action] == 'new'), 'Register', register_path, :id => 'register') %> -
+					<%= link_to_unless ((params[:controller] == 'user_sessions' && params[:action] == 'new'), 'Log in', login_path, :id => 'login') %>
+				<% end %>					
+			</span>				
+		</div>	<!-- /nav -->
 		
+		<div id="userbox-wrapper">
+			<div id="register-box" class="userbox">
+				<%= render :file => 'users/new' %>
+			</div>
+
+			<div id="login-box" class="userbox">
+				<%= render :file => 'user_sessions/new' %>
+			</div>
+		</div>
+	</div> <!-- /header -->
+	
+	<div id="content"<%= ' class="main"' if params[:controller] == 'entries' && params[:action] == 'index' %>>		
 		<!-- <form id="style_switcher">
 			<fieldset>
 			<input type="submit" rel="/stylesheets/screen.css" id="desktop" value="Desktop" />
 			<input type="submit" rel="/stylesheets/screen-mobile.css" id="mobile" value="Mobile" />
 			</fieldset>
 		</form> -->
+
+		<% if flash[:notice] -%>
+		<div class="flash">
+			<%= flash[:notice] %>
+			<div class="close"></div>
+		</div>
+		<% end -%>
 		
-		
-		<div id="content"<%= ' class="main"' if params[:controller] == 'entries' && params[:action] == 'index' %>>									
-			<%= yield %>
-		</div> <!-- /content -->
-	</div> <!-- /bucket -->
+		<%= yield %>
+	</div> <!-- /content -->
 	<div id="footer">
 		Announcing the necessity for increased frequency of things occurring since 2009.<br />
 		&copy; 2009 Jimmy Cuadra and Michael Chadwick.

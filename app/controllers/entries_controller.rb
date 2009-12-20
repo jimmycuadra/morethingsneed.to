@@ -1,23 +1,10 @@
 class EntriesController < ApplicationController
   before_filter :retrieve_record, :only => [:show, :destroy]
+  before_filter :get_sort_type, :only => [:index, :create]
   
   def index
-    case
-    when params.key?(:best)
-      order = 'up_vote_count DESC'
-      @sort_type = 'Best'
-    when params.key?(:worst)
-      order = 'down_vote_count DESC'
-        @sort_type = 'Worst'
-    when params.key?(:oldest)
-      order = 'created_at ASC'
-        @sort_type = 'Oldest'
-    else
-      order = 'created_at DESC'
-        @sort_type = 'Newest'
-    end
     conditions = params[:user_id] ? ["user_id = ?", params[:user_id]] : nil
-    @entries = Entry.paginate :page => params[:page], :order => order, :conditions => conditions
+    @entries = Entry.paginate :page => params[:page], :order => @order, :conditions => conditions
   end
   
   def show
@@ -55,5 +42,22 @@ class EntriesController < ApplicationController
   
   def retrieve_record
     @entry = Entry.find(params[:id])
-  end  
+  end
+  
+  def get_sort_type
+    case
+    when params.key?(:best)
+      @order = 'up_vote_count DESC'
+      @sort_type = 'Best'
+    when params.key?(:worst)
+      @order = 'down_vote_count DESC'
+        @sort_type = 'Worst'
+    when params.key?(:oldest)
+      @order = 'created_at ASC'
+        @sort_type = 'Oldest'
+    else
+      @order = 'created_at DESC'
+        @sort_type = 'Newest'
+    end
+  end
 end
