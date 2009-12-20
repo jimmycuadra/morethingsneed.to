@@ -319,7 +319,8 @@ small {
 	margin-top: 8px;
 }
 
-.article .section-content {
+.article .section-content .comment-links {
+	font-size: 12px;
 }
 
 .article .section-links {
@@ -431,12 +432,13 @@ form input[type=submit] {
 .flash {
 	background-color: #c13100;
 	border: 1px dashed #000;
+	border-top: 0;
 	color: #fff;
 	padding: 9px;
-	margin: 9px 200px;
-	position: absolute;
-	width: 560px;
+	margin: 0 auto;
+	width: 760px;
 }
+
 .flash .close {
 	background: url(/images/close.gif) no-repeat;
 	border: 2px solid #000;
@@ -446,8 +448,14 @@ form input[type=submit] {
 	width: 15px;
 }
 
-.flash .close:hover {
-	border: 2px solid #c13100;
+.flash .validation-errors {
+	clear: right;
+	list-style-type: disc;
+	margin-top: 9px;
+}
+
+.flash .validation-errors li {
+	margin-left: 18px;
 }
 
 .error {

@@ -1,11 +1,5 @@
-<div class="validation-errors">
-	<div class="header">
-		<p>You fucked up.</p>
-	</div>
-	
-	<ul>
-	<% for error_message in error_messages -%>
-		<li><%= error_message %></li>
-	<% end -%>
-	</ul>
-</div>
+<ul class="validation-errors">
+<% for error_message in error_messages -%>
+	<li><%= error_message %></li>
+<% end -%>
+</ul>

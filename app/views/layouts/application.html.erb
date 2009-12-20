@@ -16,7 +16,7 @@
 	<div id="header">
 		<a href="/" id="title-link">More Things Need To</a>
 		<%= render :partial => 'entries/add' %>
-
+		
 		<div id="nav">
 			<%= link_to_unless ((params[:controller] == 'entries' && params[:action] && !(params.key?(:best) || params.key?(:worst) || params.key?(:oldest))), 'Newest', root_path) %> -
 			<%= link_to_unless params.key?(:oldest), 'Oldest', root_path + '?oldest' %> -
@@ -36,6 +36,15 @@
 			</span>				
 		</div>	<!-- /nav -->
 		
+		<% if flash[:notice] -%>
+		<div class="flash">
+			<%= flash[:notice] %>
+			<div class="close"></div>
+			
+			<%= render_error_messages @new_entry if @new_entry %>
+		</div>
+		<% end -%>
+
 		<div id="userbox-wrapper">
 			<div id="register-box" class="userbox">
 				<%= render :file => 'users/new' %>
@@ -54,13 +63,6 @@
 			<input type="submit" rel="/stylesheets/screen-mobile.css" id="mobile" value="Mobile" />
 			</fieldset>
 		</form> -->
-
-		<% if flash[:notice] -%>
-		<div class="flash">
-			<%= flash[:notice] %>
-			<div class="close"></div>
-		</div>
-		<% end -%>
 		
 		<%= yield %>
 	</div> <!-- /content -->
