@@ -130,14 +130,26 @@ small {
 	width: 100%;
 }
 
-#add form input, #add form label {
+#add form input, 
+#add form label {
 	margin: 0;
 	padding: 3px;
 	width: auto;
 }
 
+#add form input,
+#add form select {
+	border: 1px solid #666;
+}
+
 #add form input[type=text] {
+	font-size: 12px;
 	width: 200px;
+}
+
+#add form select {
+	height: 22px;
+	vertical-align: middle;
 }
 
 #add form input[type=submit] {
