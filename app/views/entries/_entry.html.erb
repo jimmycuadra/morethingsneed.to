@@ -1,23 +1,32 @@
 <div class="article">
 	<div class="header">
 		<%= entry.user ? link_to(entry.user.username, user_entries_path(entry.user)) : 'Someone' %> crapped this out on <span class="time"><%= entry.created_at.to_s(:written_out) %></span>.
+		
+		<div class="share-links">
+			<a href="http://facebook.com/sharer.php?u=http://morethingsneed.to/entries/<%= entry.id %>"><img src="/images/facebook_icon.gif" alt="Post this on Facebook" title="Post this on Facebook" /></a>
+			<a href="http://twitter.com/home?status=More <%= h entry.noun %> <%= (entry.needs) ? 'needs' : 'need' %> to <%= h entry.verb %> http://morethingsneed.to/entries/<%= entry.id %>"><img src="/images/twitter_icon.gif" alt="Tweet this" title="Tweet this" /></a>
+		</div>
 	</div> <!-- /header -->
 
 	<div class="section">
-		<p>More <%= h entry.noun %> <%= (entry.needs) ? 'needs' : 'need' %> to <%= h entry.verb %>.</p>
-		
-		<div class="section links">
-			<span><%= print_vote_counts(entry) %></span><br />
+		<div class="section-links">
+			<p class="hidden"><%= print_vote_counts(entry) %></p>
+			
 			<% form_for [entry, Vote.new], :html => { :id => 'new_up_vote_' + entry.id.to_s } do |f| -%>
 				<%= f.hidden_field :up_vote, :value => 1, :id => 'vote_up_vote_' + entry.id.to_s %>
-				<%= f.submit 'This needs to happen', :id => 'vote_up_vote_submit' + entry.id.to_s %>
-			<% end -%>
+				<%= f.submit '√', :id => 'vote_up_vote_submit' + entry.id.to_s, :class => 'vote-button vote-up-button' %>
+			<% end -%> This needs to happen (123 votes)<br />
 			<% form_for [entry, Vote.new], :html => { :id => 'new_down_vote_' + entry.id.to_s } do |f| -%>
 				<%= f.hidden_field :up_vote, :value => 0, :id => 'vote_down_vote' + entry.id.to_s %>
-				<%= f.submit 'This doesn\'t need to happen', :id => 'vote_down_vote_submit' + entry.id.to_s %>
-			<% end -%><br />
-			<strong><%= link_to pluralize(entry.comments.count, 'thoughtful critique'), entry %></strong> - <%= link_to 'Add a non-impulsive, well-researched thought', entry_path(entry) + '#comment' %><br />
-			<a href="http://facebook.com/sharer.php?u=http://morethingsneed.to/entries/<%= entry.id %>"><img src="/images/facebook_icon.gif" alt="Post this on Facebook" title="Post this on Facebook" /></a><a href="http://twitter.com/home?status=More <%= h entry.noun %> <%= (entry.needs) ? 'needs' : 'need' %> to <%= h entry.verb %> http://morethingsneed.to/entries/<%= entry.id %>"><img src="/images/twitter_icon.gif" alt="Tweet this" title="Tweet this" /></a>
-		</div> <!-- /section -->
+				<%= f.submit 'X', :id => 'vote_down_vote_submit' + entry.id.to_s, :class => 'vote-button vote-down-button' %>
+			<% end -%> This doesn't need to happen (45 votes)
+		</div> <!-- /section-links -->
+
+		<div class="section-content">
+			<p>More <%= h entry.noun %> <%= (entry.needs) ? 'needs' : 'need' %> to <%= h entry.verb %>.</p>
+
+			<p class="comment-links"><%= link_to pluralize(entry.comments.count, 'thoughtful critique'), entry %> - <%= link_to 'Add a non-impulsive, well-researched thought', entry_path(entry) + '#comment' %></p>
+			<div class="clear"></div>
+		</div> <!-- /section-content -->		
 	</div> <!-- /section -->
 </div> <!-- /article -->

@@ -1,7 +1,7 @@
 /* universal elements */
 
 body {
-	background: #c06a48;
+	background: #e1d4c0;
 	color: #000;
 	line-height: 18px;
 	font-family: Arial, sans-serif;
@@ -22,6 +22,10 @@ a:hover {
 
 p {
 	margin-bottom: 18px;
+}
+
+.clear {
+	clear: both;
 }
 
 #header {
@@ -53,10 +57,11 @@ h2 {
 }
 
 #footer {
-	background: #e1d4c0;
-	border: 2px solid #000;
+	background: #a97d5d;
+	border: 1px solid #000;
 	border-bottom-radius: 5px;
-	font-size: 11px;
+	color: #fff;
+	font-size: 12px;
 	margin: 0 auto 18px auto;
 	-moz-border-radius: 5px;
 	padding: 4px;
@@ -91,17 +96,56 @@ small {
 }
 
 .pagination {
-	text-align: center;
+	text-align: right;
+}
+
+#page-header .pagination {
+	float: right;
+	margin-top: 4px;
 }
 
 /* structure */
 
 #bucket {
 	background: #e1d4c0;
-	border-bottom: 1px solid #000;
 	margin: 0 auto 18px;
 	padding: 10px;
-	position: relative;
+	width: 960px;
+}
+
+/* add entry */
+
+#add {
+	background-color: #a97d5d;
+	border: 1px solid #000;
+	border-left: 0;
+	border-right: 0;
+	color: #fff;
+	font-weight: bold;
+	left: 0;
+	padding: 10px 0;
+	position: absolute;
+	text-align: center;
+	top: 50px;
+	width: 100%;
+}
+
+#add form input, #add form label {
+	margin: 0;
+	padding: 3px;
+	width: auto;
+}
+
+#add form input[type=text] {
+	width: 200px;
+}
+
+#add form input[type=submit] {
+	margin-left: 2px;
+}
+
+#add span {
+	vertical-align: middle;
 }
 
 /* nav */
@@ -112,7 +156,7 @@ small {
 	border-bottom-left-radius: 4px;
 	border-bottom-right-radius: 4px;
 	border-top-width: 0;
-	margin-bottom: 0;
+	margin-top: 52px;
 	-moz-border-radius-bottomleft: 4px;
 	-moz-border-radius-bottomright: 4px;
 	padding: 3px 10px;
@@ -181,50 +225,21 @@ small {
 	width: auto;
 }
 
-/* add entry */
-
-#add {
-	background-color: #a97d5d;
-	border-bottom: 1px solid #000;
-	border-top: 1px solid #000;
-	color: #e3e3e3;
-	font-weight: bold;
-	left: -10px;
-	margin: 0 auto;
-	padding: 10px;
-	position: relative;
-	text-align: center;
-	width: 100%;
-}
-
-#add form input, #add form label {
-	margin: 0;
-	padding: 3px;
-	width: auto;
-}
-
-#add form input[type=text] {
-	width: 200px;
-}
-
-#add form input[type=submit] {
-	margin-left: 2px;
-}
-
-#add span {
-	vertical-align: middle;
-}
-
 /* entries */
 
 .article {
-	margin: 9px auto;
+	margin: 0 auto 24px;
+}
+
+.article:first-child {
+	margin-top: 18px;
 }
 
 .article .header {
-	background-color: #f6a03d;
+	background: #f6a03d url(/images/article_header_gradient.png) repeat-x;
 	border: 1px solid black;
-	border-radius: 4px 0 0 4px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
 	font-size: 12px;
 	font-weight: normal;
 	-moz-border-radius-topleft: 4px;
@@ -246,6 +261,10 @@ small {
 	text-decoration: none;
 }
 
+.article .header .share-links {
+	float: right;
+}
+
 .article .datetime, 
 .article .links {
 	font-size: 12px;
@@ -256,8 +275,7 @@ small {
 	background-color: #eee;
 	border: 1px solid #000;
 	border-top: 0;
-	font-size: 16px;
-	font-weight: bold;
+	font-size: 14px;
 	margin-bottom: 18px;
 	padding: 9px;
 }
@@ -267,17 +285,44 @@ small {
 	margin-top: 8px;
 }
 
-.article .section.links {
+.article .section-content {
+	min-height: 75px;
+	position: relative;
+}
+
+.article .section-links {
 	background-color: none;
 	border: none;
+	border-left: 1px dashed #000;
+	float: right;
+	font-size: 12px;
 	margin: 0;
 	padding: 0;
+	padding-left: 15px;
+}
+
+.article .section-links .vote-button {
+	background: #d9d9d9;
+	font-weight: bold;
+	width: 23px;
+}
+
+.article .section-links .vote-up-button {
+	color: #090;
+}
+
+.article .section-links .vote-down-button {
+	color: #f00;
 }
 
 .article p {
-	border-bottom: 1px dashed #666;
 	margin-bottom: 9px;
-	padding-bottom: 24px;
+}
+
+.article p.comment-links {
+	bottom: 0;
+	margin: 0;
+	position: absolute;
 }
 
 .article form, .article form input {

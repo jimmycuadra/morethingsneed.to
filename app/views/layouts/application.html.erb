@@ -24,12 +24,12 @@
 			<% end -%>
 		</div> <!-- /header -->
 		
-		<form id="style_switcher">
+		<!-- <form id="style_switcher">
 			<fieldset>
 			<input type="submit" rel="/stylesheets/screen.css" id="desktop" value="Desktop" />
 			<input type="submit" rel="/stylesheets/screen-mobile.css" id="mobile" value="Mobile" />
 			</fieldset>
-		</form>
+		</form> -->
 		
 		<div id="content"<%= ' class="main"' if params[:controller] == 'entries' && params[:action] == 'index' %>>
 			<%= render :partial => 'entries/add' %>
@@ -68,7 +68,6 @@
 		Announcing the necessity for increased frequency of things occurring since 2009.<br />
 		&copy; 2009 Jimmy Cuadra and Michael Chadwick.
 	</div> <!-- /footer -->
-	<%= debug @new_entry unless @new_entry.nil? %>
 	<script type="text/javascript">
 	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

@@ -1,5 +1,7 @@
 TO DO
 
-1. twitter integration
-2. browser testing
-3. add attr_accessible to all models
+1. browser testing
+2. add attr_accessible to all models
+3. background image
+4. strip http:// text from submissions
+5. more robust spam filtering

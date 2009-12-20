@@ -1,4 +1,10 @@
-<h1><%= @sort_type %></h1>
+<div id="page-header">
+	<%= will_paginate @entries %>
+	
+	<h1><%= @sort_type %></h1>
+	<div class="clear"></div>
+</div>
+
 
 <div id="entries" class="section">
 	<%= render :partial => @entries %>
