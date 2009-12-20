@@ -2,6 +2,10 @@
 	<%= render :partial => @entry %>
 </div>
 
+<div id="comment" class="section">
+	<%= render :partial => 'comments/comment_form' %>
+</div>
+
 <h2>The Internet says:</h2>
 
 <div id="comments" class="section">
@@ -10,8 +14,4 @@
 	<% else -%>
 		<%= render :partial => 'comments/comment', :collection => @entry.comments.reject(&:new_record?) %>
 	<% end -%>
-</div>
-
-<div id="comment" class="section">
-	<%= render :partial => 'comments/comment_form' %>
 </div>

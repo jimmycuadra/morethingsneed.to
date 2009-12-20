@@ -27,7 +27,7 @@ $(function() {
 	
 	$('.flash .close').live('click', function() {
 		$(this).parent().remove();
-	});
+	}).show();
 	
 	$('form.new_vote').submit(function(e) {
 		var $this = $(this);

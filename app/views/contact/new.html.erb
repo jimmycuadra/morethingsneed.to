@@ -5,7 +5,7 @@
 <% form_for @contact, :url => { :controller => 'contact', :action => 'create' } do |f| -%>
 	<fieldset>
 		<legend>Babble at us, we might listen</legend>
-		<%= render_error_messages @contact %>
+
 		<ol>			
 			<% unless current_user -%>
 				<li>			

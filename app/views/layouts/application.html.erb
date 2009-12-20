@@ -42,6 +42,8 @@
 			<div class="close"></div>
 			
 			<%= render_error_messages @new_entry if @new_entry %>
+			<%= render_error_messages @comment if @comment %>
+			<%= render_error_messages @contact if @contact %>			
 		</div>
 		<% end -%>
 
