@@ -12,6 +12,7 @@ class UsersController < ApplicationController
       flash[:success] = 'Your account has been registered but is not yet active. Please check your e-mail for activation instructions.'
       redirect_to root_path
     else
+      flash.now[:error] = 'You fucked up.'
       render :action => 'new'
     end
   end
@@ -26,6 +27,7 @@ class UsersController < ApplicationController
       flash[:success] = 'Your account details have been updated.'
       redirect_to root_path
     else
+      flash.now[:error] = 'You fucked up.'
       render :action => 'edit'
     end
   end
