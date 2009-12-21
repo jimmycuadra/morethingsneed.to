@@ -16,7 +16,7 @@ class EntriesController < ApplicationController
     if @new_entry.save
       respond_to do |format|
         format.html do
-          flash[:notice] = 'More submissions need to be successful.'
+          flash[:success] = 'More submissions need to be successful.'
           redirect_to @new_entry          
         end
         format.json
@@ -24,7 +24,7 @@ class EntriesController < ApplicationController
     else
       respond_to do |format|
         format.html do
-          flash.now[:notice] = 'More submissions need to be filled out correctly.'
+          flash.now[:error] = 'More submissions need to be filled out correctly.'
           @entries = Entry.paginate :page => params[:page], :order => 'created_at DESC'
           render :index          
         end
@@ -34,7 +34,7 @@ class EntriesController < ApplicationController
   end
   
   def destroy
-    flash[:notice] = 'More entries need to be successfully destroyed.' if @entry.destroy
+    flash[:success] = 'More entries need to be successfully destroyed.' if @entry.destroy
     redirect_to entries_path
   end
   

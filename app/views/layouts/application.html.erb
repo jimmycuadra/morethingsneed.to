@@ -36,9 +36,9 @@
 			</span>				
 		</div>	<!-- /nav -->
 		
-		<% if flash[:notice] -%>
-		<div class="flash">
-			<%= flash[:notice] %>
+		<% if flash[:error] or flash[:success] -%>
+		<div class="flash<%= ' success' if flash[:success] %>">
+			<%= flash[:error] or flash[:success] %>
 			<div class="close"></div>
 			
 			<%= render_error_messages @new_entry if @new_entry %>

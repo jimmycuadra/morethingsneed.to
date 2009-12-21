@@ -5,7 +5,7 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      flash[:notice] = 'You are now logged in.'
+      flash[:success] = 'You are now logged in.'
       redirect_to root_path
     else
       render :action => 'new'
@@ -15,7 +15,7 @@ class UserSessionsController < ApplicationController
   def destroy
     @user_session = UserSession.find
     @user_session.destroy
-    flash[:notice] = 'You are now logged out.'
+    flash[:success] = 'You are now logged out.'
     redirect_to root_path
   end
 end

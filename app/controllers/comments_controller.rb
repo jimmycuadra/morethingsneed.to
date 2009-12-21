@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     if @comment.save
       respond_to do |format|
         format.html do
-          flash[:notice] = 'Your opinion has been duly noted.'
+          flash[:success] = 'Your opinion has been duly noted.'
           redirect_to @entry
         end
         format.json
@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     else
       respond_to do |format|
         format.html do
-          flash.now[:notice] = 'Your shit was invalid, homes.'
+          flash.now[:error] = 'Your shit was invalid, homes.'
           @new_entry = Entry.new
           return render :file => 'entries/show', :layout => 'application'
         end

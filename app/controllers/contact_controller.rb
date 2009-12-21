@@ -18,7 +18,7 @@ class ContactController < ApplicationController
       # Notifier.deliver_contact_form(@contact)
       respond_to do |format|
         format.html do
-          flash[:notice] = 'Congratulations, your message has been sent to to the administrators, where it will sit in their inboxes until they feel like reading them.'
+          flash[:success] = 'Congratulations, your message has been sent to to the administrators, where it will sit in their inboxes until they feel like reading them.'
           redirect_to :action => 'new'
         end
         format.json
@@ -26,7 +26,7 @@ class ContactController < ApplicationController
     else
       respond_to do |format|
         format.html do
-          flash.now[:notice] = 'You done made some errors.'
+          flash.now[:error] = 'You done made some errors.'
           render :action => 'new'
         end
         format.json

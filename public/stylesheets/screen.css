@@ -463,12 +463,17 @@ form input[type=submit] {
 	margin-left: 18px;
 }
 
-.error {
+.flash.success {
+	background-color: #090;
+	color: #fff;
+}
+
+.error-text {
 	color: #f00;
 	font-style: italic;
 }
 
-.success {
+.success-text {
 	color: #090;
 	font-style: italic;
 }

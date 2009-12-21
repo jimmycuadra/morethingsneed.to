@@ -147,11 +147,11 @@ function handleVote(section, data) {
 	section.find('form').remove();
 	
 	if (data.success) {
-		section.prepend('<span class="success">Voted and noted.</span><br />');
+		section.prepend('<span class="success-text">Voted and noted.</span><br />');
 		section.find('span.up_vote_count').html(data.up_count);
 		section.find('span.down_vote_count').html(data.down_count);
 	} else {
-		section.prepend('<span class="error">You already rocked the vote.</span><br />')
+		section.prepend('<span class="error-text">You already rocked the vote.</span><br />')
 	}
 }
 

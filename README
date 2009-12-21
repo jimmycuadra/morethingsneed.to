@@ -1,6 +1,5 @@
 TO DO
 
-- add error/success differentiation for flash messages
 - fix ajax for forms
 - add spam flag to entries and comments for permanent spam filtering
 - find out how to protect IPs from mass assignment without breaking tests
