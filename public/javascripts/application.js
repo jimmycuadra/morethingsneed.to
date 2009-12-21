@@ -32,7 +32,7 @@ $(function() {
 	$('form.new_vote').submit(function(e) {
 		var $this = $(this);
 		$.post($this.attr('action'), $this.serialize(), function(data) {
-			handleVote($this.parent('.section-links'), data);
+			handleVote($this.parent('.section-links, .section-links-mobile'), data);
 		}, 'json');
 		e.preventDefault();
 	});

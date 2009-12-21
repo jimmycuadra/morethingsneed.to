@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div id="header">
-		<a href="/" id="title-link">More Things Need To</a>
+		<a href="/" id="title-link" title="More Things Need To">More Things Need To</a>
 		<%= render :partial => 'entries/add' %>
 		
 		<div id="nav">
@@ -58,20 +58,24 @@
 		</div>
 	</div> <!-- /header -->
 	
-	<div id="content"<%= ' class="main"' if params[:controller] == 'entries' && params[:action] == 'index' %>>		
-		<!-- <form id="style_switcher">
-			<fieldset>
-			<input type="submit" rel="/stylesheets/screen.css" id="desktop" value="Desktop" />
-			<input type="submit" rel="/stylesheets/screen-mobile.css" id="mobile" value="Mobile" />
-			</fieldset>
-		</form> -->
-		
+	<div id="content"<%= ' class="main"' if params[:controller] == 'entries' && params[:action] == 'index' %>>
 		<%= yield %>
 	</div> <!-- /content -->
+	
 	<div id="footer">
-		Announcing the necessity for increased frequency of things occurring since 2009.<br />
+		<p>
+		Announcing the necessity for increased<br />
+		frequency of things occurring since 2009.<br />
 		&copy; 2009 Jimmy Cuadra and Michael Chadwick.
+		</p>
+		<form id="style_switcher">
+			<fieldset>
+				<input type="submit" rel="/stylesheets/screen.css" id="desktop" value="Desktop" />
+				<input type="submit" rel="/stylesheets/screen-mobile.css" id="mobile" value="Mobile" />
+			</fieldset>
+		</form>
 	</div> <!-- /footer -->
+	
 	<script type="text/javascript">
 	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
