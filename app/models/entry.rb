@@ -7,6 +7,9 @@ class Entry < ActiveRecord::Base
   validates_uniqueness_of :noun, :scope => :verb, :message => "^I know you think you're clever, but someone already submitted that one."
   validate :not_default_or_missing_phrase
   validate :honeypot_must_be_blank
+  validates_each :noun, :verb do |record, attr, value|
+    record.errors.add attr, 'cannot contain a URL.' if /.*http:\/\/.*/i.match(value)
+  end
   validate_on_create :no_recent_entry_from_ip
   before_save :strip_trailing_punctuation
   attr_accessor :email
@@ -28,7 +31,7 @@ class Entry < ActiveRecord::Base
   def no_recent_entry_from_ip
     errors.add_to_base('Gotta wait at least a minute before adding another one.') if Entry.all(:conditions => ['created_at > ? AND ip = ?', Time.new.ago(60).in_time_zone, self.ip]).count > 0
   end
-  
+    
   def strip_trailing_punctuation
     self.verb.gsub!(/[\.!?]*/, '')
   end

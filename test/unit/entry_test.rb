@@ -78,4 +78,11 @@ class EntryTest < ActiveSupport::TestCase
     @e.save
     assert_equal @e.verb, 'run'
   end
+  
+  test "should reject entry with URL in it" do
+    @e.noun = @e.verb = 'testing Http://www.spam.com/ comments'
+    assert !@e.valid?
+    assert @e.errors.invalid?(:noun)
+    assert @e.errors.invalid?(:verb)
+  end
 end
