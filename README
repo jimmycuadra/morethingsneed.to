@@ -3,4 +3,5 @@ TO DO
 - fix ajax for forms
 - add spam flag to entries and comments for permanent spam filtering
 - find out how to protect IPs from mass assignment without breaking tests
+- find out if acts_as_authenticated needs mass assignment protection (especially with custom attributes)
 - browser testing
