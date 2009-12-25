@@ -10,7 +10,7 @@ def generate_ip
 end
 
 1.upto(30) do |i|
-  e = Entry.create(:noun => i, :verb => i, :ip => generate_ip)
+  e = Entry.create(:noun => i.to_s, :verb => i.to_s, :ip => generate_ip)
   rand(10).times do
     e.comments.create(:comment => 'Comment', :ip => generate_ip)
   end
@@ -22,5 +22,5 @@ end
   end
 end
 
-u = User.new(:username => 'Jimmy', :password => 'asdf', :password_confirmation => 'asdf', :email => 'jimmy@morethingsneed.to', :active => true, :admin => true)
-u2 = User.new(:username => 'Mike', :password => 'asdf', :password_confirmation => 'asdf', :email => 'mike@morethingsneed.to', :active => true, :admin => true)
+User.create(:username => 'Jimmy', :password => 'asdf', :password_confirmation => 'asdf', :email => 'jimmy@morethingsneed.to', :active => true, :admin => true)
+User.create(:username => 'Mike', :password => 'asdf', :password_confirmation => 'asdf', :email => 'mike@morethingsneed.to', :active => true, :admin => true)
