@@ -1,7 +1,10 @@
 TO DO
 
 - fix ajax for forms
-- add spam flag to entries and comments for permanent spam filtering
+- filter comments marked as spam
+- add admin interface to mark/unmark entries/comments as spam
+- show entries/comments marked as spam if show_spam flag is passed in and/or logged in as an admin
 - find out how to protect IPs from mass assignment without breaking tests
 - find out if acts_as_authenticated needs mass assignment protection (especially with custom attributes)
+- review all models for mass assignment security issues
 - browser testing

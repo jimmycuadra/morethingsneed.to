@@ -9,20 +9,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091225004214) do
+ActiveRecord::Schema.define(:version => 20091230111936) do
 
   create_table "comments", :force => true do |t|
     t.string   "name"
-    t.text     "comment",    :null => false
-    t.integer  "entry_id",   :null => false
+    t.text     "comment",                       :null => false
+    t.integer  "entry_id",                      :null => false
     t.integer  "user_id"
-    t.string   "ip",         :null => false
+    t.string   "ip",                            :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "spam",       :default => false
   end
 
   add_index "comments", ["entry_id"], :name => "index_comments_on_entry_id"
   add_index "comments", ["ip"], :name => "index_comments_on_ip"
+  add_index "comments", ["spam"], :name => "index_comments_on_spam"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "entries", :force => true do |t|
@@ -35,10 +37,12 @@ ActiveRecord::Schema.define(:version => 20091225004214) do
     t.datetime "updated_at"
     t.integer  "up_vote_count",   :default => 0
     t.integer  "down_vote_count", :default => 0
+    t.boolean  "spam",            :default => false
   end
 
   add_index "entries", ["ip"], :name => "index_entries_on_ip"
   add_index "entries", ["noun", "verb"], :name => "index_entries_on_noun_and_verb", :unique => true
+  add_index "entries", ["spam"], :name => "index_entries_on_spam"
   add_index "entries", ["user_id"], :name => "index_entries_on_user_id"
 
   create_table "users", :force => true do |t|

@@ -3,7 +3,7 @@ class EntriesController < ApplicationController
   before_filter :get_sort_type, :only => [:index, :create]
   
   def index
-    conditions = params[:user_id] ? ["user_id = ?", params[:user_id]] : nil
+    conditions = params[:user_id] ? ["user_id = ? AND spam = ?", params[:user_id], false] : ["spam = ?", false]
     @entries = Entry.paginate :page => params[:page], :order => @order, :conditions => conditions
   end
   
@@ -51,13 +51,13 @@ class EntriesController < ApplicationController
       @sort_type = 'Best'
     when params.key?(:worst)
       @order = 'down_vote_count DESC'
-        @sort_type = 'Worst'
+      @sort_type = 'Worst'
     when params.key?(:oldest)
       @order = 'created_at ASC'
-        @sort_type = 'Oldest'
+      @sort_type = 'Oldest'
     else
       @order = 'created_at DESC'
-        @sort_type = 'Newest'
+      @sort_type = 'Newest'
     end
   end
 end
