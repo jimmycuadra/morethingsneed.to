@@ -154,7 +154,7 @@ small {
 #add form select {
 	margin: 0;
 	padding: 3px;
-	vertical-align: top;
+	vertical-align: middle;
 	width: auto;
 }
 
