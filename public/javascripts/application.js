@@ -16,13 +16,7 @@ $(function() {
 		$(this).parent().remove();
 	}).show();
 	
-	$('form.new_vote').submit(function(e) {
-		var $this = $(this);
-		$.post($this.attr('action'), $this.serialize(), function(data) {
-			handleVote($this.parent('.section-links, .section-links-mobile'), data);
-		}, 'json');
-		e.preventDefault();
-	});
+	$(MTNT.Vote);
 	
 	$('#content.main form.new_entry').submit(function(e) {
 		if (/*@cc_on!@*/0) {
@@ -84,18 +78,6 @@ $(function() {
 		}
 	});	
 });
-
-function handleVote(section, data) {
-	section.find('form').remove();
-	
-	if (data.success) {
-		section.prepend('<span class="success-text">Voted and noted.</span><br />');
-		section.find('span.up_vote_count').html(data.up_count);
-		section.find('span.down_vote_count').html(data.down_count);
-	} else {
-		section.prepend('<span class="error-text">You already rocked the vote.</span><br />')
-	}
-}
 
 function handleEntry(addForm, data) {
 	updateFlash(data.flash);

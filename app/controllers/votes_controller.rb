@@ -9,7 +9,7 @@ class VotesController < ApplicationController
           flash[:success] = 'Voted and noted.'
           redirect_to @entry
         end
-        format.json
+        format.js
       end
     else
       respond_to do |format|
@@ -17,7 +17,7 @@ class VotesController < ApplicationController
           flash[:error] = 'You already rocked the vote.'
           redirect_to @entry
         end
-        format.json
+        format.js
       end
     end
   end
