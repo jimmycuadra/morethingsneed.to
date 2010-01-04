@@ -49,3 +49,5 @@ MTNT.StylesheetSwitcher = function() {
   	return false;
   });
 }
+
+$(MTNT.StylesheetSwitcher);

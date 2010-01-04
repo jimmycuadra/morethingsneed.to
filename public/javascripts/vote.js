@@ -1,7 +1,3 @@
-if (typeof MTNT == 'undefined') {
-  MTNT = {};
-}
-
 MTNT.Vote = function() {
   MTNT.Vote.bindSubmit();
 }
@@ -23,3 +19,5 @@ MTNT.Vote.bindSubmit = function() {
 MTNT.Vote.handleVote = function(section, response) {
 	section.html(response);
 }
+
+$(MTNT.Vote);

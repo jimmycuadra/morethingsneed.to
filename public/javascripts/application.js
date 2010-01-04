@@ -7,16 +7,12 @@ $(function() {
   if (typeof MTNT == 'undefined') {
     MTNT = {};
   }
-  
-  $(MTNT.StylesheetSwitcher);
-  
+    
 	$('#add form input[type=text]').formDefaults();
 	
 	$('.flash .close').live('click', function() {
 		$(this).parent().remove();
 	}).show();
-	
-	$(MTNT.Vote);
 	
 	$('#content.main form.new_entry').submit(function(e) {
 		if (/*@cc_on!@*/0) {
@@ -47,36 +43,7 @@ $(function() {
 		}, 'json');
 		e.preventDefault();
 	});
-	
 
-	// toggle register/login box
-	$('#register').click(function(e) {
-		e.preventDefault();
-		
-		var $loginBox = $('#login-box');
-				
-		if ($loginBox.css('display') == 'block') {
-			$loginBox.slideUp(100, function() {
-				$('#register-box').slideToggle(250);
-			});
-		} else {
-			$('#register-box').slideToggle(250);
-		}
-	});
-	
-	$('#login').click(function(e) {
-		e.preventDefault();
-		
-		var $registerBox = $('#register-box');
-		
-		if ($registerBox.css('display') == 'block') {
-			$registerBox.slideUp(100, function() {
-				$('#login-box').slideToggle(250);
-			});			
-		} else {
-			$('#login-box').slideToggle(250);	
-		}
-	});	
 });
 
 function handleEntry(addForm, data) {
