@@ -1,9 +1,11 @@
 class EntriesController < ApplicationController
-  before_filter :retrieve_record, :only => [:show, :destroy]
+  before_filter :retrieve_record, :only => [:show, :update, :destroy]
   before_filter :get_sort_type, :only => [:index, :create]
   
   def index
-    conditions = params[:user_id] ? ["user_id = ? AND spam = ?", params[:user_id], false] : ["spam = ?", false]
+    conditions = Hash.new
+    conditions[:user_id] = params[:user_id] if params[:user_id]
+    conditions[:spam] = false unless is_admin and params[:show_spam]
     @entries = Entry.paginate :page => params[:page], :order => @order, :conditions => conditions
   end
   
@@ -33,6 +35,18 @@ class EntriesController < ApplicationController
     end
   end
   
+  def update
+    redirect_to root_path and return unless is_admin
+    
+    if @entry.update_attributes(params[:entry])
+      flash.now[:success] = 'More submissions need to be updated successfully.'
+    else
+      flash.now[:error] = 'More submissions need to be edited correctly.'
+    end
+    
+    render :action => 'show'
+  end
+  
   def destroy
     flash[:success] = 'More entries need to be successfully destroyed.' if @entry.destroy
     redirect_to entries_path
@@ -41,7 +55,7 @@ class EntriesController < ApplicationController
   private
   
   def retrieve_record
-    @entry = Entry.find(params[:id])
+    @entry = Entry.find(params[:id], :conditions => is_admin ? nil : ["spam = ?", false])
   end
   
   def get_sort_type

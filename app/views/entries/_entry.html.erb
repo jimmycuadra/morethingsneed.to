@@ -1,5 +1,6 @@
 <div class="article">
 	<div class="header">
+	  <% if entry.spam %><strong>SPAM</strong> -<% end %>
 		<%= entry.user ? link_to(entry.user.username, user_entries_path(entry.user)) : 'Someone' %> crapped this out on <span class="time"><%= entry.created_at.to_s(:written_out) %></span>.
 		
 		<div class="share-links">
@@ -35,7 +36,15 @@
 			</div> <!-- /section-links-mobile -->
 			
 			<p class="comment-links">
-				<strong><%= link_to pluralize(entry.comments.count, 'thoughtful critique'), entry %></strong> - <%= link_to 'Add a non-impulsive, well-researched thought', entry_path(entry) + '#comment' %>
+				<strong><%= link_to pluralize(entry.comments.count, 'thoughtful critique'), entry %></strong>
+				- <%= link_to 'Add a non-impulsive, well-researched thought', entry_path(entry) + '#comment' %>
+				<% if is_admin -%>
+				  - <%= link_to(entry.spam ? 'Mark as legit' : 'Mark as spam', '#', :class => 'spam-link') %>
+				  <% form_for entry do |f| -%>
+				    <% new_spam_value = entry.spam ? 0 : 1 %>
+				    <%= f.hidden_field :spam, :value => new_spam_value %>
+				  <% end -%>
+				<% end -%>
 			</p>
 			<div class="clear"></div>
 		</div> <!-- /section-content -->		

@@ -8,7 +8,8 @@
 ipm = IP_Maker.new
 
 1.upto(30) do |i|
-  e = Entry.create(:noun => i.to_s, :verb => i.to_s, :ip => ipm.generate)
+  spam = rand(5) < 2 ? true : false
+  e = Entry.create(:noun => i.to_s, :verb => i.to_s, :ip => ipm.generate, :spam => spam)
   rand(10).times do
     e.comments.create(:comment => 'Comment', :ip => ipm.generate)
   end

@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :entries, :except => [:new, :edit, :update] do |entry|
+  map.resources :entries, :except => [:new, :edit] do |entry|
     entry.resources :comments, :only => [:create, :destroy]
     entry.resources :votes, :only => [:create, :destroy] 
   end
