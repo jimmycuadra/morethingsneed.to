@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   helper :all
   protect_from_forgery
   filter_parameter_logging :password
-  helper_method :current_user
+  helper_method :current_user, :is_admin
   before_filter :prepare_new_entry
  
   private
@@ -15,6 +15,12 @@ class ApplicationController < ActionController::Base
   def current_user
     return @current_user if defined?(@current_user)
     @current_user = current_user_session && current_user_session.record
+  end
+  
+  def is_admin
+    return @is_admin if defined?(@is_admin)
+    cu = current_user
+    @is_admin = cu.nil? ? false : cu.admin
   end
 
   def prepare_new_entry

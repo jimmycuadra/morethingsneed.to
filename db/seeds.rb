@@ -22,3 +22,4 @@ end
 
 User.create(:username => 'Jimmy', :password => 'asdf', :password_confirmation => 'asdf', :email => 'jimmy@morethingsneed.to', :active => true, :admin => true)
 User.create(:username => 'Mike', :password => 'asdf', :password_confirmation => 'asdf', :email => 'mike@morethingsneed.to', :active => true, :admin => true)
+User.create(:username => 'Guest', :password => 'asdf', :password_confirmation => 'asdf', :email => 'guest@website.com', :active => true)
