@@ -3,8 +3,8 @@
 		<%= entry.user ? link_to(entry.user.username, user_entries_path(entry.user)) : 'Someone' %> crapped this out on <span class="time"><%= entry.created_at.to_s(:written_out) %></span>.
 		
 		<div class="share-links">
-			<a href="http://facebook.com/sharer.php?u=http://morethingsneed.to/entries/<%= entry.id %>"><img src="/images/facebook_icon.gif" alt="Post this on Facebook" title="Post this on Facebook" /></a>
-			<a href="http://twitter.com/home?status=More <%= h entry.noun %> <%= (entry.needs) ? 'needs' : 'need' %> to <%= h entry.verb %> http://morethingsneed.to/entries/<%= entry.id %>"><img src="/images/twitter_icon.gif" alt="Tweet this" title="Tweet this" /></a>
+			<a href="http://facebook.com/sharer.php?u=http://morethingsneed.to/<%= entry.id %>"><img src="/images/facebook_icon.gif" alt="Post this on Facebook" title="Post this on Facebook" /></a>
+			<a href="<%= twitter_link(entry) %>"><img src="/images/twitter_icon.gif" alt="Tweet this" title="Tweet this" /></a>
 		</div>
 	</div> <!-- /header -->
 
@@ -13,11 +13,11 @@
 			<% form_for [entry, Vote.new], :html => { :id => 'new_up_vote_' + entry.id.to_s } do |f| -%>
 				<%= f.hidden_field :up_vote, :value => 1, :id => 'vote_up_vote_' + entry.id.to_s %>
 				<%= image_submit_tag('/images/icon_vote_up.png', :id => 'vote_up_vote_submit' + entry.id.to_s, :class => 'vote-button vote-up-button') %>
-			<% end -%> This needs to happen <span class="up_vote_count"><%= print_vote_counts(entry, 'up') %></span><br />
+			<% end -%> This needs to happen <span class="up_vote_count"><%= vote_counts(entry, 'up') %></span><br />
 			<% form_for [entry, Vote.new], :html => { :id => 'new_down_vote_' + entry.id.to_s } do |f| -%>
 				<%= f.hidden_field :up_vote, :value => 0, :id => 'vote_down_vote' + entry.id.to_s %>
 				<%= image_submit_tag('/images/icon_vote_down.png', :id => 'vote_down_vote_submit' + entry.id.to_s, :class => 'vote-button vote-down-button') %>
-			<% end -%> This doesn't need to happen <span class="down_vote_count"><%= print_vote_counts(entry, 'down') %></span>
+			<% end -%> This doesn't need to happen <span class="down_vote_count"><%= vote_counts(entry, 'down') %></span>
 		</div> <!-- /section-links -->
 
 		<div class="section-content">
@@ -27,11 +27,11 @@
 				<% form_for [entry, Vote.new], :html => { :id => 'new_up_vote_' + entry.id.to_s } do |f| -%>
 					<%= f.hidden_field :up_vote, :value => 1, :id => 'vote_up_vote_' + entry.id.to_s %>
 					<%= image_submit_tag('/images/icon_vote_up.png', :id => 'vote_up_vote_submit' + entry.id.to_s, :class => 'vote-button vote-up-button') %>
-				<% end -%> This needs to happen <span class="up_vote_count"><%= print_vote_counts(entry, 'up') %></span><br />
+				<% end -%> This needs to happen <span class="up_vote_count"><%= vote_counts(entry, 'up') %></span><br />
 				<% form_for [entry, Vote.new], :html => { :id => 'new_down_vote_' + entry.id.to_s } do |f| -%>
 					<%= f.hidden_field :up_vote, :value => 0, :id => 'vote_down_vote' + entry.id.to_s %>
 					<%= image_submit_tag('/images/icon_vote_down.png', :id => 'vote_down_vote_submit' + entry.id.to_s, :class => 'vote-button vote-down-button') %>
-				<% end -%> This doesn't need to happen <span class="down_vote_count"><%= print_vote_counts(entry, 'down') %></span>
+				<% end -%> This doesn't need to happen <span class="down_vote_count"><%= vote_counts(entry, 'down') %></span>
 			</div> <!-- /section-links-mobile -->
 			
 			<p class="comment-links">

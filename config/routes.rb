@@ -13,6 +13,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.login '/login', :controller => 'user_sessions', :action => 'new'
   map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
+  
+  map.entry_id '/:id', :controller => 'entries', :action => 'show' 
 
   map.resources :users, :only => [:new, :create, :edit, :update] do |user|
     user.resources :entries, :only => [:index]

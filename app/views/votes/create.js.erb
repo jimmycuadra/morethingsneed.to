@@ -3,5 +3,5 @@
 <% else -%>
 <span class="error-text">You already rocked the vote.</span><br />
 <% end -%>
-This needs to happen <span class="up_vote_count"><%= print_vote_counts(@entry, 'up') %></span><br />
-This doesn't need to happen <span class="down_vote_count"><%= print_vote_counts(@entry, 'down') %></span>
+This needs to happen <span class="up_vote_count"><%= vote_counts(@entry, 'up') %></span><br />
+This doesn't need to happen <span class="down_vote_count"><%= vote_counts(@entry, 'down') %></span>
