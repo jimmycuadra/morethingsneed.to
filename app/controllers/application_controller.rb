@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
-  has_mobile_fu
   helper :all
   protect_from_forgery
   filter_parameter_logging :password
   helper_method :current_user, :is_admin
   before_filter :prepare_new_entry
+  #has_mobile_fu
   #before_filter :layout is_mobile_device? ? "application_mobile" : "application"
    
   private
