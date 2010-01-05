@@ -1,8 +1,3 @@
-// keeps the desktop/mobile style preference
-if($.cookie("css")) {
-    $("link#main_style").attr("href", $.cookie("css"));
-}
-
 $(function() {
   if (typeof MTNT == 'undefined') {
     MTNT = {};

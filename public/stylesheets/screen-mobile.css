@@ -153,22 +153,11 @@ small {
 }
 	
 #nav span {
-	background-color: #e4cba9;
-	border-bottom: 1px solid #000;
-	border-left: 1px solid #444;
-	border-right: 1px solid #444;
-	border-bottom-left-radius: 8px;
-	border-bottom-right-radius: 8px;
-	border-top-width: 0;
 	clear: left;
-	float: left;
+	float: none;
 	font-size: 14px;
 	margin: 3px auto 10px auto;
-	-moz-border-radius-bottomleft: 8px;
-	-moz-border-radius-bottomright: 8px;
 	padding: 2px 8px;
-	-webkit-border-bottom-left-radius: 8px;
-	-webkit-border-bottom-right-radius: 8px;
 	width: 200px;	
 }
 
@@ -350,10 +339,6 @@ small {
 }
 
 .article .section-links {
-	display: none;
-}
-
-.article .section-links-mobile {
 	background-color: none;
 	border: none;
 	font-size: 12px;
@@ -533,15 +518,4 @@ form input[type=button] {
 #comment textarea {
 	height: 90px;
 	width: 212px;
-}
-
-/* style switcher */
-
-#style_switcher {
-	margin: 0 auto;
-	padding: 0;
-	text-align: center;
-}
-#style_switcher input {
-	margin: 0 4px 0 0;
 }

@@ -358,10 +358,6 @@ small {
 	padding: 0;
 }
 
-.article .section-links-mobile {
-	display: none;
-}
-
 .article p {
 	margin: 0;
 }
@@ -525,15 +521,4 @@ form input[type=submit] {
 #comment textarea {
 	height: 90px;
 	width: 550px;
-}
-
-/* style switcher */
-
-#style_switcher {
-	margin: 0 auto;
-	padding: 4px;
-	text-align: center;
-}
-#style_switcher input {
-	margin: 0 4px 0 0;
 }
