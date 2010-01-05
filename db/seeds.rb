@@ -5,18 +5,21 @@
 #   
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
+def random_spam
+  rand(5) < 2 ? true : false
+end
+
 ipm = IP_Maker.new
 
-1.upto(30) do |i|
-  spam = rand(5) < 2 ? true : false
-  e = Entry.create(:noun => i.to_s, :verb => i.to_s, :ip => ipm.generate, :spam => spam)
+1.upto(20) do |i|
+  e = Entry.create(:noun => i.to_s, :verb => i.to_s, :ip => ipm.generate, :spam => random_spam)
   rand(10).times do
-    e.comments.create(:comment => 'Comment', :ip => ipm.generate)
+    e.comments.create(:comment => 'Comment', :ip => ipm.generate, :spam => random_spam)
   end
-  rand(20).times do
+  rand(15).times do
     e.votes.create(:up_vote => true, :ip => ipm.generate)
   end
-  rand(20).times do
+  rand(15).times do
     e.votes.create(:up_vote => false, :ip => ipm.generate)
   end
 end
