@@ -12,6 +12,9 @@
 	<% if @entry.comments.blank? -%>
 		<p>Nothing. Can you believe it?</p>
 	<% else -%>
-		<%= render :partial => 'comments/comment', :collection => @entry.comments.reject(&:new_record?) %>
+		<%=
+		  render :partial => 'comments/comment',
+		    :collection => @entry.comments.find_all_by_spam(false)
+		%>
 	<% end -%>
 </div>

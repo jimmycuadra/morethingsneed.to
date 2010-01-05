@@ -4,6 +4,7 @@
 	</div>
 	
 	<div class="footer">
+	  <% if comment.spam? %><strong>SPAM</strong> -<% end %>
 		<% if comment.user -%>
 			<%= comment.user.username %>
 		<% elsif comment.name.blank? -%>

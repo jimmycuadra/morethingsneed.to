@@ -36,7 +36,7 @@
 			</div> <!-- /section-links-mobile -->
 			
 			<p class="comment-links">
-				<strong><%= link_to pluralize(entry.comments.count, 'thoughtful critique'), entry %></strong>
+				<strong><%= link_to pluralize(entry.comments.find_all_by_spam(false).count, 'thoughtful critique'), entry %></strong>
 				- <%= link_to 'Add a non-impulsive, well-researched thought', entry_path(entry) + '#comment' %>
 				<% if is_admin -%>
 				  - <%= link_to(entry.spam ? 'Mark as legit' : 'Mark as spam', '#', :class => 'spam-link') %>
