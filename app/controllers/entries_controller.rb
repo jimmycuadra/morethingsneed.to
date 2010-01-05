@@ -3,13 +3,11 @@ class EntriesController < ApplicationController
   before_filter :get_sort_type, :only => [:index, :create]
   
   def index
-    conditions = Hash.new
-    conditions[:user_id] = params[:user_id] if params[:user_id]
-    conditions[:spam] = false unless is_admin and params[:show_spam]
-    @entries = Entry.paginate :page => params[:page], :order => @order, :conditions => conditions
+    @entries = Entry.paginate :page => params[:page], :order => @order, :conditions => build_conditions
   end
   
   def show
+    @comments = @entry.comments.all(:conditions => build_conditions)
   end
   
   def create
@@ -56,6 +54,13 @@ class EntriesController < ApplicationController
   
   def retrieve_record
     @entry = Entry.find(params[:id], :conditions => is_admin ? nil : ["spam = ?", false])
+  end
+  
+  def build_conditions
+    conditions = Hash.new
+    conditions[:user_id] = params[:user_id] if params[:user_id]
+    conditions[:spam] = false unless is_admin and params[:show_spam]
+    conditions
   end
   
   def get_sort_type

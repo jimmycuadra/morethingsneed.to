@@ -9,12 +9,12 @@
 <h2>The Internet says:</h2>
 
 <div id="comments" class="section">
-	<% if @entry.comments.blank? -%>
+	<% if @comments.blank? -%>
 		<p>Nothing. Can you believe it?</p>
 	<% else -%>
 		<%=
 		  render :partial => 'comments/comment',
-		    :collection => @entry.comments.find_all_by_spam(false)
+		    :collection => @comments
 		%>
 	<% end -%>
 </div>
