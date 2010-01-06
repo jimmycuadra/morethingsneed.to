@@ -1,5 +1,5 @@
 class EntriesController < ApplicationController
-  before_filter :retrieve_record, :only => [:show, :update, :destroy]
+  before_filter :retrieve_record, :only => [:show, :update, :destroy, :toggle_spam]
   before_filter :get_sort_type, :only => [:index, :create, :show_spam]
   
   def index
@@ -58,7 +58,12 @@ class EntriesController < ApplicationController
   end
   
   def toggle_spam
-    asdf
+    redirect_to root_path and return unless is_admin
+    
+    new_spam_value = @entry.spam ? false : true
+    @entry.update_attribute :spam, new_spam_value
+    flash[:success] = 'More spam flags need to be toggled.'
+    redirect_to @entry
   end
   
   private
