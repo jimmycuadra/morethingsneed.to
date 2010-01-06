@@ -10,7 +10,7 @@
 	<!--[if IE]>
 		<link rel="stylesheet" href="/stylesheets/ie.css" type="text/css" media="screen" charset="utf-8" />
 	<![endif]-->
-	<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js',  'application', 'form-defaults', 'userbox', 'vote' %>
+	<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js', 'application', 'form-defaults', 'userbox', 'vote' %>
 </head>
 <body>
 	<div id="header">
@@ -24,6 +24,7 @@
 			<%= link_to_unless params.key?(:worst), 'Worst', root_path + '?worst' %> -
 			<%= link_to_unless((params[:controller] == 'about'), 'About', about_path) %> -
 			<%= link_to_unless((params[:controller] == 'contact'), 'Contact', contact_index_path) %>
+			<% if is_admin %> - <%= link_to 'Show Spam Entries', show_spam_entries_path %><% end %>
 			<span class="user">
 				<% if current_user %>
 					Logged in as <strong><%= current_user.username %></strong> - 

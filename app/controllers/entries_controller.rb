@@ -1,13 +1,14 @@
 class EntriesController < ApplicationController
   before_filter :retrieve_record, :only => [:show, :update, :destroy]
-  before_filter :get_sort_type, :only => [:index, :create]
+  before_filter :get_sort_type, :only => [:index, :create, :show_spam]
   
   def index
-    @entries = Entry.paginate :page => params[:page], :order => @order, :conditions => build_conditions
+    @entries = Entry.paginate :page => params[:page], :order => @order, :conditions => build_conditions(nil)
   end
   
   def show
-    @comments = @entry.comments.all(:conditions => build_conditions)
+    show_spam = (is_admin and params[:show_spam]) ? { :show_spam => 1 } : nil
+    @comments = @entry.comments.all(:conditions => build_conditions(show_spam))
   end
   
   def create
@@ -50,16 +51,26 @@ class EntriesController < ApplicationController
     redirect_to entries_path
   end
   
+  def show_spam
+    redirect_to entries_path and return unless is_admin
+    @entries = Entry.paginate :page => params[:page], :order => @order, :conditions => build_conditions({ :show_spam => 1 })
+    render :action => 'index'
+  end
+  
+  def toggle_spam
+    asdf
+  end
+  
   private
   
   def retrieve_record
     @entry = Entry.find(params[:id], :conditions => is_admin ? nil : ["spam = ?", false])
   end
   
-  def build_conditions
+  def build_conditions(options)
     conditions = Hash.new
     conditions[:user_id] = params[:user_id] if params[:user_id]
-    conditions[:spam] = false unless is_admin and params[:show_spam]
+    conditions[:spam] = false unless !options.nil? and options.key?(:show_spam)
     conditions
   end
   
@@ -74,6 +85,9 @@ class EntriesController < ApplicationController
     when params.key?(:oldest)
       @order = 'created_at ASC'
       @sort_type = 'Oldest'
+    when params[:action] == 'show_spam'
+      @order = 'created_at DESC'
+      @sort_type = 'Newest (w/ spam)'
     else
       @order = 'created_at DESC'
       @sort_type = 'Newest'

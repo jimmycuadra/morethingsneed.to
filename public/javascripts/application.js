@@ -1,19 +1,13 @@
+if (typeof MTNT == 'undefined') {
+  MTNT = {};
+}
+
 $(function() {
-  if (typeof MTNT == 'undefined') {
-    MTNT = {};
-  }
-    
 	$('#add form input[type=text]').formDefaults();
 	
 	$('.flash .close').live('click', function() {
 		$(this).parent().remove();
 	}).show();
-	
-	$('.spam-link').click(function(e) {
-	  e.preventDefault();
-	  
-	  $(this).closest('.section-content').find('.edit_entry').submit();
-	});
 	
 	$('#content.main form.new_entry').submit(function(e) {
 		if (/*@cc_on!@*/0) {
