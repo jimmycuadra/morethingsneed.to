@@ -1,19 +1,23 @@
 1:
+  id: 1
   entry_id: 1
   ip: '1.2.3.4'
   comment: 'Comment'
 
 2:
+  id: 2
   entry_id: 1
   ip: '1.2.3.4'
   comment: 'Comment'
 
 3:
+  id: 3
   entry_id: 1
   ip: '1.2.3.4'
   comment: 'Comment'
 
 4:
+  id: 4
   entry_id: 1
   ip: '1.2.3.4'
   comment: 'Comment'
