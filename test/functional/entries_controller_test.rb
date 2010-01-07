@@ -23,10 +23,11 @@ class EntriesControllerTest < ActionController::TestCase
     assert_equal assigns(:entries).size, 1
   end
   
-  test "should get show" do
+  test "should show entry with no spam comments" do
     get :show, { :id => 1 }
     assert_response :success
     assert_equal assigns(:entry).id, 1
+    assert_equal assigns(:comments).count, 3
   end
   
   test "should save and display entry" do
@@ -50,30 +51,38 @@ class EntriesControllerTest < ActionController::TestCase
     assert_not_nil flash[:success]
   end
   
-  test "should redirect to index when accessing show_spam if not logged in" do
+  test "should redirect to index when accessing show_spam if not admin" do
     get :show_spam
     assert_redirected_to entries_path
   end
 
-  test "should get all entries including spam if logged in" do
+  test "should get all entries including spam if admin" do
     UserSession.create(users(:dodongo))
     get :show_spam
     assert_response :success
     assert_equal assigns(:entries).size, 4
   end
   
-  test "should redirect to index and not toggle spam if not logged in" do
+  test "should redirect to index and not toggle spam if not admin" do
     initial_spam_flag = Entry.find(1).spam
     put :toggle_spam, :id => 1
     assert_redirected_to root_path
     assert_equal initial_spam_flag, Entry.find(1).spam
   end
   
-  test "should redirect to entry and toggle spam flag if logged in" do
+  test "should redirect to entry and toggle spam flag if admin" do
     UserSession.create(users(:dodongo))
     initial_spam_flag = Entry.find(1).spam
     put :toggle_spam, :id => 1
     assert_redirected_to entry_path(assigns(:entry))
     assert_not_equal initial_spam_flag, Entry.find(1).spam
+  end
+  
+  test "should show entry with spam comments if admin" do
+    UserSession.create(users(:dodongo))
+    get :show, { :id => 1, :show_spam => 1 }
+    assert_response :success
+    assert_equal assigns(:entry).id, 1
+    assert_equal assigns(:comments).count, 4
   end
 end
