@@ -85,4 +85,11 @@ class EntryTest < ActiveSupport::TestCase
     assert @e.errors.invalid?(:noun)
     assert @e.errors.invalid?(:verb)
   end
+  
+  test "should reject entry with noun or verb longer than 255 characters" do
+    @e.noun = @e.verb = 'abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz'
+    assert !@e.valid?
+    assert @e.errors.invalid?(:noun)
+    assert @e.errors.invalid?(:verb)
+  end
 end

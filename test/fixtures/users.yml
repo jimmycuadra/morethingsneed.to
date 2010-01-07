@@ -1,19 +1,30 @@
 bongo:
     username: Bongo
     email: bongo@bongo.com
-    crypted_password: 7fd37839eabdf26e2870feb32d01ce08d49fd3aec455ae75a3813ed525d0ddcd12cf420d7e28b8604fcec2f7fbec10f5b28b5213fd68b21b21f5772479090111
-    password_salt: ijkyTiWZtxcW585zn3k9
-    persistence_token: 69a99f1e32aa2f1d0814ed7f6d831c35d83e701a416d4525a98b2e98074d13deaabe0baee11f7cd8cfa0480318601e2c01d9ae9b5ff3a8eeb81ccc21947dca0a
-    single_access_token: 9OmZoWD0cN7FN9BXY4nX
-    perishable_token: 9OmZoWD0cN7FN9BXY4nX
+    password_salt: <%= salt = Authlogic::Random.hex_token %>
+    crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("test" + salt) %>
+    persistence_token: <%= Authlogic::Random.hex_token %>
+    single_access_token: <%= Authlogic::Random.friendly_token %>
+    perishable_token: <%= Authlogic::Random.friendly_token %>
     active: false
 
 wongo:
     username: Wongo
     email: wongo@wongo.com
-    crypted_password: 7fd37839eabdf26e2870feb32d01ce08d49fd3aec455ae75a3813ed525d0ddcd12cf420d7e28b8604fcec2f7fbec10f5b28b5213fd68b21b21f5772479090111
-    password_salt: ijkyTiWZtxcW585zn3k9
-    persistence_token: 69a99f1e32aa2f1d0814ed7f6d831c35d83e701a416d4525a98b2e98074d13deaabe0baee11f7cd8cfa0480318601e2c01d9ae9b5ff3a8eeb81ccc21947dca0a
-    single_access_token: 9OmZoWD0cN7FN9BXY4nX
-    perishable_token: 9OmZoWD0cN7FN9BXY4nX
+    password_salt: <%= salt = Authlogic::Random.hex_token %>
+    crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("test" + salt) %>
+    persistence_token: <%= Authlogic::Random.hex_token %>
+    single_access_token: <%= Authlogic::Random.friendly_token %>
+    perishable_token: <%= Authlogic::Random.friendly_token %>
+    active: true
+
+dodongo:
+    username: Dodongo
+    email: dodongo@dodongo.com
+    admin: true
+    password_salt: <%= salt = Authlogic::Random.hex_token %>
+    crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("test" + salt) %>
+    persistence_token: <%= Authlogic::Random.hex_token %>
+    single_access_token: <%= Authlogic::Random.friendly_token %>
+    perishable_token: <%= Authlogic::Random.friendly_token %>
     active: true
