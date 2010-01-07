@@ -28,13 +28,14 @@ class CommentsController < ApplicationController
   end
   
   def toggle_spam
-    redirect_to entry_path(Entry.find(params[:entry_id])) and return unless is_admin
+    @entry = Entry.find(params[:entry_id])
+    redirect_to @entry and return unless is_admin
     
     @comment = Comment.find(params[:id])
     
     new_spam_value = @comment.spam ? false : true
     @comment.update_attribute :spam, new_spam_value
     flash[:success] = 'More spam flags need to be toggled.'
-    redirect_to @comment.entry
+    redirect_to @entry
   end
 end

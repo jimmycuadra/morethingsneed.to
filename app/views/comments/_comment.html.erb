@@ -13,6 +13,9 @@
 			<%= h comment.name %>
 		<% end -%>
 		was quite thoughtful, don't you think?
+		<% if is_admin -%>
+		  - <%= toggle_comment_spam_link(comment.entry, comment) %>
+		<% end -%>
 		
 		<span class="time"><%= comment.created_at.to_s(:simple) %></span>
 	</div> <!-- footer -->

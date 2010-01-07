@@ -43,4 +43,9 @@ module EntriesHelper
     link_text = entry.spam ? 'Mark as legit' : 'Mark as spam'
     link_to link_text, toggle_spam_entry_path(entry), :method => :put
   end
+  
+  def toggle_comment_spam_link(entry, comment)
+    link_text = comment.spam ? 'Mark as legit' : 'Mark as spam'
+    link_to link_text, toggle_spam_entry_comment_path(entry, comment), :method => :put
+  end
 end
