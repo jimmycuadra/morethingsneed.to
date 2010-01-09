@@ -4,9 +4,7 @@ MTNT.Userbox = function(options) {
   this.$thisBox,
   this.$otherBox;
   
-  this.$links.each(function(i, link) {    
-    $(link).click(this.handleClick.bind(this));
-  }.bind(this));
+  this.$links.click(this.handleClick.bind(this));
 }
 
 MTNT.Userbox.prototype.handleClick = function(e, link) {

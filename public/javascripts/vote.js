@@ -1,23 +1,20 @@
-MTNT.Vote = function() {
-  MTNT.Vote.bindSubmit();
+MTNT.Vote = function($forms) {
+  this.$forms = $forms;
+  
+  this.$forms.submit(this.handleSubmit.bind(this));
 }
 
-MTNT.Vote.bindSubmit = function() {
-  $('form.new_vote').submit(function(e) {
-    var $this = $(this),
-        action = $this.attr('action'),
-        data = $this.serialize();
+MTNT.Vote.prototype.handleSubmit = function(e, form) {
+  var $form = $(form),
+      action = $form.attr('action'),
+      data = $form.serialize(),
+      section = $form.parent();
+  
+  $.post(action + '.js', data, this.handleResponse.bind(this, section), 'html');
 
-    e.preventDefault();
-
-    $.post(action + '.js', data, function(response) {
-      MTNT.Vote.handleVote($this.parent('.section-links'), response);
-    }, 'html');
-  });
+  e.preventDefault();
 }
 
-MTNT.Vote.handleVote = function(section, response) {
+MTNT.Vote.prototype.handleResponse = function(section, response) {
 	section.html(response);
 }
-
-$(MTNT.Vote);

@@ -12,6 +12,9 @@ $(function() {
     links: $('#nav .user a'),
     userBoxes: $('.userbox')
   });
+  
+  // votes
+  new MTNT.Vote($('form.new_vote'));
 	
 	$('#content.main form.new_entry').submit(function(e) {
 		if (/*@cc_on!@*/0) {
