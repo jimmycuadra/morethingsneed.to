@@ -2,10 +2,8 @@ $(function() {
   // form defaults
 	$('#add form input[type=text]').formDefaults();
 	
-	// flash message close button
-	$('.flash .close').live('click', function() {
-		$(this).parent().remove();
-	}).show();
+	// flash
+	var flash = new MTNT.Flash($('.flash'));
 	
 	// userbox
   new MTNT.Userbox({
@@ -23,14 +21,6 @@ $(function() {
 		var $this = $(this);
 		$.post('/entries', $this.serialize(), function(data) {
 			handleEntry($this, data);
-		}, 'json');
-		e.preventDefault();
-	});
-	
-	$('#new_contact').submit(function(e) {
-		var $this = $(this);
-		$.post('/contact', $this.serialize(), function(data) {
-			handleContact($this, data);
 		}, 'json');
 		e.preventDefault();
 	});
@@ -72,18 +62,6 @@ function handleEntry(addForm, data) {
 	}
 }
 
-function handleContact(contactForm, data) {
-	updateFlash(data.flash);
-	
-	$('.validation-errors').remove();
-	
-	if (data.success) {
-		contactForm[0].reset();
-	} else {
-		contactForm.prepend('<div class="validation-errors"><header><p>You fucked up.</p></header><ul><li>' + data.errors.join('</li><li>') + '</li></ul></div>');
-	}
-}
-
 function handleComment(commentForm, data) {
 	updateFlash(data.flash);
 	
@@ -97,15 +75,5 @@ function handleComment(commentForm, data) {
 		}, 'slow');
 	} else {
 		commentForm.prepend('<div class="validation-errors"><header><p>You fucked up.</p></header><ul><li>' + data.errors.join('</li><li>') + '</li></ul></div>');
-	}
-}
-
-function updateFlash(message) {
-	var $flash = $('.flash');
-
-	if (!$flash.length) {
-		$('#content').before('<div class="flash"><div class="close"></div>' + message + '</div>');
-	} else {
-		$flash.html('<div class="close"></div>' + message);
 	}
 }

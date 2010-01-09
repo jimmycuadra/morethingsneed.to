@@ -10,7 +10,7 @@
 	<!--[if IE]>
 		<link rel="stylesheet" href="/stylesheets/ie.css" type="text/css" media="screen" charset="utf-8" />
 	<![endif]-->
-	<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js', 'core', 'form-defaults', 'userbox', 'vote', 'application' %>
+	<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js', 'core', 'form-defaults', 'flash', 'userbox', 'vote', 'application' %>
 </head>
 <body>
 	<div id="header">
@@ -37,16 +37,17 @@
 			</span>				
 		</div>	<!-- /nav -->
 		
-		<% if flash[:error] or flash[:success] -%>
-		<div class="flash<%= ' success' if flash[:success] %>">
-			<%= flash[:error] or flash[:success] %>
-			<div class="close"></div>
-			
-			<% [@new_entry, @comment, @contact, @user, @user_session].each do |o| %>
-			  <%= render_error_messages o if o %>
-			<% end -%>
+		<div class="flash<%= ' success' if flash[:success] %><%= ' hidden' unless flash[:error] or flash[:success] -%>">
+			<div class="close hidden"></div>
+			<div class="message">
+  			<%= flash[:error] or flash[:success] %>
+			</div>
+			<div class="errors">
+  			<% [@new_entry, @comment, @contact, @user, @user_session].each do |o| %>
+  			  <%= render_error_messages o if o %>
+  			<% end -%>
+			</div>
 		</div>
-		<% end -%>
 
 		<div id="userbox-wrapper">
 			<div id="register-box" class="userbox">
