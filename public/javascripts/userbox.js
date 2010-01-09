@@ -1,25 +1,31 @@
-MTNT.Userbox = function() {
-  MTNT.Userbox.bindClick($('#nav .user a'));  
+MTNT.Userbox = function(options) {
+  this.$links = options.links,
+  this.$userBoxes = options.userBoxes,
+  this.$thisBox,
+  this.$otherBox;
+  
+  this.$links.each(function(i, link) {    
+    $(link).click(this.handleClick.bind(this));
+  }.bind(this));
 }
 
-MTNT.Userbox.bindClick = function($links) {
-  $links.each(function() {
-    $(this).click(function(e) {
-      var $this = $(this),
-          $thisBox = $('#' + $this.attr('id') + '-box'),
-          $otherBox = $('.userbox').not('#' + $this.attr('id') + '-box');
+MTNT.Userbox.prototype.handleClick = function(e, link) {
+  var $link = $(link),
+      boxSelector = '#' + $link.attr('id') + '-box';
 
-      e.preventDefault();
+  this.$thisBox = $(boxSelector);
+  this.$otherBox = this.$userBoxes.not(boxSelector);
 
-      if ($otherBox.css('display') == 'block') {
-        $otherBox.slideUp(100, function() {
-          $thisBox.slideToggle(250);
-        });
-      } else {
-        $thisBox.slideToggle(250);
-      }
-    });
-  });
+  this.animateBoxes();
+  e.preventDefault();
 }
 
-$(MTNT.Userbox);
+MTNT.Userbox.prototype.animateBoxes = function() {
+  if (this.$otherBox.css('display') == 'block') {
+    this.$otherBox.slideUp(100, function() {
+      this.$thisBox.slideToggle(250);
+    }.bind(this));
+  } else {
+    this.$thisBox.slideToggle(250);
+  }
+}

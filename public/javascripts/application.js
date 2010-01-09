@@ -1,13 +1,17 @@
-if (typeof MTNT == 'undefined') {
-  MTNT = {};
-}
-
 $(function() {
+  // form defaults
 	$('#add form input[type=text]').formDefaults();
 	
+	// flash message close button
 	$('.flash .close').live('click', function() {
 		$(this).parent().remove();
 	}).show();
+	
+	// userbox
+  new MTNT.Userbox({
+    links: $('#nav .user a'),
+    userBoxes: $('.userbox')
+  });
 	
 	$('#content.main form.new_entry').submit(function(e) {
 		if (/*@cc_on!@*/0) {
