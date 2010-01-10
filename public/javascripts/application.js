@@ -7,7 +7,7 @@ $(function() {
 	
 	// userbox
   new MTNT.Userbox({
-    links: $('#nav .user a'),
+    links: $('#nav .user:not(.logged-in) a'),
     userBoxes: $('.userbox')
   });
   
