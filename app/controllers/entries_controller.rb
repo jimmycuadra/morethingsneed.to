@@ -15,6 +15,7 @@ class EntriesController < ApplicationController
     @new_entry = Entry.new((params[:entry] || {}).merge({ :ip => request.remote_ip }))
     @new_entry.user_id = current_user.id if current_user
     if @new_entry.save
+      @is_ajax = request.xhr? ? true : false 
       respond_to do |format|
         format.html do
           flash[:success] = 'More submissions need to be successful.'

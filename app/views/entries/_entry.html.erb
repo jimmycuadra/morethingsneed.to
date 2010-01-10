@@ -1,7 +1,11 @@
 <div class="article">
-	<div class="header">
+	<div class="header<%= ' new-entry' if @is_ajax %>">
 	  <% if entry.spam %><strong>SPAM</strong> -<% end %>
-		<%= entry.user ? link_to(entry.user.username, user_entries_path(entry.user)) : 'Someone' %> crapped this out on <span class="time"><%= entry.created_at.to_s(:written_out) %></span>.
+	  <% if @is_ajax -%>
+	    You crapped this out just now.
+	  <% else -%>
+		  <%= entry.user ? link_to(entry.user.username, user_entries_path(entry.user)) : 'Someone' %> crapped this out on <span class="time"><%= entry.created_at.to_s(:written_out) %></span>.
+		<% end -%>
 		
 		<div class="share-links">
 			<a href="http://facebook.com/sharer.php?u=http://morethingsneed.to/<%= entry.id %>"><img src="/images/facebook_icon.gif" alt="Post this on Facebook" title="Post this on Facebook" /></a>

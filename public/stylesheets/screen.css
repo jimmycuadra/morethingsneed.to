@@ -293,6 +293,11 @@ small {
 	-webkit-border-top-right-radius: 4px;
 }
 
+.article .new-entry.header {
+  background-image: url(/images/new_article_header_gradient.png);
+  color: #fff;
+}
+
 .article .header a, 
 .article .header a:active, 
 .article .header a:visited {

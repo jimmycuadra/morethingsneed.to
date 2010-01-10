@@ -3,7 +3,7 @@
     
     return this.each(function() {
       
-      var $inputs = $(this).css('color', '#666'),
+      var $inputs = $(this).find('input[type=text]').css('color', '#666'),
           defaultFormValues = new Array();
           
       $inputs.focus(function() {

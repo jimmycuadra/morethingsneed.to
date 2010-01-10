@@ -1,10 +1,10 @@
 MTNT.Vote = function($forms) {
   this.$forms = $forms;
   
-  this.$forms.submit(this.handleSubmit.bind(this));
+  this.$forms.live('submit', this.handleSubmit.bind(this));
 }
 
-MTNT.Vote.prototype.handleSubmit = function(e, form) {
+MTNT.Vote.prototype.handleSubmit = function(e, originalSelector, form) {
   var $form = $(form),
       action = $form.attr('action'),
       data = $form.serialize(),
