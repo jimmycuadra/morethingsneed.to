@@ -11,12 +11,12 @@ MTNT.Flash.prototype.handleClose = function($closeButton) {
 	this.$container.addClass('hidden');
 }
 
-MTNT.Flash.prototype.update = function(type, message, errors) {
-  if (typeof errors == 'undefined' || type == 'success') {
+MTNT.Flash.prototype.update = function(success, message, errors) {
+  if (typeof errors == 'undefined' || success) {
     errors = '';
   }
   
-  if (type == 'success') {
+  if (success) {
     this.$container.addClass('success')
   } else {
     this.$container.removeClass('success');

@@ -462,7 +462,6 @@ form input[type=submit] {
 }
 
 .flash .validation-errors {
-	clear: right;
 	list-style-type: disc;
 	margin-top: 9px;
 }

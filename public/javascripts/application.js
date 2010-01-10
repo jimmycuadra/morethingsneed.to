@@ -13,6 +13,12 @@ $(function() {
   
   // votes
   new MTNT.Vote($('form.new_vote'));
+  
+  // contact form
+  new MTNT.Contact({
+    $form: $('#new_contact'),
+    flash: flash
+  });
 	
 	$('#content.main form.new_entry').submit(function(e) {
 		if (/*@cc_on!@*/0) {
