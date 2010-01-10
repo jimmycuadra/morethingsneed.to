@@ -6,7 +6,7 @@
 	<div class="footer">
 	  <% if comment.spam? %><strong>SPAM</strong> -<% end %>
 		<% if comment.user -%>
-			<%= comment.user.username %>
+			<%= link_to(comment.user.username, user_entries_path(comment.user)) %>
 		<% elsif comment.name.blank? -%>
 			Someone
 		<% else -%>
@@ -17,6 +17,12 @@
 		  - <%= toggle_comment_spam_link(comment.entry, comment) %>
 		<% end -%>
 		
-		<span class="time"><%= comment.created_at.to_s(:simple) %></span>
+		<span class="time">
+  		<% if @is_ajax -%>
+  		  Just now!
+  		<% else -%>
+  		  <%= comment.created_at.to_s(:simple) %>
+  		<% end -%>
+		</span>
 	</div> <!-- footer -->
 </div> <!-- /article -->

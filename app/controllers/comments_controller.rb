@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     @comment.ip = request.remote_ip
     @comment.user_id = current_user.id if current_user
     if @comment.save
+      @is_ajax = request.xhr? ? true : false 
       respond_to do |format|
         format.html do
           flash[:success] = 'Your opinion has been duly noted.'
