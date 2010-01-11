@@ -1,11 +1,11 @@
 MTNT.Userbox = function(options) {
-  this.$links = options.links,
-  this.$userBoxes = options.userBoxes,
-  this.$thisBox,
+  this.$links = options.links;
+  this.$userBoxes = options.userBoxes;
+  this.$thisBox;
   this.$otherBox;
   
   this.$links.click(this.handleClick.bind(this));
-}
+};
 
 MTNT.Userbox.prototype.handleClick = function(e, link) {
   var $link = $(link),
@@ -16,7 +16,7 @@ MTNT.Userbox.prototype.handleClick = function(e, link) {
 
   this.animateBoxes();
   e.preventDefault();
-}
+};
 
 MTNT.Userbox.prototype.animateBoxes = function() {
   if (this.$otherBox.css('display') == 'block') {
@@ -26,4 +26,4 @@ MTNT.Userbox.prototype.animateBoxes = function() {
   } else {
     this.$thisBox.slideToggle(250);
   }
-}
+};

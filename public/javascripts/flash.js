@@ -5,11 +5,11 @@ MTNT.Flash = function($container) {
   this.$errors = $container.find('.errors');
   
   this.$closeButton.click(this.handleClose.bind(this));
-}
+};
 
 MTNT.Flash.prototype.handleClose = function($closeButton) {
 	this.$container.addClass('hidden');
-}
+};
 
 MTNT.Flash.prototype.update = function(success, message, errors) {
   if (typeof errors == 'undefined' || success) {
@@ -17,7 +17,7 @@ MTNT.Flash.prototype.update = function(success, message, errors) {
   }
   
   if (success) {
-    this.$container.addClass('success')
+    this.$container.addClass('success');
   } else {
     this.$container.removeClass('success');
   }
@@ -25,4 +25,4 @@ MTNT.Flash.prototype.update = function(success, message, errors) {
   this.$message.html(message);
   this.$errors.html(errors);
   this.$container.removeClass('hidden');
-}
+};

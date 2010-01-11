@@ -9,6 +9,6 @@ if (typeof Function.prototype.bind == 'undefined') {
       var local_args = args.concat(Array.prototype.slice.call(arguments));
       if (this !== window) local_args.push(this);
       return __method.apply(object, local_args);
-    }
-  }
+    };
+  };
 }

@@ -4,7 +4,7 @@ MTNT.Comment = function(options) {
   this.flash = options.flash;
   
   this.$form.submit(this.handleSubmit.bind(this));
-}
+};
 
 MTNT.Comment.prototype.handleSubmit = function(e, form) {
   var $form = $(form),
@@ -14,7 +14,7 @@ MTNT.Comment.prototype.handleSubmit = function(e, form) {
   $.post(action, data, this.handleResponse.bind(this), 'json');
   
   e.preventDefault();
-}
+};
 
 MTNT.Comment.prototype.handleResponse = function(response) {
   if (response.success) {
@@ -22,9 +22,9 @@ MTNT.Comment.prototype.handleResponse = function(response) {
     this.flash.update(response.success, response.message);
     this.insert(response.comment);
   } else {
-    this.flash.update(response.success, response.message, response.errors)
+    this.flash.update(response.success, response.message, response.errors);
   }
-}
+};
 
 MTNT.Comment.prototype.insert = function(comment) {
   if (this.$container.hasClass('empty-state')) {
@@ -34,6 +34,6 @@ MTNT.Comment.prototype.insert = function(comment) {
   $(comment).css('opacity', 0)
   .prependTo(this.$container.selector)
   .animate({
-    opacity: '1',
+    opacity: '1'
   }, 'normal');
-}
+};

@@ -4,7 +4,7 @@ MTNT.Entry = function(options) {
   this.flash = options.flash;
 
   this.$form.submit(this.handleSubmit.bind(this));
-}
+};
 
 MTNT.Entry.prototype.handleSubmit = function(e, form) {
   var $form = $(form),
@@ -14,7 +14,7 @@ MTNT.Entry.prototype.handleSubmit = function(e, form) {
   $.post(action, data, this.handleResponse.bind(this), 'json');
   
   e.preventDefault();
-}
+};
 
 MTNT.Entry.prototype.handleResponse = function(response) {
   if (response.success) {
@@ -23,14 +23,14 @@ MTNT.Entry.prototype.handleResponse = function(response) {
     this.flash.update(response.success, response.message);
     this.insert(response.entry);
   } else {
-    this.flash.update(response.success, response.message, response.errors)
+    this.flash.update(response.success, response.message, response.errors);
   }
-}
+};
 
 MTNT.Entry.prototype.insert = function(entry) {
   $(entry).css('opacity', 0)
   .prependTo(this.$container.selector)
   .animate({
-    opacity: '1',
-  }, 'normal')
-}
+    opacity: '1'
+  }, 'normal');
+};

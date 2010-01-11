@@ -23,8 +23,8 @@
           this.value = defaultFormValues[this.name];
           $(this).css('color', '#666');
         }
-      })
+      });
     });
     
-  }
+  };
 }) (jQuery);
