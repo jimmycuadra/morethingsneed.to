@@ -13,12 +13,14 @@
 	<%= javascript_include_tag 'jquery.min.js', 'core', 'form-defaults', 'flash', 'userbox', 'entry', 'vote', 'comment', 'contact', 'application' %>
 </head>
 <body>
+	<div id="bucket">
+	
 	<div id="header">
 		<a href="/" id="title-link" title="More Things Need To">More Things Need To</a>
 		<%= render :partial => 'entries/add' %>
 		
 		<div id="nav">
-			<%= link_to_unless((params[:controller] == 'entries' && params[:action] && !(params.key?(:best) || params.key?(:worst) || params.key?(:oldest))), 'Newest', root_path) %> -
+			<%= link_to_unless((params[:controller] == 'entries' && params[:action] && params[:action] != 'show' && !(params.key?(:best) || params.key?(:worst) || params.key?(:oldest))), 'Newest', root_path) %> -
 			<%= link_to_unless params.key?(:oldest), 'Oldest', root_path + '?oldest' %> -
 			<%= link_to_unless params.key?(:best), 'Best', root_path + '?best' %> -
 			<%= link_to_unless params.key?(:worst), 'Worst', root_path + '?worst' %> -
@@ -71,6 +73,8 @@
 		&copy; 2009 Jimmy Cuadra and Michael Chadwick.
 		</p>
 	</div> <!-- /footer -->
+	
+	</div> <!-- /bucket -->
 	
 	<script type="text/javascript">
 	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

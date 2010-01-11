@@ -7,11 +7,13 @@
 }
 
 body {
-	background: #6d513c url(/images/background.jpg) no-repeat center top;
+	/*background: #6d513c url(/images/background.jpg) no-repeat center top;*/
+	background: #a97d5d;
 	color: #fff;
 	line-height: 18px;
 	font-family: Arial, sans-serif;
 	font-size: 14px;
+	margin: 0;
 }
 
 a, 
@@ -31,14 +33,6 @@ p {
 
 .clear {
 	clear: both;
-}
-
-#header #title-link {
-	display: block;
-	height: 50px;
-	margin: 10px auto;
-	text-indent: -9999px;
-	width: 446px;
 }
 
 h1 {
@@ -93,6 +87,20 @@ small {
 }
 
 /* structure */
+
+#bucket {
+	background: #6d513c url(/images/background.jpg) no-repeat center top;
+	margin: 0;
+	padding: 0;
+}
+
+#header #title-link {
+	display: block;
+	height: 70px;
+	margin: 0 auto;
+	text-indent: -9999px;
+	width: 446px;
+}
 
 #content {
 	background: transparent;
