@@ -14,6 +14,7 @@ class Entry < ActiveRecord::Base
   validate_on_create :no_recent_entry_from_ip
   before_save :strip_trailing_punctuation
   attr_accessor :email
+  attr_accessible :noun, :verb, :needs
   
   def not_default_or_missing_phrase
     if (self.noun == 'nouns' and self.verb == 'verb') or (self.noun.blank? and self.verb.blank?)  

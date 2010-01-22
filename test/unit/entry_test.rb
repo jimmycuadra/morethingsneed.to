@@ -2,7 +2,8 @@ require 'test_helper'
 
 class EntryTest < ActiveSupport::TestCase  
   def setup
-    @e = Entry.new(:noun => 'tests', :verb => 'run', :ip => generate_ip)
+    @e = Entry.new(:noun => 'tests', :verb => 'run')
+    @e.ip = generate_ip
   end
   
   test "should accept valid entry" do
@@ -58,7 +59,8 @@ class EntryTest < ActiveSupport::TestCase
   test "should reject 2nd entry from IP within 1 minute" do
     ip = @e.ip
     assert @e.save
-    @e2 = Entry.new(:noun => 'another', :verb => 'entry', :ip => ip)
+    @e2 = Entry.new(:noun => 'another', :verb => 'entry')
+    @e2.ip = ip
     assert !@e2.valid?, 'Second entry from IP was accepted'
     assert @e2.errors.invalid?(:base)
   end

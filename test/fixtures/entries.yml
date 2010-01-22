@@ -16,3 +16,11 @@ dogs:
     verb: 'bark'
     ip: '3.4.5.6'
     user_id: 1
+
+humans:
+    id: 4
+    noun: 'humans'
+    verb: 'cheat'
+    ip: '4.5.6.7'
+    spam: true
+    
