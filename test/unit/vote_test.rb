@@ -2,8 +2,10 @@ require 'test_helper'
 
 class VoteTest < ActiveSupport::TestCase
   def setup
-    Entry.create(:noun => 'tests', :verb => 'run', :ip => generate_ip)
-    @v = Entry.last.votes.build(:ip => generate_ip, :up_vote => 1)
+    @e = Entry.new(:noun => 'tests', :verb => 'run')
+    @e.ip = generate_ip
+    @v = Entry.last.votes.build(:up_vote => 1)
+    @v.ip = generate_ip
   end
   
   test "should accept valid vote" do
@@ -49,7 +51,8 @@ class VoteTest < ActiveSupport::TestCase
   test "should reject second vote from same IP" do
     ip = @v.ip
     assert @v.save
-    @v2 = Entry.last.votes.build(:ip => ip, :up_vote => 1)
+    @v2 = Entry.last.votes.build(:up_vote => 1)
+    @v2.ip = ip
     assert !@v2.valid?
     assert @v2.errors.invalid?(:base)
   end

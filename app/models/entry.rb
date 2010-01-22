@@ -2,7 +2,7 @@ class Entry < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :votes, :dependent => :destroy
   belongs_to :user
-  # validates_presence_of :ip
+  validates_presence_of :ip
   validates_format_of :ip, :with => /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/, :message => 'must be a valid IP'
   validates_uniqueness_of :noun, :scope => :verb, :message => "^I know you think you're clever, but someone already submitted that one."
   validates_length_of :noun, :verb, :maximum => 255, :message => "^You're too wordy. Not more than 255 characters, please."
