@@ -2,8 +2,11 @@ require 'test_helper'
 
 class CommentTest < ActiveSupport::TestCase
   def setup
-    Entry.create(:noun => 'tests', :verb => 'run', :ip => generate_ip)
-    @c = Entry.last.comments.build(:comment => 'A comment.', :ip => generate_ip)
+    @e = Entry.new(:noun => 'tests', :verb => 'run')
+    @e.ip = generate_ip
+    @e.save
+    @c = Entry.last.comments.build(:comment => 'A comment.')
+    @c.ip = generate_ip
   end
   
   test "should accept valid comment" do
@@ -39,7 +42,8 @@ class CommentTest < ActiveSupport::TestCase
   test "should reject 2nd comment from IP within 1 minute" do
     ip = @c.ip
     assert @c.save
-    @c2 = Entry.last.comments.build(:comment => 'A comment.', :ip => ip)
+    @c2 = Entry.last.comments.build(:comment => 'A comment.')
+    @c2.ip = ip
     assert !@c2.valid?, 'Second comment from IP was accepted'
     assert @c2.errors.invalid?(:base)
   end

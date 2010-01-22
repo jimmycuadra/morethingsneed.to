@@ -8,6 +8,7 @@ class Comment < ActiveRecord::Base
   validate :honeypot_must_be_blank
   validate_on_create :no_recent_comment_from_ip
   attr_accessor :email
+  attr_accessible :name, :comment
   
   def honeypot_must_be_blank
     self.errors.add_to_base('FUCK BOTS') unless self.email.blank?
