@@ -12,15 +12,23 @@ end
 ipm = IP_Maker.new
 
 1.upto(20) do |i|
-  e = Entry.create(:noun => i.to_s, :verb => i.to_s, :ip => ipm.generate, :spam => random_spam)
+  e = Entry.new(:noun => i.to_s, :verb => i.to_s, :spam => random_spam)
+  e.ip = ipm.generate
+  e.save
   rand(10).times do
-    e.comments.create(:comment => 'Comment', :ip => ipm.generate, :spam => random_spam)
+    c = e.comments.build(:comment => 'Comment', :spam => random_spam)
+    c.ip = ipm.generate
+    c.save
   end
   rand(15).times do
-    e.votes.create(:up_vote => true, :ip => ipm.generate)
+    v = e.votes.build(:up_vote => true)
+    v.ip = ipm.generate
+    v.save
   end
   rand(15).times do
-    e.votes.create(:up_vote => false, :ip => ipm.generate)
+    v = e.votes.build(:up_vote => false)
+    v.ip = ipm.generate
+    v.save
   end
 end
 
