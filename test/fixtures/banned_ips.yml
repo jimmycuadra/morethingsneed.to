@@ -1,7 +1,2 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  ip: MyString
-
-two:
-  ip: MyString
+1:
+  ip: 255.255.255.255
