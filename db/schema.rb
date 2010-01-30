@@ -9,7 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091230111936) do
+ActiveRecord::Schema.define(:version => 20100130214216) do
+
+  create_table "banned_ips", :force => true do |t|
+    t.string   "ip",         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "banned_ips", ["ip"], :name => "index_banned_ips_on_ip"
 
   create_table "comments", :force => true do |t|
     t.string   "name"
