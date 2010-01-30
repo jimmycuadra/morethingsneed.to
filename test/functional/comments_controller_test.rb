@@ -12,18 +12,14 @@ class CommentsControllerTest < ActionController::TestCase
     assert_not_nil flash[:success]
   end
   
-  test "should redirect to entry and not toggle spam if not admin" do
-    initial_spam_flag = Comment.find(1).spam
+  test "should redirect to root without toggling spam if not admin" do
     put :toggle_spam, :entry_id => 1, :id => 1
-    assert_redirected_to entry_path(Entry.find(1))
-    assert_equal initial_spam_flag, Comment.find(1).spam
+    assert_redirected_to root_path
   end
   
-  test "should redirect to entry and toggle spam flag if admin" do
+  test "should redirect to entry after toggling spam if admin" do
     UserSession.create(users(:dodongo))
-    initial_spam_flag = Comment.find(1).spam
     put :toggle_spam, :entry_id => 1, :id => 1
     assert_redirected_to entry_path(assigns(:comment).entry)
-    assert_not_equal initial_spam_flag, Comment.find(1).spam
   end
 end

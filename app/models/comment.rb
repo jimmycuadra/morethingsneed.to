@@ -1,4 +1,6 @@
 class Comment < ActiveRecord::Base
+  include Spammable
+  
   # relationships
   
   belongs_to :entry

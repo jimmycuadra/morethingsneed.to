@@ -47,4 +47,11 @@ class CommentTest < ActiveSupport::TestCase
     assert !@c2.valid?, 'Second comment from IP was accepted'
     assert @c2.errors.invalid?(:base)
   end
+
+  test "should toggle spam" do
+    @c = Comment.first
+    initial_spam_value = @c.spam
+    @c.toggle_spam
+    assert_not_equal @c.spam, initial_spam_value
+  end
 end

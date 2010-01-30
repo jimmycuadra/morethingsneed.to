@@ -94,4 +94,11 @@ class EntryTest < ActiveSupport::TestCase
     assert @e.errors.invalid?(:noun)
     assert @e.errors.invalid?(:verb)
   end
+  
+  test "should toggle spam" do
+    @e = Entry.first
+    initial_spam_value = @e.spam
+    @e.toggle_spam
+    assert_not_equal @e.spam, initial_spam_value
+  end
 end

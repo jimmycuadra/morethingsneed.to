@@ -62,8 +62,7 @@ class EntriesController < ApplicationController
   def toggle_spam
     redirect_to root_path and return unless is_admin
     
-    new_spam_value = @entry.spam ? false : true
-    @entry.update_attribute :spam, new_spam_value
+    @entry.toggle_spam
     flash[:success] = 'More spam flags need to be toggled.'
     redirect_to @entry
   end

@@ -63,19 +63,15 @@ class EntriesControllerTest < ActionController::TestCase
     assert_equal assigns(:entries).size, 4
   end
   
-  test "should redirect to index and not toggle spam if not admin" do
-    initial_spam_flag = Entry.find(1).spam
+  test "should redirect to root without toggling spam if not admin" do
     put :toggle_spam, :id => 1
     assert_redirected_to root_path
-    assert_equal initial_spam_flag, Entry.find(1).spam
   end
   
-  test "should redirect to entry and toggle spam flag if admin" do
+  test "should redirect to entry after toggling spam if admin" do
     UserSession.create(users(:dodongo))
-    initial_spam_flag = Entry.find(1).spam
     put :toggle_spam, :id => 1
     assert_redirected_to entry_path(assigns(:entry))
-    assert_not_equal initial_spam_flag, Entry.find(1).spam
   end
   
   test "should show entry with spam comments if admin" do

@@ -1,4 +1,6 @@
 class Entry < ActiveRecord::Base
+  include Spammable
+  
   # relationships
   
   has_many :comments, :dependent => :destroy
