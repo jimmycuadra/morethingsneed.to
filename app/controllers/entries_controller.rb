@@ -4,6 +4,7 @@ class EntriesController < ApplicationController
   
   def index
     @entries = Entry.paginate :page => params[:page], :order => @order, :conditions => build_conditions(nil)
+    @username = User.find(params[:user_id]).username if params[:user_id]
   end
   
   def show

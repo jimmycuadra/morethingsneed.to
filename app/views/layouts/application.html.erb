@@ -19,7 +19,7 @@
 		<%= render :partial => 'entries/add' %>
 		
 		<div id="nav">
-			<%= link_to_unless((params[:controller] == 'entries' && params[:action] && params[:action] != 'show' && !(params.key?(:best) || params.key?(:worst) || params.key?(:oldest))), 'Newest', root_path) %> -
+			<%= link_to_unless((params[:controller] == 'entries' && params[:action] && params[:action] != 'show' && !@username && !(params.key?(:best) || params.key?(:worst) || params.key?(:oldest))), 'Newest', root_path) %> -
 			<%= link_to_unless params.key?(:oldest), 'Oldest', root_path + '?oldest' %> -
 			<%= link_to_unless params.key?(:best), 'Best', root_path + '?best' %> -
 			<%= link_to_unless params.key?(:worst), 'Worst', root_path + '?worst' %> -

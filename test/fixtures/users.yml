@@ -1,4 +1,5 @@
 bongo:
+    id: 1
     username: Bongo
     email: bongo@bongo.com
     password_salt: <%= salt = Authlogic::Random.hex_token %>
@@ -9,6 +10,7 @@ bongo:
     active: false
 
 wongo:
+    id: 2
     username: Wongo
     email: wongo@wongo.com
     password_salt: <%= salt = Authlogic::Random.hex_token %>
@@ -19,6 +21,7 @@ wongo:
     active: true
 
 dodongo:
+    id: 3
     username: Dodongo
     email: dodongo@dodongo.com
     admin: true
