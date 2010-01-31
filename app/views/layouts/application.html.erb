@@ -5,12 +5,11 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 	<title>morethingsneed.to</title>
 	<link rel="shortcut icon" href="/favicon.ico" />
-	<link rel="stylesheet" href="/stylesheets/reset.css" type="text/css" media="screen, projection" />
-	<link rel="stylesheet" href="/stylesheets/screen.css" type="text/css" media="screen, projection" id="main_style" />
+	<%= stylesheet_link_tag 'reset', 'screen', :cache => 'mtnt' %>
 	<!--[if IE]>
-		<link rel="stylesheet" href="/stylesheets/ie.css" type="text/css" media="screen" charset="utf-8" />
+		<%= stylesheet_link_tag 'ie' %>
 	<![endif]-->
-	<%= javascript_include_tag 'jquery.min.js', 'core', 'form-defaults', 'flash', 'userbox', 'entry', 'vote', 'comment', 'contact', 'application' %>
+	<%= javascript_include_tag 'jquery.min.js', 'core', 'form-defaults', 'flash', 'userbox', 'entry', 'vote', 'comment', 'contact', 'application', :cache => 'mtnt' %>
 </head>
 <body>
 	<div id="bucket">
@@ -76,14 +75,6 @@
 	
 	</div> <!-- /bucket -->
 	
-	<script type="text/javascript">
-	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-	</script>
-	<script type="text/javascript">
-	try {
-	var pageTracker = _gat._getTracker("UA-5500916-10");
-	pageTracker._trackPageview();
-	} catch(err) {}</script>
+  <%= render :partial => 'partials/ga_tracking' unless request.env['HTTP_HOST'] =~ /^dev/ %>
 </body>
 </html>
