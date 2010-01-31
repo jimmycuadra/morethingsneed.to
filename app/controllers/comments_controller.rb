@@ -34,7 +34,7 @@ class CommentsController < ApplicationController
     @entry = Entry.find(params[:entry_id])
     @comment = Comment.find(params[:id])
     
-    @comment.toggle_spam
+    BannedIp.toggle_ban(@comment.ip)
     flash[:success] = 'More spam flags need to be toggled.'
     redirect_to @entry
   end

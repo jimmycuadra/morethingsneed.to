@@ -62,7 +62,7 @@ class EntriesController < ApplicationController
   def toggle_spam
     redirect_to root_path and return unless is_admin
     
-    @entry.toggle_spam
+    BannedIp.toggle_ban(@entry.ip)
     flash[:success] = 'More spam flags need to be toggled.'
     redirect_to @entry
   end
