@@ -306,6 +306,11 @@ small {
   color: #fff;
 }
 
+.article .spam-entry.header {
+  background-image: url(/images/spam_article_header_gradient.png);
+  color: #fff;
+}
+
 .article .header a, 
 .article .header a:active, 
 .article .header a:visited {
@@ -387,12 +392,6 @@ small {
 
 .article form input[type=submit] {
 	margin: 3px 0;
-}
-
-/* comments */
-
-#comments {
-	margin-bottom: 36px;
 }
 
 /* forms */
@@ -500,11 +499,28 @@ form input[type=submit] {
 
 /* comments */
 
+#comments {
+	margin-bottom: 36px;
+}
+
 #comments .article {
 	background-color: #cdbfac;
 	border: 1px solid #000;
 	margin-bottom: 18px;
 	padding: 9px;
+}
+
+#comments .spam-comment.article {
+  background-color: #730604;
+  color: #fff;
+}
+
+#comments .spam-comment.article a {
+  color: #fff;
+}
+
+#comments .spam-comment.article .section {
+  border-bottom-color: #cdbfac;
 }
 
 #comments .article .section {

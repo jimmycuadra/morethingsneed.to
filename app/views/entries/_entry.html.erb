@@ -1,6 +1,5 @@
 <div class="article">
-	<div class="header<%= ' new-entry' if @is_ajax %>">
-	  <% if entry.spam %><strong>SPAM</strong> -<% end %>
+	<div class="header<%= ' new-entry' if @is_ajax %><%= ' spam-entry' if entry.spam %>">
 	  <% if @is_ajax -%>
 	    You crapped this out just now.
 	  <% else -%>

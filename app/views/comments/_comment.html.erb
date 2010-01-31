@@ -1,10 +1,9 @@
-<div class="article">
+<div class="article<%= ' spam-comment' if comment.spam %>">
 	<div class="section">
 		<%= h comment.comment %>		
 	</div>
 	
 	<div class="footer">
-	  <% if comment.spam? %><strong>SPAM</strong> -<% end %>
 		<% if comment.user -%>
 			<%= link_to(comment.user.username, user_entries_path(comment.user)) %>
 		<% elsif comment.name.blank? -%>
