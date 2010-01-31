@@ -12,12 +12,14 @@ end
 ipm = IP_Maker.new
 
 1.upto(20) do |i|
-  e = Entry.new(:noun => i.to_s, :verb => i.to_s, :spam => random_spam)
+  e = Entry.new(:noun => i.to_s, :verb => i.to_s)
   e.ip = ipm.generate
+  e.spam = random_spam
   e.save
   rand(10).times do
-    c = e.comments.build(:comment => 'Comment', :spam => random_spam)
+    c = e.comments.build(:comment => 'Comment')
     c.ip = ipm.generate
+    c.spam = random_spam
     c.save
   end
   rand(15).times do
@@ -32,6 +34,19 @@ ipm = IP_Maker.new
   end
 end
 
-User.create(:username => 'Jimmy', :password => 'asdf', :password_confirmation => 'asdf', :email => 'jimmy@morethingsneed.to', :active => true, :admin => true)
-User.create(:username => 'Mike', :password => 'asdf', :password_confirmation => 'asdf', :email => 'mike@morethingsneed.to', :active => true, :admin => true)
-User.create(:username => 'Guest', :password => 'asdf', :password_confirmation => 'asdf', :email => 'guest@website.com', :active => true)
+u = User.new(:password => 'asdf', :password_confirmation => 'asdf', :email => 'jimmy@morethingsneed.to')
+u.username = 'Jimmy'
+u.admin = true
+u.active = true
+u.save
+
+u = User.new(:password => 'asdf', :password_confirmation => 'asdf', :email => 'mike@morethingsneed.to')
+u.username = 'Mike'
+u.admin = true
+u.active = true
+u.save
+
+u = User.new(:password => 'asdf', :password_confirmation => 'asdf', :email => 'guest@website.com')
+u.username = 'Guest'
+u.active = true
+u.save
