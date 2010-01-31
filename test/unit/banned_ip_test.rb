@@ -12,22 +12,38 @@ class BannedIpTest < ActiveSupport::TestCase
   end
   
   test "should not return banned ip record" do
-    assert_nil BannedIp.is_banned?('0.0.0.0')
+    assert_nil BannedIp.is_banned?('1.2.3.4')
   end
   
   test "should return banned ip record" do
-    assert_not_nil BannedIp.is_banned?('255.255.255.255')
+    assert_not_nil BannedIp.is_banned?('4.5.6.7')
   end
   
   test "should ban ip" do
     assert_difference 'BannedIp.count', 1 do
-      BannedIp.toggle_ban('0.0.0.0')
+      BannedIp.toggle_ban('1.2.3.4')
     end
   end
   
   test "should unban ip" do
     assert_difference 'BannedIp.count', -1 do
-      BannedIp.toggle_ban('255.255.255.255')
+      BannedIp.toggle_ban('4.5.6.7')
+    end
+  end
+  
+  test "should flag associated entries and comments as spam" do
+    assert_difference 'Entry.all(:conditions => { :spam => false }).count', -1 do
+      assert_difference 'Comment.all(:conditions => { :spam => false }).count', -1 do
+        BannedIp.toggle_ban('1.2.3.4')
+      end
+    end
+  end
+
+  test "should unflag associated entries and comments as spam" do
+    assert_difference 'Entry.all(:conditions => { :spam => false }).count', 1 do
+      assert_difference 'Comment.all(:conditions => { :spam => false }).count', 1 do
+        BannedIp.toggle_ban('4.5.6.7')
+      end
     end
   end
 end

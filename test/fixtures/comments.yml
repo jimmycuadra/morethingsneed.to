@@ -7,18 +7,18 @@
 2:
   id: 2
   entry_id: 1
-  ip: '1.2.3.4'
+  ip: '2.3.4.5'
   comment: 'Comment'
 
 3:
   id: 3
   entry_id: 1
-  ip: '1.2.3.4'
+  ip: '3.4.5.6'
   comment: 'Comment'
 
 4:
   id: 4
   entry_id: 1
-  ip: '1.2.3.4'
+  ip: '4.5.6.7'
   comment: 'Comment'
   spam: true
