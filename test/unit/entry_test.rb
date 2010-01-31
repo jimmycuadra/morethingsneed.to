@@ -101,4 +101,10 @@ class EntryTest < ActiveSupport::TestCase
     @e.toggle_spam
     assert_not_equal @e.spam, initial_spam_value
   end
+  
+  test "should reject entry from banned IP" do
+    @e.ip = '6.6.6.6'
+    assert !@e.valid?
+    assert @e.errors.invalid?(:base)
+  end
 end

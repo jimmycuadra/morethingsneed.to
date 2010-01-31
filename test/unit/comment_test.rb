@@ -54,4 +54,10 @@ class CommentTest < ActiveSupport::TestCase
     @c.toggle_spam
     assert_not_equal @c.spam, initial_spam_value
   end
+
+  test "should reject comment from banned IP" do
+    @c.ip = '6.6.6.6'
+    assert !@c.valid?
+    assert @c.errors.invalid?(:base)
+  end
 end
