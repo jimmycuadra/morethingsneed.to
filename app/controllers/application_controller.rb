@@ -28,4 +28,8 @@ class ApplicationController < ActionController::Base
   def prepare_new_entry
     @new_entry = Entry.new
   end
+  
+  def require_no_user
+    redirect_to root_path and return if current_user
+  end
 end

@@ -10,6 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   map.register '/register', :controller => :users, :action => 'new'
   map.profile '/profile', :controller => :users, :action => 'edit'
   map.activate '/activate/:activation_code', :controller => 'activations', :action => 'create'
+  map.resources :password_resets, :only => [:new, :edit, :create, :update]
 
   map.login '/login', :controller => 'user_sessions', :action => 'new'
   map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
