@@ -186,6 +186,7 @@ small {
 
 #add form input[type=submit] {
 	margin-left: 2px;
+	padding: 4px 8px;
 }
 
 #add form select {
@@ -445,12 +446,12 @@ form textarea {
 
 form input[type=submit], 
 form input[type=button] {
-	background-color: #c0c0c0;
+	background: #f6a03d url(/images/article_header_gradient.png) repeat-x;
 	cursor: pointer;
 	margin-left: 102px;
 	-moz-box-shadow: #3e3e3e 0 1px 3px;
-	padding: 4px;
-	-webkit-box-shadow: #3e3e3e 0 1px 3px;
+	padding: 4px 8px;
+	-webkit-box-shadow: #3e3e3e 0 1px 4px;
 	width: auto;
 }
 
@@ -460,10 +461,6 @@ form input[type=hidden] {
 
 form textarea {
 	height: 180px;
-}
-
-form input[type=submit] {
-	background-image: none;
 }
 
 /* flash and error messages */
