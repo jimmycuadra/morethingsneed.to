@@ -25,11 +25,11 @@ class PasswordResetsController < ApplicationController
   def update
     @user.password = params[:user][:password]
     @user.password_confirmation = params[:user][:password_confirmation]
-    @user.validate_password = true
-    if @user.save
+    if !@user.password.blank? && @user.save
       flash[:success] = 'Your password has been reset.'
       redirect_to root_path
     else
+      flash.now[:error] = 'You must enter and confirm a valid new password.'
       render :action => :edit
     end
   end
