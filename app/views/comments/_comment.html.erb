@@ -21,7 +21,7 @@
   		<% if @is_ajax -%>
   		  Just now!
   		<% else -%>
-  		  <%= comment.created_at.to_s(:simple) %>
+  		  <%= datetime_simple(comment) %>
   		<% end -%>
 		</span>
 	</div> <!-- footer -->
