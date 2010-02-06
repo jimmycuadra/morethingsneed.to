@@ -560,3 +560,18 @@ form textarea {
 	height: 90px;
 	width: 550px;
 }
+
+/* server error pages */
+
+#content.server-error p {
+  color: #000;
+}
+
+#content.server-error a {
+  color: #000;
+  text-decoration: underline;
+}
+
+#content.server-error a:hover {
+  text-decoration: none;
+}

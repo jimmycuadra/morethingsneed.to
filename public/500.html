@@ -1,30 +1,35 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-  <title>We're sorry, but something went wrong (500)</title>
-	<style type="text/css">
-		body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-		div.dialog {
-			width: 25em;
-			padding: 0 4em;
-			margin: 4em auto 0 auto;
-			border: 1px solid #ccc;
-			border-right-color: #999;
-			border-bottom-color: #999;
-		}
-		h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
-	</style>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<title>morethingsneed.to</title>
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="stylesheet" href="/stylesheets/screen.css" type="text/css" media="screen"charset="utf-8" />
 </head>
-
 <body>
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <h1>We're sorry, but something went wrong.</h1>
-    <p>We've been notified about this issue and we'll take a look at it shortly.</p>
-  </div>
+	<div id="bucket">
+	
+	<div id="header">
+		<a href="/" id="title-link" title="More Things Need To">More Things Need To</a>
+	</div> <!-- /header -->
+	
+	<div id="content" class="server-error">
+		<h1>Complete Fail</h1>
+		
+		<p>Something went wrong. Sorry about that! Why not take a look at the <a href="/">recent entries</a> instead?</p>
+	</div> <!-- /content -->
+	
+	<div id="footer">
+		<p>
+		Announcing the necessity for increased<br />
+		frequency of things occurring since 2010.<br />
+		&copy; <%= Time.new.year %> <a href="http://www.transparentgorilla.com/">Transparent Gorilla</a>. All rights reserved.
+		</p>
+	</div> <!-- /footer -->
+	
+	</div> <!-- /bucket -->
+	
+  <%= render :partial => 'partials/ga_tracking' unless request.env['HTTP_HOST'] =~ /^dev/ %>
 </body>
 </html>
