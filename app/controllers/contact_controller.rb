@@ -11,7 +11,7 @@ class ContactController < ApplicationController
   def create
     @contact = Contact.new(params[:contact])
     if current_user
-      @contact.name = current_user.name
+      @contact.name = current_user.username
       @contact.real_email = current_user.email
     end
     if @contact.valid?
