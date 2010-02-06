@@ -11,6 +11,7 @@
 		<% else -%>
 			<%= h comment.name %>
 		<% end -%>
+		<%= ' (' + comment.ip + ')' if comment.spam %>
 		was quite thoughtful, don't you think?
 		<% if is_admin -%>
 		  - <%= toggle_comment_spam_link(comment.entry, comment) %>

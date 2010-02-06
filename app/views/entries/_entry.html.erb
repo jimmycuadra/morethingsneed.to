@@ -3,7 +3,7 @@
 	  <% if @is_ajax -%>
 	    You crapped this out just now.
 	  <% else -%>
-		  <%= entry.user ? link_to(entry.user.username, user_entries_path(entry.user)) : 'Someone' %> crapped this out on <span class="time"><%= entry.created_at.to_s(:written_out) %></span>.
+		  <%= entry.user ? link_to(entry.user.username, user_entries_path(entry.user)) : 'Someone' %><%= ' (' + entry.ip + ')' if entry.spam %> crapped this out on <span class="time"><%= entry.created_at.to_s(:written_out) %></span>.
 		<% end -%>
 		
 		<div class="share-links">
