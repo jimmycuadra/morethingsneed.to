@@ -28,6 +28,7 @@ class ApplicationController < ActionController::Base
   end
   
   def require_no_user
+    flash[:error] = 'That\'s only for guests, champ. Log out and try that again.'
     redirect_to root_path and return if current_user
   end
 end
