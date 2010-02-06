@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
   helper_method :current_user, :is_admin
   before_filter :prepare_new_entry
-  #has_mobile_fu
-  #before_filter :layout is_mobile_device? ? "application_mobile" : "application"
    
   private
   
