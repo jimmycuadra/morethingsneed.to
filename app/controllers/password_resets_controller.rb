@@ -17,7 +17,7 @@ class PasswordResetsController < ApplicationController
        flash[:success] = 'Check your e-mail for a link to reset your password.'
        redirect_to root_path
      else
-       flash[:error] = 'Sure you got that e-mail address right? We don\'t have an account registered to it.'
+       flash.now[:error] = 'Sure you got that e-mail address right? We don\'t have an account registered to it.'
        render :action => :new
      end
   end
