@@ -22,7 +22,7 @@ class Entry < ActiveRecord::Base
   
   # callbacks
   
-  before_save :strip_trailing_punctuation
+  before_validation :strip_trailing_punctuation
   
   # accessors
   
@@ -50,7 +50,7 @@ class Entry < ActiveRecord::Base
   end
     
   def strip_trailing_punctuation
-    self.verb.gsub!(/[\.!?]*/, '')
+    self.verb.gsub!(/[\.!?]*/, '') unless self.verb.nil?
   end
   
   def self.per_page
