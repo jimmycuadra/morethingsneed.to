@@ -446,13 +446,14 @@ form li {
 form input, 
 form textarea {
 	background: #fff4e8 url(/images/input_background.png) repeat-x top left;
-	border: 0;
+	border: 1px solid #666;
 	margin: 0 0 9px 9px;
 	resize: none;
 	width: 300px;
 }
 
-form input[type=text], 
+form input[type=text],
+form input[type=password],
 form textarea {
 	font-family: Arial, sans-serif;
 	font-size: 14px;
