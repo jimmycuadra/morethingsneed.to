@@ -1,4 +1,4 @@
-<div id="add" class="section">
+<div id="add" class="section<%= ' ajax' if params[:controller] == 'entries' %>">
 	<% form_for @new_entry do |f| %>	
 		<%= f.label :noun, 'More ' %>
 		<%= f.text_field :noun, :value => 'nouns' %>

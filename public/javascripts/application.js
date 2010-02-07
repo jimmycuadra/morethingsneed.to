@@ -13,7 +13,7 @@ $(function() {
   
   // new entries
   new MTNT.Entry({
-    $form: $('#new_entry'),
+    $form: $('.ajax #new_entry'),
     $container: $('#entries'),
     flash: flash
   });
