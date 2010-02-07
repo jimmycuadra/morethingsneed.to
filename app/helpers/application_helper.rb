@@ -19,4 +19,12 @@ module ApplicationHelper
       link_to text, link, *args
     end
   end
+  
+  def escape_for_json(str)
+    if str
+      str.gsub(/"/, '\"').gsub(/\n/, '\n').gsub(/\t/, '  ')
+    else
+      ''
+    end
+  end
 end
