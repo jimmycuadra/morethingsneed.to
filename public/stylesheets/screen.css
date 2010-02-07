@@ -217,6 +217,15 @@ small {
 	width: 960px;
 }
 
+#nav a.current {
+  background: #a97d5d;
+  border-radius: 3px;
+  color: #fff;
+  -moz-border-radius: 3px;
+  padding: 2px 5px;
+  -webkit-border-radius: 3px;
+}
+
 #nav span {
 	float: right;
 }

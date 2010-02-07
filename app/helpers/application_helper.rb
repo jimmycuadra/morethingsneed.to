@@ -11,4 +11,12 @@ module ApplicationHelper
   def datetime_simple(record)
     record.created_at.to_s(:simple).gsub(/0?(\d+)\/0?(\d+)/, '\1/\2')
   end
+  
+  def link_to_with_current(text, link, condition, *args)
+    if condition
+      link_to text, link, :class => 'current', *args
+    else
+      link_to text, link, *args
+    end
+  end
 end

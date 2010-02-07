@@ -18,25 +18,7 @@
 		<a href="/" id="title-link" title="More Things Need To">More Things Need To</a>
 		<%= render :partial => 'entries/add' %>
 		
-		<div id="nav">
-			<%= link_to_unless((params[:controller] == 'entries' && params[:action] && params[:action] != 'show' && !@username && !(params.key?(:best) || params.key?(:worst) || params.key?(:oldest))), 'Newest', root_path) %> -
-			<%= link_to_unless params.key?(:oldest), 'Oldest', root_path + '?oldest' %> -
-			<%= link_to_unless params.key?(:best), 'Best', root_path + '?best' %> -
-			<%= link_to_unless params.key?(:worst), 'Worst', root_path + '?worst' %> -
-			<%= link_to_unless((params[:controller] == 'about'), 'About', about_path) %> -
-			<%= link_to_unless((params[:controller] == 'contact'), 'Contact', contact_index_path) %>
-			<% if is_admin %> - <%= link_to 'Show Spam Entries', show_spam_entries_path %><% end %>
-			<span class="user<%= ' logged-in' if current_user %>">
-				<% if current_user %>
-					Logged in as <strong><%= link_to current_user.username, user_entries_path(current_user) %></strong> - 
-					<%= link_to_unless((params[:controller] == 'users' && params[:action] == 'edit'), 'Account', profile_path) %> -
-					<%= link_to 'Log out', logout_path %>
-				<% else %>
-					<%= link_to_unless((params[:controller] == 'users' && params[:action] == 'new'), 'Register', register_path, :id => 'register') %> -
-					<%= link_to_unless((params[:controller] == 'user_sessions' && params[:action] == 'new'), 'Log in', login_path, :id => 'login') %>
-				<% end %>					
-			</span>				
-		</div>	<!-- /nav -->
+    <%= render :partial => 'partials/nav' %>
 		
 		<div class="flash<%= ' success' if flash[:success] %><%= ' hidden' unless flash[:error] or flash[:success] -%>">
 			<div class="close hidden"></div>
