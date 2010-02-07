@@ -11,10 +11,10 @@ class Entry < ActiveRecord::Base
   
   validates_presence_of :ip
   validates_format_of :ip, :with => /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/, :message => 'must be a valid IP'
-  validates_uniqueness_of :noun, :scope => :verb, :message => "^I know you think you're clever, but someone already submitted that one."
   validates_length_of :noun, :verb, :maximum => 255, :message => "^You're too wordy. Not more than 255 characters, please."
   validate :not_default_or_missing_phrase
   validate :honeypot_must_be_blank
+  validate_on_create :unique_entry
   validates_each :noun, :verb do |record, attr, value|
     record.errors.add attr, 'cannot contain a URL.' if /.*http:\/\/.*/i.match(value)
   end
@@ -43,6 +43,10 @@ class Entry < ActiveRecord::Base
   
   def honeypot_must_be_blank
     errors.add_to_base('FUCK BOTS.') unless self.email.blank?
+  end
+  
+  def unique_entry
+    errors.add_to_base('I know you think you\'re clever, but someone already submitted that one.') if Entry.all(:conditions => ['noun = LOWER(?) AND verb = LOWER(?)', self.noun, self.verb]).count > 0
   end
   
   def no_recent_entry_from_ip

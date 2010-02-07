@@ -43,13 +43,12 @@ class EntryTest < ActiveSupport::TestCase
   end
   
   test "should reject duplicate entry" do
-    Entry.create(:noun => 'pigs', :verb => 'squeak', :ip => generate_ip)
-    @e.noun = 'pigs'
-    @e.verb = 'squeak'
+    @e.noun = 'PiGS'
+    @e.verb = 'SQueAK'
     assert !@e.valid?
-    assert @e.errors.invalid?(:noun)
+    assert @e.errors.invalid?(:base)
   end
-  
+    
   test "should reject filled in honeypot" do
     @e.email = 'honey is tasty'
     assert !@e.valid?
