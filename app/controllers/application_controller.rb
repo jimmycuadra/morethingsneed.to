@@ -33,4 +33,11 @@ class ApplicationController < ActionController::Base
       redirect_to root_path and return
     end
   end
+  
+  def require_user
+    unless current_user
+      flash[:error] = 'That\'s only for registered users, champ. Register first, then try that again.'
+      redirect_to root_path and return
+    end
+  end
 end
