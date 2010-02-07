@@ -6,6 +6,7 @@ class ActivationsController < ApplicationController
     else
       if @user.activate!
         @user.reset_perishable_token!
+        UserSession.create(@user)
         flash[:success] = 'Your account is now activated.'
       else
         flash[:error] = 'Activation failed and this unhelpful error message was provided.'
