@@ -439,6 +439,10 @@ form label {
 	width: 90px;
 }
 
+form label.required {
+  font-weight: bold;
+}
+
 form li {
 	list-style: none;
 }
@@ -593,8 +597,13 @@ form textarea {
 
 /* meta */
 
+p.meta {
+  font-style: italic;
+}
+
 p.meta a {
   color: #fff;
+  font-style: normal;
 }
 
 #userbox-wrapper p.meta {
