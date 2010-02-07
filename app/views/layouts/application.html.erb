@@ -20,6 +20,16 @@
 		<%= render :partial => 'entries/add' %>
 		
     <%= render :partial => 'partials/nav' %>
+
+		<div id="userbox-wrapper">
+			<div id="register-box" class="userbox">
+				<%= render :file => 'users/new' %>
+			</div>
+
+			<div id="login-box" class="userbox">
+				<%= render :file => 'user_sessions/new' %>
+			</div>
+		</div>
 		
 		<div class="flash<%= ' success' if flash[:success] %><%= ' hidden' unless flash[:error] or flash[:success] -%>">
 			<div class="close hidden"></div>
@@ -33,15 +43,6 @@
 			</div>
 		</div>
 
-		<div id="userbox-wrapper">
-			<div id="register-box" class="userbox">
-				<%= render :file => 'users/new' %>
-			</div>
-
-			<div id="login-box" class="userbox">
-				<%= render :file => 'user_sessions/new' %>
-			</div>
-		</div>
 	</div> <!-- /header -->
 	
 	<div id="content"<%= ' class="main"' if params[:controller] == 'entries' && params[:action] == 'index' %>>
