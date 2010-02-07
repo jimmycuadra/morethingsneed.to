@@ -75,7 +75,7 @@ class EntryTest < ActiveSupport::TestCase
   end
   
   test "should remove trailing punctuation" do
-    @e.verb = 'run!?.'
+    @e.verb = 'run!?.,'
     @e.save
     assert_equal @e.verb, 'run'
   end

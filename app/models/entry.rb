@@ -46,7 +46,7 @@ class Entry < ActiveRecord::Base
   end
   
   def unique_entry
-    errors.add_to_base('I know you think you\'re clever, but someone already submitted that one.') if Entry.all(:conditions => ['noun = LOWER(?) AND verb = LOWER(?)', self.noun, self.verb]).count > 0
+    errors.add_to_base('I know you think you\'re clever, but someone already submitted that one.') if Entry.all(:conditions => ['LOWER(noun) = LOWER(?) AND LOWER(verb) = LOWER(?)', self.noun, self.verb]).count > 0
   end
   
   def no_recent_entry_from_ip
@@ -54,7 +54,7 @@ class Entry < ActiveRecord::Base
   end
     
   def strip_trailing_punctuation
-    self.verb.gsub!(/[\.!?]*/, '') unless self.verb.nil?
+    self.verb.gsub!(/[\.!?,]*$/, '') unless self.verb.nil?
   end
   
   def self.per_page
