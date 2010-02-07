@@ -180,7 +180,7 @@ small {
 
 #add form input[type=text] {
 	font-size: 12px;
-	height: 18px;
+	padding: 5px 3px;
 	width: 200px;
 }
 
