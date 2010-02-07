@@ -33,7 +33,6 @@
 					<%= link_to 'Log out', logout_path %>
 				<% else %>
 					<%= link_to_unless((params[:controller] == 'users' && params[:action] == 'new'), 'Register', register_path, :id => 'register') %> -
-					<%= link_to_unless params[:controller] == 'password_resets', 'Reset Password', new_password_reset_path, :id => 'reset' %> -
 					<%= link_to_unless((params[:controller] == 'user_sessions' && params[:action] == 'new'), 'Log in', login_path, :id => 'login') %>
 				<% end %>					
 			</span>				

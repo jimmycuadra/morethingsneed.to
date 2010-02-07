@@ -575,3 +575,18 @@ form textarea {
 #content.server-error a:hover {
   text-decoration: none;
 }
+
+/* meta */
+
+p.meta a {
+  color: #fff;
+}
+
+#userbox-wrapper p.meta {
+  font-size: 11px;
+  margin: 0 8px 8px;
+}
+
+#userbox-wrapper p.meta a {
+  color: #c13100;
+}
