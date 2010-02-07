@@ -16,11 +16,11 @@
 		<div class="section-links">			
 			<% form_for [entry, Vote.new], :html => { :id => 'new_up_vote_' + entry.id.to_s } do |f| -%>
 				<%= f.hidden_field :up_vote, :value => 1, :id => 'vote_up_vote_' + entry.id.to_s %>
-				<%= image_submit_tag('/images/icon_vote_up.png', :id => 'vote_up_vote_submit' + entry.id.to_s, :class => 'vote-button vote-up-button') %>
+				<%= f.submit 'Vote Up', :id => 'vote_up_vote_submit' + entry.id.to_s, :class => 'vote-button vote-up-button' %>
 			<% end -%> This needs to happen <span class="up_vote_count"><%= vote_counts(entry, 'up') %></span><br />
 			<% form_for [entry, Vote.new], :html => { :id => 'new_down_vote_' + entry.id.to_s } do |f| -%>
 				<%= f.hidden_field :up_vote, :value => 0, :id => 'vote_down_vote' + entry.id.to_s %>
-				<%= image_submit_tag('/images/icon_vote_down.png', :id => 'vote_down_vote_submit' + entry.id.to_s, :class => 'vote-button vote-down-button') %>
+				<%= f.submit 'Vote Down', :id => 'vote_down_vote_submit' + entry.id.to_s, :class => 'vote-button vote-down-button' %>
 			<% end -%> This doesn't need to happen <span class="down_vote_count"><%= vote_counts(entry, 'down') %></span>
 		</div> <!-- /section-links -->
 

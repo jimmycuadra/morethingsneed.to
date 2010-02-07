@@ -383,17 +383,22 @@ small {
 }
 
 .article .section-links .vote-button {
-	background: none;
+	background: transparent;
 	border: 0;
 	height: 17px;
+	-moz-box-shadow: none;
+	text-indent: -9999px;
+	-webkit-box-shadow: none;
 	width: 19px;
 }
 
 .article .section-links .vote-up-button {
+  background: url(/images/icon_vote_up.png) no-repeat;
 	padding: 0;
 }
 
 .article .section-links .vote-down-button {
+  background: url(/images/icon_vote_down.png) no-repeat;
 	padding: 0;
 }
 
