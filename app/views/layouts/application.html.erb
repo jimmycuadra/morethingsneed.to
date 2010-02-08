@@ -22,15 +22,7 @@
 		
     <%= render :partial => 'partials/nav' %>
 
-		<div id="userbox-wrapper">
-			<div id="register-box" class="userbox">
-				<%= render :file => 'users/new' %>
-			</div>
-
-			<div id="login-box" class="userbox">
-				<%= render :file => 'user_sessions/new' %>
-			</div>
-		</div>
+		<%= render :partial => 'partials/userbox' unless current_user %>
 		
 		<div class="flash<%= ' success' if flash[:success] %><%= ' hidden' unless flash[:error] or flash[:success] -%>">
 			<div class="close hidden"></div>

@@ -19,11 +19,9 @@ module ApplicationHelper
   end
   
   def link_to_with_current(text, link, condition, *args)
-    if condition
-      link_to text, link, :class => 'current', *args
-    else
-      link_to text, link, *args
-    end
+    options = args.first || {}
+    options[:class] = condition ? 'current' : nil
+    link_to text, link, options
   end
   
   def escape_for_json(str)

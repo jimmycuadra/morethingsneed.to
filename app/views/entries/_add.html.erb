@@ -1,18 +1,20 @@
 <div id="add" class="section<%= ' ajax' if params[:controller] == 'entries' %>">
-	<% form_for @new_entry do |f| %>	
-		<%= f.label :noun, 'More ' %>
-		<%= f.text_field :noun, :value => 'nouns' %>
+	<% form_for @new_entry do |f| %>
+	  <fieldset>
+  		<%= f.label :noun, 'More ' %>
+  		<%= f.text_field :noun, :value => 'nouns' %>
 	
-		<%= f.select :needs, { 'need' => 0, 'needs' => 1 } %>
+  		<%= f.select :needs, { 'need' => 0, 'needs' => 1 } %>
 	
-		<%= f.label :verb, ' to ' %>
-		<%= f.text_field :verb, :value => 'verb' %> <span>!</span>
+  		<%= f.label :verb, ' to ' %>
+  		<%= f.text_field :verb, :value => 'verb' %> <span>!</span>
 		
-		<% unless current_user -%>
-			<%= f.label :email, nil, :class => 'pot' %>
-			<%= f.text_field :email, :class => 'pot' %>
-		<% end -%>
+  		<% unless current_user -%>
+  			<%= f.label :email, nil, :class => 'pot' %>
+  			<%= f.text_field :email, :class => 'pot' %>
+  		<% end -%>
 
-		<%= f.submit 'This needs to happen' %>		
+		  <%= f.submit 'This needs to happen' %>		
+  	</fieldset>
 	<% end %>
 </div>

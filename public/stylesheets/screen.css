@@ -164,6 +164,11 @@ small {
 	width: 100%;
 }
 
+#add form fieldset {
+  display: inline;
+  margin: 0;
+}
+
 #add form input, 
 #add form label, 
 #add form select {
@@ -380,6 +385,11 @@ small {
 	margin: 0;
 	padding: 0;
 	padding-left: 15px;
+}
+
+.article .section-links form fieldset {
+  display: inline;
+  margin: 0;
 }
 
 .article .section-links .vote-button {
