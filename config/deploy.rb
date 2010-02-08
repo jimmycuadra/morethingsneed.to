@@ -4,7 +4,7 @@ set :application, "morethingsneed"
 set :user, "jimmycua"
 set :domain, "morethingsneed.to"
 set :repository,  "ssh://#{user}@#{domain}/home/#{user}/git/shared/mike/#{application}.git"
-set :deploy_to "/home/#{user}/public_html/#{application}"
+set :deploy_to, "/home/#{user}/public_html/#{application}"
 default_run_options[:pty] = true
 
 set :scm, :git
