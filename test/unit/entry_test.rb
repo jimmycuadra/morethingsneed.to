@@ -80,6 +80,14 @@ class EntryTest < ActiveSupport::TestCase
     assert_equal @e.verb, 'run'
   end
   
+  test "should strip whitespace" do
+    @e.noun = '  tests  '
+    @e.verb = '  run  '
+    @e.save
+    assert_equal @e.noun, 'tests'
+    assert_equal @e.verb, 'run'
+  end
+  
   test "should reject entry with URL in it" do
     @e.noun = @e.verb = 'testing Http://www.spam.com/ comments'
     assert !@e.valid?

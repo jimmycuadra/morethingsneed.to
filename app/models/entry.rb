@@ -22,6 +22,7 @@ class Entry < ActiveRecord::Base
   
   # callbacks
   
+  before_validation :strip_whitespace
   before_validation :strip_trailing_punctuation
   
   # accessors
@@ -53,6 +54,11 @@ class Entry < ActiveRecord::Base
     errors.add_to_base('Gotta wait at least a minute before adding another one.') if Entry.all(:conditions => ['created_at > ? AND ip = ?', Time.new.ago(60).in_time_zone, self.ip]).count > 0
   end
     
+  def strip_whitespace
+    self.noun.strip! unless self.noun.nil?
+    self.verb.strip! unless self.verb.nil?
+  end
+  
   def strip_trailing_punctuation
     self.verb.gsub!(/[\.!?,]*$/, '') unless self.verb.nil?
   end
