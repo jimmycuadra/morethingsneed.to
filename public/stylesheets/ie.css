@@ -1,5 +1,31 @@
-header h1 {
-	filter:DropShadow(Color=#000000, OffX=2, OffY=2);
-	height: 100%;
-	width: 100%;
+.article .section {
+  width: 940px;
+}
+
+.vote-button {
+  cursor: pointer;
+  display: block;
+  font-size: 0;
+  line-height: 0;
+}
+
+legend,
+.userbox legend {
+  margin-left: -8px;
+}
+
+input.submit {
+  background: #f6a03d url(/images/article_header_gradient.png) repeat-x;
+  cursor: pointer;
+	margin: 8px 0 0 102px;
+  margin-left: 102px;
+  overflow: visible;
+  padding: 4px 8px;
+	width: auto;
+}
+
+
+.userbox #user_submit,
+.userbox #user_session_submit {
+  margin-left: 0;
 }

@@ -327,12 +327,12 @@ small {
 	-webkit-border-top-right-radius: 4px;
 }
 
-.article .new-entry.header {
+.article .header.new-entry {
   background-image: url(/images/new_article_header_gradient.png);
   color: #fff;
 }
 
-.article .spam-entry.header {
+.article .header.spam-entry {
   background-image: url(/images/spam_article_header_gradient.png);
   color: #fff;
 }
@@ -390,6 +390,7 @@ small {
 .article .section-links form fieldset {
   display: inline;
   margin: 0;
+  vertical-align: middle;
 }
 
 .article .section-links .vote-button {
@@ -550,16 +551,16 @@ form textarea {
 	padding: 9px;
 }
 
-#comments .spam-comment.article {
+#comments .article.spam-comment {
   background-color: #730604;
   color: #fff;
 }
 
-#comments .spam-comment.article a {
+#comments .article.spam-comment a {
   color: #fff;
 }
 
-#comments .spam-comment.article .section {
+#comments .article.spam-comment .section {
   border-bottom-color: #cdbfac;
 }
 
@@ -611,7 +612,8 @@ p.meta {
   font-style: italic;
 }
 
-p.meta a {
+p.meta a,
+p.meta a:visited {
   color: #fff;
   font-style: normal;
 }

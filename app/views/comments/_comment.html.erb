@@ -4,6 +4,14 @@
 	</div>
 	
 	<div class="footer">
+		<span class="time">
+  		<% if @is_ajax -%>
+  		  Just now!
+  		<% else -%>
+  		  <%= datetime_simple(comment) %>
+  		<% end -%>
+		</span>
+
 		<% if comment.user -%>
 			<%= link_to(comment.user.username, user_entries_path(comment.user)) %>
 		<% elsif comment.name.blank? -%>
@@ -16,13 +24,5 @@
 		<% if is_admin -%>
 		  - <%= toggle_comment_spam_link(comment.entry, comment) %>
 		<% end -%>
-		
-		<span class="time">
-  		<% if @is_ajax -%>
-  		  Just now!
-  		<% else -%>
-  		  <%= datetime_simple(comment) %>
-  		<% end -%>
-		</span>
 	</div> <!-- footer -->
 </div> <!-- /article -->

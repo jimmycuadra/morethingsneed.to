@@ -1,11 +1,4 @@
 <div id="nav">
-	<%= link_to_with_current 'Newest', root_path, (params[:controller] == 'entries' && ![:oldest, :best, :worst, :user_id].any? { |k| params.key?(k) }) %> -
-	<%= link_to_with_current 'Oldest', root_path + '?oldest=1', (params[:controller] == 'entries' && params.key?(:oldest)) %> -
-	<%= link_to_with_current 'Best', root_path + '?best=1', (params[:controller] == 'entries' && params.key?(:best)) %> -
-	<%= link_to_with_current 'Worst', root_path + '?worst=1', (params[:controller] == 'entries' && params.key?(:worst)) %> -
-	<%= link_to_with_current 'About', about_path, (params[:controller] == 'about') %> -
-	<%= link_to_with_current 'Contact', contact_index_path, (params[:controller] == 'contact') %>
-	<% if is_admin %> - <%= link_to_with_current 'Show Spam Entries', show_spam_entries_path, params.key?(:show_spam) %><% end %>
 	<span class="user<%= ' logged-in' if current_user %>">
 		<% if current_user %>
 			Logged in as <strong><%= link_to_with_current current_user.username, user_entries_path(current_user), (params[:controller] == 'entries' && params[:user_id] == current_user.id.to_s) %></strong> - 
@@ -16,4 +9,11 @@
 			<%= link_to_with_current 'Log in', login_path, (params[:controller] == 'user_sessions'), :id => 'login' %>
 		<% end %>					
 	</span>				
+	<%= link_to_with_current 'Newest', root_path, (params[:controller] == 'entries' && ![:oldest, :best, :worst, :user_id].any? { |k| params.key?(k) }) %> -
+	<%= link_to_with_current 'Oldest', root_path + '?oldest=1', (params[:controller] == 'entries' && params.key?(:oldest)) %> -
+	<%= link_to_with_current 'Best', root_path + '?best=1', (params[:controller] == 'entries' && params.key?(:best)) %> -
+	<%= link_to_with_current 'Worst', root_path + '?worst=1', (params[:controller] == 'entries' && params.key?(:worst)) %> -
+	<%= link_to_with_current 'About', about_path, (params[:controller] == 'about') %> -
+	<%= link_to_with_current 'Contact', contact_index_path, (params[:controller] == 'contact') %>
+	<% if is_admin %> - <%= link_to_with_current 'Show Spam Entries', show_spam_entries_path, params.key?(:show_spam) %><% end %>
 </div>	<!-- /nav -->
