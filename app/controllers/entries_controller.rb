@@ -3,8 +3,16 @@ class EntriesController < ApplicationController
   before_filter :get_sort_type, :only => [:index, :create, :show_spam]
   
   def index
-    @entries = Entry.paginate :page => params[:page], :order => @order, :conditions => build_conditions(nil)
     @username = User.find(params[:user_id]).username if params[:user_id]
+    respond_to do |format|
+      format.html do
+        @entries = Entry.paginate :page => params[:page], :order => @order, :conditions => build_conditions(nil)
+      end
+      format.rss do
+        @entries = Entry.all(:order => 'created_at DESC', :limit => 250 )
+      end
+    end
+    
   end
   
   def show
