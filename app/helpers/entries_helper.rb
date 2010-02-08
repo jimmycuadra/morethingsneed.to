@@ -1,4 +1,12 @@
 module EntriesHelper
+  def punctuate(verb)
+    if verb.match(/[\.?!][")\]]$/)
+      verb
+    else
+      verb + '.'
+    end
+  end
+  
   def vote_counts(entry, type)
     if (type == 'up')
       '(' + pluralize(entry.up_vote_count, 'vote') + ')'

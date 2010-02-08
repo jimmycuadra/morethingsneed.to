@@ -29,7 +29,7 @@
 		</div> <!-- /section-links -->
 
 		<div class="section-content">
-			<p>More <%= h entry.noun %> <%= (entry.needs) ? 'needs' : 'need' %> to <%= h entry.verb %>.</p>	
+			<p>More <%= h entry.noun %> <%= (entry.needs) ? 'needs' : 'need' %> to <%= h punctuate(entry.verb) %></p>
 			<p class="comment-links">
 				<strong><%= comment_link(entry) %></strong>
 				<% unless params[:action] == 'show' -%>
