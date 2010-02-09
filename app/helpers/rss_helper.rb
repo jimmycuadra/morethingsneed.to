@@ -1,7 +1,7 @@
 module RssHelper
   def rss_entry(entry)
     need = entry.needs ? 'needs': 'need'
-    'More ' + entry.noun + ' ' + need + ' to ' + entry.verb + '.'
+    'More ' + entry.noun + ' ' + need + ' to ' + punctuate(entry.verb)
   end
   
   def rss_title(entry)
