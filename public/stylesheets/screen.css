@@ -159,6 +159,17 @@ small {
   font-weight: bold;
 }
 
+/* noscript */
+
+#noscript,
+#notification {
+  background: #f6a03d;
+  border-bottom: 1px solid #000;
+  color: #000;
+  padding: 9px;
+  text-align: center;
+}
+
 /* add entry */
 
 #add {
