@@ -170,6 +170,17 @@ small {
   text-align: center;
 }
 
+#notification {
+  opacity: 0;
+}
+
+#notification a,
+#notification a:visited {
+  color: #3b3b3b;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 /* add entry */
 
 #add {
@@ -526,7 +537,8 @@ form textarea {
 	width: 760px;
 }
 
-.flash .close {
+.flash .close,
+#notification .close {
 	background: url(/images/close.gif) no-repeat;
 	border: 2px solid #000;
 	cursor: pointer;

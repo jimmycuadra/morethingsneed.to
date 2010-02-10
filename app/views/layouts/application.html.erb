@@ -13,7 +13,7 @@
 	<!--[if IE]>
 		<%= stylesheet_link_tag 'ie' %>
 	<![endif]-->
-	<%= javascript_include_tag 'jquery.min', 'core', 'jquery.cookie', 'form-defaults', 'flash', 'userbox', 'entry', 'vote', 'comment', 'contact', 'application', :cache => 'mtnt' %>
+	<%= javascript_include_tag 'jquery.min', 'core', 'jquery.cookie', 'notification', 'form-defaults', 'flash', 'userbox', 'entry', 'vote', 'comment', 'contact', 'application', :cache => 'mtnt' %>
 </head>
 <body>
   <noscript>
@@ -21,7 +21,10 @@
       <strong>More Things Need To</strong> uses JavaScript for a richer experience. Please consider enabling JavaScript in your browser!
     </div>
   </noscript>
-  <div id="notification" class="hidden"></div>
+  <div id="notification" class="hidden">
+    <div class="close"></div>
+    <div class="message"></div>
+  </div>
 	<div id="bucket">
 	
 	<div id="header">
