@@ -74,6 +74,16 @@ dl {
 	padding: 9px;
 }
 
+dl dt,
+dl dd {
+  margin-bottom: 18px;
+}
+
+dl.compressed dt,
+dl.compressed dd {
+  margin-bottom: 0;
+}
+
 dl dt {
 	font-weight: bold;
 }

@@ -4,7 +4,9 @@ ActionController::Routing::Routes.draw do |map|
     entry.resources :votes, :only => [:create, :destroy] 
   end
   
-  map.about '/about', :controller => 'about', :action => 'index'
+  map.about '/about', :controller => 'pages', :action => 'about'
+  map.faq '/faq', :controller => 'pages', :action => 'faq'
+  map.privacy '/privacy', :controller => 'pages', :action => 'privacy'
   map.resources :contact, :only => [:index, :new, :create]
 
   map.register '/register', :controller => :users, :action => 'new'
