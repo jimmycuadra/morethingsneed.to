@@ -52,14 +52,8 @@
 	<div id="content"<%= ' class="main"' if params[:controller] == 'entries' && params[:action] == 'index' %>>
 		<%= yield %>
 	</div> <!-- /content -->
-	
-	<div id="footer">
-		<p>
-		Announcing the necessity for increased<br />
-		frequency of things occurring since 2010.<br />
-		&copy; <%= Time.new.year %> <a href="http://www.transparentgorilla.com/">Transparent Gorilla</a>. All rights reserved.
-		</p>
-	</div> <!-- /footer -->
+
+	<%= render :partial => 'partials/footer' %>
 	
 	</div> <!-- /bucket -->
 	
