@@ -17,7 +17,7 @@ module EntriesHelper
   
   def twitter_link(entry)
     need = entry.needs ? 'needs': 'need'
-    message = "More " + h(entry.noun) + ' ' + need + ' to ' + h(entry.verb)
+    message = "More " + h(entry.noun) + ' ' + need + ' to ' + h(punctuate(entry.verb))
     link = ' http://morethingsneed.to/' + entry.id.to_s
     
     truncate_length = TWITTER_LENGTH - link.length
