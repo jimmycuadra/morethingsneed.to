@@ -15,14 +15,17 @@ module EntriesHelper
     end
   end
   
-  def twitter_link(entry)
+  def twitter_message(entry)
     need = entry.needs ? 'needs': 'need'
     message = "More " + h(entry.noun) + ' ' + need + ' to ' + h(punctuate(entry.verb))
     link = ' http://morethingsneed.to/' + entry.id.to_s
     
     truncate_length = TWITTER_LENGTH - link.length
-    
-    'http://twitter.com/home?status=' + truncate(message, :length => truncate_length) + link
+    truncate(message, :length => truncate_length) + link
+  end
+  
+  def twitter_link(entry)
+    'http://twitter.com/home?status=' + twitter_message(entry)
   end
   
   def comment_link(entry)
