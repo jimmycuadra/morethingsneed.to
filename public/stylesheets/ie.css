@@ -29,3 +29,7 @@ input.submit {
 .userbox #user_session_submit {
   margin-left: 0;
 }
+
+#footer-content li ul {
+  margin-top: 9px;
+}
