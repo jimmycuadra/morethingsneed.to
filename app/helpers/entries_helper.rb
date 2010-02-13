@@ -29,7 +29,7 @@ module EntriesHelper
   end
   
   def comment_link(entry)
-    legit_comments = entry.comments.find_all_by_spam(false).count
+    legit_comments = entry.comment_count
     
     if params[:action] == 'show_spam' or (is_admin and params.key?(:show_spam))
       total_comments = entry.comments.count
