@@ -363,6 +363,14 @@ small {
 	width: auto;
 }
 
+.userbox input.checkbox {
+  margin: 6px 0 0;
+}
+
+.userbox label.checkbox {
+  clear: none;
+}
+
 /* entries */
 
 .article {
@@ -554,6 +562,18 @@ form input[type=hidden] {
 
 form textarea {
 	height: 180px;
+}
+
+form input.checkbox {
+  background: transparent;
+  border: 0;
+  margin-left: 80px;
+  width: 15px;
+}
+
+form label.checkbox {
+  margin-left: 5px;
+  width: auto;
 }
 
 /* flash and error messages */
