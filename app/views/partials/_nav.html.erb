@@ -9,7 +9,7 @@
 			<%= link_to_with_current 'Log in', login_path, (params[:controller] == 'user_sessions'), :id => 'login' %>
 		<% end %>					
 	</span>				
-	<%= link_to_with_current 'Newest', root_path, (params[:controller] == 'entries' && ![:oldest, :best, :worst, :user_id].any? { |k| params.key?(k) }) %> -
+	<%= link_to_with_current 'Newest', root_path, (params[:controller] == 'entries' && ![:oldest, :best, :worst, :discussed, :user_id].any? { |k| params.key?(k) }) %> -
 	<%= link_to_with_current 'Oldest', root_path + '?oldest=1', (params[:controller] == 'entries' && params.key?(:oldest)) %> -
 	<%= link_to_with_current 'Best', root_path + '?best=1', (params[:controller] == 'entries' && params.key?(:best)) %> -
 	<%= link_to_with_current 'Worst', root_path + '?worst=1', (params[:controller] == 'entries' && params.key?(:worst)) %> -
