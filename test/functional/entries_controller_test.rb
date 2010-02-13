@@ -91,13 +91,15 @@ class EntriesControllerTest < ActionController::TestCase
   test "should not get edit page if IP doesn't match record" do
     @request.remote_addr = '4.3.2.1'
     get :edit, { :id => 1 }
-    assert_response :not_found
+    assert_redirected_to root_path
+    assert_not_nil flash[:error]
   end
   
   test "should not get edit page if longer than 5 minutes since record creation" do
     @request.remote_addr = '5.6.7.8'
     get :edit, { :id => 5 }
-    assert_response :not_found
+    assert_redirected_to root_path
+    assert_not_nil flash[:error]
   end
   
   test "should update and redirect to entry" do
@@ -117,6 +119,7 @@ class EntriesControllerTest < ActionController::TestCase
   test "should not update entry if longer than 5 mintues since record creation" do
     @request.remote_addr = '5.6.7.8'
     put :update, { :id => 5, :entry => { :verb => 'be uneditable' } }
-    assert_response :not_found
+    assert_redirected_to root_path
+    assert_not_nil flash[:error]
   end
 end
