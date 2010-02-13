@@ -30,6 +30,9 @@
 
 		<div class="section-content">
 			<p><%= format_entry(entry) %></p>
+			<% if (entry.ip == request.remote_addr) && (entry.created_at >= Time.zone.now - 5.minutes) -%>
+			  <p class="meta">Make a mistake? You have 5 minutes from the time of the original submission to <%= link_to 'edit', edit_entry_path(entry) %> it.</p>
+			<% end %>
 			<p class="comment-links">
 				<strong><%= comment_link(entry) %></strong>
 				<% unless params[:action] == 'show' -%>
