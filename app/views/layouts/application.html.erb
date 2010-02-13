@@ -5,7 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="chrome=1" />
 	<title><%= yield :title %>More Things Need To</title>
-	<meta name="description" content="A humorous collection of user-submitted lines in the form more ___ need to ___. Add your own, vote and comment on others, and share the funny with your friends." />
+	<meta name="description" content="<%= yield(:description) || 'A humorous collection of user-submitted lines in the form more ___ need to ___. Add your own, vote and comment on others, and share the funny with your friends.' %>" />
 	<meta name="keywords" content="more things need to,humor,funny,social" />
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/morethingsneedto" />

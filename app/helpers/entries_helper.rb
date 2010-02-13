@@ -1,4 +1,8 @@
 module EntriesHelper
+  def format_entry(entry)
+    'More ' + h(entry.noun) + (entry.needs ? ' needs to ' : ' need to ') + h(punctuate(entry.verb))
+  end
+  
   def punctuate(verb)
     if verb.match(/[\.?!][")\]]$/)
       verb
@@ -16,8 +20,7 @@ module EntriesHelper
   end
   
   def twitter_message(entry)
-    need = entry.needs ? 'needs': 'need'
-    message = "More " + h(entry.noun) + ' ' + need + ' to ' + h(punctuate(entry.verb))
+    message = format_entry(entry)
     link = ' http://morethingsneed.to/' + entry.id.to_s
     
     truncate_length = TWITTER_LENGTH - link.length
