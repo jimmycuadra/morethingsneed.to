@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
   before_filter :retrieve_record, :only => [:show, :update, :destroy, :toggle_spam]
+  before_filter :retrieve_editable_record, :only => [:edit, :update]
   before_filter :get_sort_type, :only => [:index, :create, :show_spam]
   
   def index
@@ -18,6 +19,9 @@ class EntriesController < ApplicationController
   def show
     show_spam = (is_admin and params[:show_spam]) ? { :show_spam => 1 } : nil
     @comments = @entry.comments.all(:conditions => build_conditions(show_spam))
+  end
+  
+  def edit
   end
   
   def create
@@ -80,6 +84,10 @@ class EntriesController < ApplicationController
   
   def retrieve_record
     @entry = Entry.find(params[:id], :conditions => is_admin ? nil : ["spam = ?", false])
+  end
+  
+  def retrieve_editable_record
+    @entry = Entry.find(params[:id], :conditions => is_admin ? nil : ["ip = ? AND created_at >= ?", request.remote_addr, 5.minutes.ago])
   end
   
   def build_conditions(options)

@@ -14,7 +14,7 @@ class EntriesControllerTest < ActionController::TestCase
   test "should get index with all entries" do
     get :index
     assert_response :success
-    assert_equal assigns(:entries).size, 3
+    assert_equal assigns(:entries).size, 4
   end
   
   test "should get index only with entries by user 1" do
@@ -60,7 +60,7 @@ class EntriesControllerTest < ActionController::TestCase
     UserSession.create(users(:dodongo))
     get :show_spam
     assert_response :success
-    assert_equal assigns(:entries).size, 4
+    assert_equal assigns(:entries).size, 5
   end
   
   test "should redirect to root without toggling spam if not admin" do
@@ -80,5 +80,23 @@ class EntriesControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal assigns(:entry).id, 1
     assert_equal assigns(:comments).count, 4
+  end
+  
+  test "should get edit entry page" do
+    @request.remote_addr = '1.2.3.4'
+    get :edit, { :id => 1 }
+    assert_response :success
+  end
+  
+  test "should not get edit page if IP doesn't match record" do
+    @request.remote_addr = '4.3.2.1'
+    get :edit, { :id => 1 }
+    assert_response :not_found
+  end
+  
+  test "should not get edit page if longer than 5 minutes since record creation" do
+    @request.remote_addr = '5.6.7.8'
+    get :edit, { :id => 5 }
+    assert_response :not_found
   end
 end
