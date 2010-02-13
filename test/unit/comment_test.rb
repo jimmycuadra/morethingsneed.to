@@ -60,4 +60,10 @@ class CommentTest < ActiveSupport::TestCase
     assert !@c.valid?
     assert @c.errors.invalid?(:base)
   end
+  
+  test "should increase entry's comment count" do
+    assert_difference 'Entry.last.comment_count' do
+      @c.save
+    end
+  end
 end
