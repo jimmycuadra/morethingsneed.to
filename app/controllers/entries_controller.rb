@@ -103,6 +103,9 @@ class EntriesController < ApplicationController
     when params.key?(:discussed)
       @order = 'comment_count DESC'
       @sort_type = 'Most Discussed'
+    when params.key?(:voted)
+      @order = 'up_vote_count + down_vote_count DESC'
+      @sort_type = 'Most Voted'
     when params[:action] == 'show_spam'
       @order = 'created_at DESC'
       @sort_type = 'Newest (w/ spam)'

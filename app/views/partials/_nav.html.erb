@@ -9,11 +9,12 @@
 			<%= link_to_with_current 'Log in', login_path, (params[:controller] == 'user_sessions'), :id => 'login' %>
 		<% end %>					
 	</span>				
-	<%= link_to_with_current 'Newest', root_path, (params[:controller] == 'entries' && ![:oldest, :best, :worst, :discussed, :user_id].any? { |k| params.key?(k) }) %> -
+	<%= link_to_with_current 'Newest', root_path, (params[:controller] == 'entries' && ![:oldest, :best, :worst, :discussed, :voted, :user_id].any? { |k| params.key?(k) }) %> -
 	<%= link_to_with_current 'Oldest', root_path + '?oldest=1', (params[:controller] == 'entries' && params.key?(:oldest)) %> -
 	<%= link_to_with_current 'Best', root_path + '?best=1', (params[:controller] == 'entries' && params.key?(:best)) %> -
 	<%= link_to_with_current 'Worst', root_path + '?worst=1', (params[:controller] == 'entries' && params.key?(:worst)) %> -
 	<%= link_to_with_current 'Most Discussed', root_path + '?discussed=1', (params[:controller] == 'entries' && params.key?(:discussed)) %> -
+	<%= link_to_with_current 'Most Voted', root_path + '?voted=1', (params[:controller] == 'entries' && params.key?(:voted)) %> -
 	<%= link_to_with_current 'About', about_path, current_page?(about_path) %> -
 	<%= link_to_with_current 'FAQ', faq_path, current_page?(faq_path) %> -
 	<%= link_to_with_current 'Contact', contact_index_path, (params[:controller] == 'contact') %>
