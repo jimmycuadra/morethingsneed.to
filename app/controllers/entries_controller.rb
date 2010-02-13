@@ -100,6 +100,9 @@ class EntriesController < ApplicationController
     when params.key?(:oldest)
       @order = 'created_at ASC'
       @sort_type = 'Oldest'
+    when params.key?(:discussed)
+      @order = 'comment_count DESC'
+      @sort_type = 'Most Discussed'
     when params[:action] == 'show_spam'
       @order = 'created_at DESC'
       @sort_type = 'Newest (w/ spam)'

@@ -17,7 +17,7 @@ class Comment < ActiveRecord::Base
   
   # callbacks
   
-  after_save :update_comment_count
+  after_create :update_comment_count
   
   # accessors
   

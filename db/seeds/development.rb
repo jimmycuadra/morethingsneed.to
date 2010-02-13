@@ -27,6 +27,10 @@ ipm = IP_Maker.new
   end
 end
 
+Entry.all.each do |e|
+  e.recalculate_comment_count
+end
+
 u = User.new(:password => 'asdf', :password_confirmation => 'asdf', :email => 'guest@website.com')
 u.username = 'Guest'
 u.active = true

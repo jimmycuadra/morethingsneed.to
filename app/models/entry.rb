@@ -63,6 +63,10 @@ class Entry < ActiveRecord::Base
     self.verb.gsub!(/[\.!?,]*$/, '') unless self.verb.nil?
   end
   
+  def recalculate_comment_count
+    self.update_attribute :comment_count, self.comments.find_all_by_spam(false).count
+  end
+  
   def self.per_page
     10
   end

@@ -22,4 +22,18 @@ class CommentsControllerTest < ActionController::TestCase
     put :toggle_spam, :entry_id => 1, :id => 1
     assert_redirected_to entry_path(assigns(:comment).entry)
   end
+  
+  test "should decrease entry's comment_count after marking comment as spam" do
+    assert_difference 'Entry.first.comment_count', -1, Entry.first.comment_count do
+      UserSession.create(users(:dodongo))
+      put :toggle_spam, :entry_id => 1, :id => 1
+    end
+  end
+  
+  test "should increase entry's comment_count after marking comment as valid" do
+    assert_difference 'Entry.first.comment_count', 1, Entry.first.comment_count do
+      UserSession.create(users(:dodongo))
+      put :toggle_spam, :entry_id => 1, :id => 4
+    end
+  end
 end
