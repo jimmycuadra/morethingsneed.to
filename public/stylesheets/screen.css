@@ -576,6 +576,10 @@ form label.checkbox {
   width: auto;
 }
 
+form .no-label {
+  margin: 0 0 9px 99px;
+}
+
 /* flash and error messages */
 
 .flash {
