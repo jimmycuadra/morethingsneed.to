@@ -41,7 +41,7 @@
   			<%= flash[:error] or flash[:success] %>
 			</div>
 			<div class="errors">
-  			<% [@new_entry, @comment, @contact, @user, @user_session].each do |o| %>
+  			<% [@new_entry, @entry, @comment, @contact, @user, @user_session].each do |o| %>
   			  <%= render_error_messages o if o %>
   			<% end -%>
 			</div>

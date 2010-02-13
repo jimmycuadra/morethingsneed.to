@@ -1,5 +1,5 @@
 class EntriesController < ApplicationController
-  before_filter :retrieve_record, :only => [:show, :update, :destroy, :toggle_spam]
+  before_filter :retrieve_record, :only => [:show, :destroy, :toggle_spam]
   before_filter :retrieve_editable_record, :only => [:edit, :update]
   before_filter :get_sort_type, :only => [:index, :create, :show_spam]
   
@@ -50,15 +50,13 @@ class EntriesController < ApplicationController
   end
   
   def update
-    redirect_to root_path and return unless is_admin
-    
     if @entry.update_attributes(params[:entry])
-      flash.now[:success] = 'More submissions need to be updated successfully.'
+      flash.now[:success] = 'More entries need to be updated successfully.'
+      render :action => 'show'
     else
-      flash.now[:error] = 'More submissions need to be edited correctly.'
+      flash.now[:error] = 'More entries need to be edited correctly.'
+      render :action => 'edit'
     end
-    
-    render :action => 'show'
   end
   
   def destroy
@@ -87,7 +85,7 @@ class EntriesController < ApplicationController
   end
   
   def retrieve_editable_record
-    @entry = Entry.find(params[:id], :conditions => is_admin ? nil : ["ip = ? AND created_at >= ?", request.remote_addr, 5.minutes.ago])
+    @entry = Entry.find(params[:id], :conditions => is_admin ? nil : ["ip = ? AND created_at >= ?", request.remote_ip, 5.minutes.ago])
   end
   
   def build_conditions(options)

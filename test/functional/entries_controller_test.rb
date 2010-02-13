@@ -99,4 +99,24 @@ class EntriesControllerTest < ActionController::TestCase
     get :edit, { :id => 5 }
     assert_response :not_found
   end
+  
+  test "should update and redirect to entry" do
+    @request.remote_addr = '1.2.3.4'
+    put :update, { :id => 1, :entry => { :verb => 'be fuzzy' } }
+    assert_template :show
+    assert_not_nil flash[:success]
+  end
+  
+  test "should not update entry and should render edit view if invalid update" do
+    @request.remote_addr = '1.2.3.4'
+    put :update, { :id => 1, :entry => { :noun => 'nouns', :verb => 'verb' } }
+    assert_template :edit
+    assert_not_nil flash[:error]
+  end
+  
+  test "should not update entry if longer than 5 mintues since record creation" do
+    @request.remote_addr = '5.6.7.8'
+    put :update, { :id => 5, :entry => { :verb => 'be uneditable' } }
+    assert_response :not_found
+  end
 end

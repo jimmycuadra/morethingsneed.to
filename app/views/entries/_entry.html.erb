@@ -30,7 +30,7 @@
 
 		<div class="section-content">
 			<p><%= format_entry(entry) %></p>
-			<% if (entry.ip == request.remote_addr) && (entry.created_at >= Time.zone.now - 5.minutes) -%>
+			<% if !is_admin && (entry.ip == request.remote_addr) && (entry.created_at >= Time.zone.now - 5.minutes) -%>
 			  <p class="meta">Make a mistake? You have 5 minutes from the time of the original submission to <%= link_to 'edit', edit_entry_path(entry) %> it.</p>
 			<% end %>
 			<p class="comment-links">
@@ -39,6 +39,7 @@
 				- <%= add_comment_link(entry) %>
 				<% end -%>
 				<% if is_admin -%>
+				  - <%= link_to 'Edit', edit_entry_path(entry) %>
 				  - <%= toggle_spam_link(entry) %>
 				<% end -%>
 			</p>
