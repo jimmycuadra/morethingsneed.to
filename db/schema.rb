@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100130214216) do
+ActiveRecord::Schema.define(:version => 20100213022629) do
 
   create_table "banned_ips", :force => true do |t|
     t.string   "ip",         :null => false
@@ -46,8 +46,10 @@ ActiveRecord::Schema.define(:version => 20100130214216) do
     t.integer  "up_vote_count",   :default => 0
     t.integer  "down_vote_count", :default => 0
     t.boolean  "spam",            :default => false
+    t.integer  "comment_count",   :default => 0,     :null => false
   end
 
+  add_index "entries", ["comment_count"], :name => "index_entries_on_comment_count"
   add_index "entries", ["ip"], :name => "index_entries_on_ip"
   add_index "entries", ["noun", "verb"], :name => "index_entries_on_noun_and_verb", :unique => true
   add_index "entries", ["spam"], :name => "index_entries_on_spam"
