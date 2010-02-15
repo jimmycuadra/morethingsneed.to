@@ -1,0 +1,9 @@
+<div id="userbox-wrapper">
+	<div id="register-box" class="userbox">
+		<%= render :file => 'users/new' unless current_page?(register_path) %>
+	</div>
+
+	<div id="login-box" class="userbox">
+		<%= render :file => 'user_sessions/new' unless current_page?(login_path) %>
+	</div>
+</div>

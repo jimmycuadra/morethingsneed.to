@@ -11,13 +11,13 @@
 	
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/morethingsneedto" />
-	<%= stylesheet_link_tag 'reset', 'screen', :cache => 'mtnt' %>
-	<%= stylesheet_link_tag 'mobile' if mobile_device? %>
+
+	<%= stylesheet_link_tag 'reset', 'mobile' if mobile_device? %>
 	<!--[if IE]>
 		<%= stylesheet_link_tag 'ie' %>
 	<![endif]-->
 	
-	<%= javascript_include_tag 'jquery.min', 'core', 'jquery.cookie', 'notification', 'form-defaults', 'flash', 'userbox', 'entry', 'vote', 'comment', 'contact', 'application', :cache => 'mtnt' %>
+	<%= javascript_include_tag 'jquery.min', 'core', 'jquery.cookie', 'notification', 'form-defaults', 'flash', 'entry', 'vote', 'comment', 'contact', 'application', :cache => 'mtnt' %>
 </head>
 <body>
   <noscript>
@@ -32,10 +32,12 @@
  	  <%= link_to "Mobile Site", :mobile => 1 %>
     <% end %>
   </div>
+  <!-->
   <div id="notification" class="hidden">
     <div class="close"></div>
     <div class="message"></div>
   </div>
+  -->
 	<div id="bucket">
 	
 	<div id="header">

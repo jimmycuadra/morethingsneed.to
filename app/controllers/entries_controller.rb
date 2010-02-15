@@ -8,6 +8,9 @@ class EntriesController < ApplicationController
       format.html do
         @entries = Entry.paginate :page => params[:page], :order => @order, :conditions => build_conditions(nil)
       end
+      format.mobile do
+        @entries = Entry.paginate :page => params[:page], :order => @order, :conditions => build_conditions(nil)
+      end
       format.rss do
         @entries = Entry.all(:order => 'created_at DESC', :limit => 250 )
       end
