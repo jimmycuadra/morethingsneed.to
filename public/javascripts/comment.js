@@ -32,7 +32,7 @@ MTNT.Comment.prototype.insert = function(comment) {
   }
   
   $(comment).css('opacity', 0)
-  .prependTo(this.$container.selector)
+  .appendTo(this.$container.selector)
   .animate({
     opacity: '1'
   }, 'normal');

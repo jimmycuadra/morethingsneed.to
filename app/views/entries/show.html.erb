@@ -5,10 +5,6 @@
 	<%= render :partial => @entry %>
 </div>
 
-<div id="comment" class="section">
-	<%= render :partial => 'comments/comment_form' %>
-</div>
-
 <h2>The Internet says:</h2>
 
 <div id="comments" class="section<%= ' empty-state' if @comments.blank? %>">
@@ -20,4 +16,8 @@
 		    :collection => @comments
 		%>
 	<% end -%>
+</div>
+
+<div id="comment" class="section">
+	<%= render :partial => 'comments/comment_form' %>
 </div>
