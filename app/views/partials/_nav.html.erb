@@ -18,6 +18,7 @@
       <li><%= link_to_with_current 'Most Voted', root_path + '?voted=1', (params[:controller] == 'entries' && params.key?(:voted)) %></li>
     </ul>
   </li>
+  <li><%= link_to_with_current 'Authors', users_path, current_page?(users_path) %></li>
   <li><%= link_to_with_current 'About', about_path, current_page?(about_path) %></li>
   <li><%= link_to_with_current 'FAQ', faq_path, current_page?(faq_path) %></li>
   <li><%= link_to_with_current 'Contact', contact_index_path, (params[:controller] == 'contact') %></li>
