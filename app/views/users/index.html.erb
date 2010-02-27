@@ -16,7 +16,7 @@
       <%= link_to user.username, user_entries_path(user) %>
     </div>
     <div class="section">
-      <%= pluralize user.entries.count, 'entry' %>
+      <%= link_to_unless (user.entries.count == 0), (pluralize user.entries.count, 'entry'),  user_entries_path(user) %>
     </div>
   </div>
 <% end %>
