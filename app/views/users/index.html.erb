@@ -3,8 +3,15 @@
 <h1>Authors</h1>
 
 <% @users.each do |user| %>
-  <div>
-    <%= user.username %><br />
-    <%= user.entries.count %> entries
+  <div class="article">
+    <div class="header">
+      <div class="share-links">
+        Member since <%= datetime_written_out(user) %>
+      </div>
+      <%= link_to user.username, user_entries_path(user) %>
+    </div>
+    <div class="section">
+      <%= pluralize user.entries.count, 'entry' %>
+    </div>
   </div>
 <% end %>
