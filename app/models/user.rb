@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
     self.active = true
     save
   end
+  
+  def self.per_page
+    10
+  end
 end

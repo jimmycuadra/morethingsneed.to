@@ -1,6 +1,11 @@
 <% title 'Authors' %>
 
-<h1>Authors</h1>
+<div id="page-header">
+	<%= will_paginate @entries %>
+	
+	<h1>Authors</h1>
+	<div class="clear"></div>
+</div>
 
 <% @users.each do |user| %>
   <div class="article">
@@ -15,3 +20,5 @@
     </div>
   </div>
 <% end %>
+
+<%= will_paginate @entries %>
