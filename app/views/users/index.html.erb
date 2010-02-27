@@ -1,0 +1,10 @@
+<% title 'Authors' %>
+
+<h1>Authors</h1>
+
+<% @users.each do |user| %>
+  <div>
+    <%= user.username %><br />
+    <%= user.entries.count %> entries
+  </div>
+<% end %>

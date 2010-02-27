@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   
   attr_accessible :email, :password, :password_confirmation
   
+  has_many :entries
+  has_many :comments
+  
   def active?
     active
   end

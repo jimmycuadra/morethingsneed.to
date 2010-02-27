@@ -20,7 +20,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.entry_id '/:id', :controller => 'entries', :action => 'show', :requirements => { :id => /\d+/} 
 
-  map.resources :users, :only => [:new, :create, :edit, :update] do |user|
+  map.resources :users, :only => [:index, :new, :create, :edit, :update] do |user|
     user.resources :entries, :only => [:index]
   end
   map.resources :user_sessions, :only => [:new, :create, :destroy]
