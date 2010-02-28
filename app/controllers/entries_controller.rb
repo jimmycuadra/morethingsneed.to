@@ -41,7 +41,7 @@ class EntriesController < ApplicationController
       respond_to do |format|
         format.html do
           flash.now[:error] = 'More submissions need to be filled out correctly.'
-          @entries = Entry.paginate :page => params[:page], :order => 'created_at DESC'
+          @entries = Entry.paginate :page => params[:page], :order => 'created_at DESC', :conditions => build_conditions(nil)
           render :index          
         end
         format.json
