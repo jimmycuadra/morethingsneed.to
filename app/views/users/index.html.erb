@@ -13,7 +13,7 @@
       <div class="share-links">
         Member since <%= datetime_written_out(user) %>
       </div>
-      <%= link_to_unless (user.entries.count == 0), user.username, user_entries_path(user) %>
+      <%= user.username %>
     </div>
     <div class="section">
       <%= link_to_unless (user.entries.count == 0), (pluralize user.entries.count, 'entry'),  user_entries_path(user) %>
