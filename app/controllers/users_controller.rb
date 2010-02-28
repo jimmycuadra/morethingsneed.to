@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :require_user, :only => [:edit, :update]
   
   def index
-    @users = User.paginate :page => params[:page]
+    @users = User.paginate :page => params[:page], :conditions => { :active => true }
   end
   
   def new
