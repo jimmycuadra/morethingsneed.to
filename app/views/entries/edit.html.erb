@@ -1,0 +1,27 @@
+<% title 'Edit Entry' %>
+
+<h1>Edit Entry</h1>
+
+<% form_for @entry do |f| %>
+  <fieldset>
+    <legend>Edit entry</legend>
+    <ol>
+      <li>
+        <%= f.label :noun, 'More' %>
+        <%= f.text_field :noun %>
+      </li>
+      <li>
+        <%= f.select :needs, { 'need' => 0, 'needs' => 1 }, {}, { :class => 'no-label' } %>
+      </li>
+      <li>
+        <%= f.label :verb, 'to' %>
+        <%= f.text_field :verb %> .
+      </li>
+      <li>
+        <%= f.submit 'This needs to be updated', :class => 'submit' %>
+      </li>
+    </ol>
+  </fieldset>
+<% end %>
+
+<p class="meta">You have 5 minutes to edit your entry from the time of its original submission.</p>
