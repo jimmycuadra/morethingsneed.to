@@ -1,11 +1,8 @@
 <% title 'Entry' -%>
+<% description format_entry(@entry) %>
 
 <div id="entries" class="section">
 	<%= render :partial => @entry %>
-</div>
-
-<div id="comment" class="section">
-	<%= render :partial => 'comments/comment_form' %>
 </div>
 
 <h2>The Internet says:</h2>
@@ -19,4 +16,8 @@
 		    :collection => @comments
 		%>
 	<% end -%>
+</div>
+
+<div id="comment" class="section">
+	<%= render :partial => 'comments/comment_form' %>
 </div>

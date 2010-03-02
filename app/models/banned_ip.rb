@@ -25,15 +25,19 @@ class BannedIp < ActiveRecord::Base
   private
   
   def toggle_spammable
-    entries = Entry.all(:conditions => { :ip => self.ip })
     comments = Comment.all(:conditions => { :ip => self.ip })
+    entries = Entry.all(:conditions => { :ip => self.ip })
+    
+    comments.each do |c|
+      c.toggle_spam
+    end unless comments.empty?
     
     entries.each do |e|
       e.toggle_spam
     end unless entries.empty?
     
-    comments.each do |c|
-      c.toggle_spam
-    end unless comments.empty?
+    Entry.all.each do |e|
+      e.recalculate_comment_count
+    end
   end
 end

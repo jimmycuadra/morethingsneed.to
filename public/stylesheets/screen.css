@@ -286,11 +286,45 @@ small {
 	-moz-border-radius-bottomleft: 4px;
 	-moz-border-radius-bottomright: 4px;
 	-moz-box-shadow: #3e3e3e 0 1px 3px;
-	padding: 3px 10px;
+	padding: 0 10px;
+	position: relative;
 	-webkit-border-bottom-left-radius: 4px;
 	-webkit-border-bottom-right-radius: 4px;
 	-webkit-box-shadow: #3e3e3e 0 1px 3px;
 	width: 960px;
+}
+
+#nav li {
+  float: left;
+  padding: 3px 0;
+  margin-right: 15px;
+}
+
+#nav li.last {
+  margin-right: 0;
+}
+
+#nav li ul {
+	background: #fff;
+	border: 1px solid #000;
+	color: #000;
+	display: none;
+	padding-top: 1px;
+	-moz-border-radius-bottomleft: 4px;
+	-moz-border-radius-bottomright: 4px;
+	margin-top: 3px;
+	position: absolute;
+	-webkit-border-bottom-left-radius: 4px;
+	-webkit-border-bottom-right-radius: 4px;
+}
+
+#nav li:hover ul {
+  display: block;
+}
+
+#nav li li {
+  float: none;
+  margin: 0 5px;
 }
 
 #nav a.current {
@@ -302,7 +336,14 @@ small {
   -webkit-border-radius: 3px;
 }
 
-#nav span {
+#nav li li a.current {
+  background: none;
+  color: #c13100;
+  font-weight: bold;
+  padding: 0;
+}
+
+#nav .user {
 	float: right;
 }
 
@@ -369,6 +410,14 @@ small {
 	margin: 8px 0 0 0;
 	padding: 3px;
 	width: auto;
+}
+
+.userbox input.checkbox {
+  margin: 6px 0 0;
+}
+
+.userbox label.checkbox {
+  clear: none;
 }
 
 /* entries */
@@ -564,6 +613,22 @@ form textarea {
 	height: 180px;
 }
 
+form input.checkbox {
+  background: transparent;
+  border: 0;
+  margin-left: 80px;
+  width: 15px;
+}
+
+form label.checkbox {
+  margin-left: 5px;
+  width: auto;
+}
+
+form .no-label {
+  margin: 0 0 9px 103px;
+}
+
 /* flash and error messages */
 
 .flash {
@@ -696,5 +761,14 @@ p.meta a:visited {
 }
 
 #userbox-wrapper p.meta a {
+  color: #c13100;
+}
+
+.article .section-content p.meta {
+  margin-bottom: 9px;
+}
+
+.article .section-content p.meta a,
+.article .section-content p.meta a:visited {
   color: #c13100;
 }

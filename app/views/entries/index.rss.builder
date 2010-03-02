@@ -17,6 +17,9 @@ xml.rss :version => '2.0', 'xmlns:atom' => 'http://www.w3.org/2005/Atom' do
         xml.title rss_title(entry)
         xml.description rss_description(entry)
         xml.pubDate entry.created_at.to_s(:rfc822)
+        xml.author do |author|
+          author.name entry.user ? entry.user.username : 'Someone'
+        end
         xml.link 'http://morethingsneed.to/' + entry.id.to_s
         xml.guid 'http://morethingsneed.to/' + entry.id.to_s
       end

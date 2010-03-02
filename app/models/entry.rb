@@ -14,7 +14,7 @@ class Entry < ActiveRecord::Base
   validates_length_of :noun, :verb, :maximum => 255, :message => "^You're too wordy. Not more than 255 characters, please."
   validate :not_default_or_missing_phrase
   validate :honeypot_must_be_blank
-  validate_on_create :unique_entry
+  validate :unique_entry
   validates_each :noun, :verb do |record, attr, value|
     record.errors.add attr, 'cannot contain a URL.' if /.*http:\/\/.*/i.match(value)
   end
@@ -47,7 +47,8 @@ class Entry < ActiveRecord::Base
   end
   
   def unique_entry
-    errors.add_to_base('I know you think you\'re clever, but someone already submitted that one.') if Entry.all(:conditions => ['LOWER(noun) = LOWER(?) AND LOWER(verb) = LOWER(?)', self.noun, self.verb]).count > 0
+    matched_entry = Entry.first(:conditions => ['LOWER(noun) = LOWER(?) AND LOWER(verb) = LOWER(?)', self.noun, self.verb])
+    errors.add_to_base('I know you think you\'re clever, but someone already submitted that one.') if matched_entry && (matched_entry.id != self.id)
   end
   
   def no_recent_entry_from_ip
@@ -61,6 +62,10 @@ class Entry < ActiveRecord::Base
   
   def strip_trailing_punctuation
     self.verb.gsub!(/[\.!?,]*$/, '') unless self.verb.nil?
+  end
+  
+  def recalculate_comment_count
+    self.update_attribute :comment_count, self.comments.find_all_by_spam(false).count
   end
   
   def self.per_page

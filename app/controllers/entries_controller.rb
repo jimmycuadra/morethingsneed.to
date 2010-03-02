@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
-  before_filter :retrieve_record, :only => [:show, :update, :destroy, :toggle_spam]
+  before_filter :retrieve_record, :only => [:show, :destroy, :toggle_spam]
+  before_filter :retrieve_editable_record, :only => [:edit, :update]
   before_filter :get_sort_type, :only => [:index, :create, :show_spam]
   
   def index
@@ -23,6 +24,9 @@ class EntriesController < ApplicationController
     @comments = @entry.comments.all(:conditions => build_conditions(show_spam))
   end
   
+  def edit
+  end
+  
   def create
     @new_entry = Entry.new(params[:entry] || {})
     @new_entry.ip = request.remote_ip
@@ -40,7 +44,7 @@ class EntriesController < ApplicationController
       respond_to do |format|
         format.html do
           flash.now[:error] = 'More submissions need to be filled out correctly.'
-          @entries = Entry.paginate :page => params[:page], :order => 'created_at DESC'
+          @entries = Entry.paginate :page => params[:page], :order => 'created_at DESC', :conditions => build_conditions(nil)
           render :index          
         end
         format.json
@@ -49,15 +53,13 @@ class EntriesController < ApplicationController
   end
   
   def update
-    redirect_to root_path and return unless is_admin
-    
     if @entry.update_attributes(params[:entry])
-      flash.now[:success] = 'More submissions need to be updated successfully.'
+      flash.now[:success] = 'More entries need to be updated successfully.'
+      render :action => 'show'
     else
-      flash.now[:error] = 'More submissions need to be edited correctly.'
+      flash.now[:error] = 'More entries need to be edited correctly.'
+      render :action => 'edit'
     end
-    
-    render :action => 'show'
   end
   
   def destroy
@@ -85,6 +87,15 @@ class EntriesController < ApplicationController
     @entry = Entry.find(params[:id], :conditions => is_admin ? nil : ["spam = ?", false])
   end
   
+  def retrieve_editable_record
+    begin
+      @entry = Entry.find(params[:id], :conditions => is_admin ? nil : ["ip = ? AND created_at >= ?", request.remote_ip, 5.minutes.ago])
+    rescue ActiveRecord::RecordNotFound
+      flash[:error] = "You can't edit that entry. Either you didn't write it, or it's been more than 5 minutes since you originally created it."
+      redirect_to root_path and return
+    end
+  end
+  
   def build_conditions(options)
     conditions = Hash.new
     conditions[:user_id] = params[:user_id] if params[:user_id]
@@ -103,6 +114,12 @@ class EntriesController < ApplicationController
     when params.key?(:oldest)
       @order = 'created_at ASC'
       @sort_type = 'Oldest'
+    when params.key?(:discussed)
+      @order = 'comment_count DESC'
+      @sort_type = 'Most Discussed'
+    when params.key?(:voted)
+      @order = 'up_vote_count + down_vote_count DESC'
+      @sort_type = 'Most Voted'
     when params[:action] == 'show_spam'
       @order = 'created_at DESC'
       @sort_type = 'Newest (w/ spam)'

@@ -25,13 +25,6 @@
       <strong>More Things Need To</strong> uses JavaScript for a richer experience. Please consider enabling JavaScript in your browser!
     </div>
   </noscript>
-  <div id="device-change">
-	<% if mobile_device? %>
-	  <%= link_to "Full Site", :mobile => 0 %>
-	<% else %>
- 	  <%= link_to "Mobile Site", :mobile => 1 %>
-    <% end %>
-  </div>
   <!-->
   <div id="notification" class="hidden">
     <div class="close"></div>
@@ -41,12 +34,17 @@
 	<div id="bucket">
 	
 	<div id="header">
-		<a href="/" id="title-link" title="More Things Need To">More Things Need To</a>
+		<div id="device-change">
+			<% if mobile_device? %>
+			  <%= link_to "Full Site", :mobile => 0 %>
+			<% else %>
+		 	  <%= link_to "Mobile Site", :mobile => 1 %>
+			<% end %>
+		</div>
+		<a href="/" id="title-link" title="More Things Need To"><img src="/images/title_mobile.gif" alt="More Thing Need To"></a>
 		<%= render :partial => 'entries/add' %>
 		
     	<%= render :partial => 'partials/nav' %>
-
-		<%= render :partial => 'partials/userbox' unless current_user %>
 		
 		<div class="flash<%= ' success' if flash[:success] %><%= ' hidden' unless flash[:error] or flash[:success] -%>">
 			<div class="close hidden"></div>
