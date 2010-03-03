@@ -17,7 +17,7 @@
 		<%= stylesheet_link_tag 'ie' %>
 	<![endif]-->
 	
-	<%= javascript_include_tag 'jquery.min', 'core', 'jquery.cookie', 'notification', 'form-defaults', 'flash', 'entry', 'vote', 'comment', 'contact', 'application', :cache => 'mtnt' %>
+	<%= javascript_include_tag 'jquery.min', 'core', 'jquery.cookie', 'notification', 'form-defaults', 'flash', 'entry', 'vote', 'comment', 'contact', 'application-mobile', :cache => 'mtnt' %>
 </head>
 <body>
   <noscript>
@@ -41,7 +41,7 @@
 		 	  <%= link_to "Mobile Site", :mobile => 1 %>
 			<% end %>
 		</div>
-		<a href="/" id="title-link" title="More Things Need To"><img src="/images/title_mobile.gif" alt="More Thing Need To"></a>
+		<a href="/" id="title-link" title="More Things Need To"><img src="/images/title_mobile.png" alt="More Thing Need To"></a>
 		<%= render :partial => 'entries/add' %>
 		
     	<%= render :partial => 'partials/nav' %>

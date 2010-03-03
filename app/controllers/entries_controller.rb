@@ -38,11 +38,20 @@ class EntriesController < ApplicationController
           flash[:success] = 'More submissions need to be successful.'
           redirect_to @new_entry          
         end
+        format.mobile do
+          flash[:success] = 'More submissions need to be successful.'
+          redirect_to @new_entry          
+        end
         format.json
       end
     else
       respond_to do |format|
         format.html do
+          flash.now[:error] = 'More submissions need to be filled out correctly.'
+          @entries = Entry.paginate :page => params[:page], :order => 'created_at DESC', :conditions => build_conditions(nil)
+          render :index          
+        end
+        format.mobile do
           flash.now[:error] = 'More submissions need to be filled out correctly.'
           @entries = Entry.paginate :page => params[:page], :order => 'created_at DESC', :conditions => build_conditions(nil)
           render :index          

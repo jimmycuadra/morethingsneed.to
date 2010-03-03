@@ -21,11 +21,19 @@ class ContactController < ApplicationController
           flash[:success] = 'Congratulations, your message has been sent to to the administrators, where it will sit in their inboxes until they feel like reading it.'
           redirect_to :action => 'new'
         end
+        format.mobile do
+          flash[:success] = 'Congratulations, your message has been sent to to the administrators, where it will sit in their inboxes until they feel like reading it.'
+          redirect_to :action => 'new'
+        end
         format.json
       end
     else
       respond_to do |format|
         format.html do
+          flash.now[:error] = 'You done made some errors.'
+          render :action => 'new'
+        end
+        format.mobile do
           flash.now[:error] = 'You done made some errors.'
           render :action => 'new'
         end

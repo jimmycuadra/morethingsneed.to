@@ -269,13 +269,17 @@ small {
 	font-size: 12px;
 	margin: 2px;
 	padding: 5px 3px;
-	width: 250px;
+	width: 180px;
+}
+
+#add form input[type=text]#verb {
+	width: 150px;
 }
 
 #add form input[type=submit] {
 	margin-left: 2px;
 	margin-top: 4px;
-	padding: 4px 8px;
+	padding: 4px 3px;
 }
 
 #add form label {
@@ -301,13 +305,13 @@ small {
 	border-bottom-right-radius: 4px;
 	border-top-width: 0;
 	color: #000;
-	font-size: 16px;
+	font-size: 20px;
 	margin: 0 auto;
 	-moz-border-radius-bottomleft: 4px;
 	-moz-border-radius-bottomright: 4px;
 	-moz-box-shadow: #3e3e3e 0 1px 3px;
 	padding: 3px 10px;
-	text-align: center;
+	text-align: left;
 	-webkit-border-bottom-left-radius: 4px;
 	-webkit-border-bottom-right-radius: 4px;
 	-webkit-box-shadow: #3e3e3e 0 1px 3px;
@@ -315,13 +319,10 @@ small {
 }
 
 #nav li {
-  float: left;
-  padding: 3px 0;
-  margin-right: 15px;
-}
-
-#nav li.last {
-  margin-right: 0;
+	float: left;
+  	padding: 3px 0;
+  	margin-right: 11px;
+	text-align: center;
 }
 
 #nav li ul {
@@ -329,6 +330,7 @@ small {
 	border: 1px solid #000;
 	color: #000;
 	display: none;
+	font-size: 16px;
 	padding-top: 1px;
 	-moz-border-radius-bottomleft: 4px;
 	-moz-border-radius-bottomright: 4px;
@@ -336,35 +338,43 @@ small {
 	position: absolute;
 	-webkit-border-bottom-left-radius: 4px;
 	-webkit-border-bottom-right-radius: 4px;
+	width: 285px;
 }
 
 #nav li:hover ul {
-  display: block;
+  	display: block;
 }
 
-#nav li li {
-  float: none;
-  margin: 0 5px;
+#nav li ul li {
+  	float: left;
+  	margin: 0 5px;
+	text-align: left;
 }
 
 #nav a.current {
-  background: #a97d5d;
-  border-radius: 3px;
-  color: #fff;
-  -moz-border-radius: 3px;
-  padding: 2px 5px;
-  -webkit-border-radius: 3px;
+  	background: #a97d5d;
+  	border-radius: 3px;
+  	color: #fff;
+  	-moz-border-radius: 3px;
+  	padding: 2px 5px;
+  	-webkit-border-radius: 3px;
 }
 
 #nav li li a.current {
-  background: none;
-  color: #c13100;
-  font-weight: bold;
-  padding: 0;
+  	background: none;
+  	color: #c13100;
+  	font-weight: bold;
+  	padding: 0;
 }
 
 #nav .user {
-	float: right;
+	float: left;
+	font-size: 14px;
+	text-align: center;
+}
+
+#nav .user.last {
+	clear: left;
 }
 
 #userbox-wrapper {
@@ -597,7 +607,7 @@ form textarea {
 	float: left;
 	margin: 0 0 9px 9px;
 	resize: none;
-	width: 250px;
+	width: 285px;
 }
 
 form input[type=text],
@@ -722,7 +732,7 @@ form textarea {
 
 #comment textarea {
 	height: 90px;
-	width: 290px;
+	width: 285px;
 }
 
 /* server error pages */
