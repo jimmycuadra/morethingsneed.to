@@ -8,6 +8,8 @@
           <li><%= link_to 'Oldest', entries_path(:oldest => 1) %></li>
           <li><%= link_to 'Best', entries_path(:best => 1) %></li>
           <li><%= link_to 'Worst', entries_path(:worst => 1) %></li>
+		  <li><%= link_to 'Most Discussed', entries_path(:discussed => 1) %></li>
+          <li><%= link_to 'Most Voted', entries_path(:voted => 1) %></li>
         </ul>
       </li>
       <li>
@@ -19,7 +21,7 @@
           <li><%= link_to 'Contact', contact_index_path %></li>
         </ul>
       </li>
-      <li>
+      <li class="bottom">
         <span>Accounts</span>
         <% if current_user %>
           <ul>
@@ -36,7 +38,7 @@
           </ul>
         <% end %>
       </li>
-      <li>
+      <li class="bottom">
         <span>Connect</span>
         <ul>
           <li><%= link_to 'Facebook', 'http://www.facebook.com/pages/More-Things-Need-To/458775175458' %></li>
@@ -45,6 +47,14 @@
         </ul>
       </li>
     </ul>
+
+	<div id="device-change">
+		<% if mobile_device? %>
+		  <%= link_to "Desktop", :mobile => 0 %> | Mobile
+		<% else %>
+	 	  Desktop | <%= link_to "Mobile", :mobile => 1 %>
+		<% end %>
+	</div>
 
   	<p>Announcing the necessity for increased frequency of things occurring since 2010. &copy; <%= Time.new.year %> <a href="http://www.transparentgorilla.com/">Transparent Gorilla</a>. All rights reserved.</p>
   </div>

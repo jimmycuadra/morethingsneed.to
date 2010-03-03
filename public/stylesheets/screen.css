@@ -104,15 +104,6 @@ small {
 	padding: 0;
 }
 
-#device-change {
-	float: right;
-	margin: 5px auto 0;
-	padding: 5px 10px 0;
-	position: relative;
-	text-align: center;
-	top: -70px;
-}
-
 #header #title-link {
 	display: block;
 	height: 70px;
@@ -155,7 +146,7 @@ small {
 #footer {
 	background: #a97d5d;
 	border-top: 2px solid #000;
-  color: #2b2b2b;
+  	color: #2b2b2b;
 	font-size: 13px;
 	margin: 0 auto;
 }
@@ -197,6 +188,19 @@ small {
 #footer a {
   color: #fff;
   font-weight: bold;
+}
+
+#footer #device-change {
+	clear: left;
+	float: left;
+	margin: 0 auto;
+	padding: 5px 5px 0 0;
+	text-align: center;
+	width: 100%;
+}
+
+#footer #device-change a {
+	font-size: 12px;
 }
 
 /* noscript */

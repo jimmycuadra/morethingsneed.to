@@ -34,13 +34,6 @@
 	<div id="bucket">
 	
 	<div id="header">
-		<div id="device-change">
-			<% if mobile_device? %>
-			  <%= link_to "Full Site", :mobile => 0 %>
-			<% else %>
-		 	  <%= link_to "Mobile Site", :mobile => 1 %>
-			<% end %>
-		</div>
 		<a href="/" id="title-link" title="More Things Need To"><img src="/images/title_mobile.png" alt="More Thing Need To"></a>
 		<%= render :partial => 'entries/add' %>
 		
