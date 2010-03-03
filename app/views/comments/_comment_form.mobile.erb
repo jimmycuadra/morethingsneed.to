@@ -1,0 +1,29 @@
+<% form_for [@entry, @comment || Comment.new] do |f| %>
+<fieldset>
+	<legend>Write something no one will read</legend>
+
+	<ol>
+		<% unless current_user -%>
+		<li>			
+			<%= f.label :email, nil, :class => 'pot' %>
+			<%= f.text_field :email, :class => 'pot' %>
+		</li>
+
+		<li>
+			<%= f.label :name, 'Moniker' %>
+			<%= f.text_field :name %>
+		</li>
+		<% end -%>
+
+		<li>
+			<%= f.label :comment, 'Your Pointless Drivel' %>
+			<%= f.text_area :comment %>
+		</li>
+		<li>
+			<%= f.submit 'Force everyone to read to your worthless litany', :class => 'submit' %>
+		</li>
+	</ol>
+</fieldset>
+<% end %>
+
+<% unless current_user %><p class="meta">Moniker is optional.</p><% end %>

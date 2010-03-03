@@ -53,7 +53,7 @@ h1 a:hover {
 
 h2 {
 	font-size: 16px;
-	margin: 18px auto;
+	margin: 18px auto 18px 9px;
 }
 
 .pot, 
@@ -156,7 +156,7 @@ small {
   border-top: 2px solid #000;
   color: #2b2b2b;
   font-size: 16px;
-  margin: 6px auto 0;
+  margin: 0 auto;
 }
 
 #footer-content {
@@ -168,7 +168,7 @@ small {
   float: left;
   font-size: 18px;
   margin-bottom: 9px;
-  width: 160px;
+  width: 145px;
 }
 
 #footer-content li span {
@@ -544,7 +544,7 @@ form fieldset {
 form label {
 	clear: left;
 	float: left;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 	margin-left: 10px;
 	text-align: left;
 	vertical-align: top;
@@ -566,7 +566,7 @@ form textarea {
 	float: left;
 	margin: 0 0 9px 9px;
 	resize: none;
-	width: 300px;
+	width: 250px;
 }
 
 form input[type=text],
@@ -597,11 +597,14 @@ form textarea {
 
 .flash {
 	background-color: #c13100;
-	border: 1px dashed #000;
+	border-bottom: 1px dashed #000;
+	border-left: 1px dashed #000;
+	border-right: 1px dashed #000;
 	border-top: 0;
 	color: #fff;
 	padding: 9px;
 	margin: 0 auto;
+	width: 80%;
 }
 
 .flash .close,
@@ -688,7 +691,7 @@ form textarea {
 
 #comment textarea {
 	height: 90px;
-	width: 550px;
+	width: 290px;
 }
 
 /* server error pages */

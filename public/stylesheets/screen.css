@@ -105,11 +105,12 @@ small {
 }
 
 #device-change {
-	background: #fff;
-	height: 20px;
-	margin: 0 auto;
-	padding: 2px 5px 0;
+	float: right;
+	margin: 5px auto 0;
+	padding: 5px 10px 0;
+	position: relative;
 	text-align: center;
+	top: -70px;
 }
 
 #header #title-link {

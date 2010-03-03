@@ -1,0 +1,23 @@
+<% title 'Entry' -%>
+<% description format_entry(@entry) %>
+
+<div id="entries" class="section">
+	<%= render :partial => @entry %>
+</div>
+
+<h2>The Internet says:</h2>
+
+<div id="comments" class="section<%= ' empty-state' if @comments.blank? %>">
+	<% if @comments.blank? -%>
+		<p>Nothing. Can you believe it?</p>
+	<% else -%>
+		<%=
+		  render :partial => 'comments/comment',
+		    :collection => @comments
+		%>
+	<% end -%>
+</div>
+
+<div id="comment" class="section">
+	<%= render :partial => 'comments/comment_form' %>
+</div>
