@@ -12,6 +12,9 @@ class Comment < ActiveRecord::Base
   validates_presence_of :comment, :message => '^Umm, you need some drivel in order for it to be pointless.'
   validates_format_of :ip, :with => /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/, :message => 'must be a valid IP'
   validates_length_of :name, :maximum => 30, :message => '^Sucks for you that your name is so long, because names longer than 30 characters aren\'t accepted.', :allow_blank => true
+  validates_each :name, :comment do |record, attr, value|
+    record.errors.add attr, 'cannot contain a URL.' if /.*http:\/\/.*/i.match(value)
+  end
   validate :honeypot_must_be_blank
   validate_on_create :no_recent_comment_from_ip
   

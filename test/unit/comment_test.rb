@@ -33,6 +33,13 @@ class CommentTest < ActiveSupport::TestCase
     assert @c.errors.invalid?(:name)
   end
   
+  test "should reject comment with URLs in it" do
+    @c.name = @c.comment = 'http://spam.com'
+    assert !@c.valid?
+    assert @c.errors.invalid?(:name)
+    assert @c.errors.invalid?(:comment)
+  end
+  
   test "should reject comment with filled in honeypot" do
     @c.email = 'honey is tasty'
     assert !@c.valid?
