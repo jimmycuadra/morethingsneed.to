@@ -34,14 +34,6 @@
 	<div id="header">
 		<a href="/" id="title-link" title="More Things Need To">More Things Need To</a>
 		
-		<div id="device-change">
-			<% if mobile_device? %>
-			  <%= link_to "Full Site", :mobile => 0 %>
-			<% else %>
-		 	  <%= link_to "Mobile Site", :mobile => 1 %>
-		    <% end %>
-		</div>
-		
 		<%= render :partial => 'entries/add' %>
 		
     	<%= render :partial => 'partials/nav' %>
