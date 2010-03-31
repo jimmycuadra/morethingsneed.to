@@ -1,23 +1,18 @@
 <ul id="nav">
-  <li>
-    <%= link_to_with_current 'Entries', root_path, (params[:controller] == 'entries') %>
-    <ul>
-      <li><%= link_to_with_current 'Newest', root_path, (params[:controller] == 'entries' && ![:oldest, :best, :worst, :discussed, :voted, :user_id].any? { |k| params.key?(k) }) %></li>
-      <li><%= link_to_with_current 'Oldest', root_path + '?oldest=1', (params[:controller] == 'entries' && params.key?(:oldest)) %></li>
-      <li><%= link_to_with_current 'Best', root_path + '?best=1', (params[:controller] == 'entries' && params.key?(:best)) %></li>
-      <li><%= link_to_with_current 'Worst', root_path + '?worst=1', (params[:controller] == 'entries' && params.key?(:worst)) %></li>
-      <li><%= link_to_with_current 'Most Discussed', root_path + '?discussed=1', (params[:controller] == 'entries' && params.key?(:discussed)) %></li>
-      <li><%= link_to_with_current 'Most Voted', root_path + '?voted=1', (params[:controller] == 'entries' && params.key?(:voted)) %></li>
-    </ul>
-  </li>
-  <li><%= link_to_with_current 'About', about_path, current_page?(about_path) %></li>
+  <li><%= link_to_with_current 'Newest', root_path, (params[:controller] == 'entries' && ![:oldest, :best, :worst, :discussed, :voted, :user_id].any? { |k| params.key?(k) }) %></li>
+  <li><%= link_to_with_current 'Oldest', root_path + '?oldest=1', (params[:controller] == 'entries' && params.key?(:oldest)) %></li>
+  <li><%= link_to_with_current 'Best', root_path + '?best=1', (params[:controller] == 'entries' && params.key?(:best)) %></li>
+  <li><%= link_to_with_current 'Worst', root_path + '?worst=1', (params[:controller] == 'entries' && params.key?(:worst)) %></li>
+  <li><%= link_to_with_current 'Most Discussed', root_path + '?discussed=1', (params[:controller] == 'entries' && params.key?(:discussed)) %></li>
+  <li><%= link_to_with_current 'Most Voted', root_path + '?voted=1', (params[:controller] == 'entries' && params.key?(:voted)) %></li>
+  <li class="last"><%= link_to_with_current 'About', about_path, current_page?(about_path) %></li>
   <li><%= link_to_with_current 'FAQ', faq_path, current_page?(faq_path) %></li>
   <li><%= link_to_with_current 'Contact', contact_index_path, (params[:controller] == 'contact') %></li>
-  <% if is_admin %><li><%= link_to_with_current 'Show Spam Entries', show_spam_entries_path, params.key?(:show_spam) %></li><% end %>
+  <% if is_admin %><li><%= link_to_with_current 'Show Spam', show_spam_entries_path, params.key?(:show_spam) %></li><% end %>
 	<% if current_user %>
-		<li class="user logged-in last">Logged in as <strong><%= link_to_with_current current_user.username, user_entries_path(current_user), (params[:controller] == 'entries' && params[:user_id] == current_user.id.to_s) %></strong></li>    
+		<li class="user logged-in last"><%= link_to_with_current 'Log out', logout_path, false %></li>
 		<li class="user logged-in"><%= link_to_with_current 'Account', profile_path, (params[:controller] == 'users' && params[:action] == 'edit') %></li>
-		<li class="user logged-in"><%= link_to_with_current 'Log out', logout_path, false %></li>
+		<li class="user logged-in">Logged in as <strong><%= link_to_with_current current_user.username, user_entries_path(current_user), (params[:controller] == 'entries' && params[:user_id] == current_user.id.to_s) %></strong></li>
 	<% else %>
 	    <li class="user last"><%= link_to_with_current 'Log in', login_path, (params[:controller] == 'user_sessions'), :id => 'login' %></li>
 	    <li class="user"><%= link_to_with_current 'Register', register_path, (params[:controller] == 'users'), :id => 'register' %></li>
