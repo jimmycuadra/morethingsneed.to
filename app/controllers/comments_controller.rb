@@ -11,11 +11,20 @@ class CommentsController < ApplicationController
           flash[:success] = 'Your opinion has been duly noted.'
           redirect_to @entry
         end
+        format.mobile do
+          flash[:success] = 'Your opinion has been duly noted.'
+          redirect_to @entry
+        end
         format.json
       end
     else
       respond_to do |format|
         format.html do
+          flash.now[:error] = 'Your shit was invalid, homes.'
+          @new_entry = Entry.new
+          return render :file => 'entries/show', :layout => 'application'
+        end
+        format.mobile do
           flash.now[:error] = 'Your shit was invalid, homes.'
           @new_entry = Entry.new
           return render :file => 'entries/show', :layout => 'application'

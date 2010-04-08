@@ -1,0 +1,38 @@
+<h1>Contact us</h1>
+
+<% title 'Contact' -%>
+
+<p>Got a comment? A question? Love the site? Hate it? Found a bug?</p>
+
+<% form_for @contact, :url => { :controller => 'contact', :action => 'create' } do |f| -%>
+	<fieldset>
+		<legend>Babble at us, we might listen</legend>
+
+		<ol>			
+			<% unless current_user -%>
+				<li>			
+					<%= f.label :email, nil, :class => 'pot' %>
+					<%= f.text_field :email, :class => 'pot' %>
+				</li>
+				<li>			
+					<%= f.label :name %>
+					<%= f.text_field :name %>
+				</li>
+				<li>		
+					<%= f.label :real_email, 'E-mail' %>
+					<%= f.text_field :real_email %>
+				</li>
+			<% end -%>
+			
+			<li>	
+				<%= f.label :message %>
+				<%= f.text_area :message %>
+			</li>
+			<li>	
+				<%= f.submit 'Hear me out!', :class => 'submit' %>
+			</li>
+		</ol>
+	</fieldset>
+<% end -%>
+
+<p class="meta">All fields are required.</p>

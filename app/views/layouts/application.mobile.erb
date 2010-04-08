@@ -11,12 +11,13 @@
 	
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/morethingsneedto" />
-	<%= stylesheet_link_tag 'reset', 'screen', :cache => 'mtnt' %>
+
+	<%= stylesheet_link_tag 'reset', 'mobile' %>
 	<!--[if IE]>
 		<%= stylesheet_link_tag 'ie' %>
 	<![endif]-->
 	
-	<%= javascript_include_tag 'jquery.min', 'core', 'jquery.cookie', 'notification', 'form-defaults', 'flash', 'userbox', 'entry', 'vote', 'comment', 'contact', 'application', :cache => 'mtnt' %>
+	<%= javascript_include_tag 'jquery.min', 'core', 'jquery.cookie', 'notification', 'form-defaults', 'flash', 'mobile', :cache => 'mobile' %>
 </head>
 <body>
   <noscript>
@@ -24,20 +25,19 @@
       <strong>More Things Need To</strong> uses JavaScript for a richer experience. Please consider enabling JavaScript in your browser!
     </div>
   </noscript>
+  <!-->
   <div id="notification" class="hidden">
     <div class="close"></div>
     <div class="message"></div>
   </div>
+  -->
 	<div id="bucket">
 	
 	<div id="header">
-		<a href="/" id="title-link" title="More Things Need To">More Things Need To</a>
-		
+		<a href="/" id="title-link" title="More Things Need To"><img src="/images/title_mobile.png" alt="More Thing Need To"></a>
 		<%= render :partial => 'entries/add' %>
 		
     	<%= render :partial => 'partials/nav' %>
-
-		<%= render :partial => 'partials/userbox' unless current_user %>
 		
 		<div class="flash<%= ' success' if flash[:success] %><%= ' hidden' unless flash[:error] or flash[:success] -%>">
 			<div class="close hidden"></div>
@@ -45,7 +45,7 @@
   			<%= flash[:error] or flash[:success] %>
 			</div>
 			<div class="errors">
-  			<% [@new_entry, @entry, @comment, @contact, @user, @user_session].each do |o| %>
+  			<% [@new_entry, @comment, @contact, @user, @user_session].each do |o| %>
   			  <%= render_error_messages o if o %>
   			<% end -%>
 			</div>

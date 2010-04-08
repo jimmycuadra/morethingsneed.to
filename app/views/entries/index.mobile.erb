@@ -1,0 +1,15 @@
+<% title 'Entries' -%>
+
+<div id="page-header">
+	<%= will_paginate @entries %>
+	
+	<h1><%= @username ? @username + "'s Entries" : @sort_type %></h1>
+	<div class="clear"></div>
+</div>
+
+
+<div id="entries" class="section">
+	<%= render :partial => @entries %>
+</div>
+
+<%= will_paginate @entries %>

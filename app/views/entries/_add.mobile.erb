@@ -1,0 +1,21 @@
+<div id="add" class="section<%= ' ajax' if params[:controller] == 'entries' %>">
+	<% form_for @new_entry do |f| %>
+	  <fieldset>
+  		<%= f.label :noun, 'More ' %>
+		<%= f.text_field :noun, :id => 'noun', :value => 'nouns', :autocorrect => 'off', :autocapitalize => 'off' %>	
+  		<%= f.select :needs, { 'need' => 0, 'needs' => 1 } %>
+
+		<br class="clear" />
+
+  		<%= f.label :verb, ' to ' %>
+  		<%= f.text_field :verb, :id => 'verb', :value => 'verb', :autocorrect => 'off', :autocapitalize => 'off' %> <span>!</span>
+		
+  		<% unless current_user -%>
+  			<%= f.label :email, nil, :class => 'pot' %>
+  			<%= f.text_field :email, :class => 'pot' %>
+  		<% end -%>
+
+		<%= f.submit 'This needs to happen', :class => 'submit' %>		
+  	</fieldset>
+	<% end %>
+</div>
