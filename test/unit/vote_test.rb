@@ -54,6 +54,6 @@ class VoteTest < ActiveSupport::TestCase
     @v2 = Entry.last.votes.build(:up_vote => 1)
     @v2.ip = ip
     assert !@v2.valid?
-    assert @v2.errors.invalid?(:base)
+    assert @v2.errors.invalid?(:ip)
   end
 end
