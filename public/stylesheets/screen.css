@@ -764,3 +764,25 @@ p.meta a:visited {
 .article .section-content p.meta a:visited {
   color: #c13100;
 }
+
+/* user stats */
+
+dl.user-stats,
+dl.user-stats dt,
+dl.user-stats dd {
+  background: transparent;
+  border: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+dl.user-stats dt,
+dl.user-stats dd {
+  float: left;
+}
+
+dl.user-stats dt {
+  clear: left;
+  margin-right: 10px;
+}

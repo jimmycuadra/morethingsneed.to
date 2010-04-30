@@ -1,8 +1,6 @@
 <% title 'Authors' %>
 
 <div id="page-header">
-	<%= will_paginate @entries %>
-	
 	<h1>Authors</h1>
 	<div class="clear"></div>
 </div>
@@ -16,9 +14,23 @@
       <%= user.username %>
     </div>
     <div class="section">
-      <%= link_to_unless (user.entries.count == 0), (pluralize user.entries.count, 'entry'),  user_entries_path(user) %>
+      <dl class="user-stats">
+        <dt>Entry count:</dt>
+        <dd><%= user.entries.count %></dd>
+        
+        <dt>Votes received:</dt>
+        <dd>#</dd>
+
+        <dt>Comments received:</dt>
+        <dd>#</dd>
+        
+        <div class="clear"></div>
+      </dl>
+      
+      <% if user.entries.count > 0 %>
+        <br />
+        <%= link_to "Read #{user.username}'s entries",  user_entries_path(user) %>
+      <% end %>
     </div>
   </div>
 <% end %>
-
-<%= will_paginate @entries %>
