@@ -19,10 +19,10 @@
         <dd><%= user.entries.count %></dd>
         
         <dt>Votes received:</dt>
-        <dd>#</dd>
+        <dd># up, # down, <%= user.votes.count %> total</dd>
 
         <dt>Comments received:</dt>
-        <dd>#</dd>
+        <dd><%= user.received_comments.count %></dd>
         
         <div class="clear"></div>
       </dl>

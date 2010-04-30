@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   
   has_many :entries
   has_many :comments
+  has_many :votes, :through => :entries
+  has_many :received_comments, :source => :comments, :through => :entries
   
   def active?
     active
