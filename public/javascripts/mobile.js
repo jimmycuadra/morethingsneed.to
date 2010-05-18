@@ -1,5 +1,5 @@
 $(function() {
-  // form defaults
+    // form defaults
 	$('#add form').formDefaults();
 	
 	// notification
@@ -7,4 +7,7 @@ $(function() {
 	
 	// flash
 	var flash = new MTNT.Flash($('.flash'));
+	
+	// hide scrollbar
+	window.scrollTo(0, 1);
 });
