@@ -30,7 +30,7 @@ h1 {
 	font-size: 18px;
 	font-weight: normal;
 	line-height: 24px;
-	margin: 2px auto;
+	margin: 3px auto;
 	padding: 0 6px;
 	text-shadow: #3e3e3e 1px 1px 2px;
 }
@@ -93,6 +93,9 @@ input[type=checkbox] + label {
 	float: left;
 	margin-top: 0;
 }
+input[type=submit] {
+	padding: 1px 3px 5px;
+}
 
 small {
 	font-size: 12px;
@@ -101,7 +104,7 @@ small {
 /* structure */
 
 #bucket {
-	background: #705137 url(/images/background_mobile.jpg) repeat-x;
+	background: #58402b url(/images/background_mobile.jpg) repeat-x;
 	margin: 0;
 	padding: 0;
 }
@@ -294,24 +297,23 @@ small {
 #add form input[type=text] {
 	font-size: 12px;
 	height: 8px;
-	margin: 0 2px;
+	margin: 0;
 	padding: 5px 3px;
-	width: 180px;
+	width: 140px;
 }
 
 #add form input[type=text]#verb {
-	width: 150px;
+	width: 130px;
 }
 
 #add form input[type=submit] {
 	height: 20px;
-	margin-left: 2px;
-	margin-top: 0;
-	padding: 2px 3px;
+	margin: 0;
+	padding: 3px 3px;
 }
 
 #add form label {
-	padding: 4px;
+	padding: 4px 0;
 }
 
 #add form select {
