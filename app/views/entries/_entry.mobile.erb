@@ -13,23 +13,19 @@
 			
 			<div class="section-links">			
 				
-				<div class="vote-region vote-region-up">
 				<% form_for [entry, Vote.new], :html => { :id => 'new_up_vote_' + entry.id.to_s } do |f| -%>
 					<fieldset>
 	  					<%= f.hidden_field :up_vote, :value => 1, :id => 'vote_up_vote_' + entry.id.to_s %>
 	  					<%= f.submit 'Vote Up', :id => 'vote_up_vote_submit' + entry.id.to_s, :class => 'vote-button vote-up-button' %>
 	  				</fieldset>
 				<% end -%> Agreed! <span class="up_vote_count"><%= vote_counts(entry, 'up') %></span>
-				</div>
 				
-				<div class="vote-region vote-region-down">
 				<% form_for [entry, Vote.new], :html => { :id => 'new_down_vote_' + entry.id.to_s } do |f| -%>
 					<fieldset>
 	  					<%= f.hidden_field :up_vote, :value => 0, :id => 'vote_down_vote' + entry.id.to_s %>
 	  					<%= f.submit 'Vote Down', :id => 'vote_down_vote_submit' + entry.id.to_s, :class => 'vote-button vote-down-button' %>
 	  				</fieldset>
 				<% end -%> Denied! <span class="down_vote_count"><%= vote_counts(entry, 'down') %></span>
-				</div>
 			
 			</div> <!-- /section-links -->
 			
