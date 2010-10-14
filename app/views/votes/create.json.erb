@@ -1,0 +1,5 @@
+{
+	"success" : <%= @v.new_record? ? 0 : 1 %>,
+	"up" : "<%= vote_counts(@entry, 'up') %>",
+	"down" : "<%= vote_counts(@entry, 'down') %>"
+}

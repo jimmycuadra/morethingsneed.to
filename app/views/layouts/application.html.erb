@@ -16,6 +16,9 @@
 	<![endif]-->
 	
 	<%= javascript_include_tag 'jquery.min', 'core', 'jquery.cookie', 'jquery.tmpl.min', 'notification', 'form-defaults', 'flash', 'userbox', 'entry', 'vote', 'comment', 'contact', 'application', :cache => 'mtnt' %>
+	
+	<%= render :partial => 'tmpl/vote' %>
+	
 </head>
 <body>
   <noscript>

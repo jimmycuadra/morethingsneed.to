@@ -17,20 +17,17 @@
 		<%= stylesheet_link_tag 'ie' %>
 	<![endif]-->
 	
-	<%= javascript_include_tag 'jquery.min', 'core', 'jquery.cookie', 'jquery.tmpl.min', 'notification', 'form-defaults', 'flash', 'entry', 'vote', 'comment', 'mobile', :cache => 'mobile' %>
+	<%= javascript_include_tag 'jquery.min', 'core', 'jquery.tmpl.min', 'form-defaults',  'vote', 'mobile', :cache => 'mobile' %>
+	
+	<%= render :partial => 'tmpl/vote' %>
+	
 </head>
 <body>
-  <noscript>
-    <div id="noscript">
-      <strong>More Things Need To</strong> uses JavaScript for a richer experience. Please consider enabling JavaScript in your browser!
-    </div>
-  </noscript>
-  <!-->
-  <div id="notification" class="hidden">
-    <div class="close"></div>
-    <div class="message"></div>
-  </div>
-  -->
+	<noscript>
+    	<div id="noscript">
+      		<strong>More Things Need To</strong> uses JavaScript for a richer experience. Please consider enabling JavaScript in your browser!
+    	</div>
+  	</noscript>
 	<div id="bucket">
 	
 	<div id="header">

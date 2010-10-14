@@ -437,6 +437,15 @@ small {
 	font-size: 12px;
 }
 
+.article .section-links form {
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.article .section-links form:first-child {
+	margin-left: 0;
+}
+
 .article .section-links form fieldset {
   display: inline;
   margin: 0;
@@ -488,7 +497,7 @@ small {
 }
 
 .article form input[type=submit] {
-	margin: 3px 0;
+	margin: 0 0 4px;
 }
 
 /* forms */
