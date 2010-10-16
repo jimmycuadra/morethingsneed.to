@@ -11,10 +11,10 @@ Rails::Initializer.run do |config|
   config.gem 'will_paginate'
 
   config.action_controller.session = {
-    :session_key => APP_CONFIG['session_key'],
+    :session     => APP_CONFIG['session_key'],
     :secret      => APP_CONFIG['session_secret']
   }
   config.time_zone = 'Pacific Time (US & Canada)'
 end
 
-RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.10' unless defined? RAILS_GEM_VERSION
