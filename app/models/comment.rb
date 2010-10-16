@@ -16,7 +16,7 @@ class Comment < ActiveRecord::Base
     record.errors.add attr, 'cannot contain a URL.' if /.*http:\/\/.*/i.match(value)
   end
   validate :honeypot_must_be_blank
-  validate_on_create :no_recent_comment_from_ip
+  validate :no_recent_comment_from_ip, :on => :create
   
   # callbacks
   

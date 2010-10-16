@@ -1,6 +1,6 @@
 module Spammable
   def self.included(klass)
-    klass.send :validate_on_create, :cannot_be_from_banned_ip
+    klass.send :validate, :cannot_be_from_banned_ip, :on => :create
   end
   
   def is_spam?

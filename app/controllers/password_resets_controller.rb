@@ -13,7 +13,7 @@ class PasswordResetsController < ApplicationController
      if @user
        @user.reset_perishable_token!
        ActionMailer::Base.default_url_options[:host] = request.host
-       Notifier.deliver_password_reset_instructions(@user)
+       NotificationMailer.password_reset_instructions(@user).deliver
        flash[:success] = 'Check your e-mail for a link to reset your password.'
        redirect_to root_path
      else

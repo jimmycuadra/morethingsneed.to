@@ -1,5 +1,5 @@
 <div id="add" class="section<%= ' ajax' if params[:controller] == 'entries' %>">
-	<% form_for @new_entry do |f| %>
+	<%= form_for @new_entry do |f| %>
 	  <fieldset>
   		<%= f.label :noun, 'More ' %>
 		<%= f.text_field :noun, :id => 'noun', :value => 'nouns', :autocorrect => 'off', :autocapitalize => 'off', :placeholder => 'nouns' %>	

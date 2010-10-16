@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   helper :all
   protect_from_forgery
-  filter_parameter_logging :password
   helper_method :current_user, :is_admin, :mobile_device?
   before_filter :prepare_new_entry, :prepare_for_mobile
    

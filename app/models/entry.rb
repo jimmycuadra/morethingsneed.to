@@ -18,7 +18,7 @@ class Entry < ActiveRecord::Base
   validates_each :noun, :verb do |record, attr, value|
     record.errors.add attr, 'cannot contain a URL.' if /.*http:\/\/.*/i.match(value)
   end
-  validate_on_create :no_recent_entry_from_ip
+  validate :no_recent_entry_from_ip, :on => :create
   
   # callbacks
   

@@ -93,12 +93,12 @@ class EntriesController < ApplicationController
   private
   
   def retrieve_record
-    @entry = Entry.find(params[:id], :conditions => is_admin ? nil : ["spam = ?", false])
+    @entry = Entry.find(params[:id]).where(is_admin ? nil : ["spam = ?", false])
   end
   
   def retrieve_editable_record
     begin
-      @entry = Entry.find(params[:id], :conditions => is_admin ? nil : ["ip = ? AND created_at >= ?", request.remote_ip, 5.minutes.ago])
+      @entry = Entry.find(params[:id]).where(is_admin ? nil : ["ip = ? AND created_at >= ?", request.remote_ip, 5.minutes.ago])
     rescue ActiveRecord::RecordNotFound
       flash[:error] = "You can't edit that entry. Either you didn't write it, or it's been more than 5 minutes since you originally created it."
       redirect_to root_path and return

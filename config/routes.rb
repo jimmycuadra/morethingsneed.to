@@ -1,29 +1,35 @@
-ActionController::Routing::Routes.draw do |map|
-  map.resources :entries, :except => [:new], :collection => { :show_spam => :get }, :member => { :toggle_spam => :put } do |entry|
-    entry.resources :comments, :only => [:create, :destroy], :member => { :toggle_spam => :put }
-    entry.resources :votes, :only => [:create, :destroy] 
+Morethingsneed::Application.routes.draw do
+  resources :entries, :except => [:new] do
+    put 'toggle_spam', :on => :member
+    get 'show_spam', :on => :collection
+    
+    resources :comments, :only => [:create, :destroy] do
+      put 'toggle_spam', :on => :member
+    end
+    
+    resources :votes, :only => [:create, :destroy]
   end
   
-  map.about '/about', :controller => 'pages', :action => 'about'
-  map.faq '/faq', :controller => 'pages', :action => 'faq'
-  map.privacy '/privacy', :controller => 'pages', :action => 'privacy'
-  map.resources :contact, :only => [:index, :new, :create]
+  match '/about' => 'pages#about', :as => 'about'
+  match '/faq' => 'pages#faq', :as => 'faq'
+  match '/privacy' => 'pages#privacy', :as => 'privacy'
+  resources :contact, :only => [:index, :new, :create]
 
-  map.register '/register', :controller => :users, :action => 'new'
-  map.profile '/profile', :controller => :users, :action => 'edit'
-  map.resources :activations, :only => [:new, :create]
-  map.activate '/activate/:activation_code', :controller => 'activations', :action => 'activate'
-  map.resources :password_resets, :only => [:new, :edit, :create, :update]
+  match '/register' => 'users#new', :as => 'register'
+  match '/profile' => 'users#edit', :as => 'profile'
+  resources :activations, :only => [:new, :create]
+  match '/activate/:activation_code'=> 'activations#activate', :as => 'activate'
+  resources :password_resets, :only => [:new, :edit, :create, :update]
 
-  map.login '/login', :controller => 'user_sessions', :action => 'new'
-  map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
+  match '/login' => 'user_sessions#new', :as => 'login'
+  match '/logout' => 'user_sessions#destroy', :as => 'logout'
   
-  map.entry_id '/:id', :controller => 'entries', :action => 'show', :requirements => { :id => /\d+/} 
+  match '/:id' => 'entries#show', :constraints => { :id => /\d+/}, :as => 'entry_id'
 
-  map.resources :users, :only => [:new, :create, :edit, :update] do |user|
-    user.resources :entries, :only => [:index]
+  resources :users, :only => [:new, :create, :edit, :update] do
+    resources :entries, :only => [:index]
   end
-  map.resources :user_sessions, :only => [:new, :create, :destroy]
+  resources :user_sessions, :only => [:new, :create, :destroy]
 
-  map.root :entries
+  root :to => 'entries#index'
 end
