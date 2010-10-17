@@ -12,6 +12,6 @@ module Spammable
   end
   
   def cannot_be_from_banned_ip
-    errors.add_to_base('Your IP has been banned. Now GTFO!') if BannedIp.is_banned? self.ip
+    errors.add(:base, 'Your IP has been banned. Now GTFO!') if BannedIp.is_banned? self.ip
   end
 end

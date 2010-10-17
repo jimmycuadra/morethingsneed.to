@@ -16,34 +16,34 @@ class CommentTest < ActiveSupport::TestCase
   test "should reject empty comment" do
     @c = Comment.new
     assert !@c.valid?
-    assert @c.errors.invalid?(:comment)
-    assert @c.errors.invalid?(:ip)
-    assert @c.errors.invalid?(:entry_id)
+    assert @c.errors[:comment].any?
+    assert @c.errors[:ip].any?
+    assert @c.errors[:entry_id].any?
   end
   
   test "should reject invalid ip" do
     @c.ip = 'internet protocol'
     assert !@c.valid?
-    assert @c.errors.invalid?(:ip)
+    assert @c.errors[:ip].any?
   end
   
   test "should reject names longer than 30 characters" do
     @c.name = '0123456789012345678901234567890'
     assert !@c.valid?
-    assert @c.errors.invalid?(:name)
+    assert @c.errors[:name].any?
   end
   
   test "should reject comment with URLs in it" do
     @c.name = @c.comment = 'http://spam.com'
     assert !@c.valid?
-    assert @c.errors.invalid?(:name)
-    assert @c.errors.invalid?(:comment)
+    assert @c.errors[:name].any?
+    assert @c.errors[:comment].any?
   end
   
   test "should reject comment with filled in honeypot" do
     @c.email = 'honey is tasty'
     assert !@c.valid?
-    assert @c.errors.invalid?(:base)
+    assert @c.errors[:base].any?
   end
 
   test "should reject 2nd comment from IP within 1 minute" do
@@ -52,7 +52,7 @@ class CommentTest < ActiveSupport::TestCase
     @c2 = Entry.last.comments.build(:comment => 'A comment.')
     @c2.ip = ip
     assert !@c2.valid?, 'Second comment from IP was accepted'
-    assert @c2.errors.invalid?(:base)
+    assert @c2.errors[:base].any?
   end
 
   test "should toggle spam" do
@@ -65,7 +65,7 @@ class CommentTest < ActiveSupport::TestCase
   test "should reject comment from banned IP" do
     @c.ip = '6.6.6.6'
     assert !@c.valid?
-    assert @c.errors.invalid?(:base)
+    assert @c.errors[:base].any?
   end
   
   test "should increase entry's comment count" do
