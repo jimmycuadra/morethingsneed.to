@@ -1,6 +1,6 @@
 <div class="article<%= ' spam-comment' if comment.spam %>">
 	<div class="section">
-		<%= h comment.comment %>		
+		<%= comment.comment %>
 	</div>
 	
 	<div class="footer">
@@ -17,7 +17,7 @@
 		<% elsif comment.name.blank? -%>
 			Someone
 		<% else -%>
-			<%= h comment.name %>
+			<%= comment.name %>
 		<% end -%>
 		<%= ' (' + comment.ip + ')' if comment.spam %>
 		was quite thoughtful, don't you think?
