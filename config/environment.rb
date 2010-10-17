@@ -8,7 +8,7 @@ require File.join(File.dirname(__FILE__), '/../lib/ip_maker')
 
 Rails::Initializer.run do |config|
   config.gem  "authlogic"
-  config.gem 'will_paginate'
+  config.gem 'will_paginate', :version => '2.3.15'
 
   config.action_controller.session = {
     :session_key => APP_CONFIG['session_key'],
