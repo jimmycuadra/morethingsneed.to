@@ -1,15 +1,15 @@
 <h1>Contact us</h1>
 
-<% title 'Contact' -%>
+<% title 'Contact' %>
 
 <p>Got a comment? A question? Love the site? Hate it? Found a bug?</p>
 
-<%= form_for @contact, :url => { :controller => 'contact', :action => 'create' } do |f| -%>
+<%= form_for @contact, :url => { :controller => 'contact', :action => 'create' } do |f| %>
 	<fieldset>
 		<legend>Babble at us, we might listen</legend>
 
 		<ol>			
-			<% unless current_user -%>
+			<% unless current_user %>
 				<li>			
 					<%= f.label :email, nil, :class => 'pot' %>
 					<%= f.text_field :email, :class => 'pot' %>
@@ -22,7 +22,7 @@
 					<%= f.label :real_email, 'E-mail' %>
 					<%= f.text_field :real_email %>
 				</li>
-			<% end -%>
+			<% end %>
 			
 			<li>	
 				<%= f.label :message %>
@@ -33,6 +33,6 @@
 			</li>
 		</ol>
 	</fieldset>
-<% end -%>
+<% end %>
 
 <p class="meta">All fields are required.</p>

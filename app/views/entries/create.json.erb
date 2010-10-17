@@ -1,13 +1,13 @@
-<% if !@new_entry.new_record? -%>
+<% if !@new_entry.new_record? %>
 {
 	"success": true,
 	"message": "More submissions need to be successful.",
 	"entry": "<%= escape_for_json(render(:partial => 'entry.html.erb', :locals => { :entry => @new_entry })) %>"
 }
-<% else -%>
+<% else %>
 {
 	"success": false,
 	"message": "More submissions need to be filled out correctly.",
 	"errors": "<ul class=\"validation-errors\"><li><%= escape_for_json @new_entry.errors.full_messages.join('</li><li>') %></li></ul>"
 }
-<% end -%>
+<% end %>

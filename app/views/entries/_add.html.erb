@@ -9,10 +9,10 @@
   		<%= f.label :verb, ' to ' %>
   		<%= f.text_field :verb, :value => 'verb' %> <span>!</span>
 		
-  		<% unless current_user -%>
+  		<% unless current_user %>
   			<%= f.label :email, nil, :class => 'pot' %>
   			<%= f.text_field :email, :class => 'pot' %>
-  		<% end -%>
+  		<% end %>
 
 		  <%= f.submit 'This needs to happen', :class => 'submit' %>		
   	</fieldset>

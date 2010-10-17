@@ -38,7 +38,7 @@
 		
     	<%= render :partial => 'partials/nav' %>
 		
-		<div class="flash<%= ' success' if flash[:success] %><%= ' hidden' unless flash[:error] or flash[:success] -%>">
+		<div class="flash<%= ' success' if flash[:success] %><%= ' hidden' unless flash[:error] or flash[:success] %>">
 			<div class="close hidden"></div>
 			<div class="message">
   			<%= flash[:error] or flash[:success] %>
@@ -46,7 +46,7 @@
 			<div class="errors">
   			<% [@new_entry, @comment, @contact, @user, @user_session].each do |o| %>
   			  <%= render_error_messages o if o %>
-  			<% end -%>
+  			<% end %>
 			</div>
 		</div>
 

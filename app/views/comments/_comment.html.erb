@@ -5,24 +5,24 @@
 	
 	<div class="footer">
 		<span class="time">
-  		<% if @is_ajax -%>
+  		<% if @is_ajax %>
   		  Just now!
-  		<% else -%>
+  		<% else %>
   		  <%= datetime_simple(comment) %>
-  		<% end -%>
+  		<% end %>
 		</span>
 
-		<% if comment.user -%>
+		<% if comment.user %>
 			<%= link_to(comment.user.username, user_entries_path(comment.user)) %>
-		<% elsif comment.name.blank? -%>
+		<% elsif comment.name.blank? %>
 			Someone
-		<% else -%>
+		<% else %>
 			<%= comment.name %>
-		<% end -%>
+		<% end %>
 		<%= ' (' + comment.ip + ')' if comment.spam %>
 		was quite thoughtful, don't you think?
-		<% if is_admin -%>
+		<% if is_admin %>
 		  - <%= toggle_comment_spam_link(comment.entry, comment) %>
-		<% end -%>
+		<% end %>
 	</div> <!-- footer -->
 </div> <!-- /article -->

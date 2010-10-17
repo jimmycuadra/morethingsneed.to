@@ -3,7 +3,7 @@
 	<legend>Write something no one will read</legend>
 
 	<ol>
-		<% unless current_user -%>
+		<% unless current_user %>
 		<li>			
 			<%= f.label :email, nil, :class => 'pot' %>
 			<%= f.text_field :email, :class => 'pot' %>
@@ -13,7 +13,7 @@
 			<%= f.label :name, 'Moniker' %>
 			<%= f.text_field :name %>
 		</li>
-		<% end -%>
+		<% end %>
 
 		<li>
 			<%= f.label :comment, 'Your Pointless Drivel' %>

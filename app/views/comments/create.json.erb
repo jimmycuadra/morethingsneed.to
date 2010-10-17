@@ -1,13 +1,13 @@
-<% if !@comment.new_record? -%>
+<% if !@comment.new_record? %>
 {
 	"success": true,
 	"message": "Your opinion has been duly noted.",
 	"comment": "<%= escape_for_json(render(:partial => 'comment.html.erb', :locals => { :comment => @comment })) %>"
 }
-<% else -%>
+<% else %>
 {
 	"success": false,
 	"message": "Your shit was invalid, homes.",
 	"errors": "<ul class=\"validation-errors\"><li><%= escape_for_json @comment.errors.full_messages.join('</li><li>') %></li></ul>"
 }
-<% end -%>
+<% end %>

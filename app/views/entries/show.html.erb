@@ -1,4 +1,4 @@
-<% title 'Entry' -%>
+<% title 'Entry' %>
 <% description format_entry(@entry) %>
 
 <div id="entries" class="section">
@@ -8,14 +8,14 @@
 <h2>The Internet says:</h2>
 
 <div id="comments" class="section<%= ' empty-state' if @comments.blank? %>">
-	<% if @comments.blank? -%>
+	<% if @comments.blank? %>
 		<p>Nothing. Can you believe it?</p>
-	<% else -%>
+	<% else %>
 		<%=
 		  render :partial => 'comments/comment',
 		    :collection => @comments
 		%>
-	<% end -%>
+	<% end %>
 </div>
 
 <div id="comment" class="section">
