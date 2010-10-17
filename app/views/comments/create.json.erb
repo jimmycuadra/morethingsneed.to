@@ -8,6 +8,6 @@
 {
 	"success": false,
 	"message": "Your shit was invalid, homes.",
-	"errors": "<ul class=\"validation-errors\"><li><%= escape_for_json @comment.errors.full_messages.join('</li><li>') %></li></ul>"
+	"errors": "<ul class=\"validation-errors\"><li><%= escape_for_json @comment.errors.full_messages.join('</li><li>').html_safe %></li></ul>"
 }
 <% end %>
