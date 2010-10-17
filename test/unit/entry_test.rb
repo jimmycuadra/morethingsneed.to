@@ -13,46 +13,46 @@ class EntryTest < ActiveSupport::TestCase
   test "should reject empty entry" do
     @e = Entry.new
     assert !@e.valid?
-    assert @e.errors.invalid?(:base)
-    assert @e.errors.invalid?(:ip)
+    assert @e.errors[:base].any?
+    assert @e.errors[:ip].any?
   end
   
   test "should reject default values" do
     @e.noun = 'nouns'
     @e.verb = 'verb'
     assert !@e.valid?
-    assert @e.errors.invalid?(:base)
+    assert @e.errors[:base].any?
   end
   
   test "should reject missing noun" do
     @e.noun = ''
     assert !@e.valid?
-    assert @e.errors.invalid?(:noun)
+    assert @e.errors[:noun].any?
   end
   
   test "should reject missing verb" do
     @e.verb = ''
     assert !@e.valid?
-    assert @e.errors.invalid?(:verb)
+    assert @e.errors[:verb].any?
   end
   
   test "should reject invalid ip" do
     @e.ip = 'internet protocol'
     assert !@e.valid?
-    assert @e.errors.invalid?(:ip)
+    assert @e.errors[:ip].any?
   end
   
   test "should reject duplicate entry" do
     @e.noun = 'PiGS'
     @e.verb = 'SQueAK'
     assert !@e.valid?
-    assert @e.errors.invalid?(:base)
+    assert @e.errors[:base].any?
   end
     
   test "should reject filled in honeypot" do
     @e.email = 'honey is tasty'
     assert !@e.valid?
-    assert @e.errors.invalid?(:base)
+    assert @e.errors[:base].any?
   end
   
   test "should reject 2nd entry from IP within 1 minute" do
@@ -61,7 +61,7 @@ class EntryTest < ActiveSupport::TestCase
     @e2 = Entry.new(:noun => 'another', :verb => 'entry')
     @e2.ip = ip
     assert !@e2.valid?, 'Second entry from IP was accepted'
-    assert @e2.errors.invalid?(:base)
+    assert @e2.errors[:base].any?
   end
   
   test "should destroy child comments and votes along with entry" do
@@ -91,15 +91,15 @@ class EntryTest < ActiveSupport::TestCase
   test "should reject entry with URL in it" do
     @e.noun = @e.verb = 'testing Http://www.spam.com/ comments'
     assert !@e.valid?
-    assert @e.errors.invalid?(:noun)
-    assert @e.errors.invalid?(:verb)
+    assert @e.errors[:noun].any?
+    assert @e.errors[:verb].any?
   end
   
   test "should reject entry with noun or verb longer than 255 characters" do
     @e.noun = @e.verb = 'abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz'
     assert !@e.valid?
-    assert @e.errors.invalid?(:noun)
-    assert @e.errors.invalid?(:verb)
+    assert @e.errors[:noun].any?
+    assert @e.errors[:verb].any?
   end
   
   test "should toggle spam" do
@@ -112,6 +112,6 @@ class EntryTest < ActiveSupport::TestCase
   test "should reject entry from banned IP" do
     @e.ip = '6.6.6.6'
     assert !@e.valid?
-    assert @e.errors.invalid?(:base)
+    assert @e.errors[:base].any?
   end
 end

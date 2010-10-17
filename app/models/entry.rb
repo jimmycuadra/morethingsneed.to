@@ -34,7 +34,7 @@ class Entry < ActiveRecord::Base
   
   def not_default_or_missing_phrase
     if (self.noun == 'nouns' and self.verb == 'verb') or (self.noun.blank? and self.verb.blank?)  
-      errors.add_to_base("Don't just hit the button! Give it some thought!") 
+      errors.add(:base, "Don't just hit the button! Give it some thought!") 
     elsif self.noun.blank?
       errors.add(:noun, "^Surely SOMETHING needs to " + self.verb + '!')
     elsif self.verb.blank?
@@ -43,16 +43,16 @@ class Entry < ActiveRecord::Base
   end
   
   def honeypot_must_be_blank
-    errors.add_to_base('FUCK BOTS.') unless self.email.blank?
+    errors.add(:base, 'FUCK BOTS.') unless self.email.blank?
   end
   
   def unique_entry
     matched_entry = Entry.first(:conditions => ['LOWER(noun) = LOWER(?) AND LOWER(verb) = LOWER(?)', self.noun, self.verb])
-    errors.add_to_base('I know you think you\'re clever, but someone already submitted that one.') if matched_entry && (matched_entry.id != self.id)
+    errors.add(:base, 'I know you think you\'re clever, but someone already submitted that one.') if matched_entry && (matched_entry.id != self.id)
   end
   
   def no_recent_entry_from_ip
-    errors.add_to_base('Gotta wait at least a minute before adding another one.') if Entry.all(:conditions => ['created_at > ? AND ip = ?', Time.new.ago(60).in_time_zone, self.ip]).count > 0
+    errors.add(:base, 'Gotta wait at least a minute before adding another one.') if Entry.all(:conditions => ['created_at > ? AND ip = ?', Time.new.ago(60).in_time_zone, self.ip]).count > 0
   end
     
   def strip_whitespace
