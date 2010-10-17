@@ -10,8 +10,8 @@ class Entry < ActiveRecord::Base
   # validations
   
   validates_presence_of :ip
-  validates_format_of :ip, :with => /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/, :message => 'must be a valid IP'
-  validates_length_of :noun, :verb, :maximum => 255, :message => "^You're too wordy. Not more than 255 characters, please."
+  validates_format_of :ip, :with => /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/, :message => 'must be a valid IP.'
+  validates_length_of :noun, :verb, :maximum => 255, :message => " is more than 255 characters. You're too wordy."
   validate :not_default_or_missing_phrase
   validate :honeypot_must_be_blank
   validate :unique_entry
@@ -36,9 +36,9 @@ class Entry < ActiveRecord::Base
     if (self.noun == 'nouns' and self.verb == 'verb') or (self.noun.blank? and self.verb.blank?)  
       errors.add(:base, "Don't just hit the button! Give it some thought!") 
     elsif self.noun.blank?
-      errors.add(:noun, "^Surely SOMETHING needs to " + self.verb + '!')
+      errors.add(:noun, "is required. Surely SOMETHING needs to " + self.verb + '!')
     elsif self.verb.blank?
-      errors.add(:verb, '^Just "' + self.noun + '?" Remember, all things need to do something.' )
+      errors.add(:verb, 'is required. All things need to do something.' )
     end
   end
   

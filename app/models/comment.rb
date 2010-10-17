@@ -9,9 +9,9 @@ class Comment < ActiveRecord::Base
   # validations
   
   validates_presence_of :entry_id, :ip
-  validates_presence_of :comment, :message => '^Umm, you need some drivel in order for it to be pointless.'
-  validates_format_of :ip, :with => /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/, :message => 'must be a valid IP'
-  validates_length_of :name, :maximum => 30, :message => '^Sucks for you that your name is so long, because names longer than 30 characters aren\'t accepted.', :allow_blank => true
+  validates_presence_of :comment, :message => 'can\'t be blank. You need some drivel in order for it to be pointless.'
+  validates_format_of :ip, :with => /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/, :message => 'must be a valid IP.'
+  validates_length_of :name, :maximum => 30, :message => 'can\'t be longer than 30 characters. Sucks for you that your name is so long.', :allow_blank => true
   validates_each :name, :comment do |record, attr, value|
     record.errors.add attr, 'cannot contain a URL.' if /.*http:\/\/.*/i.match(value)
   end
@@ -32,7 +32,7 @@ class Comment < ActiveRecord::Base
   private
   
   def honeypot_must_be_blank
-    self.errors.add(:base, 'FUCK BOTS') unless self.email.blank?
+    self.errors.add(:base, 'FUCK BOTS.') unless self.email.blank?
   end
   
   def no_recent_comment_from_ip
