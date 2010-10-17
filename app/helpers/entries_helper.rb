@@ -1,7 +1,7 @@
 module EntriesHelper
   
   def format_entry(entry)
-    'More ' + h(entry.noun) + (entry.needs ? ' needs to ' : ' need to ') + h(punctuate(entry.verb))
+    'More ' + entry.noun + (entry.needs ? ' needs to ' : ' need to ') + punctuate(entry.verb)
   end
   
   def punctuate(verb)
