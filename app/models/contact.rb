@@ -27,6 +27,6 @@ class Contact < ActiveRecord::Base
   private
   
   def honeypot_should_be_blank
-    errors.add_to_base('FUCK BOTS') unless self.email.blank?
+    errors.add(:base, 'FUCK BOTS') unless self.email.blank?
   end
 end
