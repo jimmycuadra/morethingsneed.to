@@ -47,7 +47,7 @@ class Entry < ActiveRecord::Base
   end
   
   def unique_entry
-    matched_entry = Entry.first(:conditions => ['LOWER(noun) = LOWER(?) AND LOWER(verb) = LOWER(?)', self.noun, self.verb])
+    matched_entry = Entry.where(['LOWER(noun) = LOWER(?) AND LOWER(verb) = LOWER(?)', self.noun, self.verb]).first
     errors.add(:base, 'I know you think you\'re clever, but someone already submitted that one.') if matched_entry && (matched_entry.id != self.id)
   end
   
