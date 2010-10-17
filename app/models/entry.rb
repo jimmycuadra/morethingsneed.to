@@ -36,7 +36,7 @@ class Entry < ActiveRecord::Base
     if (self.noun == 'nouns' and self.verb == 'verb') or (self.noun.blank? and self.verb.blank?)  
       errors.add(:base, "Don't just hit the button! Give it some thought!") 
     elsif self.noun.blank?
-      errors.add(:noun, "is required. Surely SOMETHING needs to " + self.verb + '!')
+      errors.add(:noun, "is required. A verb without a noun is way too crazy.")
     elsif self.verb.blank?
       errors.add(:verb, 'is required. All things need to do something.' )
     end
