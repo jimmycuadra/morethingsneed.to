@@ -18,6 +18,8 @@
 	<![endif]-->
 	
 	<%= javascript_include_tag 'jquery.min', 'core', 'jquery.tmpl.min', 'form-defaults', 'vote', 'mobile', :cache => 'mtnt.mobile' %>
+
+  <%= csrf_meta_tag %>
 	
 	<%= render :partial => 'tmpl/vote' %>
 	
