@@ -67,13 +67,10 @@ module EntriesHelper
   
   def toggle_spam_link(entry)
     if mobile_device?
-      sLegit = 'Legit!'
-      sSpam = 'Spam!'
+      link_text = entry.spam ? 'Spam!' : 'Legit!'
     else
-      sLegit = 'Mark as legit'
-      sSpam = 'Mark as spam'
+      link_text = entry.spam ? 'Mark as legit' : 'Mark as spam'
     end
-    link_text = entry.spam ? sLegit : sSpam
     link_to link_text, toggle_spam_entry_path(entry), :method => :put
   end
   
