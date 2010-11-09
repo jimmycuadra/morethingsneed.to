@@ -4,7 +4,7 @@ end
 
 ipm = IP_Maker.new
 
-1.upto(20) do |i|
+1.upto(100) do |i|
   e = Entry.new(:noun => i.to_s, :verb => i.to_s)
   e.ip = ipm.generate
   e.spam = random_spam
