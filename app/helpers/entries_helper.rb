@@ -1,4 +1,5 @@
 module EntriesHelper
+  
   def format_entry(entry)
     'More ' + h(entry.noun) + (entry.needs ? ' needs to ' : ' need to ') + h(punctuate(entry.verb))
   end
@@ -32,16 +33,21 @@ module EntriesHelper
   end
   
   def comment_link(entry)
+    if mobile_device?
+      comments_text = "thought"
+    else 
+      comments_text = "thoughtful critique"
+    end
     legit_comments = entry.comment_count
     
     if params[:action] == 'show_spam' or (is_admin and params.key?(:show_spam))
       total_comments = entry.comments.count
       spam_comments = total_comments - legit_comments
-      comment_count = pluralize(total_comments, 'thoughtful critique')
+      comment_count = pluralize(total_comments, comments_text)
       comment_count += ' (' + spam_comments.to_s + ' spam)' if spam_comments > 0
       show_spam = 1
     else
-      comment_count = pluralize(legit_comments, 'thoughtful critique')
+      comment_count = pluralize(legit_comments, comments_text)
       show_spam = nil
     end
     
@@ -49,8 +55,14 @@ module EntriesHelper
   end
   
   def add_comment_link(entry)
+    if mobile_device?
+      add_comment_text = "Add a heedful, examined thought"
+    else
+      add_comment_text = "Add a non-impulsive, well-researched thought"
+    end
+    
     show_spam = (params[:action] == 'show_spam') ? 1 : nil
-    link_to 'Add a non-impulsive, well-researched thought', entry_path(entry, :anchor => 'comment', :show_spam => show_spam)
+    link_to add_comment_text, entry_path(entry, :anchor => 'comment', :show_spam => show_spam)
   end
   
   def toggle_spam_link(entry)

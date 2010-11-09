@@ -30,8 +30,8 @@ h1 {
 	font-size: 18px;
 	font-weight: normal;
 	line-height: 24px;
-	margin: 9px auto;
-	padding: 0 10px;
+	margin: 3px auto;
+	padding: 0 6px;
 	text-shadow: #3e3e3e 1px 1px 2px;
 }
 
@@ -93,6 +93,9 @@ input[type=checkbox] + label {
 	float: left;
 	margin-top: 0;
 }
+input[type=submit] {
+	padding: 1px 3px 5px;
+}
 
 small {
 	font-size: 12px;
@@ -101,7 +104,7 @@ small {
 /* structure */
 
 #bucket {
-	background: #705137 url(/images/background_mobile.jpg) repeat-x;
+	background: #58402b url(/images/background_mobile.jpg) repeat-x;
 	margin: 0;
 	padding: 0;
 }
@@ -114,7 +117,7 @@ small {
 	font-size: 20px;
 	font-weight: bold;
 	margin: 0;
-	padding: 0;
+	padding-top: 2px;
 	text-align: center;
 	text-transform: uppercase;
 }
@@ -127,29 +130,35 @@ small {
 	margin: 0 auto;
 }
 
+#page-header {
+	margin-top: 0;
+}
+
+#page-header .pagination {
+	color: #fff;
+	display: none;
+	float: right;
+	margin-top: 3px;
+	text-shadow: #000 1px 1px 2px;
+}
+#page-header .pagination a {
+	color: #f6a03d;
+}
+
 .pagination {
 	color: #fff;
+	font-size: 16px;
 	margin: 10px 10px 6px;
 	padding: auto 10px 20px;
 	text-align: right;
 	text-shadow: #000 1px 1px 2px;
 }
-
-#page-header .pagination {
-	color: #fff;
-	float: right;
-	margin-top: 4px;
-	text-shadow: #000 1px 1px 2px;
-}
-
 .pagination a {
 	color: #f6a03d;
 }
-
-#page-header .pagination a {
-	color: #f6a03d;
+.pagination > * {
+	margin: 0 2px;
 }
-
 
 /* footer */
 
@@ -161,6 +170,13 @@ small {
   	margin: 0 auto;
 }
 
+#footer a {
+  	color: #ddd;
+	font-size: 14px;
+  	font-weight: normal;
+	line-height: 15px;
+}
+
 #footer-content {
   	margin: 0 auto;
   	padding: 9px 9px 6px;
@@ -170,7 +186,7 @@ small {
   	float: left;
   	font-size: 14px;
   	height: 140px;
-  	margin-bottom: 9px;
+  	margin-bottom: 2px;
 	width: 140px;
 }
 #footer-content li.bottom {
@@ -178,9 +194,7 @@ small {
 }
 
 #footer-content li span {
-  	border-bottom: 1px dashed #6d513c;
   	font-weight: bold;
-  	padding-bottom: 3px;
   	margin-top: 10px;
 }
 
@@ -194,37 +208,34 @@ small {
 
 #footer-content li li:first-child {
   float: none;
-  margin-top: 9px;
-}
-
-#footer p {
-  	clear: both;
-	font-size: 12px;
-	margin: 0;
-	padding-top: 9px;
-}
-
-#footer p a {
-	font-size: 12px;
-}
-
-#footer a {
-  	color: #ddd;
-	font-size: 14px;
-  	font-weight: normal;
-	line-height: 15px;
+  margin-top: 2px;
 }
 
 #footer #device-change {
+	background: #6d513c;
+	border-top: 2px solid #000;
 	clear: left;
 	font-size: 12px;
 	margin: 0 auto;
-	padding: 5px 5px 0 0;
+	padding: 5px 9px;
 	text-align: left;
 }
 
 #footer #device-change a {
 	font-size: 12px;
+}
+
+#footer p#legal {
+	background: #9a6f51;
+  	clear: both;
+	font-size: 12px;
+	line-height: 13px;
+	margin: 0;
+	padding: 9px;
+}
+#footer p#legal a {
+	font-size: 12px;
+	line-height: 13px;
 }
 
 /* noscript */
@@ -286,24 +297,23 @@ small {
 #add form input[type=text] {
 	font-size: 12px;
 	height: 8px;
-	margin: 0 2px;
+	margin: 0;
 	padding: 5px 3px;
-	width: 180px;
+	width: 140px;
 }
 
 #add form input[type=text]#verb {
-	width: 150px;
+	width: 130px;
 }
 
 #add form input[type=submit] {
 	height: 20px;
-	margin-left: 2px;
-	margin-top: 0;
-	padding: 2px 3px;
+	margin: 0;
+	padding: 3px 3px;
 }
 
 #add form label {
-	padding: 4px;
+	padding: 4px 0;
 }
 
 #add form select {
@@ -323,10 +333,9 @@ small {
 	border-top-width: 0;
 	color: #000;
 	font-size: 12px;
-	margin: 0 auto;
 	-moz-box-shadow: #3e3e3e 0 1px 3px;
 	overflow: hidden;
-	padding: 1px 5px;
+	padding: 1px 6px;
 	text-align: center;
 	-webkit-box-shadow: #3e3e3e 0 1px 3px;
 }
@@ -374,7 +383,7 @@ small {
 	border-top: 1px solid black;
 	font-size: 12px;
 	font-weight: normal;
-	padding: 4px 9px;
+	padding: 2px 9px;
 }
 
 .article .header.new-entry {

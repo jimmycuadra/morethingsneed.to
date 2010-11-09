@@ -47,15 +47,13 @@
         </ul>
       </li>
     </ul>
-
-	<div id="device-change">
-		<% if mobile_device? %>
-		  <%= link_to "Desktop", :mobile => 0 %> | Mobile
-		<% else %>
-	 	  Desktop | <%= link_to "Mobile", :mobile => 1 %>
-		<% end %>
-	</div>
-
-  	<p>Announcing the necessity for increased frequency of things occurring since 2010. &copy; <%= Time.new.year %> <a href="http://www.transparentgorilla.com/">Transparent Gorilla</a>. All rights reserved.</p>
+  </div><!-- /footer-content -->
+  <div id="device-change">
+	<% if mobile_device? %>
+	  <%= link_to "Desktop", :mobile => 0 %> | <strong>Mobile</strong>
+	<% else %>
+ 	  <strong>Desktop</strong> | <%= link_to "Mobile", :mobile => 1 %>
+	<% end %>
   </div>
+  <p id="legal">Announcing the necessity for increased frequency of things occurring since 2010. &copy; <%= Time.new.year %> <a href="http://www.transparentgorilla.com/">Transparent Gorilla</a>. All rights reserved.</p>
 </div> <!-- /footer -->
