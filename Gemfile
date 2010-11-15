@@ -4,6 +4,7 @@ gem 'rails', '3.0.1'
 gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
 gem 'will_paginate', "~> 3.0.pre2"
 gem 'capistrano'
+gem 'capistrano-ext'
 
 group :production do
   gem 'mysql2'
