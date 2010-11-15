@@ -12,12 +12,12 @@
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/morethingsneedto" />
 
-	<%= stylesheet_link_tag 'reset', 'mobile' %>
+	<%= stylesheet_link_tag 'reset', 'mobile', :cache => 'mtnt.mobile' %>
 	<!--[if IE]>
 		<%= stylesheet_link_tag 'ie' %>
 	<![endif]-->
 	
-	<%= javascript_include_tag 'jquery.min', 'core', 'form-defaults', 'vote', 'mobile' %>
+	<%= javascript_include_tag 'jquery.min', 'core', 'form-defaults', 'vote', 'mobile', :cache => 'mtnt.mobile' %>
 
   <%= csrf_meta_tag %>
 	

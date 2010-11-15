@@ -10,12 +10,12 @@
 	
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/morethingsneedto" />
-	<%= stylesheet_link_tag 'reset', 'screen' %>
+	<%= stylesheet_link_tag 'reset', 'screen', :cache => 'mtnt' %>
 	<!--[if IE]>
 		<%= stylesheet_link_tag 'ie' %>
 	<![endif]-->
 	
-	<%= javascript_include_tag 'jquery.min', 'core', 'jquery.cookie', 'notification', 'form-defaults', 'flash', 'userbox', 'entry', 'vote', 'comment', 'contact', 'application' %>
+	<%= javascript_include_tag 'jquery.min', 'core', 'jquery.cookie', 'notification', 'form-defaults', 'flash', 'userbox', 'entry', 'vote', 'comment', 'contact', 'application', :cache => 'mtnt' %>
 
   <%= csrf_meta_tag %>	
 </head>
