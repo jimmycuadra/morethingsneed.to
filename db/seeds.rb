@@ -1,10 +1,10 @@
-u = User.new(:password => ENV['JIMMY_DEFAULT_PASSWORD'], :password_confirmation => ENV['JIMMY_DEFAULT_PASSWORD'], :email => ENV['JIMMY_EMAIL'])
+u = User.new(:password => APP_CONFIG['jimmy_default_password'], :password_confirmation => APP_CONFIG['jimmy_default_password'], :email => APP_CONFIG['jimmy_email'])
 u.username = 'Jimmy'
 u.admin = true
 u.active = true
 u.save
 
-u = User.new(:password => ENV['MIKE_DEFAULT_PASSWORD'], :password_confirmation => ENV['MIKE_DEFAULT_PASSWORD'], :email => ENV['MIKE_EMAIL'])
+u = User.new(:password => APP_CONFIG['mike_default_password'], :password_confirmation => APP_CONFIG['mike_default_password'], :email => APP_CONFIG['mike_email'])
 u.username = 'Mike'
 u.admin = true
 u.active = true

@@ -30,7 +30,7 @@ Morethingsneed::Application.configure do
     :port => 587,
     :authentication => :plain,
     :domain => 'gmail.com',
-    :user_name => ENV['JVN_GMAIL_USERNAME'],
-    :password => ENV['JVN_GMAIL_PASSWORD']
+    :user_name => APP_CONFIG['jvn_gmail_username'],
+    :password => APP_CONFIG['jvn_gmail_password']
   }
 end

@@ -52,7 +52,7 @@ Morethingsneed::Application.configure do
     :address => 'localhost',
     :port => 25,
     :authentication => :login,
-    :user_name => ENV['PRODUCTION_EMAIL'],
-    :password => ENV['PRODUCTION_EMAIL_PASSWORD']
+    :user_name => APP_CONFIG['production_email'],
+    :password => APP_CONFIG['production_email_password']
   }
 end
