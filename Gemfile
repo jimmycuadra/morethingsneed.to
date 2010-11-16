@@ -13,3 +13,11 @@ end
 group :development do
   gem 'sqlite3-ruby', :require => 'sqlite3'
 end
+
+group :test do
+  gem 'sqlite3-ruby', :require => 'sqlite3'
+  gem 'redgreen'
+  gem 'autotest-rails'
+  gem 'autotest-growl'
+  gem 'autotest-fsevent'
+end
