@@ -67,7 +67,7 @@ module EntriesHelper
   
   def toggle_spam_link(entry)
     if mobile_device?
-      link_text = entry.spam ? 'Spam!' : 'Legit!'
+      link_text = entry.spam ? 'Legit!' : 'Spam!'
     else
       link_text = entry.spam ? 'Mark as legit' : 'Mark as spam'
     end
