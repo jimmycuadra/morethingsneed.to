@@ -55,6 +55,7 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     highline (1.6.1)
+    hirb (0.3.5)
     i18n (0.4.2)
     mail (2.2.10)
       activesupport (>= 2.3.6)
@@ -98,6 +99,7 @@ GEM
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)
     will_paginate (3.0.pre2)
+    wirble (0.1.3)
 
 PLATFORMS
   ruby
@@ -109,8 +111,10 @@ DEPENDENCIES
   autotest-rails
   capistrano
   capistrano-ext
+  hirb
   mysql2
   rails (= 3.0.3)
   redgreen
   sqlite3-ruby
   will_paginate (~> 3.0.pre2)
+  wirble

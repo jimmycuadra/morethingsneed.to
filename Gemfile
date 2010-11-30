@@ -6,6 +6,9 @@ gem 'will_paginate', "~> 3.0.pre2"
 gem 'capistrano'
 gem 'capistrano-ext'
 
+gem 'hirb'
+gem 'wirble'
+
 group :production do
   gem 'mysql2'
 end
