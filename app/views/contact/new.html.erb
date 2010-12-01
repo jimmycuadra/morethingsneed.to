@@ -14,15 +14,23 @@
 					<%= f.label :email, nil, :class => 'pot' %>
 					<%= f.text_field :email, :class => 'pot' %>
 				</li>
-				<li>			
-					<%= f.label :name %>
-					<%= f.text_field :name %>
-				</li>
-				<li>		
-					<%= f.label :real_email, 'E-mail' %>
-					<%= f.text_field :real_email %>
-				</li>
 			<% end %>
+			<li>
+				<%= f.label :name %>
+				<% if current_user %>
+				  <%= f.text_field :name, :value => current_user.username, :disabled => 'disabled' %>
+				<% else %>
+				  <%= f.text_field :name %>
+				<% end %>
+			</li>
+			<li>
+				<%= f.label :real_email, 'E-mail' %>
+				<% if current_user %>
+				  <%= f.text_field :real_email, :value => current_user.email, :disabled => 'disabled' %>
+				<% else %>
+				  <%= f.text_field :real_email %>
+				<% end %>
+			</li>
 			
 			<li>	
 				<%= f.label :message %>
