@@ -98,7 +98,9 @@ class EntriesController < ApplicationController
   private
   
   def retrieve_record
-    @entry = Entry.where(is_admin ? nil : ["spam = ?", false]).find(params[:id])
+    @entry = Entry.scoped
+    @entry = @entry.without_spam unless is_admin
+    @entry = @entry.find(params[:id])
   end
   
   def retrieve_editable_record
