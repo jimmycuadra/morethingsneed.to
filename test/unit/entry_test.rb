@@ -114,4 +114,9 @@ class EntryTest < ActiveSupport::TestCase
     assert !@e.valid?
     assert @e.errors[:base].any?
   end
+
+  test "should find matching records when searching" do
+    assert_equal Entry.search('pigs'), [Entry.find(1)]
+    assert_equal Entry.search('meow'), [Entry.find(2)]
+  end
 end

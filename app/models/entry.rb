@@ -68,7 +68,19 @@ class Entry < ActiveRecord::Base
     self.update_attribute :comment_count, self.comments.find_all_by_spam(false).count
   end
   
+  def self.search(query)
+    where(search_conditions(query)).all
+  end
+
   def self.per_page
     10
+  end
+
+  private
+
+  def self.search_conditions(query)
+    query.split(/\s+/).map do |word|
+      '(' + %w[noun verb].map { |col| "#{col} LIKE #{sanitize('%' + word.to_s + '%')}" }.join(' OR ') + ')'
+    end.join(' AND ')
   end
 end
