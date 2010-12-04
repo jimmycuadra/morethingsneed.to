@@ -22,6 +22,12 @@ class EntriesControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal assigns(:entries).size, 1
   end
+
+  test "should get index only with entries matching search query" do
+    get :index, { :search => 'pigs' }
+    assert_response :success
+    assert_equal assigns(:entries).size, 1
+  end
   
   test "should show entry with no spam comments" do
     get :show, { :id => 1 }
