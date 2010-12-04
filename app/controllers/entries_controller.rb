@@ -1,22 +1,27 @@
 class EntriesController < ApplicationController
+  # class-based per_page is broken in will_paginate 3.0.pre2
+
   before_filter :retrieve_record, :only => [:show, :destroy, :toggle_spam]
   before_filter :retrieve_editable_record, :only => [:edit, :update]
   before_filter :get_sort_type, :only => [:index, :create, :show_spam]
   
   def index
-    @username = User.find(params[:user_id]).username if params[:user_id]
+    @entries = Entry.without_spam
+
+    if params[:user_id]
+      @entries = @entries.by_user(params[:user_id])
+      @username = User.find(params[:user_id]).username if params[:user_id]
+    end
+
     respond_to do |format|
-      format.html do
-        @entries = Entry.paginate :page => params[:page], :order => @order, :conditions => build_conditions(nil)
-      end
-      format.mobile do
-        @entries = Entry.paginate :page => params[:page], :order => @order, :conditions => build_conditions(nil)
+      format.any(:html, :mobile) do
+        @entries = @entries.order(@order)
+        @entries = @entries.paginate :page => params[:page], :per_page => Entry.per_page
       end
       format.rss do
-        @entries = Entry.all(:order => 'created_at DESC', :limit => 250 )
+        @entries = @entries.order('created_at DESC').limit(250)
       end
     end
-    
   end
   
   def show
