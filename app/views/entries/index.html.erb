@@ -1,7 +1,12 @@
 <% title 'Entries' %>
 
 <div id="page-header">
-	<%= will_paginate @entries %>
+  <form action="/" method="get" id="search-form">
+    <fieldset>
+      <input type="text" name="search" value="<%= params[:search] %>" />
+      <input type="submit" value="Search" />
+    </fieldset>
+  </form>
 	
 	<h1><%= @username ? @username + "'s Entries" : @sort_type %></h1>
 	<div class="clear"></div>
