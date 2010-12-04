@@ -37,13 +37,9 @@ class EntriesController < ApplicationController
     @new_entry.ip = request.remote_ip
     @new_entry.user_id = current_user.id if current_user
     if @new_entry.save
-      @is_ajax = request.xhr? ? true : false 
+      @is_ajax = request.xhr?
       respond_to do |format|
-        format.html do
-          flash[:success] = 'More submissions need to be successful.'
-          redirect_to @new_entry          
-        end
-        format.mobile do
+        format.any(:html, :mobile) do
           flash[:success] = 'More submissions need to be successful.'
           redirect_to @new_entry          
         end
@@ -51,14 +47,9 @@ class EntriesController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html do
+        format.any(:html, :mobile) do
           flash.now[:error] = 'More submissions need to be filled out correctly.'
-          @entries = Entry.paginate :page => params[:page], :order => 'created_at DESC', :conditions => build_conditions(nil)
-          render :index          
-        end
-        format.mobile do
-          flash.now[:error] = 'More submissions need to be filled out correctly.'
-          @entries = Entry.paginate :page => params[:page], :order => 'created_at DESC', :conditions => build_conditions(nil)
+          @entries = Entry.without_spam.order('created_at DESC').paginate :page => params[:page], :per_page => Entry.per_page
           render :index          
         end
         format.json
