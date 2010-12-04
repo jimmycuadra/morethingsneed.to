@@ -74,7 +74,7 @@ class Entry < ActiveRecord::Base
   end
   
   def self.search(query)
-    where(search_conditions(query)).all
+    where(search_conditions(query))
   end
 
   def self.per_page
