@@ -25,8 +25,8 @@ class EntriesController < ApplicationController
   end
   
   def show
-    show_spam = (is_admin and params[:show_spam]) ? { :show_spam => 1 } : nil
-    @comments = @entry.comments.all(:conditions => build_conditions(show_spam))
+    @comments = @entry.comments.scoped
+    @comments = @comments.without_spam unless is_admin && params[:show_spam]
   end
   
   def edit
@@ -101,13 +101,6 @@ class EntriesController < ApplicationController
       flash[:error] = "You can't edit that entry. Either you didn't write it, or it's been more than 5 minutes since you originally created it."
       redirect_to root_path and return
     end
-  end
-  
-  def build_conditions(options)
-    conditions = Hash.new
-    conditions[:user_id] = params[:user_id] if params[:user_id]
-    conditions[:spam] = false unless !options.nil? and options.key?(:show_spam)
-    conditions
   end
   
   def get_sort_type
