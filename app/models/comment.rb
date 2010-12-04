@@ -27,6 +27,10 @@ class Comment < ActiveRecord::Base
   attr_accessor :email
   attr_accessible :name, :comment
   
+  # scopes
+
+  scope :without_spam, where('spam = ?', false)
+
   # methods
   
   private

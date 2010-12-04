@@ -73,4 +73,8 @@ class CommentTest < ActiveSupport::TestCase
       @c.save
     end
   end
+
+  test "should scope lookup by spam flag" do
+    assert_equal Entry.find(1).comments.without_spam.count, 3
+  end
 end
