@@ -74,7 +74,7 @@ class EntriesController < ApplicationController
   
   def show_spam
     redirect_to entries_path and return unless is_admin
-    @entries = Entry.paginate :page => params[:page], :order => @order, :conditions => build_conditions({ :show_spam => 1 })
+    @entries = Entry.order(@order).paginate :page => params[:page], :per_page => Entry.per_page
     render :action => 'index'
   end
   
