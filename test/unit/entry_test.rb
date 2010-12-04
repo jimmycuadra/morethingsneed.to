@@ -119,4 +119,12 @@ class EntryTest < ActiveSupport::TestCase
     assert_equal Entry.search('pigs'), [Entry.find(1)]
     assert_equal Entry.search('meow'), [Entry.find(2)]
   end
+
+  test "should scope lookup to user" do
+    assert_equal Entry.by_user(1), [Entry.find_by_user_id(1)]
+  end
+
+  test "should scope lookup by spam flag" do
+    assert_equal Entry.without_spam.count, 4
+  end
 end

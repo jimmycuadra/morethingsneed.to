@@ -30,6 +30,11 @@ class Entry < ActiveRecord::Base
   attr_accessor :email
   attr_accessible :noun, :verb, :needs
   
+  # scopes
+
+  scope :by_user, lambda { |user_id| where('user_id = ?', user_id) }
+  scope :without_spam, where('spam = ?', false)
+
   # methods
   
   def not_default_or_missing_phrase
