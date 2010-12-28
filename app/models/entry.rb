@@ -27,7 +27,7 @@ class Entry < ActiveRecord::Base
   
   # accessors
   
-  attr_accessor :email
+  attr_accessor :email, :allow_recent_entry
   attr_accessible :noun, :verb, :needs
   
   # scopes
@@ -57,7 +57,7 @@ class Entry < ActiveRecord::Base
   end
   
   def no_recent_entry_from_ip
-    errors.add(:base, 'Gotta wait at least a minute before adding another one.') if Entry.all(:conditions => ['created_at > ? AND ip = ?', Time.new.ago(60).in_time_zone, self.ip]).count > 0
+    errors.add(:base, 'Gotta wait at least a minute before adding another one.') if !self.allow_recent_entry && Entry.all(:conditions => ['created_at > ? AND ip = ?', Time.new.ago(60).in_time_zone, self.ip]).count > 0
   end
     
   def strip_whitespace

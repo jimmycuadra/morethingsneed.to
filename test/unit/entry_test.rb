@@ -56,14 +56,21 @@ class EntryTest < ActiveSupport::TestCase
   end
   
   test "should reject 2nd entry from IP within 1 minute" do
-    ip = @e.ip
     assert @e.save
     @e2 = Entry.new(:noun => 'another', :verb => 'entry')
-    @e2.ip = ip
+    @e2.ip = @e.ip
     assert !@e2.valid?, 'Second entry from IP was accepted'
     assert @e2.errors[:base].any?
   end
   
+  test "should allow 2nd entry from IP within 1 minute if flag is set" do
+    assert @e.save
+    @e2 = Entry.new(:noun => 'another', :verb => 'entry')
+    @e2.ip = @e.ip
+    @e2.allow_recent_entry = true
+    assert @e2.valid?, 'Second entry from IP with allow flag set was invalid'
+  end
+
   test "should destroy child comments and votes along with entry" do
     @e.save
     @e.comments.create(:comment => 'Comment', :ip => generate_ip)
