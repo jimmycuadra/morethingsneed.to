@@ -37,7 +37,10 @@ class EntriesController < ApplicationController
   def create
     @new_entry = Entry.new(params[:entry] || {})
     @new_entry.ip = request.remote_ip
-    @new_entry.user_id = current_user.id if current_user
+    if current_user
+      @new_entry.user_id = current_user.id
+      @new_entry.allow_recent_entry = true
+    end
     if @new_entry.save
       @is_ajax = request.xhr?
       respond_to do |format|
