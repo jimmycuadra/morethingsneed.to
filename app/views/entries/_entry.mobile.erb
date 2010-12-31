@@ -1,0 +1,44 @@
+<div class="article">
+	<div class="header<%= ' new-entry' if @is_ajax %><%= ' spam-entry' if entry.spam %>">
+	  <% if @is_ajax %>
+	    You crapped this out just now.
+	  <% else %>
+		  <%= entry.user ? link_to(entry.user.username, user_entries_path(entry.user)) : 'Someone' %><%= ' (' + entry.ip + ')' if entry.spam %> crapped this out on <span class="time"><%= datetime_simple(entry) %></span>.
+		<% end %>
+	</div> <!-- /header -->
+
+	<div class="section">
+		<div class="section-content">
+			<p>More <%= entry.noun %> <%= (entry.needs) ? 'needs' : 'need' %> to <%= punctuate(entry.verb) %></p>
+			
+			<div class="section-links">			
+				
+				<%= form_for [entry, Vote.new], :html => { :id => 'new_up_vote_' + entry.id.to_s } do |f| %>
+					<fieldset>
+	  					<%= f.hidden_field :up_vote, :value => 1, :id => 'vote_up_vote_' + entry.id.to_s %>
+	  					<%= f.submit 'Vote Up', :id => 'vote_up_vote_submit' + entry.id.to_s, :class => 'vote-button vote-up-button' %>
+	  				</fieldset>
+				<% end %> Agreed! <span class="up_vote_count"><%= vote_counts(entry, 'up') %></span>
+				
+				<%= form_for [entry, Vote.new], :html => { :id => 'new_down_vote_' + entry.id.to_s } do |f| %>
+					<fieldset>
+	  					<%= f.hidden_field :up_vote, :value => 0, :id => 'vote_down_vote' + entry.id.to_s %>
+	  					<%= f.submit 'Vote Down', :id => 'vote_down_vote_submit' + entry.id.to_s, :class => 'vote-button vote-down-button' %>
+	  				</fieldset>
+				<% end %> Denied! <span class="down_vote_count"><%= vote_counts(entry, 'down') %></span>
+			
+			</div> <!-- /section-links -->
+			
+			<p class="comment-links">
+				<strong><%= comment_link(entry) %></strong>
+				<% unless params[:action] == 'show' %>
+				- <%= add_comment_link(entry) %>
+				<% end %>
+				<% if is_admin %>
+				  - <%= toggle_spam_link(entry) %>
+				<% end %>
+			</p>
+		</div> <!-- /section-content -->
+		
+	</div> <!-- /section -->
+</div> <!-- /article -->

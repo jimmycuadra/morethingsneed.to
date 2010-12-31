@@ -15,20 +15,20 @@ class VoteTest < ActiveSupport::TestCase
   test "should reject empty vote" do
     @v = Vote.new
     assert !@v.valid?
-    assert @v.errors.invalid?(:ip)
-    assert @v.errors.invalid?(:entry_id)
+    assert @v.errors[:ip].any?
+    assert @v.errors[:entry_id].any?
   end
   
   test "should reject invalid ip" do
     @v.ip = 'internet protocol'
     assert !@v.valid?
-    assert @v.errors.invalid?(:ip)
+    assert @v.errors[:ip].any?
   end
 
   test "should reject missing up_vote" do
     @v.up_vote = nil
     assert !@v.valid?
-    assert @v.errors.invalid?(:up_vote)
+    assert @v.errors[:up_vote].any?
   end
   
   test "should increase entry's up_vote_count only" do
@@ -54,6 +54,6 @@ class VoteTest < ActiveSupport::TestCase
     @v2 = Entry.last.votes.build(:up_vote => 1)
     @v2.ip = ip
     assert !@v2.valid?
-    assert @v2.errors.invalid?(:base)
+    assert @v2.errors[:ip].any?
   end
 end

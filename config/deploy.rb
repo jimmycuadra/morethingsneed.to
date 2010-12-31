@@ -1,5 +1,10 @@
 default_environment['GEM_PATH'] = '/home/jimmycua/ruby/gems:/usr/lib/ruby/gems/1.8'
 
+set :stages, %w(production staging)
+set :default_stage, 'production'
+require 'capistrano/ext/multistage'
+require 'bundler/capistrano'
+
 set :application, "morethingsneed"
 set :user, "jimmycua"
 set :domain, "morethingsneed.to"

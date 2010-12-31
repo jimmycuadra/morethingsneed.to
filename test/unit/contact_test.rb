@@ -12,14 +12,14 @@ class ContactTest < ActiveSupport::TestCase
   test "should reject form with missing fields" do
     @c = Contact.new
     assert !@c.valid?
-    assert @c.errors.invalid?(:name)
-    assert @c.errors.invalid?(:real_email)
-    assert @c.errors.invalid?(:message)
+    assert @c.errors[:name].any?
+    assert @c.errors[:real_email].any?
+    assert @c.errors[:message].any?
   end
   
   test "should reject filled in honeypot" do
     @c.email = 'bot@bot.com'
     assert !@c.valid?
-    assert @c.errors.invalid?(:base)
+    assert @c.errors[:base].any?
   end
 end

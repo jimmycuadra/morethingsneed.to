@@ -1,4 +1,4 @@
-(function($) {
+;(function($) {
   $.fn.formDefaults = function() {
     
     return this.each(function() {

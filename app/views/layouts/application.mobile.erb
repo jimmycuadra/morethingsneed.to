@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<title><%= yield :title %>More Things Need To</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+	<meta name="description" content="<%= yield(:description) || 'A humorous collection of user-submitted lines in the form more ___ need to ___. Add your own, vote and comment on others, and share the funny with your friends.' %>" />
+	<meta name="keywords" content="more things need to,humor,funny,social" />
+	<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+	
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/morethingsneedto" />
+
+	<%= stylesheet_link_tag 'reset', 'mobile', :cache => 'mtnt.mobile' %>
+	<!--[if IE]>
+		<%= stylesheet_link_tag 'ie' %>
+	<![endif]-->
+	
+	<%= javascript_include_tag 'jquery.min', 'core', 'form-defaults', 'vote', 'mobile', :cache => 'mtnt.mobile' %>
+
+  <%= csrf_meta_tag %>
+	
+</head>
+<body>
+	<noscript>
+    	<div id="noscript">
+      		<strong>More Things Need To</strong> uses JavaScript for a richer experience. Please consider enabling JavaScript in your browser!
+    	</div>
+  	</noscript>
+	<div id="bucket">
+	
+	<div id="header">
+		<a href="/" id="title-link" title="More Things Need To"><img src="/images/title_mobile.png" alt="More Thing Need To"></a>
+		<%= render :partial => 'entries/add' %>
+		
+    	<%= render :partial => 'partials/nav' %>
+		
+		<div class="flash<%= ' success' if flash[:success] %><%= ' hidden' unless flash[:error] or flash[:success] %>">
+			<div class="close hidden"></div>
+			<div class="message">
+  			<%= flash[:error] or flash[:success] %>
+			</div>
+			<div class="errors">
+  			<% [@new_entry, @comment, @contact, @user, @user_session].each do |o| %>
+  			  <%= render_error_messages o if o %>
+  			<% end %>
+			</div>
+		</div>
+
+	</div> <!-- /header -->
+	
+	<div id="content"<%= ' class="main"' if params[:controller] == 'entries' && params[:action] == 'index' %>>
+		<%= yield %>
+	</div> <!-- /content -->
+
+	<%= render :partial => 'partials/footer' %>
+	
+	</div> <!-- /bucket -->
+	
+  <%= render :partial => 'partials/ga_tracking' unless request.env['HTTP_HOST'] =~ /^dev/ %>
+</body>
+</html>

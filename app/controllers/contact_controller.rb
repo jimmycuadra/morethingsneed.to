@@ -15,9 +15,14 @@ class ContactController < ApplicationController
       @contact.real_email = current_user.email
     end
     if @contact.valid?
-      Notifier.deliver_contact_form(@contact)
+      ActionMailer::Base.default_url_options[:host] = request.host
+      NotificationMailer.contact_form(@contact).deliver
       respond_to do |format|
         format.html do
+          flash[:success] = 'Congratulations, your message has been sent to to the administrators, where it will sit in their inboxes until they feel like reading it.'
+          redirect_to :action => 'new'
+        end
+        format.mobile do
           flash[:success] = 'Congratulations, your message has been sent to to the administrators, where it will sit in their inboxes until they feel like reading it.'
           redirect_to :action => 'new'
         end
@@ -26,6 +31,10 @@ class ContactController < ApplicationController
     else
       respond_to do |format|
         format.html do
+          flash.now[:error] = 'You done made some errors.'
+          render :action => 'new'
+        end
+        format.mobile do
           flash.now[:error] = 'You done made some errors.'
           render :action => 'new'
         end

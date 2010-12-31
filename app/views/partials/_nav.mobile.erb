@@ -1,0 +1,14 @@
+<ul id="nav">
+  <% if current_user %>  
+	<li class="user logged-in">Logged in as <strong><%= link_to_with_current current_user.username, user_entries_path(current_user), (params[:controller] == 'entries' && params[:user_id] == current_user.id.to_s) %></strong></li>
+    <li class="user logged-in"><%= link_to_with_current 'Account', profile_path, (params[:controller] == 'users' && params[:action] == 'edit') %></li>
+	<% if is_admin %>
+	<li><%= link_to_with_current 'Show Spam', show_spam_entries_path, params.key?(:show_spam) %></li>
+	<% end %>
+    <li class="user logged-in"><%= link_to_with_current 'Log out', logout_path, false %></li>
+  <% else %>
+    <li class="user last"><%= link_to_with_current 'Log in', login_path, (params[:controller] == 'user_sessions'), :id => 'login' %></li>
+    <li class="user"><%= link_to_with_current 'Register', register_path, (params[:controller] == 'users'), :id => 'register' %></li>
+  <% end %>
+</ul>	<!-- /nav -->
+<div class="clear"></div>

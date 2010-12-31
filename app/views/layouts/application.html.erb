@@ -2,18 +2,22 @@
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+	<title><%= yield :title %>More Things Need To</title>
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="chrome=1" />
-	<title><%= yield :title %>More Things Need To</title>
 	<meta name="description" content="<%= yield(:description) || 'A humorous collection of user-submitted lines in the form more ___ need to ___. Add your own, vote and comment on others, and share the funny with your friends.' %>" />
 	<meta name="keywords" content="more things need to,humor,funny,social" />
+	
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/morethingsneedto" />
 	<%= stylesheet_link_tag 'reset', 'screen', :cache => 'mtnt' %>
 	<!--[if IE]>
 		<%= stylesheet_link_tag 'ie' %>
 	<![endif]-->
+	
 	<%= javascript_include_tag 'jquery.min', 'core', 'jquery.cookie', 'notification', 'form-defaults', 'flash', 'userbox', 'entry', 'vote', 'comment', 'contact', 'application', :cache => 'mtnt' %>
+
+  <%= csrf_meta_tag %>	
 </head>
 <body>
   <noscript>
@@ -29,13 +33,14 @@
 	
 	<div id="header">
 		<a href="/" id="title-link" title="More Things Need To">More Things Need To</a>
+		
 		<%= render :partial => 'entries/add' %>
 		
-    <%= render :partial => 'partials/nav' %>
+    	<%= render :partial => 'partials/nav' %>
 
 		<%= render :partial => 'partials/userbox' unless current_user %>
 		
-		<div class="flash<%= ' success' if flash[:success] %><%= ' hidden' unless flash[:error] or flash[:success] -%>">
+		<div class="flash<%= ' success' if flash[:success] %><%= ' hidden' unless flash[:error] or flash[:success] %>">
 			<div class="close hidden"></div>
 			<div class="message">
   			<%= flash[:error] or flash[:success] %>
@@ -43,7 +48,7 @@
 			<div class="errors">
   			<% [@new_entry, @entry, @comment, @contact, @user, @user_session].each do |o| %>
   			  <%= render_error_messages o if o %>
-  			<% end -%>
+  			<% end %>
 			</div>
 		</div>
 

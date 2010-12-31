@@ -8,7 +8,7 @@ class BannedIpTest < ActiveSupport::TestCase
   test "should reject invalid ip" do
     @b.ip = 'internet protocol'
     assert !@b.valid?
-    assert @b.errors.invalid?(:ip)
+    assert @b.errors[:ip].any?
   end
   
   test "should not return banned ip record" do

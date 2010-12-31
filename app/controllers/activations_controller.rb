@@ -7,7 +7,7 @@ class ActivationsController < ApplicationController
     if @user
       @user.reset_perishable_token!
       ActionMailer::Base.default_url_options[:host] = request.host
-      Notifier.deliver_activation_instructions(@user)
+      NotificationMailer.activation_instructions(@user).deliver
       flash[:success] = 'Please check your e-mail for a new copy of your activation instructions.'
       redirect_to root_path
     else

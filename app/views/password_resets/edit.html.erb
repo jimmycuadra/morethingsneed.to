@@ -1,8 +1,8 @@
-<% title 'Reset Password' -%>
+<% title 'Reset Password' %>
 
 <h1>Reset Password</h1>
 
-<% form_for @user, :url => password_reset_path, :method => :put do |f| %>
+<%= form_for @user, :url => password_reset_path, :method => :put do |f| %>
   <fieldset>
   	<legend>Enter your new password</legend>
   	<ol>

@@ -1,12 +1,24 @@
 class ApplicationController < ActionController::Base
   helper :all
   protect_from_forgery
-  filter_parameter_logging :password
-  helper_method :current_user, :is_admin
-  before_filter :prepare_new_entry
+  helper_method :current_user, :is_admin, :mobile_device?
+  before_filter :prepare_new_entry, :prepare_for_mobile
    
   private
   
+  def mobile_device?
+    if session[:mobile_param]
+      session[:mobile_param] == "1"
+    else
+      request.user_agent =~ /Mobile|webOS/
+    end
+  end
+  
+  def prepare_for_mobile
+    session[:mobile_param] = params[:mobile] if params[:mobile]
+    request.format = :mobile if mobile_device? && request.format == :html
+  end
+
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find

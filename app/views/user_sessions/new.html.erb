@@ -1,6 +1,6 @@
-<% title 'Login' -%>
+<% title 'Login' %>
 
-<% form_for @user_session || UserSession.new do |f| %>
+<%= form_for @user_session || UserSession.new do |f| %>
 	<fieldset>
 		<legend>Log in</legend>
 		<ol>

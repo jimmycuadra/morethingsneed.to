@@ -9,12 +9,12 @@ MTNT.Vote.prototype.handleSubmit = function(e, form) {
       action = $form.attr('action'),
       data = $form.serialize(),
       section = $form.parent();
-  
-  $.post(action + '.js', data, this.handleResponse.bind(this, section), 'html');
+
+  $.post(action + '.json', data, this.handleResponse.bind(this, section), 'html');
 
   e.preventDefault();
 };
 
 MTNT.Vote.prototype.handleResponse = function(section, response) {
-	section.html(response);
+  section.html(response);
 };

@@ -1,12 +1,12 @@
-<% if @contact.valid? -%>
+<% if @contact.valid? %>
 {
 	"success": true,
 	"message": "Congratulations, your message has been sent to to the administrators, where it will sit in their inboxes until they feel like reading it."
 }
-<% else -%>
+<% else %>
 {
 	"success": false,
 	"message": "You done made some errors.",
-	"errors": "<ul class=\"validation-errors\"><li><%= escape_for_json @contact.errors.full_messages.join('</li><li>') %></li></ul>"
+	"errors": "<ul class=\"validation-errors\"><li><%= escape_for_json @contact.errors.full_messages.join('</li><li>').html_safe %></li></ul>"
 }
-<% end -%>
+<% end %>

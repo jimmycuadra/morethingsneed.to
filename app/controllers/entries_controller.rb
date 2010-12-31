@@ -1,24 +1,34 @@
 class EntriesController < ApplicationController
+  # class-based per_page is broken in will_paginate 3.0.pre2
+
   before_filter :retrieve_record, :only => [:show, :destroy, :toggle_spam]
   before_filter :retrieve_editable_record, :only => [:edit, :update]
   before_filter :get_sort_type, :only => [:index, :create, :show_spam]
   
   def index
-    @username = User.find(params[:user_id]).username if params[:user_id]
+    @entries = Entry.without_spam
+
+    if params[:user_id]
+      @entries = @entries.by_user(params[:user_id])
+      @username = User.find(params[:user_id]).username if params[:user_id]
+    end
+
+    @entries = @entries.search(params[:search]) if params[:search]
+
     respond_to do |format|
-      format.html do
-        @entries = Entry.paginate :page => params[:page], :order => @order, :conditions => build_conditions(nil)
+      format.any(:html, :mobile) do
+        @entries = @entries.order(@order)
+        @entries = @entries.paginate :page => params[:page], :per_page => Entry.per_page
       end
       format.rss do
-        @entries = Entry.all(:order => 'created_at DESC', :limit => 250 )
+        @entries = @entries.order('created_at DESC').limit(250)
       end
     end
-    
   end
   
   def show
-    show_spam = (is_admin and params[:show_spam]) ? { :show_spam => 1 } : nil
-    @comments = @entry.comments.all(:conditions => build_conditions(show_spam))
+    @comments = @entry.comments.scoped
+    @comments = @comments.without_spam unless is_admin && params[:show_spam]
   end
   
   def edit
@@ -27,11 +37,14 @@ class EntriesController < ApplicationController
   def create
     @new_entry = Entry.new(params[:entry] || {})
     @new_entry.ip = request.remote_ip
-    @new_entry.user_id = current_user.id if current_user
+    if current_user
+      @new_entry.user_id = current_user.id
+      @new_entry.allow_recent_entry = true
+    end
     if @new_entry.save
-      @is_ajax = request.xhr? ? true : false 
+      @is_ajax = request.xhr?
       respond_to do |format|
-        format.html do
+        format.any(:html, :mobile) do
           flash[:success] = 'More submissions need to be successful.'
           redirect_to @new_entry          
         end
@@ -39,9 +52,9 @@ class EntriesController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html do
+        format.any(:html, :mobile) do
           flash.now[:error] = 'More submissions need to be filled out correctly.'
-          @entries = Entry.paginate :page => params[:page], :order => 'created_at DESC'
+          @entries = Entry.without_spam.order('created_at DESC').paginate :page => params[:page], :per_page => Entry.per_page
           render :index          
         end
         format.json
@@ -66,7 +79,7 @@ class EntriesController < ApplicationController
   
   def show_spam
     redirect_to entries_path and return unless is_admin
-    @entries = Entry.paginate :page => params[:page], :order => @order, :conditions => build_conditions({ :show_spam => 1 })
+    @entries = Entry.order(@order).paginate :page => params[:page], :per_page => Entry.per_page
     render :action => 'index'
   end
   
@@ -81,23 +94,18 @@ class EntriesController < ApplicationController
   private
   
   def retrieve_record
-    @entry = Entry.find(params[:id], :conditions => is_admin ? nil : ["spam = ?", false])
+    @entry = Entry.scoped
+    @entry = @entry.without_spam unless is_admin
+    @entry = @entry.find(params[:id])
   end
   
   def retrieve_editable_record
     begin
-      @entry = Entry.find(params[:id], :conditions => is_admin ? nil : ["ip = ? AND created_at >= ?", request.remote_ip, 5.minutes.ago])
+      @entry = Entry.where(is_admin ? nil : ["ip = ? AND created_at >= ?", request.remote_ip, 5.minutes.ago]).find(params[:id])
     rescue ActiveRecord::RecordNotFound
       flash[:error] = "You can't edit that entry. Either you didn't write it, or it's been more than 5 minutes since you originally created it."
       redirect_to root_path and return
     end
-  end
-  
-  def build_conditions(options)
-    conditions = Hash.new
-    conditions[:user_id] = params[:user_id] if params[:user_id]
-    conditions[:spam] = false unless !options.nil? and options.key?(:show_spam)
-    conditions
   end
   
   def get_sort_type
