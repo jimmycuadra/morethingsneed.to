@@ -15,14 +15,14 @@
     </div>
     <div class="section">
       <dl class="user-stats">
-        <dt>Entry count:</dt>
+        <dt>Entries added:</dt>
         <dd><%= user.entries.count %></dd>
         
-        <dt>Votes received:</dt>
-        <dd># up, # down, <%= user.votes.count %> total</dd>
+        <dt>Votes cast:</dt>
+        <dd><%= user.votes.count %></dd>
 
-        <dt>Comments received:</dt>
-        <dd><%= user.received_comments.count %></dd>
+        <dt>Comments made:</dt>
+        <dd><%= user.comments.count %></dd>
         
         <div class="clear"></div>
       </dl>
