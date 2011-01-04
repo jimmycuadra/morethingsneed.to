@@ -396,12 +396,6 @@ small {
 .article:first-child {
 	margin-top: 0;
 }
-.article.single:first-child {
-	border-bottom: 1px solid #000;
-	border-left: 1px solid #000;
-	border-right: 1px solid #000;
-	margin: 7px 8px;
-}
 
 .article .header {
 	background: #f6a03d;
