@@ -279,6 +279,33 @@ small {
   text-decoration: underline;
 }
 
+/* search */
+
+#search-form {
+  float: right;
+  height: 14px;
+  margin-top: 2px;
+  width: 183px;
+}
+
+#search-form fieldset {
+  margin: 0;
+}
+
+#search-form input[type=text] {
+  float: left;
+  height: 8px;
+  padding: 5px 3px;
+  width: 100px;
+}
+
+#search-form input[type=submit] {
+  clear: none;
+  float: left;
+  margin-left: 2px;
+  margin-right: 0;
+}
+
 /* add entry */
 
 #add {
