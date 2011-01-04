@@ -1,7 +1,17 @@
-<% if !@v.new_record? %>
-  <span class="success-text">Voted and noted.</span><br />
+<% if !mobile_device? %>
+  <% if !@v.new_record? %>
+    <span class="success-text">Voted and noted.</span><br />
+  <% else %>
+    <span class="error-text">You already rocked the vote.</span><br />
+  <% end %>
+  This needs to happen <span class="up_vote_count"><%= vote_counts(@entry, 'up') %></span><br />
+  This doesn't need to happen <span class="down_vote_count"><%= vote_counts(@entry, 'down') %></span>
 <% else %>
-  <span class="error-text">You already rocked the vote.</span><br />
+  <% if !@v.new_record? %>
+    <span class="success-text">Voted.</span>
+  <% else %>
+    <span class="error-text">Already voted.</span>
+  <% end %>
+  Agreed! <span class="up_vote_count"><%= vote_counts(@entry, 'up') %></span> - 
+  Denied! <span class="down_vote_count"><%= vote_counts(@entry, 'down') %></span>
 <% end %>
-This needs to happen <span class="up_vote_count"><%= vote_counts(@entry, 'up') %></span><br />
-This doesn't need to happen <span class="down_vote_count"><%= vote_counts(@entry, 'down') %></span>

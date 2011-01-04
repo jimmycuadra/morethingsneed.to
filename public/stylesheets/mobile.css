@@ -493,6 +493,10 @@ small {
 	font-size: 12px;
 }
 
+.article .section-links {
+	margin-bottom: 5px;
+}
+
 .article .section-links form {
 	display: inline-block;
 	margin-left: 10px;

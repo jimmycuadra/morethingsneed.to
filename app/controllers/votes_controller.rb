@@ -11,7 +11,7 @@ class VotesController < ApplicationController
           redirect_to @entry
         end
         format.mobile do
-          flash[:success] = 'Voted and noted.'
+          flash[:success] = 'Voted.'
           redirect_to @entry
         end
         format.json
@@ -23,7 +23,7 @@ class VotesController < ApplicationController
           redirect_to @entry
         end
         format.mobile do
-          flash[:error] = 'You already rocked the vote.'
+          flash[:error] = 'Already voted.'
           redirect_to @entry
         end
         format.json
