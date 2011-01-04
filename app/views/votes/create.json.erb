@@ -1,7 +1,7 @@
 <% if !@v.new_record? %>
-  <span class="success-text"><%= mobile_device? ? "Voted." : "Voted and noted." %></span><br />
+  <span class="success-text"><%= mobile_device? ? "Voted." : "Voted and noted." %></span><%= "<br />".html_safe unless mobile_device? %>
 <% else %>
-  <span class="error-text"><%= mobile_device? ? "Already voted." : "You already rocked the vote." %></span><br />
+  <span class="error-text"><%= mobile_device? ? "Already voted." : "You already rocked the vote." %></span><%= "<br />".html_safe unless mobile_device? %>
 <% end %>
-<%= mobile_device? ? "Agreed!" : "This needs to happen" %> <span class="up_vote_count"><%= vote_counts(@entry, 'up') %></span><br />
+<%= mobile_device? ? "Agreed!" : "This needs to happen" %> <span class="up_vote_count"><%= vote_counts(@entry, 'up') %></span><%= mobile_device? ? " - " : "<br />".html_safe %>
 <%= mobile_device? ? "Denied!" : "This doesn't need to happen" %> <span class="down_vote_count"><%= vote_counts(@entry, 'down') %></span>
