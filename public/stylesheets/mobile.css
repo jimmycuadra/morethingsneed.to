@@ -326,9 +326,7 @@ small {
 }
 
 #add form input[type=submit] {
-	height: 20px;
-	margin: 0;
-	padding: 3px 3px;
+	padding: 2px 3px;
 }
 
 #add form label {
@@ -526,6 +524,7 @@ small {
 
 .article form input[type=submit] {
 	margin: 0 0 4px;
+	padding: 2px 3px;
 }
 
 /* forms */
@@ -580,7 +579,7 @@ form input[type=button] {
 	background: #f6a03d;
 	cursor: pointer;
 	height: 26px;
-	padding: 4px 8px;
+	padding: 2px 3px;
 	width: auto;
 }
 
