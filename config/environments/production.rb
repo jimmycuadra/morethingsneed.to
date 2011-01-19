@@ -49,7 +49,7 @@ Morethingsneed::Application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => 'localhost',
+    :address => APP_CONFIG['production_email_host'],
     :port => 25,
     :authentication => :login,
     :user_name => APP_CONFIG['production_email'],
