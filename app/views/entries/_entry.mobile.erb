@@ -35,6 +35,7 @@
 				- <%= add_comment_link(entry) %>
 				<% end %>
 				<% if is_admin %>
+					- <%= link_to 'Edit', edit_entry_path(entry) %>
 				  - <%= toggle_spam_link(entry) %>
 				<% end %>
 			</p>
