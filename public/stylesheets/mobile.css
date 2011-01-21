@@ -794,3 +794,10 @@ dl.user-stats dt {
   clear: left;
   margin-right: 10px;
 }
+
+/* edit entry */
+select#entry_needs {
+	clear: left;
+	float: left;
+	margin: 5px 9px 7px;
+}
