@@ -56,7 +56,7 @@ module EntriesHelper
   
   def add_comment_link(entry)
     if mobile_device?
-      add_comment_text = "Add a heedful, examined thought"
+      add_comment_text = "Add a thought"
     else
       add_comment_text = "Add a non-impulsive, well-researched thought"
     end
