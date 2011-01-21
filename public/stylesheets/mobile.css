@@ -489,6 +489,16 @@ small {
 	padding: 0;
 }
 
+.article .section-content p.meta {
+	font-size: 12px;
+  margin-bottom: 9px;
+}
+
+.article .section-content p.meta a,
+.article .section-content p.meta a:visited {
+  color: #c13100;
+}
+
 .article .section-links, 
 .article .comment-links {
 	font-size: 12px;

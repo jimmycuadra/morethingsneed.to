@@ -10,6 +10,9 @@
 	<div class="section">
 		<div class="section-content">
 			<p>More <%= entry.noun %> <%= (entry.needs) ? 'needs' : 'need' %> to <%= punctuate(entry.verb) %></p>
+			<% if !is_admin && (entry.ip == request.remote_addr) && (entry.created_at >= Time.zone.now - 5.minutes) %>
+			<p class="meta">Make a mistake? You have 5 minutes to <%= link_to 'edit', edit_entry_path(entry) %> it.</p>
+			<% end %>
 			
 			<div class="section-links">			
 				
