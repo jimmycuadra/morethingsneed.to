@@ -34,3 +34,5 @@
     </div>
   </div>
 <% end %>
+
+<%= will_paginate @users, :page_links => false, :previous_label => '&#x00ab; Newer', :next_label => 'Older &#x00bb;' %>
