@@ -33,7 +33,7 @@ namespace :deploy do
     run "cp #{shared_path}/htaccess #{release_path}/public/.htaccess"
     run "ln -nfs #{shared_path}/app_config.yml #{release_path}/config/app_config.yml"
     run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
-    run "ln -nfs #{shared_path}/googlebb3d38f7b30186b1.html #{release_path}/public/googlebb3d38f7b30186b1.html"
+    run "ln -nfs #{shared_path}/googlehostedservice.html #{release_path}/public/googlehostedservice.html"
   end
 
   desc "Restarts the server"
