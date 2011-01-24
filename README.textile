@@ -1,0 +1,3 @@
+h1. More Things Need To
+
+"More Things Need To":http://morethingsneed.to/ is a collection of user-contributed Mad Libs with the form "more ____ need to ____." It was created by "Jimmy Cuadra":http://jimmycuadra.com/ and "Michael Chadwick":http://nebyooweb.com/, based on a long-running joke between them.
