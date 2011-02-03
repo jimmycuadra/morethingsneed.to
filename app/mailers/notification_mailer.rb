@@ -1,5 +1,5 @@
 class NotificationMailer < ActionMailer::Base
-  default :from => "webmaster@morethingsneed.to"
+  default :from => "More Things Need To <webmaster@morethingsneed.to>"
 
   def activation_instructions(user)
     @user = user
