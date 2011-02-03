@@ -46,4 +46,11 @@ Morethingsneed::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  # Rack middleware
+  config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
+    r301 %r{.*}, 'http://morethingsneed.to$&', :if => Proc.new { |rack_env|
+      rack_env['SERVER_NAME'] == 'www.morethingsneed.to'
+    }
+  end
 end
