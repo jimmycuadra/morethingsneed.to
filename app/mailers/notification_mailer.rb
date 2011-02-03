@@ -13,6 +13,6 @@ class NotificationMailer < ActionMailer::Base
   
   def contact_form(contact)
     @contact = contact
-    mail(:to => 'jimmycuadra@gmail.com, michael.chadwick@gmail.com', subject => 'MTNT Contact Form Submission')
+    mail(:to => [ENV['JIMMY_EMAIL'], ENV['MIKE_EMAIL']].join(', '), subject => 'MTNT Contact Form Submission')
   end
 end
