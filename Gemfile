@@ -6,10 +6,5 @@ gem 'will_paginate', "~> 3.0.pre2"
 
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
-  gem 'hirb'
-  gem 'wirble'
-  gem 'redgreen'
-  gem 'autotest-rails'
-  gem 'autotest-growl'
-  gem 'autotest-fsevent'
+  gem 'ZenTest'
 end
