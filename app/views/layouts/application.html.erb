@@ -64,6 +64,6 @@
   <script type="text/javascript">
     head.js("https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js", "/javascripts/core.js", "/javascripts/jquery.cookie.js", "/javascripts/notification.js", "/javascripts/form-defaults.js", "/javascripts/flash.js", "/javascripts/userbox.js", "/javascripts/entry.js", "/javascripts/vote.js", "/javascripts/comment.js", "/javascripts/contact.js", "/javascripts/application.js");
   </script>
-  <%= render :partial => 'partials/ga_tracking' unless request.env['HTTP_HOST'] =~ /^dev/ %>
+  <%= render :partial => 'partials/ga_tracking' if Rails.env.production? %>
 </body>
 </html>
