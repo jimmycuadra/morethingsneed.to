@@ -11,7 +11,7 @@
         <%= f.text_field :noun %>
       </li>
       <li>
-        <%= f.select :needs, { 'need' => 0, 'needs' => 1 }, {}, { :class => 'no-label' } %>
+        <%= f.select :needs, { 'need' => false, 'needs' => true }, {}, { :class => 'no-label' } %>
       </li>
       <li>
         <%= f.label :verb, 'to' %>
