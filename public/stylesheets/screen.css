@@ -232,6 +232,9 @@ small {
 #search-form input[type=submit] {
   margin-left: 0;
 }
+#num-of-results {
+  text-align: right;
+}
 
 
 /* add entry */

@@ -12,6 +12,11 @@
 	<div class="clear"></div>
 </div>
 
+<% if params[:search].present? %>
+<div id="num-of-results">
+  Your search returned <%= pluralize(@entries.length, "result") %>
+</div>
+<% end %>
 
 <div id="entries" class="section">
 	<%= render :partial => @entries %>

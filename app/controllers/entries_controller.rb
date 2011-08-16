@@ -13,7 +13,7 @@ class EntriesController < ApplicationController
       @username = User.find(params[:user_id]).username if params[:user_id]
     end
 
-    @entries = @entries.search(params[:search]) if params[:search]
+    @entries = @entries.search(params[:search]) if params[:search].present?
 
     respond_to do |format|
       format.any(:html, :mobile) do
