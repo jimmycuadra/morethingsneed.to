@@ -13,11 +13,13 @@ class EntriesController < ApplicationController
       @username = User.find(params[:user_id]).username if params[:user_id]
     end
 
-    @entries = @entries.search(params[:search]) if params[:search].present?
+    if params[:search].present?
+      @entries = @entries.search(params[:search]) if params[:search].present?
+      @search_results_count = @entries.length
+    end
 
     respond_to do |format|
       format.any(:html, :mobile) do
-        @entries_length = @entries.length
         @entries = @entries.order(@order)
         @entries = @entries.paginate :page => params[:page], :per_page => Entry.per_page
       end

@@ -12,9 +12,9 @@
 	<div class="clear"></div>
 </div>
 
-<% if params[:search].present? %>
+<% if defined? @search_results_count %>
 <div id="num-of-results">
-  Your search returned <%= pluralize(@entries_length, "result") %>
+  Your search returned <%= pluralize(@search_results_count, "result") %>
 </div>
 <% end %>
 
