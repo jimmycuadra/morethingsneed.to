@@ -1,8 +1,8 @@
 <% title 'Authors' %>
 
 <div id="page-header">
-	<h1>Authors</h1>
-	<div class="clear"></div>
+  <h1>Authors</h1>
+  <div class="clear"></div>
 </div>
 
 <% @users.each do |user| %>
@@ -17,16 +17,19 @@
       <dl class="user-stats">
         <dt>Entries added:</dt>
         <dd><%= user.entries.count %></dd>
-        
+
         <dt>Votes cast:</dt>
         <dd><%= user.votes.count %></dd>
 
         <dt>Comments made:</dt>
         <dd><%= user.comments.count %></dd>
-        
+
+        <dt>Comments received:</dt>
+        <dd><%= user.received_comments.count %></dd>
+
         <div class="clear"></div>
       </dl>
-      
+
       <% if user.entries.count > 0 %>
         <br />
         <%= link_to "Read #{user.username}'s entries",  user_entries_path(user) %>
