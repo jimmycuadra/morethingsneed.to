@@ -17,6 +17,7 @@ class EntriesController < ApplicationController
 
     respond_to do |format|
       format.any(:html, :mobile) do
+        @entries_length = @entries.length
         @entries = @entries.order(@order)
         @entries = @entries.paginate :page => params[:page], :per_page => Entry.per_page
       end
