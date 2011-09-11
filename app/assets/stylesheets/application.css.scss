@@ -1,9 +1,23 @@
 /*
  *= require reset
+ *
 */
 
-h1 {
-  margin: 0;
+/* http://kuler.adobe.com/#themeID/1492484 */
+
+$cactus: rgb(138, 147, 123);
+$grit: rgb(61, 52, 50);
+$monsoon: rgb(121, 144, 144);
+$adobe: rgb(158, 103, 67);
+$ocotillo: rgb(158, 142, 86);
+
+body {
+  background: $cactus;
+}
+
+.page {
+  background: $monsoon;
+  border-bottom: 3px solid #555;
 }
 
 .container {
@@ -16,13 +30,24 @@ a:visited {
   text-decoration: none;
 }
 
+a:hover,
+a:active {
+  text-decoration: underline;
+}
+
 .logo-text {
   font: {
     family: "PT Sans Narrow", sans-serif;
-    size: 78px;
+    size: 64px;
   }
+  padding: 10px 0;
   text: {
     align: center;
     transform: uppercase;
+    shadow: 2px 2px 3px #555;
+  }
+
+  a {
+    color: $grit;
   }
 }
