@@ -1,0 +1,28 @@
+/*
+ *= require reset
+*/
+
+h1 {
+  margin: 0;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+.logo-text {
+  font: {
+    family: "PT Sans Narrow", sans-serif;
+    size: 78px;
+  }
+  text: {
+    align: center;
+    transform: uppercase;
+  }
+}
