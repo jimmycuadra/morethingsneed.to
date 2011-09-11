@@ -5,13 +5,9 @@
 
 @import "colors";
 
-.page {
-  border-bottom: 3px solid #555;
-}
-
 .container {
   margin: 0 auto;
-  max-width: 1000px;
+  max-width: 960px;
 }
 
 a {
@@ -29,7 +25,7 @@ a:active {
 }
 
 p,
-.content {
+.spaced {
   padding: 20px 0;
 }
 
@@ -37,18 +33,46 @@ p,
   font-family: "PT Sans Narrow", sans-serif;
 }
 
+.main-header {
+  border-bottom: 3px solid #555;
+}
+
 .logo {
-  font-size: 64px;
+  font-size: 48px;
+  margin-right: 40px;
   text: {
-    transform: uppercase;
     shadow: 2px 2px 3px #555;
+    transform: uppercase;
   }
 
   a {
     text-decoration: none;
   }
+
+  span {
+    white-space: nowrap;
+  }
 }
 
 .main-nav {
-  margin-top: 24px;
+  line-height: 48px;
+
+  li {
+    margin-right: 20px;
+  }
+
+  a {
+    border-radius: 4px;
+    padding: 5px 10px;
+  }
+
+  a:hover {
+    color: $cactus;
+    background: $grit;
+    text-decoration: none;
+  }
+}
+
+.login {
+  text-align: right;
 }

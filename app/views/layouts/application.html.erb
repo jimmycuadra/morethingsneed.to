@@ -6,26 +6,32 @@
   <%= csrf_meta_tags %>
   <%= render :partial => "google_analytics" if Rails.env.production? %>
 </head>
-<body class="cactus">
-  <div class="page monsoon">
-    <div class="container content">
-      <header class="line heading">
-        <h1 class="unit-right heading logo">
-          <a href="/">More Things Need To</a>
+<body class="ocotillo">
+  <div class="monsoon">
+    <header class="line heading spaced cactus main-header">
+      <div class="container">
+
+        <h1 class="unit heading logo">
+          <a href="/"><span>More Things</span> <span>Need To</span></a>
         </h1>
 
-        <nav class="main-nav">
+        <nav class="unit main-nav">
           <ul class="line">
-            <li class="unit size1of3"><a href="/">Item 1</a></li>
-            <li class="unit size1of3"><a href="/">Item 2</a></li>
-            <li class="last-unit size1of3"><a href="/">Item 3</a></li>
+            <li class="unit"><a href="/">Entries</a></li>
+            <li class="unit"><a href="/">Authors</a></li>
+            <li class="unit"><a href="/">FAQ</a></li>
           </ul>
         </nav>
-      </header>
 
+        <div class="last-unit main-nav login">Login</div>
+
+      </div>
+    </header>
+
+    <div class="container">
       <%= yield %>
     </div>
-  </div>
+  </div> <!-- /page -->
   <%= javascript_include_tag "application" %>
 </body>
 </html>
