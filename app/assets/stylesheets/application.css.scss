@@ -33,15 +33,16 @@ p,
   font-family: "PT Sans Narrow", sans-serif;
 }
 
-.main-header {
-  border-bottom: 3px solid #555;
+.stripe {
+  border-bottom: 3px solid $border;
 }
 
 .logo {
   font-size: 48px;
+  line-height: 100px;
   margin-right: 40px;
   text: {
-    shadow: 2px 2px 3px #555;
+    shadow: 2px 2px 3px $border;
     transform: uppercase;
   }
 
@@ -54,11 +55,24 @@ p,
   }
 }
 
-.main-nav {
-  line-height: 48px;
+.main-header {
+  nav {
+    line-height: 100px;
+    margin-right: 40px;
+  }
 
+  .login-nav {
+    line-height: inherit;
+  }
+}
+
+.main-nav  {
   li {
-    margin-right: 20px;
+    margin-left: 20px;
+
+    &:first-child {
+      margin-left: 0;
+    };
   }
 
   a {
@@ -73,6 +87,34 @@ p,
   }
 }
 
-.login {
-  text-align: right;
+.login-nav {
+  border: 1px solid $border;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  width: 192px;
+
+  span {
+    line-height: 14px;
+  }
+
+  li {
+    line-height: 64px;
+  }
+
+  a {
+    background: url("/assets/auth_buttons.png") no-repeat top left;
+    display: block;
+    height: 64px;
+    text-indent: 9999px;
+    width: 64px;
+  }
+
+  .twitter {
+    background-position: 0 -64px;
+  }
+
+  .google {
+    background-position: 0 -128px;
+  }
 }
