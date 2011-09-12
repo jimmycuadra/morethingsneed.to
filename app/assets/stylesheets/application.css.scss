@@ -24,7 +24,11 @@ a:active {
   text-decoration: underline;
 }
 
-p,
+p {
+  line-height: 20px;
+  margin-bottom: 20px;
+}
+
 .spaced {
   padding: 20px 0;
 }
@@ -55,7 +59,7 @@ p,
   }
 }
 
-.main-header {
+.site-header {
   nav {
     line-height: 100px;
     margin-right: 40px;
@@ -116,5 +120,14 @@ p,
 
   .google {
     background-position: 0 -128px;
+  }
+}
+
+.site-footer {
+  padding: 40px 0;
+  text-align: center;
+
+  small {
+    font-size: 14px;
   }
 }

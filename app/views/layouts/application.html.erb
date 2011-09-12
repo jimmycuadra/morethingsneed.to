@@ -8,7 +8,7 @@
 </head>
 <body class="ocotillo">
   <div class="stripe monsoon">
-    <header class="line heading spaced stripe cactus main-header">
+    <header class="line heading spaced stripe cactus site-header">
       <div class="container">
 
         <h1 class="unit heading logo">
@@ -36,10 +36,17 @@
       </div>
     </header>
 
-    <div class="container">
+    <div class="container spaced">
       <%= yield %>
     </div>
   </div> <!-- /page -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Created by Jimmy Cuadra and Michael Chadwick.</p>
+
+      <small>&copy; <%= Time.now.year %> Jimmy Cuadra. All rights reserved.</small>
+    </div>
+  </footer>
   <%= javascript_include_tag "application" %>
 </body>
 </html>
