@@ -46,12 +46,20 @@ p {
   line-height: 100px;
   margin-right: 40px;
   text: {
-    shadow: 2px 2px 3px $border;
+    shadow: 2px 2px 2px $border;
     transform: uppercase;
   }
 
   a {
     text-decoration: none;
+    transition: all 0.2s linear;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+
+    &:hover {
+      text-shadow: 2px 2px 2px $border, -2px -2px 3px $glow;
+    }
   }
 
   span {
