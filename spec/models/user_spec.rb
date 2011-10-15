@@ -5,4 +5,8 @@ describe User do
     subject.valid?
     subject.errors[:name].should_not be_empty
   end
+
+  it "has many authentications" do
+    subject.authentications.should be
+  end
 end
