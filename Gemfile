@@ -3,7 +3,7 @@ source :rubygems
 gem 'rails', '3.1.0'
 
 gem 'jquery-rails'
-gem 'omniauth', '1.0.0.pr2'
+gem 'omniauth-contrib', git: "https://github.com/jimmycuadra/omniauth-contrib"
 
 group :assets do
   gem 'sass-rails'
