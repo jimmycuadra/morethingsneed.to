@@ -22,8 +22,10 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'guard-rspec'
+  gem 'spork', '>= 0.9.0.rc9'
+  gem 'guard-spork'
   gem 'factory_girl_rails'
   gem 'simplecov'
   gem 'rb-fsevent'
-  gem 'growl_notify'
+  gem 'ruby_gntp'
 end
