@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Mtnt::Application.load_tasks
+MTNT::Application.load_tasks

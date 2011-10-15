@@ -1,3 +1,3 @@
-Mtnt::Application.routes.draw do
+MTNT::Application.routes.draw do
   root :to => "entries#index"
 end
