@@ -2,13 +2,15 @@ source :rubygems
 
 gem 'rails', '3.1.0'
 
-# Assets
 gem 'jquery-rails'
-gem 'sass-rails'
-gem 'coffee-rails'
-gem 'uglifier'
+gem 'omniauth', '1.0.0.pr2'
 
-# Server
+group :assets do
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
+end
+
 gem 'thin'
 
 group :production do
