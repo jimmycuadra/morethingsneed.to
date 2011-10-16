@@ -21,4 +21,6 @@ Spork.each_run do
   require 'simplecov'
 
   SimpleCov.start "rails"
+
+  FactoryGirl.reload
 end
