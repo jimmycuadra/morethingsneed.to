@@ -1,5 +1,5 @@
 class Authentication < ActiveRecord::Base
-  has_one :user
+  belongs_to :user
 
   validates :user_id, presence: true
   validates :provider, presence: true
