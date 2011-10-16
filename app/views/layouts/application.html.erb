@@ -15,24 +15,9 @@
           <a href="/" title="More Things Need To: The best Mad Lib ever"><span>More Things</span> <span>Need To</span></a>
         </h1>
 
-        <nav class="unit main-nav">
-          <ul class="line">
-            <li class="unit"><a href="/" title="Read entries">Entries</a></li>
-            <li class="unit"><a href="/" title="Browse authors and their contributions">Authors</a></li>
-            <li class="unit"><a href="/" title="Frequently asked questions">FAQ</a></li>
-          </ul>
-        </nav>
+        <%= render partial: "partials/nav" %>
 
-        <nav class="last-unit login-nav ocotillo">
-          <span>Log in with</span>
-
-          <ul class="line">
-            <li class="unit"><a href="/" title="Log in with Facebook">Facebook</a></li>
-            <li class="unit"><a href="/" class="twitter" title="Log in with Twitter">Twitter</a></li>
-            <li class="last-unit"><a href="/" class="google" title="Log in with Google">Google</a></li>
-          </ul>
-        </nav>
-
+        <%= render partial: "partials/userbox" %>
       </div>
     </header>
 

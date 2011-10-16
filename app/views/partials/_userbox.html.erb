@@ -1,0 +1,13 @@
+<nav class="last-unit login-nav ocotillo">
+  <% if logged_in? %>
+    <span>Logged in as <% current_user.name %></span>
+  <% else %>
+    <span>Log in with</span>
+
+    <ul class="line">
+      <li class="unit"><a href="/auth/facebook" title="Log in with Facebook">Facebook</a></li>
+      <li class="unit"><a href="/auth/twitter" class="twitter" title="Log in with Twitter">Twitter</a></li>
+      <li class="last-unit"><a href="/auth/google" class="google" title="Log in with Google">Google</a></li>
+    </ul>
+  <% end %>
+</nav>
