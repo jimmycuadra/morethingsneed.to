@@ -73,7 +73,7 @@ p {
     margin-right: 40px;
   }
 
-  .login-nav {
+  .userbox {
     line-height: inherit;
   }
 }
@@ -99,12 +99,18 @@ p {
   }
 }
 
-.login-nav {
+.userbox {
   border: 1px solid $border;
   border-radius: 8px;
   padding: 10px;
   text-align: center;
   width: 192px;
+
+  &.logged-in {
+    position: relative;
+    top: 20px;
+    width: auto;
+  }
 
   span {
     line-height: 14px;
@@ -114,7 +120,7 @@ p {
     line-height: 64px;
   }
 
-  a {
+  .auth-button {
     background: url("/assets/auth_buttons.png") no-repeat top left;
     display: block;
     height: 64px;
