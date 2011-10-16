@@ -25,6 +25,7 @@ group :development, :test do
   gem 'spork', '>= 0.9.0.rc9'
   gem 'guard-spork'
   gem 'factory_girl_rails'
+  gem 'capybara'
   gem 'simplecov'
   gem 'rb-fsevent'
   gem 'ruby_gntp'
