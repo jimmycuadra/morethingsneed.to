@@ -4,34 +4,20 @@
   <title>More Things Need To</title>
   <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
-  <%= render :partial => "google_analytics" if Rails.env.production? %>
+  <%= render :partial => "production_scripts" if Rails.env.production? %>
 </head>
 <body class="ocotillo">
   <div class="stripe monsoon">
-    <header class="line heading spaced stripe cactus site-header">
-      <div class="container">
-
-        <h1 class="unit heading logo">
-          <a href="/" title="More Things Need To: The best Mad Lib ever"><span>More Things</span> <span>Need To</span></a>
-        </h1>
-
-        <%= render partial: "partials/nav" %>
-
-        <%= render partial: "partials/userbox" %>
-      </div>
-    </header>
+    <%= render partial: "partials/site_header" %>
 
     <div class="container spaced">
       <%= yield %>
     </div>
   </div> <!-- /page -->
-  <footer class="site-footer">
-    <div class="container">
-      <p>Created by Jimmy Cuadra and Michael Chadwick.</p>
 
-      <small>&copy; <%= Time.now.year %> Jimmy Cuadra. All rights reserved.</small>
-    </div>
-  </footer>
+  <%= render partial: "partials/site_footer" %>
+
+  <%= javascript_include_tag "jquery" unless Rails.env.production? %>
   <%= javascript_include_tag "application" %>
 </body>
 </html>
