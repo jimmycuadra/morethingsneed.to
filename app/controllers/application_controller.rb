@@ -3,12 +3,12 @@ class ApplicationController < ActionController::Base
 
   def login!(user)
     session[:user_id] = user.id
-    redirect_to :root
+    redirect_to :root, notice: "You are now logged in."
   end
 
   def logout!
     session[:user_id] = nil
-    redirect_to :root
+    redirect_to :root, notice: "You are now logged out."
   end
 
   def logged_in?
