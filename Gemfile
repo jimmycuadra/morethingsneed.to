@@ -26,7 +26,7 @@ group :development, :test do
   gem 'guard-spork'
   gem 'factory_girl_rails'
   gem 'capybara'
-  gem 'simplecov'
+  gem 'simplecov', :require => false
   gem 'rb-fsevent'
   gem 'ruby_gntp'
 end
