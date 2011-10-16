@@ -1,6 +1,6 @@
 GIT
-  remote: https://github.com/jimmycuadra/omniauth-contrib
-  revision: 7088a633c7fc0f154650e2ca7d1a6d131c0cce83
+  remote: https://github.com/intridea/omniauth-contrib
+  revision: 863765803f7bd872c94fd2f0beb39d7fee26b416
   specs:
     omniauth-contrib (1.0.0.pr2)
       multi_json
@@ -85,7 +85,7 @@ GEM
     guard-spork (0.3.1)
       guard (>= 0.8.4)
       spork (>= 0.8.4)
-    hashie (1.1.0)
+    hashie (1.2.0)
     hike (1.2.1)
     i18n (0.6.0)
     jquery-rails (1.0.14)
