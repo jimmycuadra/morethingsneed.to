@@ -24,4 +24,9 @@ describe Entry do
     entry.noun.should == "foo"
     entry.verb.should == "bar"
   end
+
+  it "strips trailing punctuation from the verb" do
+    entry = Factory(:entry, verb: "bar.?!,")
+    entry.verb.should == "bar"
+  end
 end

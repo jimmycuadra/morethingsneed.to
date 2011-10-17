@@ -10,10 +10,15 @@ class Entry < ActiveRecord::Base
   validate  :uniqueness_of_entry
 
   before_validation :strip_whitespace!
+  before_validation :strip_trailing_punctuation!
 
   def strip_whitespace!
     noun.strip! if noun
     verb.strip! if verb
+  end
+
+  def strip_trailing_punctuation!
+    verb.gsub!(/[\.!?,]*$/, "") if verb
   end
 
   def uniqueness_of_entry
