@@ -9,6 +9,13 @@ class Entry < ActiveRecord::Base
   validates :user_id, presence: true
   validate  :uniqueness_of_entry
 
+  before_validation :strip_whitespace!
+
+  def strip_whitespace!
+    noun.strip! if noun
+    verb.strip! if verb
+  end
+
   def uniqueness_of_entry
     matched_entry = Entry.where(['LOWER(noun) = LOWER(?) AND LOWER(verb) = LOWER(?)', noun, verb]).first
     if matched_entry && (matched_entry.id != id)

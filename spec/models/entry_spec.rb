@@ -18,4 +18,10 @@ describe Entry do
     entry.valid?
     entry.errors[:base].should_not be_empty
   end
+
+  it "strips whitespace before validating" do
+    entry = Factory(:entry, noun: "   foo  ", verb: "bar ")
+    entry.noun.should == "foo"
+    entry.verb.should == "bar"
+  end
 end
