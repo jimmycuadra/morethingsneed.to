@@ -9,4 +9,11 @@ FactoryGirl.define do
     sequence(:uid) { |n| n }
     user
   end
+
+  factory :entry do
+    noun "tests"
+    verb "be written"
+    needs false
+    user
+  end
 end
