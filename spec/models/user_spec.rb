@@ -12,12 +12,15 @@ describe User do
 
   describe ".find_or_create_via_auth_hash" do
     let(:auth_hash) do
+      auth_params = Factory.attributes_for(:authentication)
+      user_params = Factory.attributes_for(:user)
+
       {
-        "provider" => "test",
-        "uid" => "1",
+        "provider" => auth_params[:provider],
+        "uid" => auth_params[:uid],
         "info" => {
-          "name" => "Bongo",
-          "email" => "bongo@example.com"
+          "name" => user_params[:name],
+          "email" => user_params[:email]
         },
         "credentials" => {
           "token" => SecureRandom.hex(8),

@@ -1,12 +1,12 @@
 FactoryGirl.define do
   factory :user do
-    sequence(:name) { |n| "Bongo #{n}" }
-    sequence(:email) { |n| "bongo#{n}@example.com" }
+    name "Bongo"
+    email "bongo@example.com"
   end
 
   factory :authentication do
     provider "test"
-    sequence(:uid) { |n| n }
+    uid "1234"
     user
   end
 
