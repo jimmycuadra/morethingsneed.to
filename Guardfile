@@ -1,3 +1,7 @@
+guard 'process', name: "More Things Need To", command: "bundle exec foreman start -p 3000" do
+  watch("Gemfile.lock")
+end
+
 guard 'spork', rspec_env: { 'RAILS_ENV' => 'test' } do
   watch('config/application.rb')
   watch('config/environment.rb')
