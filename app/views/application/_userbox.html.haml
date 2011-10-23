@@ -1,0 +1,15 @@
+- if logged_in?
+  %nav.last-unit.userbox.logged-in.ocotillo
+    %span Logged in as #{current_user.name}
+    %br
+    %span= link_to "Log out", logout_path, title: "Log out"
+- else
+  %nav.last-unit.userbox.ocotillo
+    %span Log in with
+    %ul.line
+      %li.unit
+        %a.auth-button{ href: "/auth/facebook", title: "Log in with Facebook" } Facebook
+      %li.unit
+        %a.auth-button.twitter{ href: "/auth/twitter", title: "Log in with Twitter" } Twitter
+      %li.last-unit
+        %a.auth-button.google{ href: "/auth/google", title: "Log in with Google" } Google
