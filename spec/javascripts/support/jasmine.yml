@@ -1,0 +1,5 @@
+src_files:
+  - app/asssets/javascripts/application.js.coffee
+  - app/assets/javascripts/**/*.coffee
+spec_files:
+  - "**/*spec.coffee"

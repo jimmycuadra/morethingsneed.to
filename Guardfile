@@ -22,3 +22,8 @@ guard 'rspec', cli: "--drb --color", all_after_pass: false do
   watch('spec/factories.rb')                          { "spec" }
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
 end
+
+guard 'jasmine-headless-webkit' do
+  watch(%r{^app/assets/javascripts/(.*)\.(js|coffee)$}) { |m| "spec/javascripts/#{m[1]}_spec.coffee" }
+  watch(%r{^spec/javascripts/(.*)_spec\..*}) { |m| "spec/javascripts/#{m[1]}_spec.coffee" }
+end
