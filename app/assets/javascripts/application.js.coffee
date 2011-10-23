@@ -8,5 +8,6 @@ window.MTNT =
   Models: {}
   Routers: {}
   Views: {}
+  Instances: {}
   init: (entries) ->
-    console.log entries
+    @Instances.entries = new @Collections.Entries entries
