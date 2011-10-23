@@ -16,3 +16,8 @@ describe "MTNT.Models.Entry", ->
 
     it "requires a verb phrase", ->
       expect(@spy.mostRecentCall.args[1].verb).toBeTruthy()
+
+describe "MTNT.Collections.Entries", ->
+  it "is a collection of entries", ->
+    @entries = new MTNT.Collections.Entries
+    expect(@entries.model).toEqual MTNT.Models.Entry

@@ -9,3 +9,6 @@ class MTNT.Models.Entry extends Backbone.Model
     errors.verb = "verb phrase cannot be blank" unless attributes.verb
 
     return errors if _.keys(errors).length
+
+class MTNT.Collections.Entries extends Backbone.Collection
+  model: MTNT.Models.Entry
