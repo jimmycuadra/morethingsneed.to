@@ -1,4 +1,6 @@
 - content_for :javascript do
   = javascript_include_tag "application"
   :javascript
-    MTNT.init(#{@entries.to_json});
+    $(function () {
+      MTNT.init(#{@entries.to_json});
+    });
