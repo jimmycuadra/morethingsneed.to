@@ -4,18 +4,18 @@
   <title>More Things Need To</title>
   <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
-  <%= render :partial => "production_scripts" if Rails.env.production? %>
+  <%= render "production_scripts" if Rails.env.production? %>
 </head>
 <body class="ocotillo">
   <div class="stripe monsoon">
-    <%= render partial: "partials/site_header" %>
+    <%= render "site_header" %>
 
     <div class="container spaced">
       <%= yield %>
     </div>
   </div> <!-- /page -->
 
-  <%= render partial: "partials/site_footer" %>
+  <%= render "site_footer" %>
 
   <%= javascript_include_tag "jquery" unless Rails.env.production? %>
   <%= javascript_include_tag "application" %>
