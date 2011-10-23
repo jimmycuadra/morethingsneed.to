@@ -11,4 +11,4 @@
       .container.spaced= yield
     = render "site_footer"
     = javascript_include_tag (Rails.env.production? ? "https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" : "jquery")
-    = javascript_include_tag "application"
+    = yield :javascript

@@ -2,9 +2,11 @@ source :rubygems
 
 gem 'rails', '3.1.1'
 
+gem 'will_paginate'
+gem 'omniauth-contrib', git: "https://github.com/intridea/omniauth-contrib"
+
 gem 'haml'
 gem 'jquery-rails'
-gem 'omniauth-contrib', git: "https://github.com/intridea/omniauth-contrib"
 
 group :assets do
   gem 'sass-rails'
