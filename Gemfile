@@ -28,8 +28,8 @@ group :development, :test do
   gem 'spork', '>= 0.9.0.rc9'
   gem 'guard-spork'
   gem 'guard-process'
-  gem 'jasmine-headless-webkit'
-  gem 'guard-jasmine-headless-webkit'
+  gem 'guard-jasmine'
+  gem 'jasminerice'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'simplecov', :require => false
