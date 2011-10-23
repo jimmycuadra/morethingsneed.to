@@ -2,6 +2,7 @@ source :rubygems
 
 gem 'rails', '3.1.1'
 
+gem 'haml'
 gem 'jquery-rails'
 gem 'omniauth-contrib', git: "https://github.com/intridea/omniauth-contrib"
 
