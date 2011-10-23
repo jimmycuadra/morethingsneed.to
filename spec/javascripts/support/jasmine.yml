@@ -1,8 +1,0 @@
-src_files:
-  - spec/javascripts/support/jquery.min.js
-  - vendor/assets/javascripts/underscore.js
-  - vendor/assets/javascripts/backbone.js
-  - app/asssets/javascripts/application.js.coffee
-  - app/assets/javascripts/**/*.coffee
-spec_files:
-  - "**/*spec.coffee"
