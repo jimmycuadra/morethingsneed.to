@@ -5,3 +5,7 @@ describe "MTNT.Views.Entry", ->
   describe "#initialize", ->
     it "initializes a model with the supplied data", ->
       expect(@entry.model instanceof MTNT.Models.Entry).toBeTruthy()
+
+  describe "#el", ->
+    it "is an article element", ->
+      expect(@entry.el.tagName).toEqual "ARTICLE"
