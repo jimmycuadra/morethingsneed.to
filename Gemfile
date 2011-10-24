@@ -6,6 +6,7 @@ gem 'will_paginate'
 gem 'omniauth-contrib', git: "https://github.com/intridea/omniauth-contrib"
 
 gem 'haml'
+gem 'ruby-haml-js'
 gem 'jquery-rails'
 
 group :assets do
