@@ -1,7 +1,7 @@
 #= require underscore
 #= require backbone
 #= require_self
-#= require models/entry
+#= require_tree ./
 
 window.MTNT =
   Collections: {}
