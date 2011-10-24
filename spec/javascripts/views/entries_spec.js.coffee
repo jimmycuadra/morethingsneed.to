@@ -7,7 +7,7 @@ describe "MTNT.Views.Entries", ->
       expect(@entries.collection instanceof MTNT.Collections.Entries).toBeTruthy()
 
   describe "#addAll", ->
-    it "is called when the collection is reset", ->
-      spyOn(@entries, "addAll")
-      @entries.collection.reset
-      expect(@entries.addAll).toHaveBeenCalled()
+    it "calls #addOne for each model in the collection", ->
+      spyOn @entries, "addOne"
+      @entries.collection.reset [new Backbone.Model, new Backbone.Model, new Backbone.Model]
+      expect(@entries.addOne.callCount).toEqual 3
