@@ -3,3 +3,9 @@ class MTNT.Views.Entry extends Backbone.View
     @model = model
 
   tagName: "article"
+
+  template: JST["templates/entry"]
+
+  render: ->
+    ($ @el).html @template(@model.toJSON())
+    this

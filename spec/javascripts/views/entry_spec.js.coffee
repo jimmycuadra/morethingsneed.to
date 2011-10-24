@@ -6,6 +6,8 @@ describe "MTNT.Views.Entry", ->
     it "initializes a model with the supplied data", ->
       expect(@entry.model instanceof MTNT.Models.Entry).toBeTruthy()
 
-  describe "#el", ->
-    it "is an article element", ->
-      expect(@entry.el.tagName).toEqual "ARTICLE"
+  describe "#render", ->
+    it "renders the template to @el", ->
+      @entry.model.set(noun: "tests", needs: false, verb: "be run")
+      @entry.render()
+      expect(@entry.el.innerHTML).toEqual "More tests need to be run."
