@@ -23,7 +23,7 @@ guard 'rspec', cli: "--drb --color", all_after_pass: false do
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
 end
 
-guard 'jasmine' do
+guard 'jasmine', all_after_pass: false do
   watch(%r{app/assets/javascripts/(.+)\.(js\.coffee|js)}) { |m| "spec/javascripts/#{m[1]}_spec.#{m[2]}" }
   watch(%r{spec/javascripts/(.+)_spec\.(js\.coffee|js)})  { |m| "spec/javascripts/#{m[1]}_spec.#{m[2]}" }
   watch(%r{spec/javascripts/spec\.(js\.coffee|js)})       { "spec/javascripts" }
