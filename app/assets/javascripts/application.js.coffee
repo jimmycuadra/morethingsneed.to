@@ -9,5 +9,5 @@ window.MTNT =
   Routers: {}
   Views: {}
   Instances: {}
-  init: (entries) ->
-    @Instances.entries = new @Collections.Entries entries
+  init: (data) ->
+    @Instances.entries = new @Views.Entries data

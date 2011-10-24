@@ -3,6 +3,6 @@ describe "MTNT", ->
     expect(typeof window.MTNT).toEqual("object")
 
   describe ".init", ->
-    it "insantiates an entry collection", ->
+    it "insantiates an entries view", ->
       MTNT.init()
-      expect(MTNT.Instances.entries instanceof MTNT.Collections.Entries).toBeTruthy()
+      expect(MTNT.Instances.entries instanceof MTNT.Views.Entries).toBeTruthy()
