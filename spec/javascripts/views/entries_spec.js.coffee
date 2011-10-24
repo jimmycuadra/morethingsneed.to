@@ -1,10 +1,13 @@
 describe "MTNT.Views.Entries", ->
-  describe "#initialize", ->
-    beforeEach ->
-      @entries = new MTNT.Views.Entries [new Backbone.Model, new Backbone.Model, new Backbone.Model]
+  beforeEach ->
+    @entries = new MTNT.Views.Entries
 
+  describe "#initialize", ->
     it "instantiates an entry collection", ->
       expect(@entries.collection instanceof MTNT.Collections.Entries).toBeTruthy()
 
-    it "populates the collection with data", ->
-      expect(@entries.collection.length).toEqual 3
+  describe "#addAll", ->
+    it "is called when the collection is reset", ->
+      spyOn(@entries, "addAll")
+      @entries.collection.reset
+      expect(@entries.addAll).toHaveBeenCalled()

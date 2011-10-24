@@ -1,4 +1,10 @@
 class MTNT.Views.Entries extends Backbone.View
-  initialize: (entries) ->
+  initialize: ->
     @collection = new MTNT.Collections.Entries
-    @collection.reset entries if entries
+    @collection.bind "reset", @addAll
+
+  addAll: =>
+    @collection.each @addOne
+
+  addOne: (model) ->
+    model.view = new MTNT.Views.Entry model

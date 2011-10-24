@@ -10,4 +10,5 @@ window.MTNT =
   Views: {}
   Instances: {}
   init: (data) ->
-    @Instances.entries = new @Views.Entries data
+    @Instances.entries = new @Views.Entries
+    @Instances.entries.collection.reset data
