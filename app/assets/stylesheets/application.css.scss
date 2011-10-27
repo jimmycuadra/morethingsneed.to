@@ -8,12 +8,13 @@
 $line: 20px;
 
 body {
-  background: $darkgray;
+  background: url("/assets/black_linen_v2.png");
   color: $white;
 }
 
 .main-content {
   background: $white;
+  box-shadow: inset 0 3px 4px darken($lightgray, 33%);
   color: $black;
 }
 
