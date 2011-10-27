@@ -1,12 +1,12 @@
 - if logged_in?
-  %nav.last-unit.userbox.logged-in.ocotillo
+  %nav.unit-right.userbox
     %span Logged in as #{current_user.name}
     %br
     %span= link_to "Log out", logout_path, title: "Log out"
 - else
-  %nav.last-unit.userbox.ocotillo
-    %span Log in with
-    %ul.line
+  %nav.unit-right.line
+    %span.unit Log in with
+    %ul.unit.line
       %li.unit
         %a.auth-button{ href: "/auth/facebook", title: "Log in with Facebook" } Facebook
       %li.unit

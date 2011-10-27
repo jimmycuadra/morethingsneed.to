@@ -5,13 +5,26 @@
 
 @import "colors";
 
+$line: 20px;
+
+body {
+  background: $darkgray;
+  color: $white;
+}
+
+.main-content {
+  background: $white;
+  color: $black;
+}
+
 .container {
   margin: 0 auto;
+  padding: 20px 0;
   max-width: 960px;
 }
 
 a {
-  color: $grit;
+  color: $red;
 }
 
 a,
@@ -25,56 +38,38 @@ a:active {
 }
 
 p {
-  line-height: 20px;
-  margin-bottom: 20px;
+  line-height: $line;
+  margin-bottom: $line / 2;
 }
 
-.spaced {
-  padding: 20px 0;
-}
-
-.heading {
+h1, h2, h3, h4, h5, h6 {
   font-family: "PT Sans Narrow", sans-serif;
 }
 
-.stripe {
-  border-bottom: 3px solid $border;
+h1 {
+  font-size: 30px;
+}
+
+.site-header {
+  background: $black;
+  color: $white;
+  line-height: 30px;
+
+  a {
+    color: $white;
+  }
 }
 
 .logo {
-  font-size: 48px;
-  line-height: 100px;
-  margin-right: 40px;
-  text: {
-    shadow: 2px 2px 2px $border;
-    transform: uppercase;
-  }
-
-  a {
-    text-decoration: none;
-    transition: all 0.2s linear;
-    -webkit-transition: all 0.2s linear;
-    -moz-transition: all 0.2s linear;
-    -o-transition: all 0.2s linear;
-
-    &:hover {
-      text-shadow: 2px 2px 2px $border, -2px -2px 3px $glow;
-    }
-  }
+  margin-right: 20px;
+  text-transform: uppercase;
 
   span {
     white-space: nowrap;
   }
-}
 
-.site-header {
-  nav {
-    line-height: 100px;
-    margin-right: 40px;
-  }
-
-  .userbox {
-    line-height: inherit;
+  a {
+    color: $red;
   }
 }
 
@@ -88,60 +83,33 @@ p {
   }
 
   a {
+    background: $darkgray;
     border-radius: 4px;
     padding: 5px 10px;
   }
-
-  a:hover {
-    color: $cactus;
-    background: $grit;
-    text-decoration: none;
-  }
 }
 
-.userbox {
-  border: 1px solid $border;
-  border-radius: 8px;
-  padding: 10px;
-  text-align: center;
-  width: 192px;
+.auth-button {
+  background: url("/assets/auth_buttons.png") no-repeat top left;
+  display: block;
+  height: 32px;
+  margin-left: 5px;
+  text-indent: 9999px;
+  width: 32px;
+}
 
-  &.logged-in {
-    position: relative;
-    top: 20px;
-    width: auto;
-  }
+.twitter {
+  background-position: -32px 0;
+}
 
-  span {
-    line-height: 14px;
-  }
-
-  li {
-    line-height: 64px;
-  }
-
-  .auth-button {
-    background: url("/assets/auth_buttons.png") no-repeat top left;
-    display: block;
-    height: 64px;
-    text-indent: 9999px;
-    width: 64px;
-  }
-
-  .twitter {
-    background-position: 0 -64px;
-  }
-
-  .google {
-    background-position: 0 -128px;
-  }
+.google {
+  background-position: -64px 0;
 }
 
 .site-footer {
-  padding: 40px 0;
   text-align: center;
 
   small {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
