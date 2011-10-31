@@ -1,14 +1,11 @@
+#= require extractor
 #= require underscore
 #= require backbone
 #= require_self
 #= require_tree ./
 
 window.MTNT =
-  Collections: {}
-  Models: {}
-  Routers: {}
-  Views: {}
-  Instances: {}
   init: (data) ->
-    @Instances.entries = new @Views.Entries
-    @Instances.entries.collection.reset data
+    EntriesView = Extractor.require "EntriesView"
+    @entries = new EntriesView
+    @entries.collection.reset data

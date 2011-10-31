@@ -1,4 +1,4 @@
-class MTNT.Views.Entry extends Backbone.View
+class EntryView extends Backbone.View
   tagName: "article"
 
   template: JST["templates/entry"]
@@ -6,3 +6,5 @@ class MTNT.Views.Entry extends Backbone.View
   render: ->
     ($ @el).html @template(@model.toJSON())
     this
+
+Extractor.exports "EntryView", EntryView

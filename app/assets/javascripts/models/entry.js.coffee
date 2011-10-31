@@ -1,4 +1,4 @@
-class MTNT.Models.Entry extends Backbone.Model
+class Entry extends Backbone.Model
   defaults:
     needs: false
 
@@ -10,5 +10,8 @@ class MTNT.Models.Entry extends Backbone.Model
 
     return errors if _.keys(errors).length
 
-class MTNT.Collections.Entries extends Backbone.Collection
-  model: MTNT.Models.Entry
+class Entries extends Backbone.Collection
+  model: Entry
+
+Extractor.exports "Entry", Entry
+Extractor.exports "Entries", Entries

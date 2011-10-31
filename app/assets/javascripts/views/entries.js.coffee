@@ -1,14 +1,18 @@
-class MTNT.Views.Entries extends Backbone.View
+class EntriesView extends Backbone.View
   initialize: ->
-    @collection = new MTNT.Collections.Entries
+    Entries = Extractor.require "Entries"
+    @collection = new Entries
     @collection.bind "add", @addOne
     @collection.bind "reset", @addAll
 
   el: $("#entries")
 
   addOne: (entry) =>
-    view = new MTNT.Views.Entry(model: entry)
+    Entry = Extractor.require "EntryView"
+    view = new Entry(model: entry)
     @el.append view.render().el
 
   addAll: =>
     @collection.each @addOne
+
+Extractor.exports "EntriesView", EntriesView

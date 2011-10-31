@@ -1,10 +1,13 @@
-describe "MTNT.Views.Entry", ->
+EntryView = Extractor.require "EntryView"
+Entry = Extractor.require "Entry"
+
+describe "EntryView", ->
   beforeEach ->
-    @entry = new MTNT.Views.Entry(model: new MTNT.Models.Entry)
+    @entry = new EntryView(model: new Entry)
 
   describe "#initialize", ->
     it "initializes a model with the supplied data", ->
-      expect(@entry.model instanceof MTNT.Models.Entry).toBeTruthy()
+      expect(@entry.model instanceof Entry).toBeTruthy()
 
   describe "#render", ->
     it "renders the template to @el", ->

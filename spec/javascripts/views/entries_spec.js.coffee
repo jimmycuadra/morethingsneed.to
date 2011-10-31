@@ -1,15 +1,19 @@
-describe "MTNT.Views.Entries", ->
+EntriesView = Extractor.require "EntriesView"
+Entries = Extractor.require "Entries"
+Entry = Extractor.require "Entry"
+
+describe "EntriesView", ->
   beforeEach ->
-    @entries = new MTNT.Views.Entries
+    @entries = new EntriesView
 
   describe "#initialize", ->
     it "instantiates an entry collection", ->
-      expect(@entries.collection instanceof MTNT.Collections.Entries).toBeTruthy()
+      expect(@entries.collection instanceof Entries).toBeTruthy()
 
   describe "#addOne", ->
     it "appends the entry view to the entries view", ->
       @entries.el = $("<section/>")
-      model = new MTNT.Models.Entry(noun: "tests", needs: false, verb: "be run")
+      model = new Entry(noun: "tests", needs: false, verb: "be run")
       @entries.addOne model
       expect(@entries.el.html()).toMatch /More tests need to be run./
 
