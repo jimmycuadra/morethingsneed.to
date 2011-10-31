@@ -1,5 +1,5 @@
-Entry = Extractor.require "Entry"
-Entries = Extractor.require "Entries"
+Entry = Extractor.require "models/entry"
+Entries = Extractor.require "collections/entries"
 
 describe "Entry", ->
   it "has a default 'needs' attribute", ->

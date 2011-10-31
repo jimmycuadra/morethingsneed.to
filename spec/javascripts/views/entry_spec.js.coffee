@@ -1,5 +1,5 @@
-EntryView = Extractor.require "EntryView"
-Entry = Extractor.require "Entry"
+EntryView = Extractor.require "views/entry"
+Entry = Extractor.require "models/entry"
 
 describe "EntryView", ->
   beforeEach ->

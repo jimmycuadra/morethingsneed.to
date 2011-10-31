@@ -13,5 +13,5 @@ class Entry extends Backbone.Model
 class Entries extends Backbone.Collection
   model: Entry
 
-Extractor.exports "Entry", Entry
-Extractor.exports "Entries", Entries
+MTNT.exports "models/entry", Entry
+MTNT.exports "collections/entries", Entries

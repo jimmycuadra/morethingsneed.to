@@ -1,6 +1,6 @@
-EntriesView = Extractor.require "EntriesView"
-Entries = Extractor.require "Entries"
-Entry = Extractor.require "Entry"
+EntriesView = Extractor.require "views/entries"
+Entries = Extractor.require "collections/entries"
+Entry = Extractor.require "models/entry"
 
 describe "EntriesView", ->
   beforeEach ->

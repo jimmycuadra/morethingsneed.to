@@ -5,7 +5,9 @@
 #= require_tree ./
 
 window.MTNT =
+  exports: Extractor.exports
+  require: Extractor.require
   init: (data) ->
-    EntriesView = Extractor.require "EntriesView"
+    EntriesView = @require "views/entries"
     @entries = new EntriesView
     @entries.collection.reset data

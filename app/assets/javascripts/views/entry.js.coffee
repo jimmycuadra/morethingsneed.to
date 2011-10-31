@@ -7,4 +7,4 @@ class EntryView extends Backbone.View
     ($ @el).html @template(@model.toJSON())
     this
 
-Extractor.exports "EntryView", EntryView
+MTNT.exports "views/entry", EntryView

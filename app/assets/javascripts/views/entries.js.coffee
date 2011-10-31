@@ -1,6 +1,11 @@
+#= require models/entry
+#= require views/entry
+
+Entries = MTNT.require "collections/entries"
+Entry = MTNT.require "views/entry"
+
 class EntriesView extends Backbone.View
   initialize: ->
-    Entries = Extractor.require "Entries"
     @collection = new Entries
     @collection.bind "add", @addOne
     @collection.bind "reset", @addAll
@@ -8,11 +13,10 @@ class EntriesView extends Backbone.View
   el: $("#entries")
 
   addOne: (entry) =>
-    Entry = Extractor.require "EntryView"
     view = new Entry(model: entry)
     @el.append view.render().el
 
   addAll: =>
     @collection.each @addOne
 
-Extractor.exports "EntriesView", EntriesView
+MTNT.exports "views/entries", EntriesView
