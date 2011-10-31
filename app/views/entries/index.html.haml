@@ -3,5 +3,5 @@
   = javascript_include_tag "application"
   :javascript
     $(function () {
-      MTNT.init(#{@entries.to_json});
+      MTNT.init(#{ @entries.to_json({ only: ["id", "noun", "needs", "verb", "created_at"], include: { user: { only: ["id", "name"] } } }) });
     });

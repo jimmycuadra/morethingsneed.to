@@ -1,1 +1,4 @@
-More #{noun} #{needs ? "needs" : "need"} to #{verb}.
+%header.padded
+  = user.name + ", "
+  %data{ value: created_at }= created_at
+.body.padded More #{noun} #{needs ? "needs" : "need"} to #{verb}.

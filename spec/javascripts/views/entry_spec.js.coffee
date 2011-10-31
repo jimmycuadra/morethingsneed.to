@@ -11,6 +11,6 @@ describe "EntryView", ->
 
   describe "#render", ->
     it "renders the template to @el", ->
-      @entry.model.set(noun: "tests", needs: false, verb: "be run")
+      (spyOn @entry, "template").andReturn "Rendered!"
       @entry.render()
-      expect(@entry.el.innerHTML).toEqual "More tests need to be run."
+      expect(@entry.el.innerHTML).toMatch /Rendered!/

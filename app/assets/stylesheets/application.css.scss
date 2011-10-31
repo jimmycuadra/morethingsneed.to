@@ -107,6 +107,24 @@ h1 {
   background-position: -64px 0;
 }
 
+.entry {
+  .padded {
+    padding: 10px;
+  }
+
+  header {
+    background: $black;
+    border-radius: 8px 8px 0 0;
+    color: $white;
+  }
+
+  .body {
+    background: $lightgray;
+    border: 1px solid $black;
+    border-top: 0;
+  }
+}
+
 .site-footer {
   text-align: center;
 

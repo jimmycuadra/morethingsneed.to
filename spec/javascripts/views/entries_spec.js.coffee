@@ -13,9 +13,9 @@ describe "EntriesView", ->
   describe "#addOne", ->
     it "appends the entry view to the entries view", ->
       @entries.el = $("<section/>")
-      model = new Entry(noun: "tests", needs: false, verb: "be run")
+      model = new Entry
       @entries.addOne model
-      expect(@entries.el.html()).toMatch /More tests need to be run./
+      expect(@entries.el.html()).toBeTruthy()
 
   describe "#addAll", ->
     it "calls #addOne for each model in the collection", ->
