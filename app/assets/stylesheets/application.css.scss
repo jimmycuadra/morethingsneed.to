@@ -108,6 +108,12 @@ h1 {
 }
 
 .entry {
+  margin-top: 20px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
   .padded {
     padding: 10px;
   }
