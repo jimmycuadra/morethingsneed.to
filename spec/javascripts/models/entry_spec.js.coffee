@@ -4,7 +4,7 @@ Entries = Extractor.require "collections/entries"
 describe "Entry", ->
   it "has a default 'needs' attribute", ->
     @entry = new Entry
-    expect(@entry.get "needs").toEqual false
+    expect(@entry.get "needs").toBe false
 
   describe "required attributes", ->
     beforeEach ->
@@ -23,4 +23,4 @@ describe "Entry", ->
 describe "Entries", ->
   it "is a collection of entries", ->
     @entries = new Entries
-    expect(@entries.model).toEqual Entry
+    expect(@entries.model).toBe Entry

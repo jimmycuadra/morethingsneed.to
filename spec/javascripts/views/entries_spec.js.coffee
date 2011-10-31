@@ -8,7 +8,7 @@ describe "EntriesView", ->
 
   describe "#initialize", ->
     it "instantiates an entry collection", ->
-      expect(@entries.collection instanceof Entries).toBeTruthy()
+      expect(@entries.collection).toBeAnInstanceOf Entries
 
   describe "#addOne", ->
     it "appends the entry view to the entries view", ->

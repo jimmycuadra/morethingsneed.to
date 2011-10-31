@@ -7,10 +7,10 @@ describe "EntryView", ->
 
   describe "#initialize", ->
     it "initializes a model with the supplied data", ->
-      expect(@entry.model instanceof Entry).toBeTruthy()
+      expect(@entry.model).toBeAnInstanceOf Entry
 
   describe "#render", ->
     it "renders the template to @el", ->
-      (spyOn @entry, "template").andReturn "Rendered!"
+      spyOn(@entry, "template").andReturn "Rendered!"
       @entry.render()
       expect(@entry.el.innerHTML).toMatch /Rendered!/
