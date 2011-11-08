@@ -3,7 +3,10 @@ source :rubygems
 gem 'rails', '3.1.1'
 
 gem 'will_paginate'
-gem 'omniauth-contrib', git: "https://github.com/intridea/omniauth-contrib"
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
 
 gem 'haml'
 gem 'ruby-haml-js'
@@ -25,12 +28,16 @@ group :development, :test do
   gem 'foreman'
   gem 'sqlite3'
   gem 'rspec-rails'
+  gem 'guard'
+  gem 'jasminerice'
+end
+
+group :test do
   gem 'guard-rspec'
   gem 'spork', '>= 0.9.0.rc9'
   gem 'guard-spork'
   gem 'guard-process'
   gem 'guard-jasmine'
-  gem 'jasminerice'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'simplecov', :require => false

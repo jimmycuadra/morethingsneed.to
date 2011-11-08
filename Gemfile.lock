@@ -1,13 +1,3 @@
-GIT
-  remote: https://github.com/intridea/omniauth-contrib
-  revision: 863765803f7bd872c94fd2f0beb39d7fee26b416
-  specs:
-    omniauth-contrib (1.0.0.pr2)
-      multi_json
-      omniauth (~> 1.0.0.pr2)
-      omniauth-oauth (~> 1.0.0.pr2)
-      omniauth-oauth2 (~> 1.0.0.pr2)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -115,15 +105,22 @@ GEM
     oauth2 (0.5.1)
       faraday (~> 0.7.4)
       multi_json (~> 1.0.3)
-    omniauth (1.0.0.pr2)
-      hashie
+    omniauth (1.0.0)
+      hashie (~> 1.2)
       rack
-    omniauth-oauth (1.0.0.pr2)
+    omniauth-facebook (1.0.0.rc1)
+      omniauth-oauth2 (~> 1.0.0.rc2)
+    omniauth-google-oauth2 (0.1.4)
+      omniauth (~> 1.0)
+      omniauth-oauth2
+    omniauth-oauth (1.0.0)
       oauth
-      omniauth (~> 1.0.0.pr2)
-    omniauth-oauth2 (1.0.0.pr2)
+      omniauth (~> 1.0)
+    omniauth-oauth2 (1.0.0)
       oauth2 (~> 0.5.0)
-      omniauth (~> 1.0.0.pr2)
+      omniauth (~> 1.0)
+    omniauth-twitter (0.0.6)
+      omniauth-oauth (~> 1.0)
     pg (0.11.0)
     polyglot (0.3.2)
     rack (1.3.5)
@@ -222,6 +219,7 @@ DEPENDENCIES
   coffee-rails
   factory_girl_rails
   foreman
+  guard
   guard-jasmine
   guard-process
   guard-rspec
@@ -229,7 +227,10 @@ DEPENDENCIES
   haml
   jasminerice
   jquery-rails
-  omniauth-contrib!
+  omniauth
+  omniauth-facebook
+  omniauth-google-oauth2
+  omniauth-twitter
   pg
   rails (= 3.1.1)
   rb-fsevent
