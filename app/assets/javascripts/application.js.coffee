@@ -1,13 +1,13 @@
-#= require extractor
+#= require_self
 #= require underscore
 #= require backbone
-#= require_self
-#= require_tree ./
+#= require models/entry
+#= require collections/entries
+#= require templates/entry
+#= require views/entry
+#= require views/entries
 
 window.MTNT =
-  exports: Extractor.exports
-  require: Extractor.require
   init: (data) ->
-    EntriesView = @require "views/entries"
-    @entries = new EntriesView
+    @entries = new MTNT.EntriesView
     @entries.collection.reset data

@@ -1,4 +1,4 @@
-class Entry extends Backbone.Model
+class MTNT.Entry extends Backbone.Model
   defaults:
     needs: false
 
@@ -9,9 +9,3 @@ class Entry extends Backbone.Model
     errors.verb = "verb phrase cannot be blank" unless attributes.verb
 
     return errors if _.keys(errors).length
-
-class Entries extends Backbone.Collection
-  model: Entry
-
-MTNT.exports "models/entry", Entry
-MTNT.exports "collections/entries", Entries
