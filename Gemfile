@@ -8,6 +8,7 @@ gem 'thin'
 # View
 gem 'haml'
 gem 'jquery-rails'
+gem 'backbone-rails'
 
 # Assets
 group :assets do

@@ -1,10 +1,14 @@
 !!! 5
 %html{ lang: "en" }
   %head
-    %title Application Title
+    %title More Things Need To
     = stylesheet_link_tag "application"
+    %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
     = csrf_meta_tags
   %body
-    = yield
-    %script{ src: "//ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" }
+    .container-fluid
+      = yield
+    %footer.copyright
+      %small= "&copy; #{Time.now.year} Jimmy Cuadra. All rights reserved.".html_safe
+    %script{ src: "//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" }
     = javascript_include_tag "application"
