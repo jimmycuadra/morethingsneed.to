@@ -8,7 +8,6 @@ gem 'thin'
 # View
 gem 'haml'
 gem 'jquery-rails'
-gem 'backbone-rails'
 
 # Assets
 group :assets do
@@ -16,7 +15,8 @@ group :assets do
   gem 'bootstrap-sass'
   gem 'coffee-rails'
   gem 'uglifier'
-  gem 'eco'
+  gem 'backbone-rails'
+  gem 'haml_coffee_assets'
 end
 
 group :production do
