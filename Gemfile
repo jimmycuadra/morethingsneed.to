@@ -16,6 +16,7 @@ group :assets do
   gem 'bootstrap-sass'
   gem 'coffee-rails'
   gem 'uglifier'
+  gem 'eco'
 end
 
 group :production do
