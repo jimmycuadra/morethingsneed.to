@@ -6,7 +6,7 @@
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
     = csrf_meta_tags
   %body
-    .container-fluid
+    #main.container-fluid
       = yield
     %footer.copyright
       %small= "&copy; #{Time.now.year} Jimmy Cuadra. All rights reserved.".html_safe

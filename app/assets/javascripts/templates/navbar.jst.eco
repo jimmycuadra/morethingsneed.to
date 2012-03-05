@@ -1,0 +1,19 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a href="#" class="brand">More Things Need To</a>
+
+      <ul class="nav">
+        <li>
+          <a href="#">Entries</a>
+        </li>
+        <li>
+          <a href="#">Authors</a>
+        </li>
+        <li>
+          <a href="#">FAQ</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

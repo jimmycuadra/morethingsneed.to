@@ -1,15 +1,38 @@
 $red: #8c3130
+$black: #000
+
 $linkColor: $red
 
-@import "bootstrap"
+$navbarBackground: $black
+
+@import bootstrap
 
 body
   background: url("/assets/black_linen_v2.png")
 
+@mixin pt-sans
+  font-family: "PT Sans Narrow", sans-serif
+
+h1, h2, h3, h4, h5, h6
+  @include pt-sans
+
 .container-fluid
+  padding: 0
+
+#main
   background: $white
 
 .copyright
   color: $white
   padding: 40px
   text-align: center
+
+.navbar
+  .brand
+    @include pt-sans
+    color: $red
+    padding-top: 10px
+    text-transform: uppercase
+
+.navbar-inner
+  @include border-radius(0)
