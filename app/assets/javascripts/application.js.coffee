@@ -1,7 +1,9 @@
 #= require jquery_ujs
 #= require underscore
 #= require backbone
-#= require_tree ./
+#= require hamlcoffee
+#= require_self
+#= require_tree ./templates
 
 window.MTNT =
   Models: {}
@@ -9,6 +11,6 @@ window.MTNT =
   Views: {}
   Routers: {}
   init: ->
-    $("#main").html(JST["templates/navbar"]())
+    $("#main").html(MTNT.JST["navbar"]())
 
 $(MTNT.init)
