@@ -4,6 +4,7 @@
 #= require hamlcoffee
 #= require_self
 #= require_tree ./templates
+#= require_tree ./
 
 window.MTNT =
   Models: {}
@@ -11,6 +12,8 @@ window.MTNT =
   Views: {}
   Routers: {}
   init: ->
-    $("#main").html(MTNT.JST["navbar"]())
+    @app = new @Routers.ApplicationRouter
+    Backbone.history.start(pushState: true)
 
-$(MTNT.init)
+$ ->
+  MTNT.init()
