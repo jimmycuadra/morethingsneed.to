@@ -12,7 +12,7 @@ window.MTNT =
   Views: {}
   Routers: {}
   init: ->
-    @app = new @Routers.ApplicationRouter
+    @app = new @Routers.App
     Backbone.history.start(pushState: true)
 
 $ ->

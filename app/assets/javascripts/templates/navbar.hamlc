@@ -1,12 +1,11 @@
-.navbar
-  .navbar-inner
-    .container-fluid
-      %a.brand{ href: "#"} More Things Need To
+.navbar-inner
+  .container-fluid
+    %a.brand{ href: "#"} More Things Need To
 
-      %ul.nav
-        %li
-          %a{ href: "#" } Entries
-        %li
-          %a{ href: "#" } Authors
-        %li
-          %a{ href: "#" } FAQ
+    %ul.nav
+      %li
+        %a{ href: "#" } Entries
+      %li
+        %a{ href: "#" } Authors
+      %li
+        %a{ href: "#" } FAQ
