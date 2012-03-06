@@ -1,8 +1,8 @@
 %label{ for: "noun" } More
-%input{ type: "text", placeholder: "nouns" }
-%select
+%input{ type: "text", id: "noun", name: "noun", placeholder: "nouns" }
+%select{ name: "needs" }
   %option{ value: "0" } need
   %option{ value: "1" } needs
 %label{ for: "verb" } to
-%input{ type: "text", placeholder: "verb" }
+%input{ type: "text", id: "verb", name: "verb", placeholder: "verb" }
 %button.btn.btn-primary{ type: "submit" } This needs to happen

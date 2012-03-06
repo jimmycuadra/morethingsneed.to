@@ -9,9 +9,10 @@ class MTNT.Routers.App extends Backbone.Router
     navbar = new MTNT.Views.Navbar
     @nav.replaceWith(navbar.render().el)
 
-    add_entry = new MTNT.Views.AddEntry
-    @main.html(add_entry.render().el)
+    collection = new MTNT.Collections.Entries
 
-    collection = MTNT.app.entries = new MTNT.Collections.Entries
     entries = new MTNT.Views.Entries(collection: collection)
+    add_entry = new MTNT.Views.AddEntry(collection: collection)
+
+    @main.html(add_entry.render().el)
     @main.append(entries.render().el)
