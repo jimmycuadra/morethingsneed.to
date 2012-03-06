@@ -1,5 +1,5 @@
 .navbar-inner
-  .container-fluid
+  .container
     %a.brand{ href: "#"} More Things Need To
 
     %ul.nav

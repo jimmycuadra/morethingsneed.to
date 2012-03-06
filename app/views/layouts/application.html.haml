@@ -6,8 +6,10 @@
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
     = csrf_meta_tags
   %body
-    #main.container-fluid
-      = yield
+    #nav
+    .bucket
+      #main.container
+        = yield
     %footer.copyright
       %small= "&copy; #{Time.now.year} Jimmy Cuadra. All rights reserved.".html_safe
     %script{ src: "//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" }
