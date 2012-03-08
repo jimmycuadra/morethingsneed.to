@@ -15,7 +15,7 @@ group :assets do
   gem 'bootstrap-sass'
   gem 'coffee-rails'
   gem 'uglifier'
-  gem 'backbone-rails'
+  gem 'rails-backbone'
   gem 'haml_coffee_assets'
 end
 

@@ -20,4 +20,9 @@ class MTNT.Views.AddEntry extends Backbone.View
       verb: @$("[name=verb]").val()
       needs: @$("[name=needs]").val()
 
-    @collection.add(attributes)
+    @collection.create attributes,
+      wait: true,
+      error: @showErrors
+
+  showErrors: (model, errors) ->
+    console.log(arguments)

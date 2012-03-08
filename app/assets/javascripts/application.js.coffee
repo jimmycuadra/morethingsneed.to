@@ -9,6 +9,10 @@
 #= require_tree ./views
 #= require_tree ./routers
 
+# Disable syncing for now
+Backbone.sync = (method, model, options) ->
+  options.success()
+
 window.MTNT =
   Models: {}
   Collections: {}
