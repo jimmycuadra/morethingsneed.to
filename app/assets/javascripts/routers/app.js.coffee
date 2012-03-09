@@ -3,16 +3,31 @@ class MTNT.Routers.App extends Backbone.Router
     "": "main"
 
   main: ->
-    @nav = $("#nav")
-    @main = $("#main")
-
-    navbar = new MTNT.Views.Navbar
-    @nav.replaceWith(navbar.render().el)
+    ## Collections
 
     collection = new MTNT.Collections.Entries
+    # alerts = new MTNT.Collections.Alerts
 
-    entries = new MTNT.Views.Entries(collection: collection)
+    ## DOM elements
+    $body = $("body")
+    $main = $("#main")
+
+    ## Remove loading state
+    $("#no-js").remove()
+
+    ## Views
+
+    # Navigation
+    @navbar = new MTNT.Views.Navbar
+    $body.prepend(@navbar.render().el)
+
+    # Add entry form
     add_entry = new MTNT.Views.AddEntry(collection: collection)
+    $main.append(add_entry.render().el)
 
-    @main.html(add_entry.render().el)
-    @main.append(entries.render().el)
+    # Flash messages
+    # @$flash = new MTNT.Views.Flash
+
+    # Entries
+    entries = new MTNT.Views.Entries(collection: collection)
+    $main.append(entries.render().el)
