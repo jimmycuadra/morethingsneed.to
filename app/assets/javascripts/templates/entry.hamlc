@@ -1,1 +1,5 @@
-= "More #{@noun} #{if @needs then "needs" else "need"} to #{@verb}."
+%header
+  %b Someone
+  crapped this out at
+  = @created_at
+.entry-content= "More #{@noun} #{if @needs then "needs" else "need"} to #{@verb}."
