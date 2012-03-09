@@ -1,7 +1,7 @@
 class MTNT.Views.AddEntry extends Backbone.View
   tagName: "form"
 
-  className: "form-inline"
+  className: "form-inline centered"
 
   template: MTNT.JST["add_entry"]
 
@@ -22,10 +22,11 @@ class MTNT.Views.AddEntry extends Backbone.View
 
     @collection.create attributes,
       wait: true,
-      error: @showErrors
-
-  showErrors: (model, errors) ->
-    console.log(arguments)
+      success: =>
+        MTNT.app.flash.success("Your entry was added.")
+        @el.reset()
+      error: (model, errors) =>
+        MTNT.app.flash.error("Your entry could not be added.", errors)
 
   toBoolean: (value) ->
     !!parseInt(value, 10)

@@ -1,0 +1,10 @@
+- if @errors?
+  %p= @message
+- else
+  %span= @message
+
+- if @errors?
+  %p The following errors occurred:
+  %ul
+    - for error in @errors
+      %li= error
