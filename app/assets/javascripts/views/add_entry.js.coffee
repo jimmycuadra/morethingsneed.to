@@ -18,7 +18,7 @@ class MTNT.Views.AddEntry extends Backbone.View
     attributes =
       noun: @$("[name=noun]").val()
       verb: @$("[name=verb]").val()
-      needs: @$("[name=needs]").val()
+      needs: @toBoolean(@$("[name=needs]").val())
 
     @collection.create attributes,
       wait: true,
@@ -26,3 +26,6 @@ class MTNT.Views.AddEntry extends Backbone.View
 
   showErrors: (model, errors) ->
     console.log(arguments)
+
+  toBoolean: (value) ->
+    !!parseInt(value, 10)
