@@ -12,5 +12,5 @@ class MTNT.Views.Entries extends Backbone.View
     @$el.empty()
     @collection.each (entry) =>
       view = new MTNT.Views.Entry(model: entry)
-      @$el.append(view.render().el)
+      @$el.prepend(view.render().el)
     this
