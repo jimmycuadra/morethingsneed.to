@@ -1,5 +1,6 @@
 %header
-  %b Someone
-  crapped this out at
-  = @created_at
+  %b
+    Someone
+    crapped this out
+    = $.timeago(@created_at)
 .entry-content= "More #{@noun} #{if @needs then "needs" else "need"} to #{@verb}."
