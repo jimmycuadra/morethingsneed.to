@@ -1,7 +1,11 @@
 %p= @message
-
 - if @errors?
-  %p The following errors occurred:
-  %ul
-    - for error in @errors
-      %li= error
+  - if @errors.status?
+    %p
+      The server returned an error:
+      %b= "#{@errors.status} (#{@errors.statusText})"
+  - else
+    %p The following errors occurred:
+    %ul
+      - for error in @errors
+        %li= error
