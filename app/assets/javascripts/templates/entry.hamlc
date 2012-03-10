@@ -3,4 +3,6 @@
     Someone
     crapped this out
     = $.timeago(@created_at)
-.entry-content= "More #{@noun} #{if @needs then "needs" else "need"} to #{@verb}."
+.entry-body
+  %p.entry-text= "More #{@noun} #{if @needs then "needs" else "need"} to #{@verb}."
+  %a{ href: "#" } Comments
