@@ -1,7 +1,4 @@
-- if @errors?
-  %p= @message
-- else
-  %span= @message
+%p= @message
 
 - if @errors?
   %p The following errors occurred:
