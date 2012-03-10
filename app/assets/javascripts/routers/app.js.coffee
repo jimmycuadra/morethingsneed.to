@@ -5,7 +5,7 @@ class MTNT.Routers.App extends Backbone.Router
   main: ->
     ## Collections
 
-    collection = new MTNT.Collections.Entries
+    @collection = new MTNT.Collections.Entries
 
     ## DOM elements
     $body = $("body")
@@ -21,7 +21,7 @@ class MTNT.Routers.App extends Backbone.Router
     $body.prepend(navbar.render().el)
 
     # Add entry form
-    add_entry = new MTNT.Views.AddEntry(collection: collection)
+    add_entry = new MTNT.Views.AddEntry(collection: @collection)
     $main.append(add_entry.render().el)
 
     # Flash messages
@@ -29,5 +29,5 @@ class MTNT.Routers.App extends Backbone.Router
     $main.append(@flash.el)
 
     # Entries
-    entries = new MTNT.Views.Entries(collection: collection)
+    entries = new MTNT.Views.Entries(collection: @collection)
     $main.append(entries.render().el)

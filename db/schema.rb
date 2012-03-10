@@ -11,6 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20120310082309) do
+
+  create_table "entries", :force => true do |t|
+    t.string   "noun",       :null => false
+    t.string   "verb",       :null => false
+    t.boolean  "needs",      :null => false
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "entries", ["noun", "verb"], :name => "index_entries_on_noun_and_verb"
 
 end

@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
   def index
-    @entries = nil
+    @entries = Entry.order("created_at DESC")
 
     respond_to do |format|
       format.html
