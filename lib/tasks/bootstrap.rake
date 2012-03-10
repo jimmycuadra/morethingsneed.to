@@ -2,11 +2,13 @@ require "securerandom"
 
 namespace :bootstrap do
   file "config/database.yml" => "config/database.yml.example" do |t|
-    sh "cp #{t.prerequisites.first} #{t.name}"
+    cp t.prerequisites.first, t.name
   end
 
   file ".env" do |t|
-    sh "echo 'SECRET_TOKEN=#{SecureRandom.hex(64)}' > .env"
+    open(t.name, "w") do |f|
+      f.puts "SECRET_TOKEN=#{SecureRandom.hex(64)}"
+    end
   end
 end
 
