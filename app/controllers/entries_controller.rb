@@ -2,12 +2,7 @@ class EntriesController < ApplicationController
   respond_to :json
 
   def index
-    @entries = Entry.order("created_at ASC")
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @entries }
-    end
+    respond_with Entry.order("created_at ASC")
   end
 
   def create

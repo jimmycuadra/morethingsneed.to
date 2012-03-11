@@ -1,6 +1,7 @@
 class MTNT.Routers.Entries extends Backbone.Router
   routes:
     "": "index"
+    "entries": "redirect-index"
     "entries/:id": "show"
 
   index: ->
@@ -11,3 +12,6 @@ class MTNT.Routers.Entries extends Backbone.Router
     model = MTNT.app.collection.get(id)
     view = new MTNT.Views.Entry(model: model)
     MTNT.app.display(view)
+
+  "redirect-index": ->
+    @navigate("", trigger: true, replace: true)

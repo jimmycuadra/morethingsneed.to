@@ -29,6 +29,7 @@ window.MTNT =
 
       # Collection
       @collection = new MTNT.Collections.Entries
+      @collection.fetch()
 
       # Navbar
       @navbar = new MTNT.Views.Navbar

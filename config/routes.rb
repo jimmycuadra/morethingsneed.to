@@ -1,9 +1,9 @@
 MTNT::Application.routes.draw do
   mount Jasminerice::Engine => "/jasmine" unless Rails.env.production?
 
-  constraints(format: :json) do
+  scope "api" do
     resources :entries
   end
 
-  match "(*path)" => "entries#index"
+  match "(*path)" => "web#index"
 end
