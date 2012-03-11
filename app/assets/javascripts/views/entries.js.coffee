@@ -1,7 +1,5 @@
 class MTNT.Views.Entries extends Backbone.View
-  tagName: "section"
-
-  id: "entries"
+  el: $("#entries")
 
   initialize: ->
     @collection.on("add", @addOne, this)
@@ -12,4 +10,5 @@ class MTNT.Views.Entries extends Backbone.View
     @$el.prepend(view.render().el)
 
   addAll: ->
+    @$el.empty()
     @collection.each(@addOne)

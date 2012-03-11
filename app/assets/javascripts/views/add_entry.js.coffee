@@ -20,7 +20,7 @@ class MTNT.Views.AddEntry extends Backbone.View
       verb: @$("[name=verb]").val()
       needs: @toBoolean(@$("[name=needs]").val())
 
-    @collection.create attributes,
+    MTNT.app.collection.create attributes,
       wait: true,
       success: =>
         MTNT.app.flash.success("Your entry was added.")
