@@ -12,33 +12,34 @@
 
 window.MTNT =
   Models: {}
+
   Collections: {}
+
   Views: {}
+
   Routers: {}
-  init: ->
-    @app = {}
 
-    @app.$content = $("#content")
+  Application: class Application
+    constructor: ->
+      @$content = $("#content")
 
-    # Router
-    @app.entriesRouter = new @Routers.Entries
+      # Router
+      @entriesRouter = new MTNT.Routers.Entries
 
-    # Collection
-    @app.collection = new @Collections.Entries
+      # Collection
+      @collection = new MTNT.Collections.Entries
 
-    # Navbar
-    @app.navbar = new MTNT.Views.Navbar
-    @app.navbar.render()
+      # Navbar
+      @navbar = new MTNT.Views.Navbar
+      @navbar.render()
 
-    # Add entry form
-    @app.addEntry = new MTNT.Views.AddEntry(collection: @collection)
-    @app.addEntry.render()
+      # Add entry form
+      @addEntry = new MTNT.Views.AddEntry(collection: @collection)
+      @addEntry.render()
 
-    # Flash messages
-    @app.flash = new MTNT.Views.FlashMessages
-
-    # Start history
-    Backbone.history.start(pushState: true)
+      # Flash messages
+      @flash = new MTNT.Views.FlashMessages
 
 $ ->
-  MTNT.init()
+  MTNT.app = new MTNT.Application
+  Backbone.history.start(pushState: true)
