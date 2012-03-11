@@ -6,14 +6,12 @@
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
     = csrf_meta_tags
   %body
-    #no-js
+    %noscript
       .container-fluid
         .page-header
           %h1
             More Things Need To
-            %small Chill out and wait for the JavaScript, which should be coming directly.
-        %noscript
-          You need to enable JavaScript in your browser to use More Things Need To.
+            %small You need to enable JavaScript in your browser to use More Things Need To.
     .bucket
       #main.container
         = yield
