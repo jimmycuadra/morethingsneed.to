@@ -41,6 +41,11 @@ window.MTNT =
       # Flash messages
       @flash = new MTNT.Views.FlashMessages
 
+    display: (view) ->
+      @currentView.remove() if @currentView
+      @currentView = view
+      @$content.html(@currentView.render().el)
+
 $ ->
   MTNT.app = new MTNT.Application
   Backbone.history.start(pushState: true)
