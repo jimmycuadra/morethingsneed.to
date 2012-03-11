@@ -4,13 +4,12 @@ class MTNT.Views.Entries extends Backbone.View
   id: "entries"
 
   initialize: ->
-    @collection.on("add", @render, this)
-    @collection.on("remove", @render, this)
-    @collection.on("reset", @render, this)
+    @collection.on("add", @addOne, this)
+    @collection.on("reset", @addAll, this)
 
-  render: ->
-    @$el.empty()
-    @collection.each (entry) =>
-      view = new MTNT.Views.Entry(model: entry)
-      @$el.prepend(view.render().el)
-    this
+  addOne: (entry) =>
+    view = new MTNT.Views.Entry(model: entry)
+    @$el.prepend(view.render().el)
+
+  addAll: ->
+    @collection.each(@addOne)
