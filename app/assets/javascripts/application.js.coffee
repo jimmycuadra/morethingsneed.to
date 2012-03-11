@@ -3,6 +3,7 @@
 #= require underscore
 #= require backbone
 #= require hamlcoffee
+#= require_tree ./extensions
 #= require_self
 #= require_tree ./templates
 #= require_tree ./models
