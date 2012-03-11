@@ -14,7 +14,10 @@
             %small You need to enable JavaScript in your browser to use More Things Need To.
     .bucket
       #main.container
-        = yield
+        #add-entry.row
+        #flash.row
+        #content.row
+          = yield
         %section#entries
     %footer.copyright
       %small= "&copy; #{Time.now.year} Jimmy Cuadra. All rights reserved.".html_safe

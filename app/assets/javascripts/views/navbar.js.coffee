@@ -5,4 +5,5 @@ class MTNT.Views.Navbar extends Backbone.View
 
   render: ->
     @$el.html(@template())
+    $("body").prepend(@$el)
     this

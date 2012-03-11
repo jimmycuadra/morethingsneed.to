@@ -4,8 +4,8 @@ class MTNT.Routers.Entries extends Backbone.Router
     "entries/:id": "show"
 
   index: ->
-    entries = new MTNT.Views.Entries(collection: @collection)
-    @$main.append(entries.render().el)
+    entries = new MTNT.Views.Entries(collection: MTNT.app.collection)
+    MTNT.app.$content.html(entries.render().el)
 
   show: (id) ->
     console.log("Show entry #{id}")

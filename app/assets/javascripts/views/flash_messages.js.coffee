@@ -1,5 +1,5 @@
 class MTNT.Views.FlashMessages extends Backbone.View
-  id: "flash"
+  el: $("#flash")
 
   success: (message) ->
     flash = new MTNT.Views.FlashMessage(message, "success")

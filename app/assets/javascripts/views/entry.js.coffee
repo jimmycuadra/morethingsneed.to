@@ -6,13 +6,13 @@ class MTNT.Views.Entry extends Backbone.View
   template: MTNT.JST["entry"]
 
   events:
-    "click .comment-link": "routeShow"
+    "click .comment-link": "showAction"
 
   render: ->
     @$el.html(@template(@model.toJSON()))
     this
 
-  routeShow: (evt) ->
+  showAction: (evt) ->
     evt.preventDefault()
 
-    MTNT.app.navigate("entries/#{@model.get('id')}", trigger: true)
+    MTNT.app.entriesRouter.navigate("entries/#{@model.get('id')}", trigger: true)

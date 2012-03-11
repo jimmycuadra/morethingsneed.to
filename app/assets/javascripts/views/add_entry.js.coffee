@@ -10,6 +10,7 @@ class MTNT.Views.AddEntry extends Backbone.View
 
   render: ->
     @$el.html(@template())
+    $("#add-entry").replaceWith(@$el)
     this
 
   add: (evt) ->
