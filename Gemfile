@@ -29,6 +29,7 @@ group :development, :test do
   gem 'guard'
   gem 'rspec-rails'
   gem 'jasminerice'
+  gem 'pry-rails'
 end
 
 group :test do
