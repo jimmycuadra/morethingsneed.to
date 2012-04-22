@@ -6,4 +6,3 @@ tmp/
 coverage/
 .env
 config/database.yml
-bin/
