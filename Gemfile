@@ -10,14 +10,12 @@ gem 'haml'
 gem 'jquery-rails'
 
 # Assets
-group :assets do
-  gem 'sass-rails'
-  gem 'bootstrap-sass'
-  gem 'coffee-rails'
-  gem 'uglifier'
-  gem 'rails-backbone'
-  gem 'haml_coffee_assets'
-end
+gem 'sass-rails'
+gem 'bootstrap-sass'
+gem 'coffee-rails'
+gem 'uglifier'
+gem 'rails-backbone'
+gem 'haml_coffee_assets'
 
 group :production do
   gem 'pg'
@@ -26,25 +24,12 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'foreman'
-  gem 'guard'
-  gem 'rspec-rails'
-  gem 'jasminerice'
-  gem 'pry-rails'
+  gem 'konacha'
 end
 
 group :test do
-  gem 'spork'
+  gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'simplecov', require: false
-
-  # Guards
-  gem 'guard-process'
-  gem 'guard-rspec'
-  gem 'guard-spork'
-  gem 'guard-jasmine'
-
-  # Guard support
-  gem 'rb-fsevent'
-  gem 'ruby_gntp'
 end
