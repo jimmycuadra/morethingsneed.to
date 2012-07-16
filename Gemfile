@@ -25,6 +25,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'foreman'
   gem 'konacha'
+  gem 'poltergeist'
 end
 
 group :test do
