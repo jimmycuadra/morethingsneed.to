@@ -3,49 +3,39 @@
 #= require underscore
 #= require backbone
 #= require hamlcoffee
-#= require_tree ./extensions
-#= require_self
-#= require_tree ./templates
+#= require core
 #= require_tree ./models
 #= require_tree ./collections
+#= require_tree ./templates
 #= require_tree ./views
 #= require_tree ./routers
 
-window.MTNT =
-  Models: {}
+class MTNT.Application
+  constructor: ->
+    @$content = $("#content")
 
-  Collections: {}
+    # Router
+    @entriesRouter = new MTNT.Routers.Entries
 
-  Views: {}
+    # Collection
+    @collection = new MTNT.Collections.Entries
+    @collection.fetch()
 
-  Routers: {}
+    # Navbar
+    @navbar = new MTNT.Views.Navbar
+    @navbar.render()
 
-  Application: class Application
-    constructor: ->
-      @$content = $("#content")
+    # Add entry form
+    @addEntry = new MTNT.Views.AddEntry(collection: @collection)
+    @addEntry.render()
 
-      # Router
-      @entriesRouter = new MTNT.Routers.Entries
+    # Flash messages
+    @flash = new MTNT.Views.FlashMessages
 
-      # Collection
-      @collection = new MTNT.Collections.Entries
-      @collection.fetch()
-
-      # Navbar
-      @navbar = new MTNT.Views.Navbar
-      @navbar.render()
-
-      # Add entry form
-      @addEntry = new MTNT.Views.AddEntry(collection: @collection)
-      @addEntry.render()
-
-      # Flash messages
-      @flash = new MTNT.Views.FlashMessages
-
-    display: (view) ->
-      @currentView.remove() if @currentView
-      @currentView = view
-      @$content.html(@currentView.render().el)
+  display: (view) ->
+    @currentView.remove() if @currentView
+    @currentView = view
+    @$content.html(@currentView.render().el)
 
 $ ->
   MTNT.app = new MTNT.Application
