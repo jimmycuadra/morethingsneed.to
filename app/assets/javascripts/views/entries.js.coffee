@@ -4,8 +4,8 @@ class MTNT.Views.Entries extends Backbone.View
   id: "entries"
 
   initialize: ->
-    @bindTo(@collection, "add", @addEntry, this)
-    @bindTo(@collection, "reset", @render, this)
+    @collection.bind("add", @addEntry, this)
+    @collection.bind("reset", @render, this)
 
   addEntry: (entry) =>
     view = new MTNT.Views.Entry(model: entry)
