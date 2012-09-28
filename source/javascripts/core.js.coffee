@@ -3,4 +3,5 @@ window.mtnt = {
   collections: {}
   views: {}
   routers: {}
+  session: amplify.store
 }

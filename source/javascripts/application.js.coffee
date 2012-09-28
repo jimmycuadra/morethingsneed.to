@@ -7,6 +7,5 @@
 #= require_tree "./views"
 #= require_tree "./routers"
 
-mtnt.store = amplify.store
 mtnt.app = new mtnt.routers.ApplicationRouter
 Backbone.history.start(pushState: true)
