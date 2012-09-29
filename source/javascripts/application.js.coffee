@@ -8,4 +8,5 @@
 #= require_tree "./routers"
 
 mtnt.app = new mtnt.routers.ApplicationRouter
+mtnt.app.loginView = new mtnt.views.LoginView
 Backbone.history.start(pushState: true)
