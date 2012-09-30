@@ -13,7 +13,7 @@ else
 
 originalSync = Backbone.sync
 Backbone.sync = (method, model, options) ->
-  unless options.url
+  if not options.url and model.url
     options.url = if _.isFunction(model.url)
       model.url()
     else
