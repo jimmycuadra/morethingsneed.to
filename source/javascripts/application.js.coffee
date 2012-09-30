@@ -9,6 +9,6 @@
 #= require_tree "./views"
 #= require_tree "./routers"
 
-mtnt.loadAuth =>
-  @app = new mtnt.routers.ApplicationRouter
-  Backbone.history.start(pushState: true)
+mtnt.app.session = new mtnt.models.Session
+mtnt.app.router = new mtnt.routers.ApplicationRouter
+Backbone.history.start(pushState: true)
