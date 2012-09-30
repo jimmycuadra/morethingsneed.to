@@ -5,7 +5,6 @@ window.mtnt =
   views: {}
   routers: {}
   store: amplify.store
-  app: {}
 
 # Use CORS to communicate with the API.
 API_URL = if document.location.hostname is "localhost"

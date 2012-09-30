@@ -1,5 +1,5 @@
 class mtnt.views.EntriesView extends Backbone.View
-  el: "#entries"
+  id: "#entries"
 
   initialize: ->
     @collection.on("add", @addOne)
