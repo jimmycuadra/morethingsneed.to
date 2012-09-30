@@ -1,3 +1,4 @@
+#= require "vendor/jquery.timeago"
 #= require "vendor/amplify.store"
 #= require "vendor/underscore"
 #= require "vendor/backbone"
