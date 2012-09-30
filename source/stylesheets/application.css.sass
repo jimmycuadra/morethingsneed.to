@@ -1,1 +1,32 @@
+$red: #8c3130
+$black: #000
+
+$linkColor: $red
+
 @import "bootstrap"
+
+@mixin pt-sans
+  font-family: "PT Sans Narrow", sans-serif
+
+h1, h2, h3, h4, h5, h6
+  +pt-sans
+
+.navbar
+  margin-bottom: 20px
+  .brand
+    +pt-sans
+    text-transform: uppercase
+
+.entry
+  margin-bottom: 20px
+  header
+    background: $black
+    +border-radius(8px 8px 0 0)
+    color: $white
+    padding: 10px
+  .entry-body
+    background: $grayLighter
+    border: 1px solid $black
+    padding: 10px
+  .entry-text
+    font-size: 18px
