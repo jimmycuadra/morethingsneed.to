@@ -1,28 +1,25 @@
 class mtnt.views.LoginView extends Backbone.View
+  el: "#persona"
+
+  events:
+    "click .persona-button": "clickPersona"
+
   initialize: ->
-    @setElement $("#persona")
     @session = new mtnt.models.Session
     navigator.id.watch(onlogin: @createSession, onlogout: @destroySession)
 
-  events:
-    "click .persona-button": "clickLogIn"
+  render: =>
+    console.log("rendering...")
+    # $el.html(@template({ session: @session }))
+    this
 
-  clickLogIn: (event) =>
+  clickPersona: (event) =>
     event.preventDefault()
     navigator.id.request(siteName: "More Things Need To")
 
   createSession: (assertion) =>
-    @session.save({ assertion: assertion }, wait: true, success: @logIn, error: @serverError)
+    @session.save { assertion: assertion }, wait: true, success: (session, response) =>
+      mtnt.logIn(response, @render)
 
   destroySession: =>
-    console.log("destroySession")
-    @session.destroy(success: @logOut, error: @serverError)
-
-  logIn: (model, response) ->
-    console.log("You're the man now, dog.")
-
-  logOut: (model, response) ->
-    console.log("You're no longer the man, dog.")
-
-  serverError: (model, response) ->
-    console.log("The server choked.")
+    mtnt.logOut(@render)
