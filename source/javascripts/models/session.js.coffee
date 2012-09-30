@@ -4,15 +4,26 @@ class mtnt.models.Session extends Backbone.Model
   initialize: ->
     data = mtnt.store("session")
     @set(data) if data?
-    @on("sync", @logIn, this)
-    navigator.id.watch(onlogin: @verifyAssertion, onlogout: @logOut)
+
+    navigator.id.watch
+      loggedInUser: @get("email")
+      onlogin: @verifyAssertion
+      onlogout: @clearSession
+
+    @on("sync", @persistSession, this)
+
+  logIn: ->
+    navigator.id.request(siteName: "More Things Need To")
 
   verifyAssertion: (assertion) =>
     @save({ assertion: assertion })
 
-  logIn: ->
+  persistSession: ->
     mtnt.store("session", @toJSON())
 
   logOut: ->
-    @clear()
+    navigator.id.logout()
+
+  clearSession: =>
     mtnt.store("session", null)
+    @clear()

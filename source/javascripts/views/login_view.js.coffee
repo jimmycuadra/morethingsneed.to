@@ -16,7 +16,7 @@ class mtnt.views.LoginView extends Backbone.View
 
   clickLogIn: (event) ->
     event.preventDefault()
-    navigator.id.request(siteName: "More Things Need To")
+    mtnt.app.session.logIn()
 
   clickLogOut: (event) =>
     event.preventDefault()
