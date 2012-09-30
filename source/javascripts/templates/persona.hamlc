@@ -1,0 +1,6 @@
+%li
+  - if @session.isNew()
+    %a{ href: "#", class: "persona-button" }
+      %img{ src: "/images/plain_sign_in_black.png", width: 95, height: 25, alt: "Sign in" }
+  - else
+    %a{ href: "#", class: "log-out"} Log out

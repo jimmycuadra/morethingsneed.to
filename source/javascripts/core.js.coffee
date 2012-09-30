@@ -4,10 +4,12 @@ window.mtnt =
   views: {}
   routers: {}
   store: amplify.store
-  logIn: (data, cb) ->
-    @store("session", data)
+  logIn: (session, cb) ->
+    @session = session
+    @store("session", @session.toJSON())
     cb() if _.isFunction(cb)
   logOut: (cb) ->
+    @session = new @models.Session
     @store("session", null)
     cb() if _.isFunction(cb)
 
