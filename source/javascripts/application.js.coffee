@@ -10,5 +10,6 @@
 #= require_tree "./routers"
 
 mtnt.app.session = new mtnt.models.Session
+mtnt.app.view = new mtnt.views.ApplicationView
 mtnt.app.router = new mtnt.routers.ApplicationRouter
 Backbone.history.start(pushState: true)

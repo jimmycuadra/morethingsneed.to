@@ -2,4 +2,4 @@
   %b= "Someone crapped this out #{@created_at}"
 .entry-body
   %p.entry-text= "More #{@noun} #{if @needs then "needs" else "need"} to #{@verb}."
-  %a.comment-link{ href: "#" } Comments
+  %a.comment-link{ href: "/#{@id}" } Comments
