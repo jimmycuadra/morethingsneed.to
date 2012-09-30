@@ -6,4 +6,4 @@ class mtnt.routers.ApplicationRouter extends Backbone.Router
     entries = new mtnt.collections.Entries
     entriesView = new mtnt.views.EntriesView(collection: entries)
     entries.fetch()
-    mtnt.app.display(entriesView)
+    mtnt.app.display(entriesView, "Entries")

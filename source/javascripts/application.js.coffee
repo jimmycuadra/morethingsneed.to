@@ -13,11 +13,12 @@ class mtnt.Application
   constructor: ->
     @content = $("#content")
 
-  display: (view) ->
+  display: (view, title) ->
     @page.remove() if @page
     @page = view
     @page.render() if @page.render
     @content.html(@page.el)
+    document.title = "#{title} | More Things Need To" if title
 
 $ ->
   mtnt.app = new mtnt.Application
