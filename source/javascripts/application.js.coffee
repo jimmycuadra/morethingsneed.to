@@ -14,12 +14,13 @@ class mtnt.Application
   constructor: ->
     @content = $("#content")
 
-  display: (view, title) ->
-    @page.remove() if @page
+  display: (view, title, activeTab) ->
+    @page.remove() if @page and @page.remove
     @page = view
     @page.render() if @page.render
-    @content.html(@page.el)
-    document.title = "#{title} | More Things Need To" if title
+    @content.html(@page.el || @page)
+    document.title = "#{title} | More Things Need To"
+    @view.refreshNavbar(activeTab)
 
 $ ->
   mtnt.app = new mtnt.Application

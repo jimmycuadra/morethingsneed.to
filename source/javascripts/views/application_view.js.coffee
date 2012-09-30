@@ -7,8 +7,13 @@ class mtnt.views.ApplicationView extends Backbone.View
     "click .nav-settings": "navigateSettings"
 
   initialize: ->
+    @nav = $(".nav li")
     @loginView = new mtnt.views.LoginView
     @loginView.render()
+
+  refreshNavbar: (activeTab) ->
+    @nav.removeClass("active")
+    @nav.filter(".tab-#{activeTab}").addClass("active") if activeTab
 
   navigateEntries: (event) ->
     event.preventDefault()
