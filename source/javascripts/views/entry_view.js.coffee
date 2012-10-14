@@ -5,6 +5,9 @@ class mtnt.views.EntryView extends mtnt.views.BaseView
 
   template: JST.entry
 
+  title: ->
+    "Entry ##{@model.get("id")}"
+
   initialize: ->
     @model.on("change", @render, this)
 

@@ -14,6 +14,8 @@ class mtnt.Application
   start: ->
     @content = $("#content")
     @session = new mtnt.models.Session
+    @entries = new mtnt.collections.Entries
+    @entries.fetch()
     @appView = new mtnt.views.ApplicationView
     @router = new mtnt.routers.ApplicationRouter
     Backbone.history.start(pushState: true)
@@ -21,9 +23,15 @@ class mtnt.Application
   changeView: (view) ->
     @currentView.cleanup() if @currentView
     @currentView = view
-    @currentView.render()
-    @content.html(@currentView.el)
-    document.title = "#{@currentView.title} | More Things Need To"
+    @content.html(@currentView.render().el)
+    @updateTitleFromCurrentView()
+
+  updateTitleFromCurrentView: ->
+    title = if _.isFunction(@currentView.title)
+      @currentView.title()
+    else
+      @currentView.title
+    document.title = "#{title} | More Things Need To"
 
 $ ->
   mtnt.app = new mtnt.Application

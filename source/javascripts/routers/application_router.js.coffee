@@ -6,10 +6,10 @@ class mtnt.routers.ApplicationRouter extends Backbone.Router
     @route(/^(\d+)$/, "entry")
 
   entries: ->
-    entries = new mtnt.collections.Entries
-    entriesView = new mtnt.views.EntriesView(collection: entries)
-    entries.fetch()
+    entriesView = new mtnt.views.EntriesView(collection: mtnt.app.entries)
     mtnt.app.changeView(entriesView)
 
   entry: (id) ->
-    # mtnt.app.changeView("Entry #{id}", "Entry #{id}")
+    entry = mtnt.app.entries.get(id)
+    entryView = new mtnt.views.EntryView(model: entry)
+    mtnt.app.changeView(entryView)
