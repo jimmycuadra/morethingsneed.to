@@ -9,7 +9,7 @@ class mtnt.routers.ApplicationRouter extends Backbone.Router
     entries = new mtnt.collections.Entries
     entriesView = new mtnt.views.EntriesView(collection: entries)
     entries.fetch()
-    mtnt.app.display(entriesView, "Entries", "entries")
+    mtnt.app.changeView(entriesView)
 
   entry: (id) ->
-    mtnt.app.display("Entry #{id}", "Entry #{id}")
+    # mtnt.app.changeView("Entry #{id}", "Entry #{id}")

@@ -1,4 +1,4 @@
-class mtnt.views.EntriesView extends Backbone.View
+class mtnt.views.EntriesView extends mtnt.views.BaseView
   id: "#entries"
 
   initialize: ->

@@ -1,4 +1,4 @@
-class mtnt.views.EntryView extends Backbone.View
+class mtnt.views.EntryView extends mtnt.views.BaseView
   tagName: "article"
 
   className: "entry"

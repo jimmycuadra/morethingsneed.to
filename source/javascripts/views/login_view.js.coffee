@@ -1,4 +1,4 @@
-class mtnt.views.LoginView extends Backbone.View
+class mtnt.views.LoginView extends mtnt.views.BaseView
   el: "#persona"
 
   template: JST.persona

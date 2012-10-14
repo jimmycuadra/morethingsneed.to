@@ -2,27 +2,23 @@ class mtnt.views.ApplicationView extends Backbone.View
   el: "body"
 
   events:
-    "click .nav-entries": "navigateEntries"
-    "click .nav-users": "navigateUsers"
-    "click .nav-settings": "navigateSettings"
+    "click .route-entries": "routeEntries"
+    "click .route-users": "routeUsers"
+    "click .route-settings": "routeSettings"
 
   initialize: ->
     @nav = $(".nav li")
     @loginView = new mtnt.views.LoginView
     @loginView.render()
 
-  refreshNavbar: (activeTab) ->
-    @nav.removeClass("active")
-    @nav.filter(".tab-#{activeTab}").addClass("active") if activeTab
-
-  navigateEntries: (event) ->
+  routeEntries: (event) ->
     event.preventDefault()
     mtnt.app.router.navigate("", trigger: true)
 
-  navigateUsers: (event) ->
+  routeUsers: (event) ->
     event.preventDefault()
     mtnt.app.router.navigate("users", trigger: true)
 
-  navigateSettings: (event) ->
+  routeSettings: (event) ->
     event.preventDefault()
     mtnt.app.router.navigate("settings", trigger: true)

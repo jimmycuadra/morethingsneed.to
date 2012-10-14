@@ -11,22 +11,20 @@
 #= require_tree "./routers"
 
 class mtnt.Application
-  constructor: ->
+  start: ->
     @content = $("#content")
+    @session = new mtnt.models.Session
+    @appView = new mtnt.views.ApplicationView
+    @router = new mtnt.routers.ApplicationRouter
+    Backbone.history.start(pushState: true)
 
-  display: (view, title, activeTab) ->
-    @page.remove() if @page and @page.remove
-    @page = view
-    @page.render() if @page.render
-    @content.html(@page.el || @page)
-    document.title = "#{title} | More Things Need To"
-    @view.refreshNavbar(activeTab)
+  changeView: (view) ->
+    @currentView.cleanup() if @currentView
+    @currentView = view
+    @currentView.render()
+    @content.html(@currentView.el)
+    document.title = "#{@currentView.title} | More Things Need To"
 
 $ ->
   mtnt.app = new mtnt.Application
-
-  mtnt.app.session = new mtnt.models.Session
-  mtnt.app.view = new mtnt.views.ApplicationView
-  mtnt.app.router = new mtnt.routers.ApplicationRouter
-
-  Backbone.history.start(pushState: true)
+  mtnt.app.start()
