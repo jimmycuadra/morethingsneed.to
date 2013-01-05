@@ -1,4 +1,5 @@
 .navbar.navbar-static-top{ class: current_user ? nil: "logged-out" }
   .navbar-inner
-    %a.brand{ href: "/" } More Things Need To
-    = render "application/logged_#{current_user ? "in" : "out"}_nav"
+    .container
+      %a.brand{ href: "/" } More Things Need To
+      = render "application/logged_#{current_user ? "in" : "out"}_nav"
