@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(:version => 20130105162152) do
   add_index "authentications", ["provider", "uid"], :name => "index_authentications_on_provider_and_uid"
 
   create_table "users", :force => true do |t|
-    t.string   "email",      :null => false
     t.string   "name",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
