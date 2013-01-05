@@ -1,10 +1,11 @@
 !!! 5
 %html{ lang: "en" }
   %head
-    %title Application Title
+    %title More Things Need To
     = stylesheet_link_tag "application"
     = csrf_meta_tags
   %body
+    = render "application/header"
     = yield
     %script{ src: "//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" }
     = javascript_include_tag "application"
