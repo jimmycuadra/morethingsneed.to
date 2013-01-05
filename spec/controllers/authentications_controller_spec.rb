@@ -7,17 +7,11 @@ describe AuthenticationsController do
 
     before do
       controller.env["omniauth.auth"] = omniauth_hash
-      Authentication.stub(:find_or_create_via_omniauth) { authentication }
-      controller.stub(:login)
+      Authentication.stub(:from_omniauth) { authentication }
     end
 
     it "gets an Authentication via the OmniAuth hash" do
-      Authentication.should_receive(:find_or_create_via_omniauth).with(omniauth_hash)
-      get :create, provider: "facebook"
-    end
-
-    it "logs the user in" do
-      controller.should_receive(:login).with(authentication.user)
+      Authentication.should_receive(:from_omniauth).with(omniauth_hash)
       get :create, provider: "facebook"
     end
 
