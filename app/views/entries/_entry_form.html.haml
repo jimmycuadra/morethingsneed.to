@@ -1,0 +1,9 @@
+.centered
+  = form_for(Entry.new, html: { class: "form-inline" }) do |f|
+    = f.label :noun, "More"
+    = f.text_field :noun
+    = f.select :needs, { "need" => false, "needs" => true }
+    = f.label :verb, "to"
+    = f.text_field :verb
+    !
+    = f.submit "This needs to happen"

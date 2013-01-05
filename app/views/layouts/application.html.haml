@@ -6,6 +6,7 @@
     = csrf_meta_tags
   %body
     = render "application/header"
-    = yield
+    .container
+      = yield
     %script{ src: "//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" }
     = javascript_include_tag "application"
