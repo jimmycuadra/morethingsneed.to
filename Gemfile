@@ -3,6 +3,9 @@ source "https://rubygems.org"
 gem "rails"
 gem "thin"
 gem "haml"
+gem "omniauth-facebook"
+gem "omniauth-twitter"
+gem "omniauth-google-oauth2"
 
 group :assets do
   gem "sass-rails"
