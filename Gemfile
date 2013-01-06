@@ -13,6 +13,7 @@ group :assets do
   gem "bootstrap-sass"
   gem "coffee-rails"
   gem "uglifier"
+  gem "haml_coffee_assets"
 end
 
 group :production do

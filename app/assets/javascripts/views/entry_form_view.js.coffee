@@ -1,6 +1,7 @@
 class mtnt.views.EntryFormView extends Backbone.View
   initialize: ->
     @setElement($("#new_entry"))
+    @listenTo(@model, "error", @displayErrors)
 
   events:
     submit: "submit"
@@ -16,3 +17,7 @@ class mtnt.views.EntryFormView extends Backbone.View
       needs: @$("#entry_needs").val()
       verb: @$("#entry_verb").val()
     }
+
+  displayErrors: (entry, xhr) ->
+    errors = JSON.parse(xhr.responseText)
+    mtnt.app.flash(errors, "error")
