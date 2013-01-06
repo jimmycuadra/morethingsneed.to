@@ -1,4 +1,4 @@
-.centered
+.centered.separated
   = form_for(Entry.new, html: { class: "form-inline" }) do |f|
     = f.label :noun, "More"
     = f.text_field :noun
@@ -6,4 +6,4 @@
     = f.label :verb, "to"
     = f.text_field :verb
     !
-    = f.submit "This needs to happen"
+    = f.submit "This needs to happen", class: "btn btn-inverse"
