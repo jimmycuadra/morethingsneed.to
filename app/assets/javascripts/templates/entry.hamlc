@@ -1,0 +1,4 @@
+%article.entry.separated
+  %header.padded You crapped this out just now.
+  .padded
+    = "More #{@noun} #{if @needs then "needs" else "need"} to #{@verb}."
