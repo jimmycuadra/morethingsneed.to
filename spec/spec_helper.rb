@@ -12,4 +12,4 @@ RSpec.configure do |config|
   config.order = "random"
 end
 
-Capybara.javascript_driver = :poltergeist
+Capybara.javascript_driver = :webkit

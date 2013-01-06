@@ -29,6 +29,6 @@ end
 group :test do
   gem "rspec-rails"
   gem "capybara", require: "capybara/rspec"
-  gem "poltergeist", require: "capybara/poltergeist"
+  gem "capybara-webkit"
   gem "simplecov", require: false
 end
