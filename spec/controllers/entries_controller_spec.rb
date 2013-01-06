@@ -9,8 +9,20 @@ describe EntriesController do
   end
 
   describe "#show" do
+    let(:comments) do
+      comments = double("comments association")
+      comments.stub(:build)
+      comments
+    end
+
+    let(:entry) do
+      entry = double("entry")
+      entry.stub(:comments) { comments }
+      entry
+    end
+
     it "fetches the requested entry" do
-      Entry.should_receive(:find).with("1")
+      Entry.should_receive(:find).with("1") { entry }
       get :show, id: "1"
     end
   end
