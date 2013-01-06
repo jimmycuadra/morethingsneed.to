@@ -1,6 +1,6 @@
 require "spec_helper"
 
-feature "entries", js: true do
+feature "Entries", js: true do
   scenario "adding a new entry" do
     visit root_path
     click_on "Log in with Facebook"
