@@ -3,7 +3,10 @@ MorethingsneedTo::Application.routes.draw do
 
   match "auth/:provider/callback", to: "authentications#create"
   match "auth/failure", to: redirect("/")
-  match "logout", to: "sessions#destroy", as: :log_out
+
+  match "login", to: "identities#login", as: :login
+  match "register", to: "identities#register", as: :register
+  match "logout", to: "sessions#destroy", as: :logout
 
   root to: "entries#index"
 end
