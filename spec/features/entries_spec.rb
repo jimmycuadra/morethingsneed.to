@@ -1,8 +1,8 @@
 require "spec_helper"
 
-feature "entries" do
+feature "entries", js: true do
   scenario "adding a new entry" do
-    visit root_url
+    visit root_path
     click_on "Log in with Facebook"
     fill_in "entry_noun", with: "foo"
     select "needs", from: "entry_needs"
