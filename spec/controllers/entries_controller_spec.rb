@@ -1,6 +1,13 @@
 require "spec_helper"
 
 describe EntriesController do
+  describe "#index" do
+    it "fetches recent entries" do
+      Entry.should_receive(:recent).with("2")
+      get :index, page: "2"
+    end
+  end
+
   describe "#create" do
     let(:current_user) do
       current_user = double("current user")

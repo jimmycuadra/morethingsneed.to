@@ -2,6 +2,7 @@ class EntriesController < ApplicationController
   respond_to :json
 
   def index
+    @entries = Entry.recent(params[:page])
   end
 
   def create
