@@ -5,6 +5,10 @@ class EntriesController < ApplicationController
     @entries = Entry.recent(params[:page])
   end
 
+  def show
+    @entry = Entry.find(params[:id])
+  end
+
   def create
     respond_with current_user.entries.create(entry_params)
   end

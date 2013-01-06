@@ -8,6 +8,13 @@ describe EntriesController do
     end
   end
 
+  describe "#show" do
+    it "fetches the requested entry" do
+      Entry.should_receive(:find).with("1")
+      get :show, id: "1"
+    end
+  end
+
   describe "#create" do
     let(:current_user) do
       current_user = double("current user")
