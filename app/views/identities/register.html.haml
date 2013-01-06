@@ -1,4 +1,4 @@
-= render "errors" if @identity.errors.any?
+= render partial: "application/errors", object: @identity.errors
 
 = form_tag "/auth/identity/register" do
   %fieldset

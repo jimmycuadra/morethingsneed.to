@@ -1,5 +1,6 @@
 MorethingsneedTo::Application.routes.draw do
   resources :entries, except: [:new, :edit]
+  resources :users, only: [:edit, :update]
 
   match "auth/:provider/callback", to: "authentications#create"
   match "auth/failure", to: redirect("/")

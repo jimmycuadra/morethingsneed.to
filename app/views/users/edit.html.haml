@@ -1,0 +1,9 @@
+= form_for @user || current_user do |f|
+  = render partial: "application/errors", object: f.object.errors
+
+  %fieldset
+    %legend Edit your profile
+    = f.label :name
+    = f.text_field :name
+    %br
+    = f.submit "Update", class: "btn"
