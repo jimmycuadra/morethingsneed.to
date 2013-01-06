@@ -10,7 +10,8 @@
 class mtnt.Application
   start: ->
     @csrfToken = $('meta[name="csrf-token"]').attr('content')
-    @entryFormView = new mtnt.views.EntryFormView
+    if $("#new_entry").length
+      @entryFormView = new mtnt.views.EntryFormView
 
   flash: (message, type) ->
     flash = new mtnt.models.Flash(message: message, type: type)
