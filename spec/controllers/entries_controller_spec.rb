@@ -10,14 +10,14 @@ describe EntriesController do
 
     let(:entries) { double("entries association") }
 
-    let(:params) do
-      { noun: "foo", needs: true, verb: "bar" }
+    let(:entry_params) do
+      { "noun" => "foo", "needs" => true, "verb" => "bar" }
     end
 
     it "creates a new entry" do
       controller.stub(:current_user) { current_user }
-      current_user.entries.should_receive(:create).with(hash_including(params))
-      post :create, params
+      current_user.entries.should_receive(:create).with(entry_params)
+      post :create, entry: entry_params
     end
   end
 end

@@ -1,8 +1,6 @@
 class Authentication < ActiveRecord::Base
   belongs_to :user
 
-  attr_accessible :provider, :uid, :name
-
   class << self
     def from_omniauth(auth)
       where(auth.slice("provider", "uid")).first || create_with_omniauth(auth)

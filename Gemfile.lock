@@ -166,6 +166,10 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.6)
+    strong_parameters (0.1.6)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
+      railties (~> 3.0)
     thin (1.5.0)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -202,5 +206,6 @@ DEPENDENCIES
   sass-rails
   simplecov
   sqlite3
+  strong_parameters
   thin
   uglifier
