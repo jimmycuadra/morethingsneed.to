@@ -3,6 +3,12 @@ window.mtnt = mtnt =
   collections: {}
   views: {}
 
+HAML.globals = ->
+  {
+    capitalize: (string) ->
+      string.charAt(0).toUpperCase() + string.slice(1)
+  }
+
 $.ajaxSetup
   beforeSend: (xhr, settings) ->
     return if (settings.crossDomain)

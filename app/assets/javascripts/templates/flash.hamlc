@@ -1,3 +1,8 @@
 - if @type
-  %strong= "#{@type}:"
-= @message
+  %strong= "#{@capitalize(@type)}:"
+- if _.isObject(@message) and @message.errors
+  %ul
+    - for attribute, errors of @message.errors
+      %li= "#{@capitalize(attribute)} #{errors}"
+- else
+  = @message

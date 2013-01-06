@@ -13,9 +13,6 @@ class mtnt.Application
     @entryFormView = new mtnt.views.EntryFormView(model: new mtnt.models.Entry)
 
   flash: (message, type) ->
-    if _.isObject(message) and message.errors
-      message = @_getErrorMessage(message)
-
     flash = new mtnt.models.Flash(message: message, type: type)
     flashView = new mtnt.views.FlashView(model: flash)
     $("#flash").prepend(flashView.render().el)
@@ -24,4 +21,3 @@ class mtnt.Application
 $ ->
   mtnt.app = new mtnt.Application
   mtnt.app.start()
-  mtnt.app.flash("foo", "error")
