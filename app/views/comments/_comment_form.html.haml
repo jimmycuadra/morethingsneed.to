@@ -1,0 +1,7 @@
+= form_for [@entry, @comment] do |f|
+  %fieldset
+    %legend Add a comment
+    = f.label :body, "Comment"
+    = f.text_area :body, rows: 5, class: "input-block-level"
+    %br
+    = f.submit "Add comment", class: "btn"

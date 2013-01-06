@@ -1,5 +1,7 @@
 MorethingsneedTo::Application.routes.draw do
-  resources :entries, except: [:new, :edit]
+  resources :entries, except: [:new, :edit] do
+    resources :comments, only: [:create, :update, :destroy]
+  end
   resources :users, only: [:edit, :update]
 
   match "auth/:provider/callback", to: "authentications#create"

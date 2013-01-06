@@ -1,3 +1,7 @@
 = render "entry_form" if current_user
 
 #entries= render @entry
+
+= render @entry.comments if @entry.comments.count > 0
+
+= render "comments/comment_form"

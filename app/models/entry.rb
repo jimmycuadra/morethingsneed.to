@@ -1,5 +1,6 @@
 class Entry < ActiveRecord::Base
   belongs_to :user
+  has_many :comments
   validates_presence_of :noun, :verb
   validates_inclusion_of :needs, in: [true, false]
 

@@ -5,4 +5,6 @@
       = entry.user.name
       crapped this out.
   .padded
-    = "More #{entry.noun} #{entry.needs ? "needs" : "need"} to #{entry.verb}."
+    %p= "More #{entry.noun} #{entry.needs ? "needs" : "need"} to #{entry.verb}."
+    - unless params[:action] == "show"
+      %small= link_to(entry.comments.count > 0 ? "Read comments" : "Comment", entry)

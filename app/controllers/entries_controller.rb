@@ -7,6 +7,7 @@ class EntriesController < ApplicationController
 
   def show
     @entry = Entry.find(params[:id])
+    @comment = @entry.comments.build
   end
 
   def create
