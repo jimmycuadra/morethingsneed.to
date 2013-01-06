@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe AuthenticationsController do
+describe SessionsController do
   describe "#create" do
     let(:omniauth_hash) { double("omniauth hash") }
     let(:authentication) { Authentication.new }

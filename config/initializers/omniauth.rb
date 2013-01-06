@@ -3,7 +3,7 @@ Rails.configuration.middleware.use(OmniAuth::Builder) do
   provider :twitter, ENV["TWITTER_KEY"], ENV["TWITTER_SECRET"]
   provider :google_oauth2, ENV["GOOGLE_KEY"], ENV["GOOGLE_SECRET"]
   provider :identity, on_failed_registration: ->(env) {
-    IdentitiesController.action(:register).call(env)
+    IdentitiesController.action(:new).call(env)
   }
 end
 

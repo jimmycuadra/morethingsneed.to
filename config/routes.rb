@@ -2,14 +2,15 @@ MorethingsneedTo::Application.routes.draw do
   resources :entries, except: [:new, :edit] do
     resources :comments, only: [:create, :update, :destroy]
   end
+
   resources :users, only: [:edit, :update]
 
-  match "auth/:provider/callback", to: "authentications#create"
+  resources :sessions, only: :new
+  match "auth/:provider/callback", to: "sessions#create"
+  match "logout", to: "sessions#destroy"
   match "auth/failure", to: redirect("/")
 
-  match "login", to: "identities#login", as: :login
-  match "register", to: "identities#register", as: :register
-  match "logout", to: "sessions#destroy", as: :logout
+  resources :identities, only: :new
 
   root to: "entries#index"
 end

@@ -1,8 +1,5 @@
 class IdentitiesController < ApplicationController
-  def login
-  end
-
-  def register
+  def new
     @identity = env['omniauth.identity'] || Identity.new
   end
 end
