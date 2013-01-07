@@ -3,9 +3,7 @@
     .lead= "More #{entry.noun} #{entry.needs ? "needs" : "need"} to #{entry.verb}."
   %footer.padded.clearfix
     - unless params[:action] == "show"
-      %small= link_to(entry.comments.count > 0 ? "Read comments" : "Comment", entry)
+      %small= link_to(entry.comments.count > 0 ? "Read comments" : "Comment", entry, title: "Comment on entry ##{entry.id}")
     .pull-right
-      = entry.user.name
-      crapped out entry
-      = link_to "##{entry.id}", entry, title: "Entry ##{entry.id}"
-      \.
+      = surround("#{entry.user.name} crapped out entry ", ".") do
+        = link_to "##{entry.id}", entry, title: "Entry ##{entry.id}"

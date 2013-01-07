@@ -1,7 +1,9 @@
 %article.entry.separated
-  %header.padded
-    .pull-right
-      %a{ href: "/entries/#{@id}", title: "Entry ##{@id}"}= "##{@id}"
-    %span You crapped this out just now.
   .padded
-    = "More #{@noun} #{if @needs then "needs" else "need"} to #{@verb}."
+    .lead= "More #{@noun} #{if @needs then "needs" else "need"} to #{@verb}."
+  %footer.padded.clearfix
+    %small
+      %a{ href: "/entries/#{@id}", title: "Comment on entry ##{@id}" } Comment
+    .pull-right
+      != surround "You crapped out entry ", ".", ->
+        %a{ href: "/entries/#{@id}", title: "Entry ##{@id}"}= "##{@id}"
