@@ -1,10 +1,11 @@
 %article.entry.separated{ data: { "entry-id" => entry.id } }
-  %header.padded
-    .pull-right= link_to "##{entry.id}", entry, title: "Entry ##{entry.id}"
-    %span
-      = entry.user.name
-      crapped this out.
   .padded
-    %p= "More #{entry.noun} #{entry.needs ? "needs" : "need"} to #{entry.verb}."
+    .lead= "More #{entry.noun} #{entry.needs ? "needs" : "need"} to #{entry.verb}."
+  %footer.padded.clearfix
     - unless params[:action] == "show"
       %small= link_to(entry.comments.count > 0 ? "Read comments" : "Comment", entry)
+    .pull-right
+      = entry.user.name
+      crapped out entry
+      = link_to "##{entry.id}", entry, title: "Entry ##{entry.id}"
+      \.
