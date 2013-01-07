@@ -4,4 +4,4 @@
 
 = render @entry.comments if @entry.comments.count > 0
 
-= render "comments/comment_form"
+= render "comments/comment_form" if current_user

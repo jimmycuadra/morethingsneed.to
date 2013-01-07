@@ -1,6 +1,5 @@
 class mtnt.views.EntryFormView extends Backbone.View
   initialize: ->
-    @setElement($("#new_entry"))
     @reset()
 
   events:
@@ -27,8 +26,7 @@ class mtnt.views.EntryFormView extends Backbone.View
 
   addEntry: (entry) ->
     @reset()
-    entryView = new mtnt.views.EntryView(model: entry)
-    $("#entries").prepend(entryView.render().el)
+    mtnt.app.entries.add(entry)
     mtnt.app.flash("Entry added!", "success")
 
   displayErrors: (entry, xhr) ->

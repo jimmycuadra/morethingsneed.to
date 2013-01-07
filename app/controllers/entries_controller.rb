@@ -3,11 +3,13 @@ class EntriesController < ApplicationController
 
   def index
     @entries = Entry.recent(params[:page])
+    js_data[:entries] = @entries
   end
 
   def show
     @entry = Entry.find(params[:id])
     @comment = @entry.comments.build
+    js_data[:entries] = [@entry]
   end
 
   def create

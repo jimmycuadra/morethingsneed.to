@@ -9,9 +9,17 @@
 
 class mtnt.Application
   start: ->
-    @csrfToken = $('meta[name="csrf-token"]').attr('content')
-    if $("#new_entry").length
-      @entryFormView = new mtnt.views.EntryFormView
+    $newEntry = $("#new_entry")
+    if $newEntry.length
+      @entryFormView = new mtnt.views.EntryFormView(el: $newEntry)
+
+    $entries = $("#entries")
+    if $entries.length
+      @entries = new mtnt.collections.Entries(mtnt.data.entries)
+      @entriesView = new mtnt.views.EntriesView
+        el: $entries
+        collection: @entries
+      @entriesView.attach()
 
   flash: (message, type) ->
     flash = new mtnt.models.Flash(message: message, type: type)
@@ -20,5 +28,6 @@ class mtnt.Application
     setTimeout(flashView.fadeOut.bind(flashView), 3000)
 
 $ ->
+  mtnt.csrfToken = $('meta[name="csrf-token"]').attr('content')
   mtnt.app = new mtnt.Application
   mtnt.app.start()

@@ -1,4 +1,4 @@
-%article.entry.separated
+%article.entry.separated{ data: { "entry-id" => entry.id } }
   %header.padded
     .pull-right= link_to "##{entry.id}", entry, title: "Entry ##{entry.id}"
     %span
