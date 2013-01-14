@@ -1,4 +1,4 @@
-%article.entry.separated
+%article.entry.separated{ data: { "entry-id" => @id } }
   .padded
     .lead= "More #{@noun} #{if @needs then "needs" else "need"} to #{@verb}."
   %footer.padded.clearfix
