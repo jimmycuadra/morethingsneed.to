@@ -3,6 +3,8 @@ window.mtnt = mtnt =
   collections: {}
   views: {}
   data: {}
+  reload: ->
+    location.reload()
 
 HAML.globals = ->
   {

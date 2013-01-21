@@ -2,6 +2,7 @@
 #= require backbone
 #= require hamlcoffee
 #= require core
+#= require persona
 #= require_tree ./models
 #= require_tree ./collections
 #= require_tree ./templates
@@ -20,6 +21,11 @@ class mtnt.Application
         el: $entries
         collection: @entries
       @entriesView.attach()
+
+    @persona = new mtnt.Persona(currentUser: mtnt.data.person_uid)
+    @persona.watch()
+
+    @navView = new mtnt.views.NavView(el: ".navbar")
 
   flash: (message, type) ->
     flash = new mtnt.models.Flash(message: message, type: type)

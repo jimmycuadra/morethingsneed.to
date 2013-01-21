@@ -31,7 +31,7 @@ describe EntriesController do
     let(:current_user) do
       current_user = double("current user")
       current_user.stub(:entries) { entries }
-      current_user
+      current_user.as_null_object
     end
 
     let(:entries) { double("entries association") }

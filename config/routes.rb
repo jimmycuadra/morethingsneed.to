@@ -9,7 +9,7 @@ MorethingsneedTo::Application.routes.draw do
   match "logout", to: "sessions#destroy"
   match "auth/failure", to: redirect("/")
 
-  resources :identities, only: :create
+  resources :sessions, only: :create
 
   root to: "entries#index"
 end

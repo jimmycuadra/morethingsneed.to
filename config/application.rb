@@ -64,5 +64,7 @@ module MorethingsneedTo
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.persona_audience = "http://localhost:3000"
   end
 end
