@@ -8,7 +8,6 @@ gem "will_paginate"
 gem "omniauth-facebook"
 gem "omniauth-twitter"
 gem "omniauth-google-oauth2"
-gem "omniauth-identity"
 
 group :assets do
   gem "sass-rails"

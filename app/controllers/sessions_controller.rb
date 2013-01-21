@@ -1,7 +1,4 @@
 class SessionsController < ApplicationController
-  def new
-  end
-
   def create
     authentication = Authentication.from_omniauth(env["omniauth.auth"])
     session[:user_id] = authentication.user_id

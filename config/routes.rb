@@ -5,12 +5,11 @@ MorethingsneedTo::Application.routes.draw do
 
   resources :users, only: [:edit, :update]
 
-  resources :sessions, only: :new
   match "auth/:provider/callback", to: "sessions#create"
   match "logout", to: "sessions#destroy"
   match "auth/failure", to: redirect("/")
 
-  resources :identities, only: :new
+  resources :identities, only: :create
 
   root to: "entries#index"
 end

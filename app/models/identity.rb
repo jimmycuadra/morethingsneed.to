@@ -1,6 +1,3 @@
-class Identity < OmniAuth::Identity::Models::ActiveRecord
-  attr_accessor :name
-
-  validates :name, presence: true
+class Identity < ActiveRecord::Base
   validates :email, uniqueness: true, format: /\@/
 end

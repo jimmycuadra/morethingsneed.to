@@ -45,10 +45,9 @@ ActiveRecord::Schema.define(:version => 20130106151842) do
   add_index "entries", ["user_id"], :name => "index_entries_on_user_id"
 
   create_table "identities", :force => true do |t|
-    t.string   "email",           :null => false
-    t.string   "password_digest", :null => false
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.string   "email",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "identities", ["email"], :name => "index_identities_on_email", :unique => true

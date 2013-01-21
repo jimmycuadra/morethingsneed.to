@@ -30,7 +30,6 @@ GEM
       multi_json (~> 1.0)
     addressable (2.3.2)
     arel (3.0.2)
-    bcrypt-ruby (3.0.1)
     bootstrap-sass (2.2.2.0)
       sass (~> 3.2)
     builder (3.0.4)
@@ -105,9 +104,6 @@ GEM
     omniauth-google-oauth2 (0.1.13)
       omniauth (~> 1.0)
       omniauth-oauth2
-    omniauth-identity (1.1.0)
-      bcrypt-ruby (~> 3.0)
-      omniauth (~> 1.0)
     omniauth-oauth (1.0.1)
       oauth
       omniauth (~> 1.0)
@@ -220,7 +216,6 @@ DEPENDENCIES
   haml_coffee_assets
   omniauth-facebook
   omniauth-google-oauth2
-  omniauth-identity
   omniauth-twitter
   pg
   pry-nav
