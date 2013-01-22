@@ -1,10 +1,10 @@
 class mtnt.Persona
-  constructor: (currentUser) ->
-    @currentUser = currentUser or null
+  constructor: (loggedInUser) ->
+    @loggedInUser = loggedInUser or null
 
   watch: ->
     navigator.id.watch
-      loggedInUser: @currentUser
+      loggedInUser: @loggedInUser
       onlogin: @login
       onlogout: ->
 

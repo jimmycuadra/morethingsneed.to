@@ -22,7 +22,7 @@ class mtnt.Application
         collection: @entries
       @entriesView.attach()
 
-    @persona = new mtnt.Persona(currentUser: mtnt.data.person_uid)
+    @persona = new mtnt.Persona(mtnt.data.person_uid)
     @persona.watch()
 
     @navView = new mtnt.views.NavView(el: ".navbar")
