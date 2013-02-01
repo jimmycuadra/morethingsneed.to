@@ -1,6 +1,6 @@
-source :rubygems
+source "https://rubygems.org"
 
-gem 'rails', '3.0.3'
+gem 'rails', '3.0.20'
 gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
 gem 'will_paginate', "~> 3.0.pre2"
 gem 'rack-rewrite', '~> 1.0.2'
