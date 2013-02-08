@@ -61,7 +61,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.19)
     polyglot (0.3.3)
-    rack (1.2.7)
+    rack (1.2.8)
     rack-mount (0.6.14)
       rack (>= 1.0.0)
     rack-rewrite (1.0.2)
@@ -102,6 +102,7 @@ DEPENDENCIES
   ZenTest
   authlogic!
   heroku_backup_task
+  rack (~> 1.2.8)
   rack-rewrite (~> 1.0.2)
   rails (= 3.0.20)
   sqlite3-ruby
