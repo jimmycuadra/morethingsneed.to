@@ -3,5 +3,5 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 config/database.yml
-config/app_config.yml
-.powrc
+.env
+coverage/*
