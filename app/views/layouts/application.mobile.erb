@@ -7,16 +7,16 @@
 	<meta http-equiv="X-UA-Compatible" content="chrome=1" />
 	<meta name="description" content="<%= yield(:description) || 'A humorous collection of user-submitted lines in the form more ___ need to ___. Add your own, vote and comment on others, and share the funny with your friends.' %>" />
 	<meta name="keywords" content="more things need to,humor,funny,social" />
-	<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
-	
+	<meta name="viewport" content="width=320, initial-scale=1.0 maximum-scale=1.0, user-scalable=0"/>
+
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/morethingsneedto" />
 
-	<%= stylesheet_link_tag 'reset', 'mobile' %>
+	<%= stylesheet_link_tag 'mobile' %>
 	<!--[if IE]>
 		<%= stylesheet_link_tag 'ie' %>
 	<![endif]-->
-	
+
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -26,13 +26,15 @@
     	</div>
   	</noscript>
 	<div id="bucket">
-	
+
 	<div id="header">
-		<a href="/" id="title-link" title="More Things Need To"><img src="/images/title_mobile.png" alt="More Thing Need To"></a>
+		<a href="/" id="title-link" title="More Things Need To">
+      <%= image_tag("title_mobile.png", alt: "More Things Need To") %>
+    </a>
 		<%= render :partial => 'entries/add' %>
-		
+
     	<%= render :partial => 'partials/nav' %>
-		
+
 		<div class="flash<%= ' success' if flash[:success] %><%= ' hidden' unless flash[:error] or flash[:success] %>">
 			<div class="close hidden"></div>
 			<div class="message">
@@ -46,19 +48,17 @@
 		</div>
 
 	</div> <!-- /header -->
-	
+
 	<div id="content"<%= ' class="main"' if params[:controller] == 'entries' && params[:action] == 'index' %>>
 		<%= yield %>
 	</div> <!-- /content -->
 
 	<%= render :partial => 'partials/footer' %>
-	
+
 	</div> <!-- /bucket -->
-	
-	<script src="/javascripts/head.load.min.js" type="text/javascript"></script>
-  <script type="text/javascript">
-    head.js("https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js", "/javascripts/core.js", "/javascripts/form-defaults.js", "/javascripts/vote.js", "/javascripts/mobile.js");
-  </script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+  <%= javascript_include_tag "mobile" %>
   <%= render :partial => 'partials/ga_tracking' if Rails.env.production? %>
 </body>
 </html>

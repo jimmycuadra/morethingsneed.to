@@ -1,6 +1,6 @@
 MTNT.Vote = function($forms) {
   this.$forms = $forms;
-  
+
   this.$forms.live('submit', this.handleSubmit.bind(this));
 };
 

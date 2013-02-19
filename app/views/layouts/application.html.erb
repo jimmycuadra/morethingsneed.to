@@ -7,15 +7,15 @@
 	<meta http-equiv="X-UA-Compatible" content="chrome=1" />
 	<meta name="description" content="<%= yield(:description) || 'A humorous collection of user-submitted lines in the form more ___ need to ___. Add your own, vote and comment on others, and share the funny with your friends.' %>" />
 	<meta name="keywords" content="more things need to,humor,funny,social" />
-	
+
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/morethingsneedto" />
-	<%= stylesheet_link_tag 'reset', 'screen' %>
+	<%= stylesheet_link_tag 'desktop' %>
 	<!--[if IE]>
 		<%= stylesheet_link_tag 'ie' %>
 	<![endif]-->
 
-  <%= csrf_meta_tag %>	
+  <%= csrf_meta_tag %>
 </head>
 <body>
   <noscript>
@@ -28,16 +28,16 @@
     <div class="message"></div>
   </div>
 	<div id="bucket">
-	
+
 	<div id="header">
 		<a href="/" id="title-link" title="More Things Need To">More Things Need To</a>
-		
+
 		<%= render :partial => 'entries/add' %>
-		
+
     	<%= render :partial => 'partials/nav' %>
 
 		<%= render :partial => 'partials/userbox' unless current_user %>
-		
+
 		<div class="flash<%= ' success' if flash[:success] %><%= ' hidden' unless flash[:error] or flash[:success] %>">
 			<div class="close hidden"></div>
 			<div class="message">
@@ -51,19 +51,17 @@
 		</div>
 
 	</div> <!-- /header -->
-	
+
 	<div id="content"<%= ' class="main"' if params[:controller] == 'entries' && params[:action] == 'index' %>>
 		<%= yield %>
 	</div> <!-- /content -->
 
 	<%= render :partial => 'partials/footer' %>
-	
+
 	</div> <!-- /bucket -->
-	
-	<script src="/javascripts/head.load.min.js" type="text/javascript"></script>
-  <script type="text/javascript">
-    head.js("https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js", "/javascripts/core.js", "/javascripts/jquery.cookie.js", "/javascripts/notification.js", "/javascripts/form-defaults.js", "/javascripts/flash.js", "/javascripts/userbox.js", "/javascripts/entry.js", "/javascripts/vote.js", "/javascripts/comment.js", "/javascripts/contact.js", "/javascripts/application.js");
-  </script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+  <%= javascript_include_tag "desktop" %>
   <%= render :partial => 'partials/ga_tracking' if Rails.env.production? %>
 </body>
 </html>

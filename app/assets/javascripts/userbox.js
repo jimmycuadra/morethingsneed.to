@@ -3,7 +3,7 @@ MTNT.Userbox = function(options) {
   this.$userBoxes = options.userBoxes;
   this.$thisBox = null;
   this.$otherBox = null;
-  
+
   this.$links.click(this.handleClick.bind(this));
 };
 

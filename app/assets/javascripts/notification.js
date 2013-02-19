@@ -2,7 +2,7 @@ MTNT.Notification = function(id) {
   this.$frame = $('#' + id);
   this.$message = this.$frame.find('.message');
   this.$close = this.$frame.find('.close');
-  
+
   this.isSeen.bind(this)();
 };
 

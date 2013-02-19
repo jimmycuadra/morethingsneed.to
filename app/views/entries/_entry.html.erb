@@ -1,8 +1,12 @@
 <div class="article">
 	<div class="header<%= ' new-entry' if @is_ajax %><%= ' spam-entry' if entry.spam %>">
 		<div class="share-links">
-			<a href="http://facebook.com/sharer.php?u=http://morethingsneed.to/<%= entry.id %>"><img src="/images/facebook_icon.gif" alt="Post this on Facebook" title="Post this on Facebook" /></a>
-			<a href="<%= twitter_link(entry) %>"><img src="/images/twitter_icon.gif" alt="Tweet this" title="Tweet this" /></a>
+			<a href="http://facebook.com/sharer.php?u=http://morethingsneed.to/<%= entry.id %>">
+				<%= image_tag("facebook_icon.gif", alt: "Post this on Facebook", title: "Post this on Facebook") %>
+			</a>
+			<a href="<%= twitter_link(entry) %>">
+				<%= image_tag("twitter_icon.gif", alt: "Tweet this", title: "Tweet this") %>
+			</a>
 		</div>
 
 	  <% if @is_ajax %>
@@ -13,7 +17,7 @@
 	</div> <!-- /header -->
 
 	<div class="section">
-		<div class="section-links">			
+		<div class="section-links">
 			<%= form_for [entry, Vote.new], :html => { :id => 'new_up_vote_' + entry.id.to_s } do |f| %>
 			  <fieldset>
   				<%= f.hidden_field :up_vote, :value => 1, :id => 'vote_up_vote_' + entry.id.to_s %>
@@ -44,6 +48,6 @@
 				<% end %>
 			</p>
 			<div class="clear"></div>
-		</div> <!-- /section-content -->		
+		</div> <!-- /section-content -->
 	</div> <!-- /section -->
 </div> <!-- /article -->
