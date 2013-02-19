@@ -1,17 +1,18 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:edit, :update]
-  
+
   def index
     @users = User.where(:active => true).paginate(:page => params[:page], :per_page => User.per_page)
   end
-  
+
   def new
   end
-  
+
   def create
+    username = params[:user].delete(:username)
     @user = User.new(params[:user])
-    @user.username = params[:user][:username]
+    @user.username = username
     if @user.save_without_session_maintenance
       @user.reset_perishable_token!
       ActionMailer::Base.default_url_options[:host] = request.host
@@ -23,11 +24,11 @@ class UsersController < ApplicationController
       render :action => 'new'
     end
   end
-  
+
   def edit
     @user = current_user
   end
-  
+
   def update
     @user = current_user
     if @user.update_attributes(params[:user])
