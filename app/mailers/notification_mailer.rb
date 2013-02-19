@@ -10,7 +10,7 @@ class NotificationMailer < ActionMailer::Base
     @user = user
     mail(:to => user.email, :subject => 'Password reset instructions for morethingsneed.to')
   end
-  
+
   def contact_form(contact)
     @contact = contact
     mail(:to => [ENV['JIMMY_EMAIL'], ENV['MIKE_EMAIL']], :reply_to => @contact.real_email, :subject => 'MTNT Contact Form Submission')

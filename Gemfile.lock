@@ -28,6 +28,7 @@ GEM
     activesupport (3.2.12)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    ansi (1.4.3)
     arel (3.0.2)
     authlogic (3.2.0)
       activerecord (>= 3.0.0)
@@ -95,6 +96,8 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
+    turn (0.9.6)
+      ansi
     tzinfo (0.3.35)
     will_paginate (3.0.4)
 
@@ -109,4 +112,5 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   sqlite3
   thin
+  turn
   will_paginate

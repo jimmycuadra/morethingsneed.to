@@ -20,3 +20,7 @@ end
 group :development, :test do
   gem 'sqlite3'
 end
+
+group :test do
+  gem 'turn'
+end
