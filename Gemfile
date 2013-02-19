@@ -6,7 +6,8 @@ gem 'authlogic'
 gem 'will_paginate'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails', '~> 3.2.3'
+  gem 'uglifier'
 end
 
 group :production do
