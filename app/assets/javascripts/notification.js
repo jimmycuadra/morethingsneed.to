@@ -21,7 +21,7 @@ MTNT.Notification.prototype.setSeen = function() {
   this.$frame.addClass('hidden');
   $.cookie('seen', 't', {
     expires: 18250,
-    domain: 'www.morethingsneed.to',
+    domain: location.hostname,
     path: '/'
   });
 };
