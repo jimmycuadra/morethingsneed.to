@@ -2,7 +2,7 @@
 {
 	"success": true,
 	"message": "Your opinion has been duly noted.",
-	"comment": "<%= escape_for_json(render(:partial => 'comment.html.erb', :locals => { :comment => @comment })) %>"
+	"comment": "<%= raw escape_for_json(render(:partial => 'comment.html.erb', :locals => { :comment => @comment })) %>"
 }
 <% else %>
 {

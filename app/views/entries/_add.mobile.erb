@@ -2,20 +2,20 @@
 	<%= form_for @new_entry do |f| %>
 	  <fieldset>
   		<%= f.label :noun, 'More ' %>
-		<%= f.text_field :noun, :id => 'noun', :value => 'nouns', :autocorrect => 'off', :autocapitalize => 'off', :placeholder => 'nouns' %>	
+		<%= f.text_field :noun, id: 'noun', placeholder: 'nouns', autocorrect: 'off', autocapitalize: 'off' %>
   		<%= f.select :needs, { 'need' => 0, 'needs' => 1 } %>
 
 		<br class="clear" />
 
   		<%= f.label :verb, ' to ' %>
-  		<%= f.text_field :verb, :id => 'verb', :value => 'verb', :autocorrect => 'off', :autocapitalize => 'off', :placeholder => 'verb' %> <span>!</span>
-		
+  		<%= f.text_field :verb, id: 'verb', placeholder: 'verb', autocorrect: 'off', autocapitalize: 'off', placeholder: 'verb' %> <span>!</span>
+
   		<% unless current_user %>
   			<%= f.label :email, nil, :class => 'pot' %>
   			<%= f.text_field :email, :class => 'pot' %>
   		<% end %>
 
-		<%= f.submit 'Confirm', :class => 'submit' %>		
+		<%= f.submit 'Confirm', :class => 'submit' %>
   	</fieldset>
 	<% end %>
 </div>

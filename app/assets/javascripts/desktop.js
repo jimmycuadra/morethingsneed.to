@@ -1,7 +1,7 @@
 //= require core
+//= require jquery_ujs
 //= require jquery.cookie
 //= require notification
-//= require form-defaults
 //= require flash
 //= require userbox
 //= require entry
@@ -10,9 +10,6 @@
 //= require contact
 
 $(function() {
-  // form defaults
-	$('#add form').formDefaults();
-
 	// notification
 	var notification = new MTNT.Notification('notification');
 
@@ -40,7 +37,7 @@ $(function() {
   });
 
   // votes
-  new MTNT.Vote($('form.new_vote'));
+  new MTNT.Vote('form.new_vote');
 
   // contact form
   new MTNT.Contact({

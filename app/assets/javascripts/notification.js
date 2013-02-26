@@ -3,16 +3,16 @@ MTNT.Notification = function(id) {
   this.$message = this.$frame.find('.message');
   this.$close = this.$frame.find('.close');
 
-  this.isSeen.bind(this)();
+  this.isSeen();
 };
 
 MTNT.Notification.prototype.isSeen = function() {
   if ($.cookie('seen') !== 't') {
     if (window.location.pathname !== '/faq') {
       this.notify('First time here? Check out the <a href="/faq">FAQ</a> to see what it\'s all about.');
-      this.$close.click(this.setSeen.bind(this));
+      this.$close.on("click", this.setSeen.bind(this));
     } else {
-      this.setSeen.bind(this)();
+      this.setSeen();
     }
   }
 };

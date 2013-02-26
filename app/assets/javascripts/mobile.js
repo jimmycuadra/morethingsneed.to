@@ -1,11 +1,8 @@
 //= require core
-//= require form-defaults
+//= require jquery_ujs
 //= require vote
 
 $(function() {
-    // form defaults
-	$('#add form').formDefaults();
-
 	// votes
 	new MTNT.Vote($('form.new_vote'));
 

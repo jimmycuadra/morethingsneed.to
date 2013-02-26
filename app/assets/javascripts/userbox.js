@@ -4,11 +4,11 @@ MTNT.Userbox = function(options) {
   this.$thisBox = null;
   this.$otherBox = null;
 
-  this.$links.click(this.handleClick.bind(this));
+  this.$links.on("click", this.handleClick.bind(this));
 };
 
-MTNT.Userbox.prototype.handleClick = function(e, link) {
-  var $link = $(link),
+MTNT.Userbox.prototype.handleClick = function(e) {
+  var $link = $(event.target),
       boxSelector = '#' + $link.attr('id') + '-box';
 
   this.$thisBox = $(boxSelector);

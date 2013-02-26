@@ -4,10 +4,10 @@ MTNT.Flash = function($container) {
   this.$message = $container.find('.message');
   this.$errors = $container.find('.errors');
 
-  this.$closeButton.click(this.handleClose.bind(this));
+  this.$closeButton.on("click", this.handleClose.bind(this));
 };
 
-MTNT.Flash.prototype.handleClose = function($closeButton) {
+MTNT.Flash.prototype.handleClose = function() {
 	this.$container.addClass('hidden');
 };
 

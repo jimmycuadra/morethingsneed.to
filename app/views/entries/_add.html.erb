@@ -2,19 +2,19 @@
 	<%= form_for @new_entry do |f| %>
 	  <fieldset>
   		<%= f.label :noun, 'More ' %>
-  		<%= f.text_field :noun, :value => 'nouns' %>
-	
+  		<%= f.text_field :noun, placeholder: 'nouns' %>
+
   		<%= f.select :needs, { 'need' => 0, 'needs' => 1 } %>
-	
+
   		<%= f.label :verb, ' to ' %>
-  		<%= f.text_field :verb, :value => 'verb' %> <span>!</span>
-		
+  		<%= f.text_field :verb, placeholder: 'verb' %> <span>!</span>
+
   		<% unless current_user %>
   			<%= f.label :email, nil, :class => 'pot' %>
   			<%= f.text_field :email, :class => 'pot' %>
   		<% end %>
 
-		  <%= f.submit 'This needs to happen', :class => 'submit' %>		
+		  <%= f.submit 'This needs to happen', :class => 'submit' %>
   	</fieldset>
 	<% end %>
 </div>

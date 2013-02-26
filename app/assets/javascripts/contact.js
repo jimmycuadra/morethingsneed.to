@@ -2,11 +2,11 @@ MTNT.Contact = function(options) {
   this.$form = options.$form;
   this.flash = options.flash;
 
-  this.$form.submit(this.handleSubmit.bind(this));
+  this.$form.on("submit", this.handleSubmit.bind(this));
 };
 
-MTNT.Contact.prototype.handleSubmit = function(e, form) {
-  var $form = $(form),
+MTNT.Contact.prototype.handleSubmit = function(e) {
+  var $form = $(e.target),
       action = $form.attr('action'),
       data = $form.serialize();
 
