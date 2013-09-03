@@ -1,7 +1,8 @@
 require 'test_helper'
-require 'authlogic/test_case'
 
 class EntriesControllerTest < ActionController::TestCase
+  include Authlogic::TestCase
+
   setup :activate_authlogic
 
   def setup
