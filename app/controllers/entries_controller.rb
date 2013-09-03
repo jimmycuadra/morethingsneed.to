@@ -4,7 +4,7 @@ class EntriesController < ApplicationController
   before_filter :retrieve_record, :only => [:show, :destroy, :toggle_spam]
   before_filter :retrieve_editable_record, :only => [:edit, :update]
   before_filter :get_sort_type, :only => [:index, :create, :show_spam]
-  
+
   def index
     @entries = Entry.without_spam
 
@@ -28,17 +28,17 @@ class EntriesController < ApplicationController
       end
     end
   end
-  
+
   def show
-    @comments = @entry.comments.scoped
+    @comments = @entry.comments
     @comments = @comments.without_spam unless is_admin && params[:show_spam]
   end
-  
+
   def edit
   end
-  
+
   def create
-    @new_entry = Entry.new(params[:entry] || {})
+    @new_entry = Entry.new(entry_params || {})
     @new_entry.ip = request.remote_ip
     if current_user
       @new_entry.user_id = current_user.id
@@ -49,7 +49,7 @@ class EntriesController < ApplicationController
       respond_to do |format|
         format.any(:html, :mobile) do
           flash[:success] = 'More submissions need to be successful.'
-          redirect_to @new_entry          
+          redirect_to @new_entry
         end
         format.json
       end
@@ -58,15 +58,15 @@ class EntriesController < ApplicationController
         format.any(:html, :mobile) do
           flash.now[:error] = 'More submissions need to be filled out correctly.'
           @entries = Entry.without_spam.order('created_at DESC').paginate :page => params[:page], :per_page => Entry.per_page
-          render :index          
+          render :index
         end
         format.json
       end
     end
   end
-  
+
   def update
-    if @entry.update_attributes(params[:entry])
+    if @entry.update_attributes(entry_params)
       flash.now[:success] = 'More entries need to be updated successfully.'
       render :action => 'show'
     else
@@ -74,34 +74,38 @@ class EntriesController < ApplicationController
       render :action => 'edit'
     end
   end
-  
+
   def destroy
     flash[:success] = 'More entries need to be successfully destroyed.' if @entry.destroy
     redirect_to entries_path
   end
-  
+
   def show_spam
     redirect_to entries_path and return unless is_admin
     @entries = Entry.order(@order).paginate :page => params[:page], :per_page => Entry.per_page
     render :action => 'index'
   end
-  
+
   def toggle_spam
     redirect_to root_path and return unless is_admin
-    
+
     BannedIp.toggle_ban(@entry.ip)
     flash[:success] = 'More spam flags need to be toggled.'
     redirect_to @entry
   end
-  
+
   private
-  
+
+  def entry_params
+    params.require(:entry).permit(:noun, :verb, :needs, :email)
+  end
+
   def retrieve_record
-    @entry = Entry.scoped
+    @entry = Entry.all
     @entry = @entry.without_spam unless is_admin
     @entry = @entry.find(params[:id])
   end
-  
+
   def retrieve_editable_record
     begin
       @entry = Entry.where(is_admin ? nil : ["ip = ? AND created_at >= ?", request.remote_ip, 5.minutes.ago]).find(params[:id])
@@ -110,7 +114,7 @@ class EntriesController < ApplicationController
       redirect_to root_path and return
     end
   end
-  
+
   def get_sort_type
     case
     when params.key?(:best)

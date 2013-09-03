@@ -1,7 +1,7 @@
 class VotesController < ApplicationController
   def create
     @entry = Entry.find(params[:entry_id])
-    @v = @entry.votes.build(params[:vote] || {})
+    @v = @entry.votes.build(vote_params || {})
     @v.ip = request.remote_ip
     if @v.save
       @entry.reload
@@ -29,5 +29,11 @@ class VotesController < ApplicationController
         format.json
       end
     end
+  end
+
+  private
+
+  def vote_params
+    params.require(:vote).permit(:up_vote)
   end
 end

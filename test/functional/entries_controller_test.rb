@@ -48,11 +48,10 @@ class EntriesControllerTest < ActionController::TestCase
     assert_not_nil flash[:success]
   end
 
-  test "should reject invaild entry and render index" do
-    post :create
-    assert_template :index
-    assert_not_nil flash[:error]
-    assert assigns(:entries)
+  test "should raise when parameters are missing" do
+    assert_raises(ActionController::ParameterMissing) do
+      post :create
+    end
   end
 
   test "should destroy entry and redirect to index with message" do
