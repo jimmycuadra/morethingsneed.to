@@ -10,7 +10,7 @@ class Entry < ActiveRecord::Base
   # validations
 
   validates_presence_of :ip
-  validates_format_of :ip, :with => /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/, :message => 'must be a valid IP.'
+  validates_format_of :ip, :with => /\A(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\z/, :message => 'must be a valid IP.'
   validates_length_of :noun, :verb, :maximum => 255, :message => " is more than 255 characters. You're too wordy."
   validate :not_default_or_missing_phrase
   validate :honeypot_must_be_blank
@@ -28,12 +28,16 @@ class Entry < ActiveRecord::Base
   # accessors
 
   attr_accessor :email, :allow_recent_entry
-  attr_accessible :noun, :verb, :needs, :email
 
   # scopes
 
-  scope :by_user, lambda { |user_id| where('user_id = ?', user_id) }
-  scope :without_spam, where('spam = ?', false)
+  def self.by_user(user_id)
+    where('user_id = ?', user_id)
+  end
+
+  def self.without_spam
+    where('spam = ?', false)
+  end
 
   # methods
 
@@ -57,7 +61,7 @@ class Entry < ActiveRecord::Base
   end
 
   def no_recent_entry_from_ip
-    errors.add(:base, 'Gotta wait at least a minute before adding another one.') if !self.allow_recent_entry && Entry.all(:conditions => ['created_at > ? AND ip = ?', Time.new.ago(60).in_time_zone, self.ip]).count > 0
+    errors.add(:base, 'Gotta wait at least a minute before adding another one.') if !allow_recent_entry && Entry.where(['created_at > ? AND ip = ?', Time.new.ago(60).in_time_zone, ip]).count > 0
   end
 
   def strip_whitespace
@@ -70,7 +74,7 @@ class Entry < ActiveRecord::Base
   end
 
   def recalculate_comment_count
-    self.update_attribute :comment_count, self.comments.find_all_by_spam(false).count
+    self.update_attribute :comment_count, self.comments.where(spam: false).count
   end
 
   def self.search(query)

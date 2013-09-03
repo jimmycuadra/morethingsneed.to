@@ -4,16 +4,14 @@ gem 'rails'
 gem 'thin'
 gem 'authlogic'
 gem 'will_paginate'
-
-group :assets do
-  gem 'sass-rails', '~> 3.2.3'
-  gem 'uglifier'
-  gem 'jquery-rails'
-end
+gem 'sass-rails'
+gem 'uglifier'
+gem 'jquery-rails'
 
 group :production do
   gem 'pg'
   gem 'newrelic_rpm'
+  gem 'rails_12factor'
 end
 
 group :development do

@@ -1,20 +1,7 @@
-class Contact < ActiveRecord::Base
-  # tableless model
+class Contact
+  include ActiveModel::Model
 
-  def self.columns()
-    @columns ||= []
-  end
-
-  def self.column(name, sql_type = nil, default = nil, null = true)
-    columns << ActiveRecord::ConnectionAdapters::Column.new(name.to_s, default, sql_type.to_s, null)
-  end
-
-  column :name, :string
-  column :real_email, :string
-  column :message, :text
-  column :email, :string
-
-  attr_accessible :name, :real_email, :message, :email
+  attr_accessor :name, :real_email, :message, :email
 
   # validations
 

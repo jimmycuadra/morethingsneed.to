@@ -77,8 +77,8 @@ class EntryTest < ActiveSupport::TestCase
     @e.votes.create(up_vote: 1) { |v| v.ip = generate_ip }
     id = @e.id
     @e.destroy
-    assert_equal(Comment.all(:conditions => { :entry_id => id }).size, 0)
-    assert_equal(Vote.all(:conditions => { :entry_id => id }).size, 0)
+    assert_equal(Comment.where(entry_id: id).count, 0)
+    assert_equal(Vote.where(entry_id: id).count, 0)
   end
 
   test "should remove trailing punctuation" do

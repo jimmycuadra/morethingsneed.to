@@ -1,7 +1,7 @@
 class BannedIp < ActiveRecord::Base
   # validations
 
-  validates_format_of :ip, :with => /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/, :message => 'must be a valid IP'
+  validates_format_of :ip, :with => /\A(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\z/, :message => 'must be a valid IP'
 
   # callbacks
 
@@ -27,8 +27,8 @@ class BannedIp < ActiveRecord::Base
   private
 
   def toggle_spammable
-    comments = Comment.all(:conditions => { :ip => self.ip })
-    entries = Entry.all(:conditions => { :ip => self.ip })
+    comments = Comment.where(ip: ip )
+    entries = Entry.where(ip: ip )
 
     comments.each do |c|
       c.toggle_spam
