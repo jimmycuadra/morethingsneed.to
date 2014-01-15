@@ -22,8 +22,11 @@ end
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'rspec-rails'
 end
 
 group :test do
-  gem 'turn'
+  gem 'turn', require: false
+  gem 'simplecov'
+  gem 'factory_girl_rails'
 end

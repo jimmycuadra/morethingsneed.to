@@ -3,6 +3,7 @@ ENV["JIMMY_EMAIL"] ||= "jimmy@example.com"
 ENV["MIKE_EMAIL"] ||= "mike@example.com"
 
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+require 'turn'
 require 'rails/test_help'
 require 'authlogic/test_case'
 
