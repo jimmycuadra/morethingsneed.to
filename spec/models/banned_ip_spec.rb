@@ -19,24 +19,49 @@ describe BannedIp do
   end
 
   describe ".toggle_ban" do
+    let(:entry) { FactoryGirl.create(:entry) }
+    let(:comment) { FactoryGirl.create(:comment, entry: entry, ip: entry.ip) }
+
     context "when the IP is not banned" do
       it "creates a new record" do
-        expect { described_class.toggle_ban('1.2.3.4') }.to change { described_class.count }.by(1)
+        expect { described_class.toggle_ban(entry.ip) }.to change { described_class.count }.by(1)
       end
 
-      it "flags associated entries as spam"
-      it "flags associated comments as spam"
+      it "flags associated entries as spam" do
+        expect { described_class.toggle_ban(entry.ip) }.to change {
+          Entry.where(spam: true).count
+        }.from(0).to(1)
+      end
+
+      it "flags associated comments as spam" do
+        expect { described_class.toggle_ban(comment.ip) }.to change {
+          Comment.where(spam: true).count
+        }.from(0).to(1)
+      end
     end
 
     context "when the IP is banned" do
-      before { FactoryGirl.create(:banned_ip, ip: '1.2.3.4') }
-
-      it "destroys the existing record" do
-        expect { described_class.toggle_ban('1.2.3.4') }.to change { described_class.count }.by(-1)
+      before do
+        entry
+        comment
+        FactoryGirl.create(:banned_ip, ip: entry.ip)
       end
 
-      it "unflags associated entries as spam"
-      it "unflags associated comments as spam"
+      it "destroys the existing record" do
+        expect { described_class.toggle_ban(entry.ip) }.to change { described_class.count }.by(-1)
+      end
+
+      it "unflags associated entries as spam" do
+        expect { described_class.toggle_ban(entry.ip) }.to change {
+          Entry.where(spam: true).count
+        }.from(1).to(0)
+      end
+
+      it "unflags associated comments as spam" do
+        expect { described_class.toggle_ban(comment.ip) }.to change {
+          Comment.where(spam: true).count
+        }.from(1).to(0)
+      end
     end
   end
 end
