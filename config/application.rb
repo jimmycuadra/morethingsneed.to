@@ -58,5 +58,7 @@ module Morethingsneed
     config.assets.initialize_on_precompile = false
 
     console { config.console = Pry }
+
+    config.i18n.enforce_available_locales = true
   end
 end
