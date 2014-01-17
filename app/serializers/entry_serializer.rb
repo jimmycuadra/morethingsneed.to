@@ -17,4 +17,8 @@ class EntrySerializer < ActiveModel::Serializer
   def body
     EntriesHelper.format_entry(object)
   end
+
+  def comments
+    object.comments.where(spam: false)
+  end
 end
