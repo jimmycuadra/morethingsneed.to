@@ -1,4 +1,10 @@
 Morethingsneed::Application.routes.draw do
+  namespace :api, defaults: { format: 'json' } do
+    namespace :v1 do
+      resources :entries, only: :index
+    end
+  end
+
   resources :entries, :except => [:new] do
     put 'toggle_spam', :on => :member
     get 'show_spam', :on => :collection

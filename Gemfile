@@ -9,6 +9,7 @@ gem 'will_paginate'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'jquery-rails'
+gem 'active_model_serializers'
 
 group :production do
   gem 'pg'

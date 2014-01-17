@@ -31,6 +31,10 @@ class Entry < ActiveRecord::Base
 
   # scopes
 
+  def self.recent(page = 1)
+    where(spam: false).paginate(page: page, per_page: 30)
+  end
+
   def self.by_user(user_id)
     where('user_id = ?', user_id)
   end

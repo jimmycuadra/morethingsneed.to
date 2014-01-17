@@ -16,7 +16,7 @@ FactoryGirl.define do
   factory :entry do
     noun "things"
     needs false
-    verb "to"
+    sequence(:verb) { |n| "to be entry ##{n}" }
     ip { random_ip.call }
   end
 
