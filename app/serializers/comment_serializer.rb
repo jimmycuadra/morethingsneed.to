@@ -2,6 +2,7 @@ class CommentSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
   attributes *%i{
+    id
     name
     comment
     created_at
