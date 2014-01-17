@@ -9,6 +9,5 @@ class CommentSerializer < ActiveModel::Serializer
     updated_at
   }
 
-  has_one :entry
   has_one :user
 end
