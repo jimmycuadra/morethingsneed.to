@@ -32,7 +32,7 @@ class Entry < ActiveRecord::Base
   # scopes
 
   def self.recent(page = 1)
-    where(spam: false).paginate(page: page, per_page: 30)
+    where(spam: false).order(created_at: :desc).paginate(page: page, per_page: 30)
   end
 
   def self.by_user(user_id)
