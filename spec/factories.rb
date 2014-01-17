@@ -4,19 +4,20 @@ FactoryGirl.define do
   end
 
   factory :banned_ip do
-    ip random_ip.call
+    ip { random_ip.call }
   end
 
   factory :comment do
-    comment "More comments need to be made."
-    ip random_ip.call
+    sequence(:comment) { |n| "This is comment ##{n}." }
+    ip { random_ip.call }
+    entry
   end
 
   factory :entry do
     noun "things"
     needs false
     verb "to"
-    ip random_ip.call
+    ip { random_ip.call }
   end
 
   factory :user do
