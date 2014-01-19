@@ -5,10 +5,10 @@ class Contact
 
   # validations
 
-  validates_presence_of :name, :message => 'is required. Who are you?'
-  validates_presence_of :real_email, :message => 'is required. How are we going to get back to you without your e-mail address?'
-  validates_presence_of :message, :message => 'is required. Why contact us if you have nothing to say?'
-  validates_format_of :real_email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :message => 'must be valid. Don\'t try to fake us out.', :unless => Proc.new { |c| c.real_email.blank? }
+  validates_presence_of :name
+  validates_presence_of :real_email
+  validates_presence_of :message
+  validates_format_of :real_email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :unless => Proc.new { |c| c.real_email.blank? }
   validate :honeypot_should_be_blank
 
   # methods
