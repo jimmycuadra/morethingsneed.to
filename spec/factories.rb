@@ -21,10 +21,16 @@ FactoryGirl.define do
   end
 
   factory :user do
-    username "Bongo"
-    email "bongo@example.com"
+    sequence(:username) { |n| "Bongo#{n}" }
+    sequence(:email) { |n| "bongo#{n}@example.com" }
     password "secret"
     password_confirmation "secret"
     active true
+  end
+
+  factory :vote do
+    up_vote true
+    ip { random_ip.call }
+    entry
   end
 end

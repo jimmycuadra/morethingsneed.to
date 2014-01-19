@@ -36,7 +36,7 @@ class Entry < ActiveRecord::Base
   end
 
   def self.by_user(user_id)
-    where('user_id = ?', user_id)
+    where(user_id: user_id)
   end
 
   def self.without_spam
