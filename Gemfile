@@ -1,12 +1,12 @@
 source "https://rubygems.org"
 
-ruby "2.1.0"
+ruby File.read(File.expand_path("../.ruby-version", __FILE__)).chomp
 
-gem 'rails', '4.0.3'
+gem 'rails', '4.0.4'
 gem 'thin'
 gem 'authlogic'
 gem 'will_paginate'
-gem 'sass-rails'
+gem 'sass-rails', '4.0.2' # https://github.com/sstephenson/sprockets/issues/540
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'active_model_serializers'
