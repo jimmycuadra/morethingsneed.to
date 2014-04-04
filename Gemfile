@@ -10,6 +10,8 @@ gem 'sass-rails', '4.0.2' # https://github.com/sstephenson/sprockets/issues/540
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'active_model_serializers'
+gem 'bcrypt' # no idea why it's crashing without this
+gem 'scrypt' # no idea why it's crashing without this
 
 group :production do
   gem 'pg'
