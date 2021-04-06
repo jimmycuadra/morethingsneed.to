@@ -12,6 +12,7 @@ gem 'jquery-rails'
 gem 'active_model_serializers'
 gem 'bcrypt' # no idea why it's crashing without this
 gem 'scrypt' # no idea why it's crashing without this
+gem 'pry'
 
 group :production do
   gem 'pg'
@@ -26,7 +27,6 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
-  gem 'pry'
 end
 
 group :test do
